@@ -1,0 +1,145 @@
+body{
+ background-image: url(img/fondo.png); 
+background-repeat: no-repeat;
+background-size: cover;
+background-position: center center;
+overflow-x: hidden;
+overflow-y: hidden;
+
+}
+
+
+
+.navbar .nav-link {
+  color: #080101;
+}
+
+.navbar-nav .nav-item {
+  margin-right: 40px;
+}
+
+.navbar-nav {
+  margin-left: auto;
+}
+
+.navbar-nav .nav-item {
+  margin-left: 20px;
+}
+
+.navbar-toggler{
+
+background: rgb(153, 146, 159);
+}
+
+
+.titulo{
+  text-align: center; 
+    font-size: 37px;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    letter-spacing: -1px;
+    text-overflow: ellipsis;
+   font-family: 'Times New Roman', Times, serif;
+ 
+    
+  
+}
+
+
+label{
+  font-size: 14px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  color: rgb(66, 64, 64);
+  padding-top: 8px;
+}
+
+.hijo{
+
+max-width: 22em;
+display: flex;
+justify-self: center;
+position: absolute;
+top: 17.5rem;
+right: 14%; /* */
+transform: translate(0, -50%);
+
+
+
+}
+
+#tipo_usuario{
+ color: rgb(230, 92, 6);
+ border:none;
+ box-shadow:  2px 2px 4px rgba(0, 0, 0, 0.556);
+ cursor: pointer;
+  padding: 3px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+
+}
+
+#tipo_usuario:hover{
+  border: 1px solid rgb(230, 92, 6);
+ 
+ }
+
+
+
+
+#enviar{
+  background-color: rgb(161, 55, 7);
+  width: 160px;
+  border: none;
+  color: white;
+  cursor: pointer;
+  letter-spacing: 2px;
+  box-shadow: 1px 1px 2px rgb(0, 0, 0);
+  /* NO ME DEJA PONER UN TRANSITIONNNNN HELP ME (PARA QUE EL HOVER NO SEA TAN BRUSCO) */
+  transition: background-color 0.3s ease;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+ 
+}
+
+#enviar:hover{
+ width: 180px;
+  background-color: rgb(254, 80, 0); 
+  box-shadow: 1px 1px 9px rgb(0, 0, 0);
+ 
+ 
+  
+}
+
+
+.padre{
+    position: relative;
+    height: 100vh;
+    
+  
+    
+  }
+
+
+  @font-face {
+    font-family: 'Italica';
+    src: url('Tipografias/Italiana-Regular.ttf') format('truetype');
+    font-style: normal;
+    font-weight:  bold;
+  }
+
+  
+
+  .icono1{
+    width: 40px;
+    height: 40px;
+   
+}
+
+
+
+
+
+  
+ 
+ 
+
