@@ -67,7 +67,7 @@ function web_empresa() {
       </div>
       
       
-      <div class="col-5">
+      <div class="col-7">
           
           <label></label>
           <input type="text" name="calle" id="calle" class="form-control" placeholder="Calle" required>
@@ -75,7 +75,7 @@ function web_empresa() {
       </div>
       
       
-      <div class="col-7">
+      <div class="col-5">
           <label></label>
                   <input type="number" name="numero" id="numero"  class="form-control" placeholder="Numero" required>
               

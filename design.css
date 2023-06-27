@@ -60,6 +60,7 @@ body {
 .enlace {
   color: #8D2C2C;
   text-decoration: none;
+  
 }
 
 label {
@@ -104,7 +105,7 @@ label {
 
 
 #enviar {
-  background-color: rgb(161, 55, 7);
+  background-color: rgb(196, 99, 39);
   width: 160px;
   border: none;
   color: white;
@@ -149,4 +150,67 @@ label {
   width: 40px;
   height: 40px;
 
+}
+
+@media screen and (min-width: 1500px) {
+ 
+  .hijo {
+
+    max-width: 27em;
+    display: flex;
+    justify-self: center;
+    position: absolute;
+    top: 25.5rem;
+    right: 18%;
+    /* */
+    transform: translate(0, -50%);
+  
+  
+  
+  }
+
+  .row {
+   font-size: 29px;
+  
+  
+  
+  }
+  .titulo {
+    text-align: center;
+    font-size: 47px;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    letter-spacing: -1px;
+    text-overflow: ellipsis;
+    font-family: 'Times New Roman', Times, serif;
+  }
+
+  .form-control{
+    font-size: 1.2rem;
+  }
+
+  #enviar {
+   
+    width: 180px;
+   height: 40px;
+  
+  }
+
+  #enviar:hover {
+    width: 200px;
+    
+  
+  
+  
+  }
+  .enlace {
+    color: #8D2C2C;
+    text-decoration: none;
+    font-size: 16px;
+    
+    
+   
+  }
+ 
 }
