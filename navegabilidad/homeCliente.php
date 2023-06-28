@@ -2,7 +2,7 @@
 
 // PROTEGER LA PAGINA SIN ANTES INICIAR SESSION//
 session_start();
-if(!isset($_SESSION['usuario'])){
+if(!isset($_SESSION['cliente'])){
     echo '
     <script>
        alert("Por favor debes iniciar session");

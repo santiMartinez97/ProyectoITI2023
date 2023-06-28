@@ -1,7 +1,7 @@
 <?php
-// PROTEGER LA PAGINA SIN ANTES INICIAR SESSION// bre*
+// PROTEGER LA PAGINA SIN ANTES INICIAR SESSION// 
 session_start();
-if(!isset($_SESSION['usuario'])){
+if(!isset($_SESSION['informatico'])){
     echo '
     <script>
        alert("Por favor debes iniciar session");
