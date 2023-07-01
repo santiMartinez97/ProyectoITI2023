@@ -72,34 +72,51 @@
               <div class="col-6">
                 <label></label>
                  <input type="text" name="nombre" id="nombre" class="form-control " placeholder="Nombre" required>
-                </div>
+                <div>
+                <p id="warnings" class="warnings"></p>
+              </div>  
+              </div>
+                
                 
                 <div class="col-6">
                  <label></label>
                  <input type="text" name="apellido" id="apellido" class="form-control" placeholder="Apellido"  required> 
+                 <div>
+                  <p id="warningsApellido" class="warnings"></p>
+                </div> 
                 </div>
                 
                 <div class="col-8">
                     <label></label>
                     <input type="number" name="ci" id="ci" class="form-control" placeholder="Documento" required>
-                
+                    <div>
+                      <p id="warningsCi" class="warnings"></p>
+                    </div> 
                 </div >
                 
                 <div class="col-7">
                     <label></label>
                     <input type="email" name="email" id="email" class="form-control" placeholder="Email" required>
+                    <div>
+                      <p id="warningsEmail" class="warnings"></p>
+                    </div> 
                 </div>
                 
                 <div class="col-5">
                 
                     <label></label>
                     <input type="password" name="password" id="pass"  class="form-control" placeholder="Contraseña"      requiered> 
-                    
+                    <div>
+                      <p id="warningsPassword" class="warnings"></p>
+                    </div> 
                 </div>
                 
                 <div class="col-8">
                     <label></label>
                     <input type="number" name="telefono" id="telefono" class="form-control"  placeholder="Telefono" required>
+                    <div>
+                      <p id="warningsTelefono" class="warnings"></p>
+                    </div> 
                 </div>
                 
                 
@@ -107,33 +124,42 @@
                     
                     <label></label>
                     <input type="text" name="calle" id="calle" class="form-control" placeholder="Calle" required>
-                
+                    <div>
+                      <p id="warningsCalle" class="warnings"></p>
+                    </div> 
                 </div>
                 
                 
                 <div class="col-5">
                     <label></label>
-                            <input type="number" name="numero" id="numero"  class="form-control" placeholder="Numero" required>
-                        
+                    <input type="number" name="numero" id="numero"  class="form-control" placeholder="Numero" required>
+                    <div>
+                      <p id="warningsNumero" class="warnings"></p>
+                    </div> 
                 </div>
                 
                 
                 <div class="col-6">
                     <label></label>
                     <input type="text" name="esquina" id="esquina" class="form-control" placeholder="Esquina" required>
-                    
+                    <div>
+                      <p id="warningsEsquina" class="warnings"></p>
+                    </div>        
                 </div>
                 
                 <div class="col-6">
                     <label></label>
-                            <input type="text" name="barrio" id="barrio" class="form-control" placeholder="Barrio" required> <br>
+                    <input type="text" name="barrio" id="barrio" class="form-control" placeholder="Barrio" required> <br>
+                    <div>
+                      <p id="warningsBarrio" class="warnings"></p>
+                    </div> 
                 </div>
 
 
 
                 <div class="col-12 text-center">
                   <button class="btn btn-primary " id="enviar"  type="submit" >Enviar</button> 
-              </div>
+                </div>
 
 
         
