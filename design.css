@@ -4,11 +4,9 @@ body {
   background-size: cover;
   background-position: center center;
   overflow-x: hidden;
-  
+  overflow-y: hidden;
 
 }
-
-
 
 .navbar .nav-link {
   color: #080101;
@@ -27,12 +25,12 @@ body {
 }
 
 .navbar-toggler {
-
   background: rgb(153, 146, 159);
 }
 
 
 .titulo {
+  color: rgb(254, 80, 0);
   text-align: center;
   font-size: 37px;
   display: inline-block;
@@ -122,18 +120,12 @@ label {
   width: 180px;
   background-color: rgb(254, 80, 0);
   box-shadow: 1px 1px 9px rgb(0, 0, 0);
-
-
-
 }
 
 
 .padre {
   position: relative;
   height: 100vh;
-
-
-
 }
 
 
@@ -149,25 +141,20 @@ label {
 .icono1 {
   width: 40px;
   height: 40px;
-
 }
 
 .error{
-  border: solid 1px crimson;
-  
+  border: solid 3px crimson;
+  color: rgb(255, 98, 0);
 }
-
-
 
 .warnings{
-
-  font-size: 10px;
+  font-size: 15px;
 	margin-bottom: 0;
   color: crimson;
-
 }
 
-@media screen and (min-width: 1600px) {
+@media screen and (min-width: 1500px) {
  
   .hijo {
 
