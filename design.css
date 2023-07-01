@@ -4,7 +4,7 @@ body {
   background-size: cover;
   background-position: center center;
   overflow-x: hidden;
-  overflow-y: hidden;
+  
 
 }
 
@@ -153,18 +153,21 @@ label {
 }
 
 .error{
-  border: solid 3px crimson;
-  color: rgb(255, 98, 0);
+  border: solid 1px crimson;
+  
 }
+
+
 
 .warnings{
 
-  font-size: 15px;
+  font-size: 10px;
 	margin-bottom: 0;
   color: crimson;
+
 }
 
-@media screen and (min-width: 1500px) {
+@media screen and (min-width: 1600px) {
  
   .hijo {
 
