@@ -46,7 +46,7 @@ formulario.addEventListener("submit", function (e) {
 	var confirmarCi =  /^.{8}$/; // 8 digitos
   var confirmarPassword = /^.{6,17}$/; // 6 a 17 digitos.
 	var confirmarEmail = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/; //valida email
-	var confirmarTelefono =  /^.{9}$/; // 9 numeros.
+	var confirmarTelefono = /^09\d{7}$/; // 9 numeros.
   var confimrarCalle = /^[a-zA-ZÀ-ÿ\s]{2,30}$/; //\d{2}
   var confirmarNumero = /^.{3,4}$/; //numero casa
   var confirmarEsquina = /^[a-zA-ZÀ-ÿ\s]{2,30}$/;
@@ -322,7 +322,7 @@ function web_empresa() {
 	var confirmarCi =  /^.{8}$/; // 8 digitos
   var confirmarPassword = /^.{6,17}$/; // 6 a 17 digitos.
 	var confirmarEmail = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/; //valida email
-	var confirmarTelefono =  /^.{9}$/; // 9 numeros.
+	var confirmarTelefono = /^09\d{7}$/; // 9 numeros.
   var confimrarCalle = /^[a-zA-ZÀ-ÿ\s]{2,30}$/; //\d{2}
   var confirmarNumero = /^.{3,4}$/; //numero casa
   var confirmarEsquina = /^[a-zA-ZÀ-ÿ\s]{2,30}$/;
@@ -528,12 +528,7 @@ function web_empresa() {
         <button class="btn btn-primary " id="enviar" type="submit" >Enviar</button> 
     </div>
 
-
-
-
 </div>
-
-     
 
  </form>
       
@@ -580,7 +575,7 @@ function web_empresa() {
     var confirmarRut =  /^.{12}$/; // 8 digitos
     var confirmarPassword = /^.{6,17}$/; // 6 a 17 digitos.
     var confirmarEmail = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/; //valida email
-    var confirmarTelefono =  /^.{9}$/; // 9 numeros.
+    var confirmarTelefono = /^09\d{7}$/; // 9 numeros.
     var confimrarCalle = /^[a-zA-ZÀ-ÿ\s]{2,30}$/; //\d{2}
     var confirmarNumero = /^.{3,4}$/; //numero casa
     var confirmarEsquina = /^[a-zA-ZÀ-ÿ\s]{2,30}$/;
