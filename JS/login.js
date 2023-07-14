@@ -4,8 +4,8 @@ formulario.addEventListener("submit", function (e) {
   e.preventDefault();
 
   let datos = new FormData(formulario);
-
-  fetch("loginphp.php", {
+    let url = 'BACKPHP/loginphp.php';
+  fetch(url, {
     method: "POST",
     body: datos,
   })
