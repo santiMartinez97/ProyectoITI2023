@@ -18,7 +18,7 @@
       class="navbar navbar-expand-lg navbar-dark"
       style="background: rgb(240, 240, 240, 0.9); padding: 0px"
     >
-      <div class="container justify-content-end">
+      <nav class="container justify-content-end">
         <a class="navbar-brand" href="index.html" style="color: black">
           <img src="img/icono.png" class="icono1" alt=""
         /></a>
@@ -33,7 +33,7 @@
         >
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
+        <nav class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
               <a class="nav-link" href="index.html"
@@ -60,19 +60,21 @@
               <a class="nav-link" href="Funcionalidades/preguntas.html">Preguntas</a>
             </li>
           </ul>
-        </div>
-      </div>
+        </nav>
+      </nav>
     </nav>
-    <div class="padre">
-      <div class="hijo">
-        <div class="container my-1">
+    <!-- *************************************************************************** -->
+    <section>
+    <article class="padre">
+      <article class="hijo">
+        <article class="container my-1">
           <h1 class="titulo text-center"  id="IniciarS" >Iniciar Sesión</h1>
           <p class="subtitulo">
             ¿Es tu primera vez? <a href="registro.html" class="enlace">registrate</a>
           </p>
-          <div id="campos">
+          <article id="campos">
             <form id="loginForm" class="row no-gutters">
-              <div class="col-12">
+              <article class="col-12">
                 <input
                   class="form-control"
                   name="email"
@@ -80,9 +82,9 @@
                   placeholder="Ingrese su email aquí..."
                   required
                 />
-              </div>
+              </article>
               <br /><br />
-              <div class="col-12">
+              <article class="col-12">
                 <input
                   class="form-control"
                   name="pass"
@@ -90,20 +92,29 @@
                   placeholder="Ingrese su contraseña aquí..."
                   required
                 />
-              </div>
+              </article>
               <br />
               <a href="#" class="enlace">¿Olvidaste tu contraseña?</a>
               <br /><br />
-              <div class="col-12 text-center">
+              <article class="col-12 text-center">
                 <button type="submit" class="btn btn-primary" id="enviar">
                   Iniciar Sesión
                 </button>
-              </div>
+              </article>
             </form>
-          </div>
-        </div>
-      </div>
-    </div>
+          </article>
+        </article>
+      </article>
+    </article>
+  </section>
+    <!-- *************************************************************************** -->
+ <footer>
+
+
+ </footer>
+
+
+
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"

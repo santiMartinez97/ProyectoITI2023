@@ -183,97 +183,97 @@ function web_empresa() {
     
   <form id="formularioWeb" class="row no-gutters ">          
 
-    <div class="col-6">
+    <article class="col-6">
       <label></label>
        <input type="text" name="nombre" id="nombre" class="form-control " placeholder="Nombre" required>
-      <div>
+      <article>
       <p id="warnings" class="warnings"></p>
-    </div>  
-    </div>
+    </article>  
+    </article>
       
       
-      <div class="col-6">
+      <article class="col-6">
        <label></label>
        <input type="text" name="apellido" id="apellido" class="form-control" placeholder="Apellido"  required> 
-       <div>
+       <article>
         <p id="warningsApellido" class="warnings"></p>
-      </div> 
-      </div>
+      </article> 
+      </article>
       
-      <div class="col-8">
+      <article class="col-8">
           <label></label>
           <input type="number" name="ci" id="ci" class="form-control" placeholder="Documento" required>
-          <div>
+          <article>
             <p id="warningsCi" class="warnings"></p>
-          </div> 
-      </div >
+          </article> 
+      </article >
       
-      <div class="col-7">
+      <article class="col-7">
           <label></label>
           <input type="email" name="email" id="email" class="form-control" placeholder="Email" required>
-          <div>
+          <article>
             <p id="warningsEmail" class="warnings"></p>
-          </div> 
-      </div>
+          </article> 
+      </article>
       
-      <div class="col-5">
+      <article class="col-5">
       
           <label></label>
           <input type="password" name="password" id="pass"  class="form-control" placeholder="Contraseña"      requiered> 
-          <div>
+          <article>
             <p id="warningsPassword" class="warnings"></p>
-          </div> 
-      </div>
+          </article> 
+      </article>
       
-      <div class="col-8">
+      <article class="col-8">
           <label></label>
           <input type="number" name="telefono" id="telefono" class="form-control"  placeholder="Telefono" required>
-          <div>
+          <article>
             <p id="warningsTelefono" class="warnings"></p>
-          </div> 
-      </div>
+          </article> 
+      </article>
       
       
-      <div class="col-7">
+      <article class="col-7">
           
           <label></label>
           <input type="text" name="calle" id="calle" class="form-control" placeholder="Calle" required>
-          <div>
+          <article>
             <p id="warningsCalle" class="warnings"></p>
-          </div> 
-      </div>
+          </article> 
+      </article>
       
       
-      <div class="col-5">
+      <article class="col-5">
           <label></label>
           <input type="number" name="numero" id="numero"  class="form-control" placeholder="Numero" required>
-          <div>
+          <article>
             <p id="warningsNumero" class="warnings"></p>
-          </div> 
-      </div>
+          </article> 
+      </article>
       
       
-      <div class="col-6">
+      <article class="col-6">
           <label></label>
           <input type="text" name="esquina" id="esquina" class="form-control" placeholder="Esquina" required>
-          <div>
+          <article>
             <p id="warningsEsquina" class="warnings"></p>
-          </div>        
-      </div>
+          </article>        
+      </article>
       
-      <div class="col-6">
+      <article class="col-6">
           <label></label>
           <input type="text" name="barrio" id="barrio" class="form-control" placeholder="Barrio" required> <br>
-          <div>
+          <article>
             <p id="warningsBarrio" class="warnings"></p>
-          </div> 
-      </div>
+          </article> 
+      </article>
 
-      <div class="col-12 text-center">
+      <article class="col-12 text-center">
         <button class="btn btn-primary " id="enviar"  type="submit" >Enviar</button> 
-      </div>
+      </article>
 
-</div>
+</article>
      
  </form>
         `;
@@ -448,89 +448,89 @@ function web_empresa() {
        
     <form id="formularioEmpresa" class="row no-gutters ">          
 
-    <div class="col-8">
+    <article class="col-8">
       <label></label>
        <input type="number" name="rut" id="rut" class="form-control " placeholder="RUT" required>
-       <div>
+       <article>
           <p id="warnings" class="warnings"></p>
-       </div> 
-       </div>
+       </article> 
+       </article>
       
-      <div class="col-8">
+      <article class="col-8">
        <label></label>
        <input type="text" name="empresa" id="empresa" class="form-control" placeholder="Nombre Empresa"  required> 
-       <div>
+       <article>
           <p id="warningsEmpresa" class="warnings"></p>
-       </div>
-       </div>
+       </article>
+       </article>
          
-      <div class="col-7">
+      <article class="col-7">
           <label></label>
           <input type="email" name="email" id="email" class="form-control" placeholder="Email" required>
-          <div>
+          <article>
           <p id="warningsEmail" class="warnings"></p>
-      </div>
-      </div>
+      </article>
+      </article>
       
-      <div class="col-5">
+      <article class="col-5">
           <label></label>
           <input type="password" name="password" id="pass"  class="form-control" placeholder="Contraseña"      requiered> 
-          <div>
+          <article>
           <p id="warningsPassword" class="warnings"></p>
-       </div>
-      </div>
+       </article>
+      </article>
       
-      <div class="col-8">
+      <article class="col-8">
           <label></label>
           <input type="number" name="telefono" id="telefono" class="form-control"  placeholder="Telefono" required>
-          <div>
+          <article>
           <p id="warningsTelefono" class="warnings"></p>
-      </div>      
-      </div>
+      </article>      
+      </article>
       
       
-      <div class="col-7">
+      <article class="col-7">
  
           <label></label>
           <input type="text" name="calle" id="calle" class="form-control" placeholder="Calle" required>
-          <div>
+          <article>
           <p id="warningsCalle" class="warnings"></p>
-       </div>
-      </div>
+       </article>
+      </article>
       
       
-      <div class="col-5">
+      <article class="col-5">
           <label></label>
                   <input type="number" name="numero" id="numero"  class="form-control" placeholder="Numero" required>
-                  <div>
+                  <article>
                   <p id="warningsNumero" class="warnings"></p>
-               </div>
-      </div>
+               </article>
+      </article>
       
       
-      <div class="col-6">
+      <article class="col-6">
           <label></label>
           <input type="text" name="esquina" id="esquina" class="form-control" placeholder="Esquina" required>
-          <div>
+          <article>
           <p id="warningsEsquina" class="warnings"></p>
-       </div>
-      </div>
+       </article>
+      </article>
       
-      <div class="col-6">
+      <article class="col-6">
           <label></label>
           <input type="text" name="barrio" id="barrio" class="form-control" placeholder="Barrio" required> <br>
-          <div>
+          <article>
           <p id="warningsBarrio" class="warnings"></p>
-        </div>
-      </div>
+        </article>
+      </article>
 
 
 
-      <div class="col-12 text-center">
+      <article class="col-12 text-center">
         <button class="btn btn-primary " id="enviar" type="submit" >Enviar</button> 
-    </div>
+    </article>
 
-</div>
+</article>
 
  </form>
       
@@ -545,7 +545,7 @@ function web_empresa() {
         var esquina = document.getElementById("esquina");
         var barrio = document.getElementById("barrio");
         
-        //div de los warnings
+        //article de los warnings
         var parrafo = document.getElementById("warnings");
         var parrafoEmpresa = document.getElementById("warningsEmpresa");
         var parrafoEmail = document.getElementById("warningsEmail");
