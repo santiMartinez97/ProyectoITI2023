@@ -128,6 +128,37 @@
     font-size: 70px;
     
   }
+
+  .camino{
+    position: absolute;
+    top: 7%;
+    left: 10%;
+    transform: translate(-50%, -50%);
+  }
+
+
+  .index{
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+  }
+
+  .nosotros{
+    text-decoration: none;
+    color: orange;
+    font-weight: bold;
+  }
+
+
+ .nosotros:hover{
+  text-decoration: none;
+  color: orange;
+  
+ }
+
+
+
+
   
   
   
