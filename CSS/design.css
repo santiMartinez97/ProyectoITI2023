@@ -201,6 +201,10 @@ label {
     font-size: 1.2rem;
   }
 
+  .navbar-nav{
+    --bs-nav-link-hover-color: rgb(255, 94, 0, 0.75) !important;
+  }
+
   #enviar {
    
     width: 180px;

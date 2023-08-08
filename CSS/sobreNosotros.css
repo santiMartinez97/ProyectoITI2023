@@ -158,6 +158,9 @@
   
  }
 
+ .navbar-nav{
+  --bs-nav-link-hover-color: rgb(255, 94, 0, 0.75) !important;
+}
 
 
 
