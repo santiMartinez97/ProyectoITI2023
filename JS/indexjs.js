@@ -4,7 +4,7 @@ var multipleCardCarousel = document.querySelector(
   if (window.matchMedia("(min-width: 768px)").matches) {
     $(multipleCardCarousel).removeClass("slide");
     var carousel = new bootstrap.Carousel(multipleCardCarousel, {
-      interval: false,
+      
     });
     var carouselWidth = $(".carousel-cards .carousel-inner")[0].scrollWidth;
     var cardWidth = $(".carousel-cards .carousel-item").width();
