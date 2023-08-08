@@ -1,0 +1,85 @@
+.icono1 {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .navbar .nav-link {
+    color: #080101;
+  }
+  
+  .navbar-nav .nav-item {
+    margin-right: 40px;
+    
+  }
+  
+  .navbar-nav {
+    margin-left: auto;
+   
+  }
+
+  .navbar-nav:hover {
+    margin-left: auto;
+ 
+   
+  }
+  
+  .navbar-nav .nav-item {
+    margin-left: 20px;
+    
+  }
+  
+  .navbar-toggler {
+    background: rgb(153, 146, 159);
+    
+  }
+
+  .container{ 
+    margin: auto;
+   
+
+  }
+
+  .navbar-nav{
+    --bs-nav-link-hover-color: rgb(255, 94, 0, 0.75) !important;
+  }
+
+  .contacto{
+    width: 100%;
+    background-color: rgb(255, 94, 0);
+    height: 70px;
+  }
+
+  .titulo{
+    text-align: center;
+    color: white;
+    padding-top: 10px;
+  }
+
+  .camino{
+    position: absolute;
+    top: 11%;
+    left: 9%;
+    transform: translate(-50%, -50%);
+  }
+
+
+  .index{
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+  }
+
+  .nosotros{
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+  }
+
+
+ .nosotros:hover{
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  
+ }
+
+
