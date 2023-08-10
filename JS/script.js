@@ -2,6 +2,10 @@ let pregunta = document.querySelectorAll('.pregunta');
 let btnDropdown = document.querySelectorAll('.pregunta .mas')
 let respuesta = document.querySelectorAll('.respuesta');
 let parrafo = document.querySelectorAll('.respuesta p');
+let elements = document.querySelectorAll('.index');
+
+
+
 
 for ( let i = 0; i < btnDropdown.length; i ++ ) {
 
@@ -31,3 +35,11 @@ for ( let i = 0; i < btnDropdown.length; i ++ ) {
     })
 
 }
+
+
+
+
+
+
+
+
