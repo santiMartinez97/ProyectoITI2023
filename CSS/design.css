@@ -4,8 +4,6 @@ body {
   background-size: cover;
   background-position: center center;
   overflow-x: hidden;
-  
-
 }
 
 .navbar .nav-link {
@@ -58,7 +56,21 @@ body {
 .enlace {
   color: #8D2C2C;
   text-decoration: none;
-  
+}
+
+.formulario__grupo-input{
+  position: relative;
+}
+
+.formulario__input {
+  border: 3px solid transparent;
+  border-radius: 3px;
+  transition: .3s ease all;
+}
+
+.formulario__input:focus{
+  border: 3px solid rgb(254, 80, 0);
+  box-shadow: 5px 0px 35px rgb(202, 78, 0);
 }
 
 label {
@@ -79,8 +91,6 @@ label {
   /* */
   transform: translate(0, -50%);
 
-
-
 }
 
 #tipo_usuario {
@@ -96,11 +106,7 @@ label {
 
 #tipo_usuario:hover {
   border: 1px solid rgb(230, 92, 6);
-
 }
-
-
-
 
 #enviar {
   background-color: rgb(196, 99, 39);
@@ -136,22 +142,30 @@ label {
   font-weight: bold;
 }
 
-
-
 .icono1 {
   width: 40px;
   height: 40px;
+} 
+
+.grupo__correcto .formulario__input{
+  border: solid 3px green;
+  color: darkgreen;
 }
 
-.error{
+.grupo__error .formulario__input{
   border: solid 3px crimson;
   color: rgb(255, 98, 0);
 }
 
-.warnings{
-  font-size: 15px;
+.grupo_input-error{
+  font-size: 12px;
 	margin-bottom: 0;
+	display: none;
   color: crimson;
+}
+
+.grupo_input-error-activo{
+  display: block;
 }
 
 @media screen and (min-width: 1500px) {
@@ -193,18 +207,12 @@ label {
   }
 
   #enviar {
-   
-    width: 180px;
+   width: 180px;
    height: 40px;
-  
   }
 
   #enviar:hover {
     width: 200px;
-    
-  
-  
-  
   }
   .enlace {
     color: #8D2C2C;
