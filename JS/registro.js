@@ -13,6 +13,7 @@ var calle = document.getElementById("calle");
 var numero = document.getElementById("numero");
 var esquina = document.getElementById("esquina");
 var barrio = document.getElementById("barrio");
+var opcionMenu = document.getElementById("opcionMenu");
 
 //span de los warnings
 var parrafo = document.getElementById("warnings");
@@ -51,10 +52,27 @@ formulario.addEventListener("submit", function (e) {
   var confirmarNumero = /^.{3,4}$/; //numero casa
   var confirmarEsquina = /^[a-zA-ZÀ-ÿ\s]{2,30}$/;
   var confirmarBarrio = /^[a-zA-ZÀ-ÿ\s]{2,30}$/;
+
   
 
   var confirmar = false;
 //validacion de datos web 
+
+function validarMenu() {
+  var dieta = document.getElementById("dieta").value;
+  if (dieta === "") {
+    return true; // Evita que el formulario se envíe
+  }
+  return false;// Permite que el formulario se envíe
+}
+
+  var opcion = validarMenu();
+
+        if(opcion){
+          confirmar = true;
+        }
+   
+
   if(!confirmarNombre.test(nombre.value)){
     warnings += 'El nombre no es valido';
     confirmar = true;
@@ -224,6 +242,16 @@ function web_empresa() {
             <p id="warningsPassword" class="warnings"></p>
           </article> 
       </article>
+
+      <article class="container mt-4">
+      <select id="dieta" name="dieta" class="form-select gray-text" aria-label="Preferencia de Dieta" required>
+        <option value="" disabled selected>Selecciona una opción...</option>
+        <option value="omnivoro">Omnívoro</option>
+        <option value="vegetariano">Vegetariano</option>
+        <option value="vegano">Vegano</option>
+        <option value="paleo">Paleo</option>
+      </select>
+    </article>
       
       <article class="col-8">
           <label></label>
@@ -232,8 +260,7 @@ function web_empresa() {
             <p id="warningsTelefono" class="warnings"></p>
           </article> 
       </article>
-      
-      
+
       <article class="col-7">
           
           <label></label>
@@ -333,6 +360,20 @@ function web_empresa() {
 
   var confirmar = false;
 //validacion de datos web 
+function validarMenu() {
+  var dieta = document.getElementById("dieta").value;
+  if (dieta === "") {
+    return true; // Evita que el formulario se envíe
+  }
+  return false;// Permite que el formulario se envíe
+}
+
+  var opcion = validarMenu();
+
+        if(opcion){
+          confirmar = true;
+        }
+   
   if(!confirmarNombre.test(nombre.value)){
     warnings += 'El nombre no es valido';
     confirmar = true;
@@ -479,6 +520,8 @@ function web_empresa() {
           <p id="warningsPassword" class="warnings"></p>
        </article>
       </article>
+
+    
       
       <article class="col-8">
           <label></label>
@@ -488,6 +531,17 @@ function web_empresa() {
       </article>      
       </article>
       
+      <article class="container mt-4">
+                <select id="dieta" name="dieta" class="form-select gray-text" aria-label="Preferencia de Dieta" required>
+                  <option value="" disabled selected>Selecciona una opción...</option>
+                  <option value="omnivoro">Omnívoro</option>
+                  <option value="vegetariano">Vegetariano</option>
+                  <option value="vegano">Vegano</option>
+                  <option value="paleo">Paleo</option>
+                </select>
+              </article>
+
+
       
       <article class="col-7">
  
@@ -585,6 +639,20 @@ function web_empresa() {
 
     var confirmar = false;
 //validacion de datos Empresa
+
+function validarMenu() {
+  var dieta = document.getElementById("dieta").value;
+  if (dieta === "") {
+    return true; // Evita que el formulario se envíe
+  }
+  return false;// Permite que el formulario se envíe
+}
+
+  var opcion = validarMenu();
+
+        if(opcion){
+          confirmar = true;
+        }
 
   if(!confirmarEmpresa.test(empresa.value)){
     warningsEmpresa += 'El nombre no es valido';

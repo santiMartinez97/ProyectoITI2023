@@ -9,7 +9,8 @@ $calle= $_POST['calle'];
 $numero= $_POST['numero'];
 $esquina= $_POST['esquina'];
 $barrio= $_POST['barrio'];
-
+$opcionMenu= $_POST['opcionMenu'];
+$menu = $_POST['dieta'];
 
  // Ruta del archivo de la agenda
  $archivo = '../PersistenciaArchivos/ClienteEmpresa.txt';
@@ -18,7 +19,7 @@ $barrio= $_POST['barrio'];
  
  if ($agenda) {
      // Escribir los datos en el archivo separados por comas
-     $texto = $rut."\t\t\t".$email."\t\t\t".$password."\t\t\t".$nombreEmpresa."\t\t\t".$telefono."\t\t\t".$calle."\t\t\t".$numero."\t\t\t".$esquina."\t\t\t".$barrio;
+     $texto = $rut."\t\t\t".$email."\t\t\t".$password."\t\t\t".$nombreEmpresa."\t\t\t".$telefono."\t\t\t".$menu."\t\t\t".$calle."\t\t\t".$numero."\t\t\t".$esquina."\t\t\t".$barrio;
      fwrite($agenda,$texto."\r");
 
      // Cerrar el archivo
