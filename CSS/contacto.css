@@ -111,6 +111,10 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh; /* Asegura que el contenido sea al menos el alto de la ventana */
+  background-image: url(../img/2.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
 }
 
 .site-content {
@@ -151,7 +155,8 @@ body {
 
  .infoC{
   font-size: 20px;
-  color: rgb(215, 110, 17);
+  color: rgb(144, 70, 6);
+  font-weight: bold;
 }
 
 .lista {
