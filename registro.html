@@ -7,7 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 
     <link rel="stylesheet" href="CSS/design.css">
-    <title>Registro</title>
+    <title>Registro | Nutribento</title>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> 
 </head>
 <body>
@@ -71,14 +71,14 @@
 
     
             <article id="campos">
-
+              
             <form id="formulario" class="row no-gutters ">          
 
               <!-- SEPARAMOS POR GRUPOS CADA CAMPO -->
               
               <!-- Grupo nombre -->
               <article class="col-6 grupo" id="grupo__nombre">
-                <label></label>
+              
                 <article class="grupo__input">  
                  <input type="text" name="nombre" id="nombre" class="formulario__input form-control" placeholder="Nombre">
                 </article>       
@@ -86,8 +86,8 @@
               </article>
                 
                  <!-- Grupo apellido -->
-                <article class="col-6" id="grupo__apellido">
-                 <label></label>
+                <article class="col-6 grupo" id="grupo__apellido">
+               
                  <article class="grupo__input">
                   <input type="text" name="apellido" id="apellido" class="formulario__input form-control" placeholder="Apellido">
                  </article>   
@@ -97,7 +97,7 @@
             
                  <!-- Grupo cedula -->
                 <article class="col-8 grupo" id="grupo__ci">
-                    <label></label>
+                  
                     <article class="grupo__input">
                     <input type="number" name="ci" id="ci" class="formulario__input form-control" placeholder="Documento">
                     </article>  
@@ -105,8 +105,8 @@
                 </article >
                 
                  <!-- Grupo email -->
-                <article class="col-7 grupo" id="grupo__email">
-                    <label></label>
+                <article class="col-6 grupo" id="grupo__email">
+                  
                     <article class="grupo__input">
                     <input type="email" name="email" id="email" class="formulario__input form-control" placeholder="Email">
                     </article> 
@@ -114,26 +114,37 @@
                 </article>
                 
                  <!-- Grupo password -->
-                <article class="col-5 grupo" id="grupo__password">
-                    <label></label>
+                <article class="col-6 grupo" id="grupo__password">
+                  
                     <article class="grupo__input">
                     <input type="password" name="password" id="password"  class="formulario__input form-control" placeholder="Contraseña"> 
                   </article>
-                      <p class="grupo_input-error">Ingrese una contraseña de 6 a 17 digitos</p> 
+                      <p class="grupo_input-error">Contraseña de 6-17 digitos</p> 
                 </article>
                 
                  <!-- Grupo telefono -->
-                <article class="col-8 grupo" id="grupo__telefono">
-                    <label></label>
+                <article class="col-6 grupo" id="grupo__telefono">
+                  
                     <article class="grupo__input">
                     <input type="number" name="telefono" id="telefono" class="formulario__input form-control"  placeholder="Telefono">
                     </article>
                       <p class="grupo_input-error">Ingrese su numero de telefono </p> 
                 </article>
-                
+                  
+                <!-- Grupo Seleccion de Dieta -->
+                <article class="col-6 grupo">
+                  <select id="dieta" name="dieta" class="form-select gray-text" aria-label="Preferencia de Dieta" required>
+                    <option value="" disabled selected>Dieta</option>
+                    <option value="omnivoro">Omnívoro</option>
+                    <option value="vegetariano">Vegetariano</option>
+                    <option value="vegano">Vegano</option>
+                    <option value="paleo">Paleo</option>
+                  </select>
+                </article>
+
                  <!-- Grupo calle -->
                 <article class="col-7 grupo" id="grupo__calle">
-                    <label></label>
+                  
                     <article class="grupo__input">
                     <input type="text" name="calle" id="calle" class="formulario__input form-control" placeholder="Calle">
                     </article>
@@ -142,16 +153,16 @@
                 
                  <!-- Grupo numero -->
                 <article class="col-5 grupo" id="grupo__numero">
-                    <label></label>
+                  
                     <article class="grupo__input">
                     <input type="number" name="numero" id="numero" class="formulario__input form-control" placeholder="Numero">
                     </article>
-                      <p class="grupo_input-error">Ingrese un numero de puerta valido</p>
+                      <p class="grupo_input-error">N° de puerta invalido</p>
                 </article>
                 
                  <!-- Grupo esquina -->
                 <article class="col-6 grupo" id="grupo__esquina">
-                    <label></label>
+                  
                     <article id="grupo__input">
                     <input type="text" name="esquina" id="esquina" class="formulario__input form-control" placeholder="Esquina">
                     </article>
@@ -160,7 +171,7 @@
                 
                  <!-- Grupo barrio -->
                 <article class="col-6 grupo" id="grupo__barrio">
-                    <label></label>
+                  
                     <article  class="grupo__input">
                       <input type="text" name="barrio" id="barrio" class="formulario__input form-control" placeholder="Barrio"> 
                     </article> 
@@ -168,6 +179,7 @@
                 </article>
 
                 <article class="col-12 text-center" >
+                  <br>
                   <button class="btn btn-primary " id="enviar"  type="submit" >Enviar</button> 
                   <p id="botonAlerta" class="grupo_input-error">Complete bien los campos porfavor</p>
                 </article>       

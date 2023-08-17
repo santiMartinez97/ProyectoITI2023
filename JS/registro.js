@@ -124,106 +124,115 @@ function web_empresa() {
     
   <form id="formularioWeb" class="row no-gutters ">          
 
-  <!-- SEPARAMOS POR GRUPOS CADA CAMPO -->
-              
   <!-- Grupo nombre -->
-  <article class="col-6 grupo" id="grupo__nombre">
-    <label></label>
-    <article class="grupo__input">  
-     <input type="text" name="nombre" id="nombre" class="formulario__input form-control" placeholder="Nombre">
-    </article>       
-     <p class="grupo_input-error">Ingrese un nombre valido </p>
-  </article>
-    
-     <!-- Grupo apellido -->
-    <article class="col-6" id="grupo__apellido">
-     <label></label>
-     <article class="grupo__input">
-      <input type="text" name="apellido" id="apellido" class="formulario__input form-control" placeholder="Apellido">
-     </article>   
-     <p class="grupo_input-error">Ingrese un apellido valido</p>
-    </article> 
-    
+              <article class="col-6 grupo" id="grupo__nombre">
+              
+                <article class="grupo__input">  
+                 <input type="text" name="nombre" id="nombre" class="formulario__input form-control" placeholder="Nombre">
+                </article>       
+                 <p class="grupo_input-error">Ingrese un nombre valido </p>
+              </article>
+                
+                 <!-- Grupo apellido -->
+                <article class="col-6 grupo" id="grupo__apellido">
+               
+                 <article class="grupo__input">
+                  <input type="text" name="apellido" id="apellido" class="formulario__input form-control" placeholder="Apellido">
+                 </article>   
+                 <p class="grupo_input-error">Ingrese un apellido valido</p>
+                </article> 
+                
+            
+                 <!-- Grupo cedula -->
+                <article class="col-8 grupo" id="grupo__ci">
+                  
+                    <article class="grupo__input">
+                    <input type="number" name="ci" id="ci" class="formulario__input form-control" placeholder="Documento">
+                    </article>  
+                    <p class="grupo_input-error">Ingrese su cedula sin puntos ni guiones</p>
+                </article >
+                
+                 <!-- Grupo email -->
+                <article class="col-6 grupo" id="grupo__email">
+                  
+                    <article class="grupo__input">
+                    <input type="email" name="email" id="email" class="formulario__input form-control" placeholder="Email">
+                    </article> 
+                      <p class="grupo_input-error">Ingrese un email valido</p>
+                </article>
+                
+                 <!-- Grupo password -->
+                <article class="col-6 grupo" id="grupo__password">
+                  
+                    <article class="grupo__input">
+                    <input type="password" name="password" id="password"  class="formulario__input form-control" placeholder="Contraseña"> 
+                  </article>
+                      <p class="grupo_input-error">Contraseña de 6-17 digitos</p> 
+                </article>
+                
+                 <!-- Grupo telefono -->
+                <article class="col-6 grupo" id="grupo__telefono">
+                  
+                    <article class="grupo__input">
+                    <input type="number" name="telefono" id="telefono" class="formulario__input form-control"  placeholder="Telefono">
+                    </article>
+                      <p class="grupo_input-error">Ingrese su numero de telefono </p> 
+                </article>
+                  
+                <!-- Grupo Seleccion de Dieta -->
+                <article class="col-6 grupo">
+                  <select id="dieta" name="dieta" class="form-select gray-text" aria-label="Preferencia de Dieta" required>
+                    <option value="" disabled selected>Dieta</option>
+                    <option value="omnivoro">Omnívoro</option>
+                    <option value="vegetariano">Vegetariano</option>
+                    <option value="vegano">Vegano</option>
+                    <option value="paleo">Paleo</option>
+                  </select>
+                </article>
 
-     <!-- Grupo cedula -->
-    <article class="col-8 grupo" id="grupo__ci">
-        <label></label>
-        <article class="grupo__input">
-        <input type="number" name="ci" id="ci" class="formulario__input form-control" placeholder="Documento">
-        </article>  
-        <p class="grupo_input-error">Ingrese su cedula sin puntos ni guiones</p>
-    </article >
-    
-     <!-- Grupo email -->
-    <article class="col-7 grupo" id="grupo__email">
-        <label></label>
-        <article class="grupo__input">
-        <input type="email" name="email" id="email" class="formulario__input form-control" placeholder="Email">
-        </article> 
-          <p class="grupo_input-error">Ingrese un email valido</p>
-    </article>
-    
-     <!-- Grupo password -->
-    <article class="col-5 grupo" id="grupo__password">
-        <label></label>
-        <article class="grupo__input">
-        <input type="password" name="password" id="password"  class="formulario__input form-control" placeholder="Contraseña"> 
-      </article>
-          <p class="grupo_input-error">Ingrese una contraseña de 6 a 17 digitos</p> 
-    </article>
-    
-     <!-- Grupo telefono -->
-    <article class="col-8 grupo" id="grupo__telefono">
-        <label></label>
-        <article class="grupo__input">
-        <input type="number" name="telefono" id="telefono" class="formulario__input form-control"  placeholder="Telefono">
-        </article>
-          <p class="grupo_input-error">Ingrese su numero de telefono </p> 
-    </article>
-    
-     <!-- Grupo calle -->
-    <article class="col-7 grupo" id="grupo__calle">
-        <label></label>
-        <article class="grupo__input">
-        <input type="text" name="calle" id="calle" class="formulario__input form-control" placeholder="Calle">
-        </article>
-          <p class="grupo_input-error">Ingrese una calle valida</p>
-    </article>
-    
-     <!-- Grupo numero -->
-    <article class="col-5 grupo" id="grupo__numero">
-        <label></label>
-        <article class="grupo__input">
-        <input type="number" name="numero" id="numero" class="formulario__input form-control" placeholder="Numero">
-        </article>
-          <p class="grupo_input-error">Ingrese un numero de puerta valido</p>
-    </article>
-    
-     <!-- Grupo esquina -->
-    <article class="col-6 grupo" id="grupo__esquina">
-        <label></label>
-        <article id="grupo__input">
-        <input type="text" name="esquina" id="esquina" class="formulario__input form-control" placeholder="Esquina">
-        </article>
-          <p class="grupo_input-error">Ingrese una esquina valida</p>        
-    </article>
-    
-     <!-- Grupo barrio -->
-    <article class="col-6 grupo" id="grupo__barrio">
-        <label></label>
-        <article  class="grupo__input">
-          <input type="text" name="barrio" id="barrio" class="formulario__input form-control" placeholder="Barrio"> 
-        </article> 
-          <p class="grupo_input-error">Ingrese un barrio valido</p>
-    </article>
+                 <!-- Grupo calle -->
+                <article class="col-7 grupo" id="grupo__calle">
+                  
+                    <article class="grupo__input">
+                    <input type="text" name="calle" id="calle" class="formulario__input form-control" placeholder="Calle">
+                    </article>
+                      <p class="grupo_input-error">Ingrese una calle valida</p>
+                </article>
+                
+                 <!-- Grupo numero -->
+                <article class="col-5 grupo" id="grupo__numero">
+                  
+                    <article class="grupo__input">
+                    <input type="number" name="numero" id="numero" class="formulario__input form-control" placeholder="Numero">
+                    </article>
+                      <p class="grupo_input-error">N° de puerta invalido</p>
+                </article>
+                
+                 <!-- Grupo esquina -->
+                <article class="col-6 grupo" id="grupo__esquina">
+                  
+                    <article id="grupo__input">
+                    <input type="text" name="esquina" id="esquina" class="formulario__input form-control" placeholder="Esquina">
+                    </article>
+                      <p class="grupo_input-error">Ingrese una esquina valida</p>        
+                </article>
+                
+                 <!-- Grupo barrio -->
+                <article class="col-6 grupo" id="grupo__barrio">
+                  
+                    <article  class="grupo__input">
+                      <input type="text" name="barrio" id="barrio" class="formulario__input form-control" placeholder="Barrio"> 
+                    </article> 
+                      <p class="grupo_input-error">Ingrese un barrio valido</p>
+                </article>
 
-    <article class="col-12 text-center" >
-      <button class="btn btn-primary " id="enviar"  type="submit" >Enviar</button> 
-      <p id="botonAlerta" class="grupo_input-error">Complete bien los campos porfavor</p>
-    </article>       
-</article>
-     
- </form>
+                <article class="col-12 text-center" >
+                  <br>
+                  <button class="btn btn-primary " id="enviar"  type="submit" >Enviar</button> 
+                  <p id="botonAlerta" class="grupo_input-error">Complete bien los campos porfavor</p>
+                </article>       
+        </article>
+        </form>
         `;
       
   const inputs = document.querySelectorAll('#formularioWeb input');
@@ -337,8 +346,8 @@ function web_empresa() {
     <!-- SEPARAMOS POR GRUPOS CADA CAMPO -->
               
   <!-- Grupo RUT -->
-  <article class="col-6 grupo" id="grupo__rut">
-    <label></label>
+  <article class="col-7 grupo" id="grupo__rut">
+    
     <article class="grupo__input">  
      <input type="text" name="rut" id="rut" class="formulario__input form-control" placeholder="RUT">
     </article>       
@@ -346,8 +355,8 @@ function web_empresa() {
   </article>
     
      <!-- Grupo Nombre empresa-->
-    <article class="col-6" id="grupo__empresa">
-     <label></label>
+    <article class="col-7 grupo" id="grupo__empresa">
+     
      <article class="grupo__input">
       <input type="text" name="empresa" id="empresa" class="formulario__input form-control" placeholder="Nombre Empresa">
      </article>   
@@ -355,8 +364,8 @@ function web_empresa() {
     </article> 
     
      <!-- Grupo email -->
-    <article class="col-7 grupo" id="grupo__email">
-        <label></label>
+    <article class="col-6 grupo" id="grupo__email">
+        
         <article class="grupo__input">
         <input type="email" name="email" id="email" class="formulario__input form-control" placeholder="Email">
         </article> 
@@ -364,17 +373,17 @@ function web_empresa() {
     </article>
     
      <!-- Grupo password -->
-    <article class="col-5 grupo" id="grupo__password">
-        <label></label>
+    <article class="col-6 grupo" id="grupo__password">
+        
         <article class="grupo__input">
         <input type="password" name="password" id="password"  class="formulario__input form-control" placeholder="Contraseña"> 
       </article>
-          <p class="grupo_input-error">Ingrese una contraseña de 6 a 17 digitos</p> 
+          <p class="grupo_input-error">Contraseña de 6-17 digitos</p> 
     </article>
     
      <!-- Grupo telefono -->
     <article class="col-8 grupo" id="grupo__telefono">
-        <label></label>
+        
         <article class="grupo__input">
         <input type="number" name="telefono" id="telefono" class="formulario__input form-control"  placeholder="Telefono">
         </article>
@@ -383,7 +392,7 @@ function web_empresa() {
     
      <!-- Grupo calle -->
     <article class="col-7 grupo" id="grupo__calle">
-        <label></label>
+        
         <article class="grupo__input">
         <input type="text" name="calle" id="calle" class="formulario__input form-control" placeholder="Calle">
         </article>
@@ -392,16 +401,16 @@ function web_empresa() {
     
      <!-- Grupo numero -->
     <article class="col-5 grupo" id="grupo__numero">
-        <label></label>
+        
         <article class="grupo__input">
         <input type="number" name="numero" id="numero" class="formulario__input form-control" placeholder="Numero">
         </article>
-          <p class="grupo_input-error">Ingrese un numero de puerta valido</p>
+          <p class="grupo_input-error">N° de puerta invalido</p>
     </article>
     
      <!-- Grupo esquina -->
     <article class="col-6 grupo" id="grupo__esquina">
-        <label></label>
+        
         <article id="grupo__input">
         <input type="text" name="esquina" id="esquina" class="formulario__input form-control" placeholder="Esquina">
         </article>
@@ -410,7 +419,7 @@ function web_empresa() {
     
      <!-- Grupo barrio -->
     <article class="col-6 grupo" id="grupo__barrio">
-        <label></label>
+        
         <article  class="grupo__input">
           <input type="text" name="barrio" id="barrio" class="formulario__input form-control" placeholder="Barrio"> 
         </article> 
@@ -418,6 +427,7 @@ function web_empresa() {
     </article>
 
     <article class="col-12 text-center" >
+    <br>
       <button class="btn btn-primary " id="enviar"  type="submit" >Enviar</button> 
       <p id="botonAlerta" class="grupo_input-error">Complete bien los campos porfavor</p>
     </article>       

@@ -73,12 +73,6 @@ body {
   box-shadow: 5px 0px 35px rgb(202, 78, 0);
 }
 
-label {
-  font-size: 14px;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  color: rgb(66, 64, 64);
-  padding-top: 8px;
-}
 
 .hijo {
 
@@ -92,6 +86,8 @@ label {
   transform: translate(0, -50%);
 
 }
+
+
 
 #tipo_usuario {
   color: rgb(230, 92, 6);
@@ -158,10 +154,13 @@ label {
 }
 
 .grupo_input-error{
-  font-size: 12px;
+  font-size: 10px;
 	margin-bottom: 0;
 	display: none;
   color: crimson;
+  padding-top: -222px; /* Ajusta el padding superior según tus preferencias */
+  padding-bottom: -1222px;
+  margin-top: 2px;
 }
 
 .grupo_input-error-activo{
@@ -221,4 +220,21 @@ label {
    
   }
  
+}
+
+#campos {
+  position: relative¿;
+  min-height: 50px; /* Ajusta este valor según tus necesidades */
+}
+
+.grupo{
+  padding: 13px;
+}
+
+.grupo_input-error {
+  position: absolute;
+  color: red;
+  font-size: 12px;
+  margin-top: -2px;
+  /* Otros estilos de tu elección */
 }
