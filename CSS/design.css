@@ -167,6 +167,10 @@ body {
   display: block;
 }
 
+.grupo_input-error-activo{
+  display: block;
+}
+
 @media screen and (min-width: 1500px) {
  
   .hijo {

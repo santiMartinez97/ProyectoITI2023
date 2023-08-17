@@ -41,7 +41,7 @@ if(!isset($_SESSION['cliente'])){
       class="navbar navbar-expand-lg navbar-dark"
       style="background: rgb(240, 240, 240, 0.9); padding: 0px"
     >
-      <div class="container justify-content-end">
+      <nav class="container justify-content-end">
         <a class="navbar-brand" href="#" style="color: black">
           <img src="../img/icono.png" class="icono1" alt=""
         /></a>
@@ -56,7 +56,7 @@ if(!isset($_SESSION['cliente'])){
         >
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
+        <nav class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item" >
               <li class="nav-item">
@@ -89,8 +89,8 @@ if(!isset($_SESSION['cliente'])){
             </li>
             
           </ul>
-        </div>
-      </div>
+</nav>
+</nav>
     </nav>
     <!-- Fin de menu -->
 
@@ -100,7 +100,8 @@ if(!isset($_SESSION['cliente'])){
       class="carousel slide carousel-fade"
       data-bs-ride="carousel"
     >
-      <div class="carousel-indicators conatiner-fluid">
+     
+      <article class="carousel-indicators conatiner-fluid">
         <button
           type="button"
           data-bs-target="#carouselExampleCaptions"
@@ -133,63 +134,63 @@ if(!isset($_SESSION['cliente'])){
           data-bs-slide-to="4"
           aria-label="Slide 5"
         ></button>
-      </div>
-      <div class="carousel-inner" style="overflow-x: hidden">
-        <div class="carousel-item active">
+      </article>
+      <article class="carousel-inner" style="overflow-x: hidden">
+        <article class="carousel-item active">
           <img
             src="../img/VIANDASSS.jpg"
             style="max-width: 100%"
             class="d-block w-100"
             alt="..."
           />
-          <div class="carousel-caption d-none d-md-block">
+          <article class="carousel-caption d-none d-md-block">
             <h2>SISVIANSA</h2>
             <p>
               "La nutrición óptima es comer las cosas adecuadas."<br />Siim Land
             </p>
-          </div>
-        </div>
+          </article>
+        </article>
 
-        <div class="carousel-item">
+        <article class="carousel-item">
           <img src="../img/VIANDAS-3.jpg" class="d-block w-100" alt="..." />
-          <div class="carousel-caption d-none d-md-block">
+          <article class="carousel-caption d-none d-md-block">
             <h2>SISVIANSA</h2>
             <p>
               "La nutrición óptima es comer las cosas adecuadas."<br />Siim Land
             </p>
-          </div>
-        </div>
+          </article>
+        </article>
 
-        <div class="carousel-item">
+        <article class="carousel-item">
           <img src="../img/VIANDASSS.jpg" class="d-block w-100" alt="..." />
-          <div class="carousel-caption d-none d-md-block">
+          <article class="carousel-caption d-none d-md-block">
             <h2>SISVIANSA</h2>
             <p>
               "La nutrición óptima es comer las cosas adecuadas."<br />Siim Land
             </p>
-          </div>
-        </div>
+          </article>
+        </article>
 
-        <div class="carousel-item">
+        <article class="carousel-item">
           <img src="../img/VIANDAS-3.jpg" class="d-block w-100" alt="..." />
-          <div class="carousel-caption d-none d-md-block">
+          <article class="carousel-caption d-none d-md-block">
             <h2>SISVIANSA</h2>
             <p>
               "La nutrición óptima es comer las cosas adecuadas."<br />Siim Land
             </p>
-          </div>
-        </div>
+          </article>
+        </article>
 
-        <div class="carousel-item">
+        <article class="carousel-item">
           <img src="../img/VIANDASSS.jpg" class="d-block w-100" alt="..." />
-          <div class="carousel-caption d-none d-md-block">
+          <article class="carousel-caption d-none d-md-block">
             <h2>SISVIANSA</h2>
             <p>
               "La nutrición óptima es comer las cosas adecuadas."<br />Siim Land
             </p>
-          </div>
-        </div>
-      </div>
+          </article>
+        </article>
+      </article>
 
       <button
         class="carousel-control-prev"
@@ -211,188 +212,188 @@ if(!isset($_SESSION['cliente'])){
       </button>
     </section>
     <!-- FIN DEL SLIDER -->
-    <main>
+    
       <section>
-        <div class="section-title">Preferidos de la Semana</div>
-        <div class="section-articles">
-          <div
+        <article class="section-title">Preferidos de la Semana</article>
+        <article class="section-articles">
+          <article
             id="carouselWeeklyCards"
             class="carousel carousel-cards"
             data-bs-ride="carousel"
           >
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <div class="card">
-                  <div class="img-wrapper">
+            <article class="carousel-inner">
+              <article class="carousel-item active">
+                <article class="card">
+                  <article class="img-wrapper">
                     <img
                       src="../img/menu-placeholder.png"
                       class="d-block w-100"
                       alt="..."
                     />
-                  </div>
-                  <div class="card-body">
+                  </article>
+                  <article class="card-body">
                     <h5 class="card-title text-center">Menú 1</h5>
                     <p class="card-text">
                       Some quick example text to build on the card title and
                       make up the bulk of the card's content.
                     </p>
                     <a href="#" class="btn btn-primary">Ver menú</a>
-                  </div>
-                </div>
-              </div>
-              <div class="carousel-item">
-                <div class="card">
-                  <div class="img-wrapper">
+                  </article>
+                </article>
+              </article>
+              <article class="carousel-item">
+                <article class="card">
+                  <article class="img-wrapper">
                     <img
                       src="../img/menu-placeholder.png"
                       class="d-block w-100"
                       alt="..."
                     />
-                  </div>
-                  <div class="card-body">
+                  </article>
+                  <article class="card-body">
                     <h5 class="card-title text-center">Menú 2</h5>
                     <p class="card-text">
                       Some quick example text to build on the card title and
                       make up the bulk of the card's content.
                     </p>
                     <a href="#" class="btn btn-primary">Ver menú</a>
-                  </div>
-                </div>
-              </div>
-              <div class="carousel-item">
-                <div class="card">
-                  <div class="img-wrapper">
+                  </article>
+                </article>
+              </article>
+              <article class="carousel-item">
+                <article class="card">
+                  <article class="img-wrapper">
                     <img
                       src="../img/menu-placeholder.png"
                       class="d-block w-100"
                       alt="..."
                     />
-                  </div>
-                  <div class="card-body">
+                  </article>
+                  <article class="card-body">
                     <h5 class="card-title text-center">Menú 3</h5>
                     <p class="card-text">
                       Some quick example text to build on the card title and
                       make up the bulk of the card's content.
                     </p>
                     <a href="#" class="btn btn-primary">Ver menú</a>
-                  </div>
-                </div>
-              </div>
-              <div class="carousel-item">
-                <div class="card">
-                  <div class="img-wrapper">
+                  </article>
+                </article>
+              </article>
+              <article class="carousel-item">
+                <article class="card">
+                  <article class="img-wrapper">
                     <img
                       src="../img/menu-placeholder.png"
                       class="d-block w-100"
                       alt="..."
                     />
-                  </div>
-                  <div class="card-body">
+                  </article>
+                  <article class="card-body">
                     <h5 class="card-title text-center">Menú 4</h5>
                     <p class="card-text">
                       Some quick example text to build on the card title and
                       make up the bulk of the card's content.
                     </p>
                     <a href="#" class="btn btn-primary">Ver menú</a>
-                  </div>
-                </div>
-              </div>
-              <div class="carousel-item">
-                <div class="card">
-                  <div class="img-wrapper">
+                  </article>
+                </article>
+              </article>
+              <article class="carousel-item">
+                <article class="card">
+                  <article class="img-wrapper">
                     <img
                       src="../img/menu-placeholder.png"
                       class="d-block w-100"
                       alt="..."
                     />
-                  </div>
-                  <div class="card-body">
+                  </article>
+                  <article class="card-body">
                     <h5 class="card-title text-center">Menú 5</h5>
                     <p class="card-text">
                       Some quick example text to build on the card title and
                       make up the bulk of the card's content.
                     </p>
                     <a href="#" class="btn btn-primary">Ver menú</a>
-                  </div>
-                </div>
-              </div>
-              <div class="carousel-item">
-                <div class="card">
-                  <div class="img-wrapper">
+                  </article>
+                </article>
+              </article>
+              <article class="carousel-item">
+                <article class="card">
+                  <article class="img-wrapper">
                     <img
                       src="../img/menu-placeholder.png"
                       class="d-block w-100"
                       alt="..."
                     />
-                  </div>
-                  <div class="card-body">
+                  </article>
+                  <article class="card-body">
                     <h5 class="card-title text-center">Menú 6</h5>
                     <p class="card-text">
                       Some quick example text to build on the card title and
                       make up the bulk of the card's content.
                     </p>
                     <a href="#" class="btn btn-primary">Ver menú</a>
-                  </div>
-                </div>
-              </div>
-              <div class="carousel-item">
-                <div class="card">
-                  <div class="img-wrapper">
+                  </article>
+                </article>
+              </article>
+              <article class="carousel-item">
+                <article class="card">
+                  <article class="img-wrapper">
                     <img
                       src="../img/menu-placeholder.png"
                       class="d-block w-100"
                       alt="..."
                     />
-                  </div>
-                  <div class="card-body">
+                  </article>
+                  <article class="card-body">
                     <h5 class="card-title text-center">Menú 7</h5>
                     <p class="card-text">
                       Some quick example text to build on the card title and
                       make up the bulk of the card's content.
                     </p>
                     <a href="#" class="btn btn-primary">Ver menú</a>
-                  </div>
-                </div>
-              </div>
-              <div class="carousel-item">
-                <div class="card">
-                  <div class="img-wrapper">
+                  </article>
+                </article>
+              </article>
+              <article class="carousel-item">
+                <article class="card">
+                  <article class="img-wrapper">
                     <img
                       src="../img/menu-placeholder.png"
                       class="d-block w-100"
                       alt="..."
                     />
-                  </div>
-                  <div class="card-body">
+                  </article>
+                  <article class="card-body">
                     <h5 class="card-title text-center">Menú 8</h5>
                     <p class="card-text">
                       Some quick example text to build on the card title and
                       make up the bulk of the card's content.
                     </p>
                     <a href="#" class="btn btn-primary">Ver menú</a>
-                  </div>
-                </div>
-              </div>
-              <div class="carousel-item">
-                <div class="card">
-                  <div class="img-wrapper">
+                  </article>
+                </article>
+              </article>
+              <article class="carousel-item">
+                <article class="card">
+                  <article class="img-wrapper">
                     <img
                       src="../img/menu-placeholder.png"
                       class="d-block w-100"
                       alt="..."
                     />
-                  </div>
-                  <div class="card-body">
+                  </article>
+                  <article class="card-body">
                     <h5 class="card-title text-center">Menú 9</h5>
                     <p class="card-text">
                       Some quick example text to build on the card title and
                       make up the bulk of the card's content.
                     </p>
                     <a href="#" class="btn btn-primary">Ver menú</a>
-                  </div>
-                </div>
-              </div>
-            </div>
+                  </article>
+                </article>
+              </article>
+            </article>
             <button
               class="carousel-control-prev"
               type="button"
@@ -417,190 +418,190 @@ if(!isset($_SESSION['cliente'])){
               ></span>
               <span class="visually-hidden">Next</span>
             </button>
-          </div>
-        </div>
+          </article>
+        </article>
       </section>
       <section>
-        <div class="section-title">Novedades</div>
-        <div class="section-articles">
-          <div
+        <article class="section-title">Novedades</article>
+        <article class="section-articles">
+          <article
             id="carouselNewCards"
             class="carousel carousel-cards"
             data-bs-ride="carousel"
           >
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <div class="card">
-                  <div class="img-wrapper">
+            <article class="carousel-inner">
+              <article class="carousel-item active">
+                <article class="card">
+                  <article class="img-wrapper">
                     <img
                       src="../img/menu-placeholder.png"
                       class="d-block w-100"
                       alt="..."
                     />
-                  </div>
-                  <div class="card-body">
+                  </article>
+                  <article class="card-body">
                     <h5 class="card-title text-center">Menú 1</h5>
                     <p class="card-text">
                       Some quick example text to build on the card title and
                       make up the bulk of the card's content.
                     </p>
                     <a href="#" class="btn btn-primary">Ver menú</a>
-                  </div>
-                </div>
-              </div>
-              <div class="carousel-item">
-                <div class="card">
-                  <div class="img-wrapper">
+                  </article>
+                </article>
+              </article>
+              <article class="carousel-item">
+                <article class="card">
+                  <article class="img-wrapper">
                     <img
                       src="../img/menu-placeholder.png"
                       class="d-block w-100"
                       alt="..."
                     />
-                  </div>
-                  <div class="card-body">
+                  </article>
+                  <article class="card-body">
                     <h5 class="card-title text-center">Menú 2</h5>
                     <p class="card-text">
                       Some quick example text to build on the card title and
                       make up the bulk of the card's content.
                     </p>
                     <a href="#" class="btn btn-primary">Ver menú</a>
-                  </div>
-                </div>
-              </div>
-              <div class="carousel-item">
-                <div class="card">
-                  <div class="img-wrapper">
+                  </article>
+                </article>
+              </article>
+              <article class="carousel-item">
+                <article class="card">
+                  <article class="img-wrapper">
                     <img
                       src="../img/menu-placeholder.png"
                       class="d-block w-100"
                       alt="..."
                     />
-                  </div>
-                  <div class="card-body">
+                  </article>
+                  <article class="card-body">
                     <h5 class="card-title text-center">Menú 3</h5>
                     <p class="card-text">
                       Some quick example text to build on the card title and
                       make up the bulk of the card's content.
                     </p>
                     <a href="#" class="btn btn-primary">Ver menú</a>
-                  </div>
-                </div>
-              </div>
-              <div class="carousel-item">
-                <div class="card">
-                  <div class="img-wrapper">
+                  </article>
+                </article>
+              </article>
+              <article class="carousel-item">
+                <article class="card">
+                  <article class="img-wrapper">
                     <img
                       src="../img/menu-placeholder.png"
                       class="d-block w-100"
                       alt="..."
                     />
-                  </div>
-                  <div class="card-body">
+                  </article>
+                  <article class="card-body">
                     <h5 class="card-title text-center">Menú 4</h5>
                     <p class="card-text">
                       Some quick example text to build on the card title and
                       make up the bulk of the card's content.
                     </p>
                     <a href="#" class="btn btn-primary">Ver menú</a>
-                  </div>
-                </div>
-              </div>
-              <div class="carousel-item">
-                <div class="card">
-                  <div class="img-wrapper">
+                  </article>
+                </article>
+              </article>
+              <article class="carousel-item">
+                <article class="card">
+                  <article class="img-wrapper">
                     <img
                       src="../img/menu-placeholder.png"
                       class="d-block w-100"
                       alt="..."
                     />
-                  </div>
-                  <div class="card-body">
+                  </article>
+                  <article class="card-body">
                     <h5 class="card-title text-center">Menú 5</h5>
                     <p class="card-text">
                       Some quick example text to build on the card title and
                       make up the bulk of the card's content.
                     </p>
                     <a href="#" class="btn btn-primary">Ver menú</a>
-                  </div>
-                </div>
-              </div>
-              <div class="carousel-item">
-                <div class="card">
-                  <div class="img-wrapper">
+                  </article>
+                </article>
+              </article>
+              <article class="carousel-item">
+                <article class="card">
+                  <article class="img-wrapper">
                     <img
                       src="../img/menu-placeholder.png"
                       class="d-block w-100"
                       alt="..."
                     />
-                  </div>
-                  <div class="card-body">
+                  </article>
+                  <article class="card-body">
                     <h5 class="card-title text-center">Menú 6</h5>
                     <p class="card-text">
                       Some quick example text to build on the card title and
                       make up the bulk of the card's content.
                     </p>
                     <a href="#" class="btn btn-primary">Ver menú</a>
-                  </div>
-                </div>
-              </div>
-              <div class="carousel-item">
-                <div class="card">
-                  <div class="img-wrapper">
+                  </article>
+                </article>
+              </article>
+              <article class="carousel-item">
+                <article class="card">
+                  <article class="img-wrapper">
                     <img
                       src="../img/menu-placeholder.png"
                       class="d-block w-100"
                       alt="..."
                     />
-                  </div>
-                  <div class="card-body">
+                  </article>
+                  <article class="card-body">
                     <h5 class="card-title text-center">Menú 7</h5>
                     <p class="card-text">
                       Some quick example text to build on the card title and
                       make up the bulk of the card's content.
                     </p>
                     <a href="#" class="btn btn-primary">Ver menú</a>
-                  </div>
-                </div>
-              </div>
-              <div class="carousel-item">
-                <div class="card">
-                  <div class="img-wrapper">
+                  </article>
+                </article>
+              </article>
+              <article class="carousel-item">
+                <article class="card">
+                  <article class="img-wrapper">
                     <img
                       src="../img/menu-placeholder.png"
                       class="d-block w-100"
                       alt="..."
                     />
-                  </div>
-                  <div class="card-body">
+                  </article>
+                  <article class="card-body">
                     <h5 class="card-title text-center">Menú 8</h5>
                     <p class="card-text">
                       Some quick example text to build on the card title and
                       make up the bulk of the card's content.
                     </p>
                     <a href="#" class="btn btn-primary">Ver menú</a>
-                  </div>
-                </div>
-              </div>
-              <div class="carousel-item">
-                <div class="card">
-                  <div class="img-wrapper">
+                  </article>
+                </article>
+              </article>
+              <article class="carousel-item">
+                <article class="card">
+                  <article class="img-wrapper">
                     <img
                       src="../img/menu-placeholder.png"
                       class="d-block w-100"
                       alt="..."
                     />
-                  </div>
-                  <div class="card-body">
+                  </article>
+                  <article class="card-body">
                     <h5 class="card-title text-center">Menú 9</h5>
                     <p class="card-text">
                       Some quick example text to build on the card title and
                       make up the bulk of the card's content.
                     </p>
                     <a href="#" class="btn btn-primary">Ver menú</a>
-                  </div>
-                </div>
-              </div>
-            </div>
+                  </article>
+                </article>
+              </article>
+            </article>
             <button
               class="carousel-control-prev"
               type="button"
@@ -625,13 +626,17 @@ if(!isset($_SESSION['cliente'])){
               ></span>
               <span class="visually-hidden">Next</span>
             </button>
-          </div>
-        </div>
+          </article>
+        </article>
       </section>
+
+
       <section class="text-center">
         <button>Ver todos los productos</button>
       </section>
-    </main>
+   
+
+       <footer></footer>
     <script src="../JS/jquery-3.6.4.min.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
