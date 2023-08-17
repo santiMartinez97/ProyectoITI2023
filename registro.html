@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="CSS/design.css">
     <title>Registro</title>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> 
-    <script src="https://kit.fontawesome.com/e934b5c028.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -70,98 +69,107 @@
             </select><br> 
           </article>
 
-      
+    
             <article id="campos">
 
             <form id="formulario" class="row no-gutters ">          
 
-              <article class="col-6">
+              <!-- SEPARAMOS POR GRUPOS CADA CAMPO -->
+              
+              <!-- Grupo nombre -->
+              <article class="col-6 grupo" id="grupo__nombre">
                 <label></label>
-                 <input type="text" name="nombre" id="nombre" class="form-control " placeholder="Nombre" required>
-                <article>
-                <p id="warnings" class="warnings"></p>
-              </article>  
+                <article class="grupo__input">  
+                 <input type="text" name="nombre" id="nombre" class="formulario__input form-control" placeholder="Nombre">
+                </article>       
+                 <p class="grupo_input-error">Ingrese un nombre valido </p>
               </article>
                 
-                
-                <article class="col-6">
+                 <!-- Grupo apellido -->
+                <article class="col-6" id="grupo__apellido">
                  <label></label>
-                 <input type="text" name="apellido" id="apellido" class="form-control" placeholder="Apellido"  required> 
-                 <article>
-                  <p id="warningsApellido" class="warnings"></p>
+                 <article class="grupo__input">
+                  <input type="text" name="apellido" id="apellido" class="formulario__input form-control" placeholder="Apellido">
+                 </article>   
+                 <p class="grupo_input-error">Ingrese un apellido valido</p>
                 </article> 
-                </article>
                 
-                <article class="col-8">
+            
+                 <!-- Grupo cedula -->
+                <article class="col-8 grupo" id="grupo__ci">
                     <label></label>
-                    <input type="number" name="ci" id="ci" class="form-control" placeholder="Documento" required>
-                    <article>
-                      <p id="warningsCi" class="warnings"></p>
-                    </article> 
+                    <article class="grupo__input">
+                    <input type="number" name="ci" id="ci" class="formulario__input form-control" placeholder="Documento">
+                    </article>  
+                    <p class="grupo_input-error">Ingrese su cedula sin puntos ni guiones</p>
                 </article >
                 
-                <article class="col-7">
+                 <!-- Grupo email -->
+                <article class="col-7 grupo" id="grupo__email">
                     <label></label>
-                    <input type="email" name="email" id="email" class="form-control" placeholder="Email" required>
-                    <article>
-                      <p id="warningsEmail" class="warnings"></p>
+                    <article class="grupo__input">
+                    <input type="email" name="email" id="email" class="formulario__input form-control" placeholder="Email">
                     </article> 
+                      <p class="grupo_input-error">Ingrese un email valido</p>
                 </article>
                 
-                <article class="col-5">
-                
+                 <!-- Grupo password -->
+                <article class="col-5 grupo" id="grupo__password">
                     <label></label>
-                    <input type="password" name="password" id="pass"  class="form-control" placeholder="Contraseña"      requiered> 
-                    <article>
-                      <p id="warningsPassword" class="warnings"></p>
+                    <article class="grupo__input">
+                    <input type="password" name="password" id="password"  class="formulario__input form-control" placeholder="Contraseña"> 
+                  </article>
+                      <p class="grupo_input-error">Ingrese una contraseña de 6 a 17 digitos</p> 
+                </article>
+                
+                 <!-- Grupo telefono -->
+                <article class="col-8 grupo" id="grupo__telefono">
+                    <label></label>
+                    <article class="grupo__input">
+                    <input type="number" name="telefono" id="telefono" class="formulario__input form-control"  placeholder="Telefono">
+                    </article>
+                      <p class="grupo_input-error">Ingrese su numero de telefono </p> 
+                </article>
+                
+                 <!-- Grupo calle -->
+                <article class="col-7 grupo" id="grupo__calle">
+                    <label></label>
+                    <article class="grupo__input">
+                    <input type="text" name="calle" id="calle" class="formulario__input form-control" placeholder="Calle">
+                    </article>
+                      <p class="grupo_input-error">Ingrese una calle valida</p>
+                </article>
+                
+                 <!-- Grupo numero -->
+                <article class="col-5 grupo" id="grupo__numero">
+                    <label></label>
+                    <article class="grupo__input">
+                    <input type="number" name="numero" id="numero" class="formulario__input form-control" placeholder="Numero">
+                    </article>
+                      <p class="grupo_input-error">Ingrese un numero de puerta valido</p>
+                </article>
+                
+                 <!-- Grupo esquina -->
+                <article class="col-6 grupo" id="grupo__esquina">
+                    <label></label>
+                    <article id="grupo__input">
+                    <input type="text" name="esquina" id="esquina" class="formulario__input form-control" placeholder="Esquina">
+                    </article>
+                      <p class="grupo_input-error">Ingrese una esquina valida</p>        
+                </article>
+                
+                 <!-- Grupo barrio -->
+                <article class="col-6 grupo" id="grupo__barrio">
+                    <label></label>
+                    <article  class="grupo__input">
+                      <input type="text" name="barrio" id="barrio" class="formulario__input form-control" placeholder="Barrio"> 
                     </article> 
+                      <p class="grupo_input-error">Ingrese un barrio valido</p>
                 </article>
-                
-                <article class="col-8">
-                    <label></label>
-                    <input type="number" name="telefono" id="telefono" class="form-control"  placeholder="Telefono" required>
-                    <article>
-                      <p id="warningsTelefono" class="warnings"></p>
-                    </article> 
-                </article>
-                
-                
-                <article class="col-7">
-                    
-                    <label></label>
-                    <input type="text" name="calle" id="calle" class="form-control" placeholder="Calle" required>
-                    <article>
-                      <p id="warningsCalle" class="warnings"></p>
-                    </article> 
-                </article>
-                
-                
-                <article class="col-5">
-                    <label></label>
-                    <input type="number" name="numero" id="numero"  class="form-control" placeholder="Numero" required>
-                    <article>
-                      <p id="warningsNumero" class="warnings"></p>
-                    </article> 
-                </article>
-                
-                
-                <article class="col-6">
-                    <label></label>
-                    <input type="text" name="esquina" id="esquina" class="form-control" placeholder="Esquina" required>
-                    <article>
-                      <p id="warningsEsquina" class="warnings"></p>
-                    </article>        
-                </article>
-                
-                <article class="col-6">
-                    <label></label>
-                    <input type="text" name="barrio" id="barrio" class="form-control" placeholder="Barrio" required> <br>
-                    <article>
-                      <p id="warningsBarrio" class="warnings"></p>
-                    </article> 
-                </article>
-                <article class="col-12 text-center">
+
+                <article class="col-12 text-center" >
                   <button class="btn btn-primary " id="enviar"  type="submit" >Enviar</button> 
+                  <p id="botonAlerta" class="grupo_input-error">Complete bien los campos porfavor</p>
                 </article>       
         </article>
            </form>
