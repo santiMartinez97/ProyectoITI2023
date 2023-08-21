@@ -15,11 +15,11 @@ formulario.addEventListener("submit", function (e) {
     .then(function (data) {
       switch (data) {
         case "webPrueba@gmail.com":
-          location.href = "navegabilidad/homeCliente.php";
+          location.href = "index.php";
           break;
 
         case "empresaPrueba@gmail.com":
-          location.href = "navegabilidad/homeCliente.php";
+          location.href = "index.php";
           break;
 
         case "admin@sisviansa.com":
