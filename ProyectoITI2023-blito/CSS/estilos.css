@@ -1,0 +1,149 @@
+body{
+    height: 100%;
+    width: 100%;
+    
+}
+
+*{
+margin: 0%;
+
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden;
+    margin-right: 0;
+    margin-left: 0;
+    padding: 0;
+}
+
+.icono1{
+    width: 40px;
+    height: 40px;
+}
+
+.navbar .nav-link {
+  color: #080101;
+}
+
+.navbar-nav .nav-item {
+  margin-right: 40px;
+}
+
+.navbar-nav {
+  margin-left: auto;
+}
+
+.navbar-nav .nav-item {
+  margin-left: 20px;
+}
+
+.navbar-toggler {
+  background: rgb(153, 146, 159);
+}
+
+#carouselExampleCaptions .carousel-item {
+    height: 79vh;
+    min-height: 300px;
+    background: no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+
+
+  @font-face {
+    font-family: 'Italica';
+    src: url('Tipografías/Italiana-Regular.ttf') format('truetype');
+    font-style: normal;
+    font-weight:  bold;
+  }
+
+  .carousel-caption {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+    max-width: 300px;
+    left: 0;
+    top: 100px;
+    padding:10px;
+    height:100%;
+  }
+  
+  .carousel-caption h2{
+    font-size: 3rem;
+    padding-bottom: 1rem;
+  }
+
+  .carousel .carousel-indicators button {
+    width: 10px;
+   height: 10px;
+   border-radius: 100%;
+ }
+ 
+@font-face {
+  font-family: "Indie-Flower";
+  src: url("../Tipografías/IndieFlower-Regular.ttf");
+}
+
+ .section-title{
+  margin: 1em 0 0;
+  background: #B75209;
+  text-align: center;
+  font-family: "Indie-Flower";
+  color: #FFF;
+  font-size: 2rem;
+ }
+
+ .navbar-nav{
+  --bs-nav-link-hover-color: rgb(255, 94, 0, 0.75) !important;
+}
+
+ .section-articles{
+  background: #D9D9D9;
+ }
+
+ .carousel-cards .carousel-inner {
+  padding: 1em;
+}
+.card {
+  margin: 0 0.5em;
+  box-shadow: 2px 6px 8px 0 rgba(22, 22, 26, 0.18);
+  border: none;
+}
+.carousel-cards .carousel-control-prev,
+.carousel-cards .carousel-control-next {
+  background-color: #e1e1e1;
+  width: 6vh;
+  height: 6vh;
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+@media (min-width: 768px) {
+  .carousel-cards .carousel-item {
+    margin-right: 0;
+    flex: 0 0 33.333333%;
+    display: block;
+  }
+  .carousel-cards .carousel-inner {
+    display: flex;
+  }
+}
+.card .img-wrapper {
+    max-width: 100%;
+    height: 13em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.card img {
+    max-height: 100%;
+}
+@media (max-width: 767px) {
+  .card .img-wrapper {
+    height: 17em;
+  }
+}
