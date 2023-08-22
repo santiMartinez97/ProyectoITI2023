@@ -1,8 +1,3 @@
-<?php
-require 'config/config.php';
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -25,14 +20,15 @@ require 'config/config.php';
   </head>
   <body>
     <!-- Inicio de Menu -->
+
     <nav
-    class="navbar navbar-expand-lg navbar-dark"
-    style="background: rgb(240, 240, 240, 0.9); padding: 0px"
-  >
-    <nav class="container justify-content-end">
-      <a class="navbar-brand" href="#" style="color: black">
-        <img src="img/icono.png" class="icono1" alt=""
-      /></a>
+      class="navbar navbar-expand-lg navbar-dark"
+      style="background: rgb(240, 240, 240, 0.9); padding: 0px"
+    >
+      <nav class="container justify-content-end">
+        <a class="navbar-brand" href="#" style="color: black">
+          <img src="img/icono.png" class="icono1" alt=""
+        /></a>
         <button
           class="navbar-toggler"
           type="button"
@@ -46,75 +42,34 @@ require 'config/config.php';
         </button>
         <nav class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="index.php"
-                ><i class="fa-solid fa-home"></i> Inicio</a  >
-                </li>
-              <a class="nav-link" href="#"
-                ><i class="fa-solid fa-cart-shopping"></i> 
-                Carrito <span id="num_cart" class="badge bg-secondary"><?php echo $num_cart;?></span>
-                </a
+            <li class="nav-item" >
+              <li class="nav-item">
+              <a class="nav-link" href="index.html"
+                ><i class="fa-solid fa-home"></i> Inicio</a
               >
             </li>
-
-            <?php
-
-    if(!isset($_SESSION['cliente'])){
-   
-    echo  '<li class="nav-item dropdown">';
-      echo   '<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">';        
-          echo  ' <i class="fa-solid fa-user"></i> Iniciar Sesion </a>';
-        echo '<ul class="dropdown-menu">';
-          echo   '<li><a class="dropdown-item" href="registro.php">Registrarse</a></li>';
-         echo   '<li><a class="dropdown-item" href="login.php">Iniciar Sesion</a></li>';
-         echo  '<li><hr class="dropdown-divider"></li>';
-            echo  '</ul>';
-            echo  '</li>';
-
-
-           echo  '</ul>';
-
-        
-
-    
-}else{
-//  $menu = $con->prepare("SELECT  id,Nombre,Precio FROM menu WHERE Habilitacion='Habilitado'");
-// $menu-> execute();
-// $resultado = $menu->fetchAll(PDO::FETCH_ASSOC);
-
-          
-echo  '<li class="nav-item dropdown">';
-      echo   '<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">';        
-          echo  ' <i class="fa-solid fa-user"></i>Usuario </a>';
-        echo '<ul class="dropdown-menu">';
-          echo   '<li><a class="dropdown-item" href="#">Ver Perfil</a></li>';
-         echo   '<li><a class="dropdown-item" href="#">Editar perfil</a></li>';
-         echo  '<li><hr class="dropdown-divider"></li>';
-            echo '<li><a class="dropdown-item" href="navegabilidad/cerrar_session.php">Cerrar Sesion</a></li>';
-            echo  '</ul>';
-            echo  '</li>';
-
-
-           echo  '</ul>';
-
-        }
-?>
-
-    
-
-
+              <a class="nav-link" href="#"
+                ><i class="fa-solid fa-cart-shopping"></i> Carrito</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="login.html"
+                ><i class="fa-solid fa-user"></i> Iniciar sesión</a
+              >
+            </li>
+          </ul>
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <a class="nav-link" href="Funcionalidades/contacto.php">Contacto</a>
+              <a class="nav-link" href="Funcionalidades/contacto.html">Contacto</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="Funcionalidades/catalogo.php">Catálogo</a>
+              <a class="nav-link" href="Funcionalidades/catalogo.html">Catálogo</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="Funcionalidades/nosotros.php">Nosotros</a>
+              <a class="nav-link" href="Funcionalidades/nosotros.html">Nosotros</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="Funcionalidades/preguntas.php">Preguntas</a>
+              <a class="nav-link" href="Funcionalidades/preguntas.html">Preguntas</a>
             </li>
           </ul>
         </nav>
@@ -122,10 +77,7 @@ echo  '<li class="nav-item dropdown">';
     </nav>
     <!-- Fin de menu -->
 
-
-   
     <!-- Inicio de Slider -->
-    
     <section
       id="carouselExampleCaptions"
       class="carousel slide carousel-fade"
@@ -173,7 +125,7 @@ echo  '<li class="nav-item dropdown">';
             class="d-block w-100"
             alt="..."
           />
-          <article class="carousel-caption d-none d-md-block">
+          <article class="carousel-caption">
             <h2>SISVIANSA</h2>
             <p>
               "La nutrición óptima es comer las cosas adecuadas."<br />Siim Land
@@ -183,7 +135,7 @@ echo  '<li class="nav-item dropdown">';
 
         <article class="carousel-item">
           <img src="img/VIANDAS-3.jpg" class="d-block w-100" alt="..." />
-          <article class="carousel-caption d-none d-md-block">
+          <article class="carousel-caption">
             <h2>SISVIANSA</h2>
             <p>
               "La nutrición óptima es comer las cosas adecuadas."<br />Siim Land
@@ -193,7 +145,7 @@ echo  '<li class="nav-item dropdown">';
 
         <article class="carousel-item">
           <img src="img/VIANDASSS.jpg" class="d-block w-100" alt="..." />
-          <article class="carousel-caption d-none d-md-block">
+          <article class="carousel-caption">
             <h2>SISVIANSA</h2>
             <p>
               "La nutrición óptima es comer las cosas adecuadas."<br />Siim Land
@@ -203,7 +155,7 @@ echo  '<li class="nav-item dropdown">';
 
         <article class="carousel-item">
           <img src="img/VIANDAS-3.jpg" class="d-block w-100" alt="..." />
-          <article class="carousel-caption d-none d-md-block">
+          <article class="carousel-caption">
             <h2>SISVIANSA</h2>
             <p>
               "La nutrición óptima es comer las cosas adecuadas."<br />Siim Land
@@ -213,7 +165,7 @@ echo  '<li class="nav-item dropdown">';
 
         <article class="carousel-item">
           <img src="img/VIANDASSS.jpg" class="d-block w-100" alt="..." />
-          <article class="carousel-caption d-none d-md-block">
+          <article class="carousel-caption">
             <h2>SISVIANSA</h2>
             <p>
               "La nutrición óptima es comer las cosas adecuadas."<br />Siim Land
@@ -244,7 +196,7 @@ echo  '<li class="nav-item dropdown">';
     <!-- FIN DEL SLIDER -->
     
       <section>
-        <article class="section-title">Recomendados para tí</article>
+        <article class="section-title">Preferidos de la Semana</article>
         <article class="section-articles">
           <article
             id="carouselWeeklyCards"
@@ -253,7 +205,7 @@ echo  '<li class="nav-item dropdown">';
           >
             <article class="carousel-inner">
               <article class="carousel-item active">
-                <article class="card">
+                <a href="#"><article class="card">
                   <article class="img-wrapper">
                     <img
                       src="img/menu-placeholder.png"
@@ -267,12 +219,11 @@ echo  '<li class="nav-item dropdown">';
                       Some quick example text to build on the card title and
                       make up the bulk of the card's content.
                     </p>
-                    <a href="#" class="btn btn-primary">Ver menú</a>
                   </article>
-                </article>
+                </article></a>
               </article>
               <article class="carousel-item">
-                <article class="card">
+                <a href="#"><article class="card">
                   <article class="img-wrapper">
                     <img
                       src="img/menu-placeholder.png"
@@ -286,12 +237,11 @@ echo  '<li class="nav-item dropdown">';
                       Some quick example text to build on the card title and
                       make up the bulk of the card's content.
                     </p>
-                    <a href="#" class="btn btn-primary">Ver menú</a>
                   </article>
-                </article>
+                </article></a>
               </article>
               <article class="carousel-item">
-                <article class="card">
+                <a href="#"><article class="card">
                   <article class="img-wrapper">
                     <img
                       src="img/menu-placeholder.png"
@@ -305,12 +255,11 @@ echo  '<li class="nav-item dropdown">';
                       Some quick example text to build on the card title and
                       make up the bulk of the card's content.
                     </p>
-                    <a href="#" class="btn btn-primary">Ver menú</a>
                   </article>
-                </article>
+                </article></a>
               </article>
               <article class="carousel-item">
-                <article class="card">
+                <a href="#"><article class="card">
                   <article class="img-wrapper">
                     <img
                       src="img/menu-placeholder.png"
@@ -324,12 +273,11 @@ echo  '<li class="nav-item dropdown">';
                       Some quick example text to build on the card title and
                       make up the bulk of the card's content.
                     </p>
-                    <a href="#" class="btn btn-primary">Ver menú</a>
                   </article>
-                </article>
+                </article></a>
               </article>
               <article class="carousel-item">
-                <article class="card">
+                <a href="#"><article class="card">
                   <article class="img-wrapper">
                     <img
                       src="img/menu-placeholder.png"
@@ -343,12 +291,11 @@ echo  '<li class="nav-item dropdown">';
                       Some quick example text to build on the card title and
                       make up the bulk of the card's content.
                     </p>
-                    <a href="#" class="btn btn-primary">Ver menú</a>
                   </article>
-                </article>
+                </article></a>
               </article>
               <article class="carousel-item">
-                <article class="card">
+                <a href="#"><article class="card">
                   <article class="img-wrapper">
                     <img
                       src="img/menu-placeholder.png"
@@ -362,12 +309,11 @@ echo  '<li class="nav-item dropdown">';
                       Some quick example text to build on the card title and
                       make up the bulk of the card's content.
                     </p>
-                    <a href="#" class="btn btn-primary">Ver menú</a>
                   </article>
-                </article>
+                </article></a>
               </article>
               <article class="carousel-item">
-                <article class="card">
+                <a href="#"><article class="card">
                   <article class="img-wrapper">
                     <img
                       src="img/menu-placeholder.png"
@@ -381,12 +327,11 @@ echo  '<li class="nav-item dropdown">';
                       Some quick example text to build on the card title and
                       make up the bulk of the card's content.
                     </p>
-                    <a href="#" class="btn btn-primary">Ver menú</a>
                   </article>
-                </article>
+                </article></a>
               </article>
               <article class="carousel-item">
-                <article class="card">
+                <a href="#"><article class="card">
                   <article class="img-wrapper">
                     <img
                       src="img/menu-placeholder.png"
@@ -400,12 +345,11 @@ echo  '<li class="nav-item dropdown">';
                       Some quick example text to build on the card title and
                       make up the bulk of the card's content.
                     </p>
-                    <a href="#" class="btn btn-primary">Ver menú</a>
                   </article>
-                </article>
+                </article></a>
               </article>
               <article class="carousel-item">
-                <article class="card">
+                <a href="#"><article class="card">
                   <article class="img-wrapper">
                     <img
                       src="img/menu-placeholder.png"
@@ -419,9 +363,8 @@ echo  '<li class="nav-item dropdown">';
                       Some quick example text to build on the card title and
                       make up the bulk of the card's content.
                     </p>
-                    <a href="#" class="btn btn-primary">Ver menú</a>
                   </article>
-                </article>
+                </article></a>
               </article>
             </article>
             <button
@@ -462,7 +405,7 @@ echo  '<li class="nav-item dropdown">';
           >
             <article class="carousel-inner">
               <article class="carousel-item active">
-                <article class="card">
+                <a href="#"><article class="card">
                   <article class="img-wrapper">
                     <img
                       src="img/menu-placeholder.png"
@@ -476,12 +419,11 @@ echo  '<li class="nav-item dropdown">';
                       Some quick example text to build on the card title and
                       make up the bulk of the card's content.
                     </p>
-                    <a href="#" class="btn btn-primary">Ver menú</a>
                   </article>
-                </article>
+                </article></a>
               </article>
               <article class="carousel-item">
-                <article class="card">
+                <a href="#"><article class="card">
                   <article class="img-wrapper">
                     <img
                       src="img/menu-placeholder.png"
@@ -495,12 +437,11 @@ echo  '<li class="nav-item dropdown">';
                       Some quick example text to build on the card title and
                       make up the bulk of the card's content.
                     </p>
-                    <a href="#" class="btn btn-primary">Ver menú</a>
                   </article>
-                </article>
+                </article></a>
               </article>
               <article class="carousel-item">
-                <article class="card">
+                <a href="#"><article class="card">
                   <article class="img-wrapper">
                     <img
                       src="img/menu-placeholder.png"
@@ -514,12 +455,11 @@ echo  '<li class="nav-item dropdown">';
                       Some quick example text to build on the card title and
                       make up the bulk of the card's content.
                     </p>
-                    <a href="#" class="btn btn-primary">Ver menú</a>
                   </article>
-                </article>
+                </article></a>
               </article>
               <article class="carousel-item">
-                <article class="card">
+                <a href="#"><article class="card">
                   <article class="img-wrapper">
                     <img
                       src="img/menu-placeholder.png"
@@ -533,12 +473,11 @@ echo  '<li class="nav-item dropdown">';
                       Some quick example text to build on the card title and
                       make up the bulk of the card's content.
                     </p>
-                    <a href="#" class="btn btn-primary">Ver menú</a>
                   </article>
-                </article>
+                </article></a>
               </article>
               <article class="carousel-item">
-                <article class="card">
+                <a href="#"><article class="card">
                   <article class="img-wrapper">
                     <img
                       src="img/menu-placeholder.png"
@@ -552,12 +491,11 @@ echo  '<li class="nav-item dropdown">';
                       Some quick example text to build on the card title and
                       make up the bulk of the card's content.
                     </p>
-                    <a href="#" class="btn btn-primary">Ver menú</a>
                   </article>
-                </article>
+                </article></a>
               </article>
               <article class="carousel-item">
-                <article class="card">
+                <a href="#"><article class="card">
                   <article class="img-wrapper">
                     <img
                       src="img/menu-placeholder.png"
@@ -571,12 +509,11 @@ echo  '<li class="nav-item dropdown">';
                       Some quick example text to build on the card title and
                       make up the bulk of the card's content.
                     </p>
-                    <a href="#" class="btn btn-primary">Ver menú</a>
                   </article>
-                </article>
+                </article></a>
               </article>
               <article class="carousel-item">
-                <article class="card">
+                <a href="#"><article class="card">
                   <article class="img-wrapper">
                     <img
                       src="img/menu-placeholder.png"
@@ -590,12 +527,11 @@ echo  '<li class="nav-item dropdown">';
                       Some quick example text to build on the card title and
                       make up the bulk of the card's content.
                     </p>
-                    <a href="#" class="btn btn-primary">Ver menú</a>
                   </article>
-                </article>
+                </article></a>
               </article>
               <article class="carousel-item">
-                <article class="card">
+                <a href="#"><article class="card">
                   <article class="img-wrapper">
                     <img
                       src="img/menu-placeholder.png"
@@ -609,12 +545,11 @@ echo  '<li class="nav-item dropdown">';
                       Some quick example text to build on the card title and
                       make up the bulk of the card's content.
                     </p>
-                    <a href="#" class="btn btn-primary">Ver menú</a>
                   </article>
-                </article>
+                </article></a>
               </article>
               <article class="carousel-item">
-                <article class="card">
+                <a href="#"><article class="card">
                   <article class="img-wrapper">
                     <img
                       src="img/menu-placeholder.png"
@@ -628,9 +563,8 @@ echo  '<li class="nav-item dropdown">';
                       Some quick example text to build on the card title and
                       make up the bulk of the card's content.
                     </p>
-                    <a href="#" class="btn btn-primary">Ver menú</a>
                   </article>
-                </article>
+                </article></a>
               </article>
             </article>
             <button
@@ -662,10 +596,15 @@ echo  '<li class="nav-item dropdown">';
       </section>
 
       <section class="text-center">
-        <button>Ver todos los productos</button>
+        <a href="Funcionalidades/catalogo.html"><button class="btn btn-orange">Ver todos los productos</button></a>
       </section>
 
-    
+    <section class="zonas-disponibles text-center">
+      <p class="btn btn-orange disabled">Zonas Disponibles</p>
+      <br>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3271.84403218136!2d-56.189107784762164!3d-34.910363380381206!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x959f81ceb54e547f%3A0x592102e53ece4546!2sInstituto%20Tecnologico%20de%20Inf%C3%B3rmatica!5e0!3m2!1ses-419!2suy!4v1667431425308!5m2!1ses-419!2suy" width="70%" height="70%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </section>
+
     <script src="JS/jquery-3.6.4.min.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
