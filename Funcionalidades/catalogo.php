@@ -4,6 +4,7 @@
 
 require '../config/config.php';
 require '../config/conexion.php';
+
 $db = new DataBase();
 $con = $db->conectar();
 
@@ -62,26 +63,27 @@ $resultado2 = $dieta->fetchAll(PDO::FETCH_ASSOC);
         </button>
         <nav class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-auto">
-            <li class="nav-item" >
-              <li class="nav-item">
+            <li class="nav-item">
               <a class="nav-link" href="../index.php"
-                ><i class="fa-solid fa-home"></i> Inicio</a
-              >
-            </li>
-              <a class="nav-link" href="#"
-                ><i class="fa-solid fa-cart-shopping"></i> Carrito</a
+                ><i class="fa-solid fa-home"></i> Inicio</a  >
+                </li>
+              <a class="nav-link" href="../BACKPHP/productosCarrito.php"
+                ><i class="fa-solid fa-cart-shopping"></i> 
+                Carrito <span id="num_cart" class="badge bg-secondary"><?php echo $num_cart;?></span>
+                </a
               >
             </li>
             <?php
-            session_start();
+           
+           
     if(!isset($_SESSION['cliente'])){
    
     echo  '<li class="nav-item dropdown">';
       echo   '<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">';        
           echo  ' <i class="fa-solid fa-user"></i> Iniciar Sesion </a>';
         echo '<ul class="dropdown-menu">';
-          echo   '<li><a class="dropdown-item" href="registro.php">Registrarse</a></li>';
-         echo   '<li><a class="dropdown-item" href="login.php">Iniciar Sesion</a></li>';
+          echo   '<li><a class="dropdown-item" href="../registro.php">Registrarse</a></li>';
+         echo   '<li><a class="dropdown-item" href="../login.php">Iniciar Sesion</a></li>';
          echo  '<li><hr class="dropdown-divider"></li>';
             echo  '</ul>';
             echo  '</li>';
@@ -191,7 +193,17 @@ echo  '<li class="nav-item dropdown">';
                               <!-- URL CON DISTINTO TOKEN -->
                                <a href="detalles.php?id=<?php echo $row ['id']; ?>&token=<?php echo hash_hmac('sha1', $row['id'], KEY_TOKEN); ?>" class="btn btn-primary">Detalles</a>
                               </article>
-                              <a href="#" class="btn btn-success">Agregar</a>
+                              
+
+                              <?php
+
+                              if(!isset($_SESSION['cliente'])){
+                                echo '<a href="#" class="btn btn-success">Agregar</a>';
+                                }else{
+                                  echo '<button class="btn btn-outline-success" type="button" onclick="agregarProducto(' . $row['id'] . ', \'' . hash_hmac('sha1', $row['id'], KEY_TOKEN) . '\')">Agregar al carrito</button>';
+
+                                }
+                              ?>
                           </article>
                       </article>
                   </article>
@@ -205,6 +217,30 @@ echo  '<li class="nav-item dropdown">';
  
   
  <script src="../JS/tipoDieta.js"></script>
+ <script>
+                function agregarProducto(id,token){
+                       let url = '../BACKPHP/carrito.php';
+                      let formData = new FormData();
+                      formData.append('id', id);
+                      formData.append('token', token);
+
+
+                      fetch(url, {
+                          method: 'POST',
+                          body: formData,
+                          mode : 'cors'
+
+                      }).then(response => response.json())
+                      .then(data => {
+                              if(data.ok){
+                                  let elemento = document.getElementById("num_cart");
+                                  elemento.innerHTML = data.numero;
+                              }
+                      })
+
+
+}
+</script>
 
           
  <script

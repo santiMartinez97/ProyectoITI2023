@@ -1,3 +1,7 @@
+<?php
+require 'config/config.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -37,14 +41,17 @@
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
               <a class="nav-link" href="index.php"
-                ><i class="fa-solid fa-home"></i> Inicio</a
+                ><i class="fa-solid fa-home"></i> Inicio</a  >
+                </li>
+              <a class="nav-link" href="#"
+                ><i class="fa-solid fa-cart-shopping"></i> 
+                Carrito <span id="num_cart" class="badge bg-secondary"><?php echo $num_cart;?></span>
+                </a
               >
-            <li class="nav-item">
-              <a class="nav-link" href="#"><i class="fa-solid fa-cart-shopping"></i> Carrito</a>
             </li>
 
             <?php
-session_start();
+
     if(!isset($_SESSION['cliente'])){
    
     echo  '<li class="nav-item dropdown">';
@@ -64,9 +71,6 @@ session_start();
 
     
 }else{
-//  $menu = $con->prepare("SELECT  id,Nombre,Precio FROM menu WHERE Habilitacion='Habilitado'");
-// $menu-> execute();
-// $resultado = $menu->fetchAll(PDO::FETCH_ASSOC);
 
           
 echo  '<li class="nav-item dropdown">';
@@ -89,11 +93,6 @@ echo  '<li class="nav-item dropdown">';
           </ul>
 
          
-
-
-
-
-
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
               <a class="nav-link" href="Funcionalidades/contacto.php">Contacto</a>

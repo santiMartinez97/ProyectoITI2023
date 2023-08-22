@@ -1,3 +1,8 @@
+<?php
+require '../config/config.php';
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -42,18 +47,18 @@
         </button>
         <nav class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-auto">
-            <li class="nav-item" >
-              <li class="nav-item">
+            <li class="nav-item">
               <a class="nav-link" href="../index.php"
-                ><i class="fa-solid fa-home"></i> Inicio</a
-              >
-            </li>
+                ><i class="fa-solid fa-home"></i> Inicio</a  >
+                </li>
               <a class="nav-link" href="#"
-                ><i class="fa-solid fa-cart-shopping"></i> Carrito</a
+                ><i class="fa-solid fa-cart-shopping"></i> 
+                Carrito <span id="num_cart" class="badge bg-secondary"><?php echo $num_cart;?></span>
+                </a
               >
             </li>
             <?php
-session_start();
+
     if(!isset($_SESSION['cliente'])){
    
     echo  '<li class="nav-item dropdown">';
@@ -69,8 +74,7 @@ session_start();
 
            echo  '</ul>';
 
-        
-
+      
     
 }else{
 //  $menu = $con->prepare("SELECT  id,Nombre,Precio FROM menu WHERE Habilitacion='Habilitado'");

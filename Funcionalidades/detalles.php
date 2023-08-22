@@ -3,7 +3,7 @@
 
 require '../config/config.php';
 require '../config/conexion.php';
- 
+
 $db = new DataBase();
 $con = $db->conectar();
 
@@ -88,18 +88,18 @@ if($id == '' || $token == ''){
         </button>
         <nav class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-auto">
-            <li class="nav-item" >
-              <li class="nav-item">
+            <li class="nav-item">
               <a class="nav-link" href="../index.php"
-                ><i class="fa-solid fa-home"></i> Inicio</a
-              >
-            </li>
+                ><i class="fa-solid fa-home"></i> Inicio</a  >
+                </li>
               <a class="nav-link" href="#"
-                ><i class="fa-solid fa-cart-shopping"></i> Carrito</a
+                ><i class="fa-solid fa-cart-shopping"></i> 
+                Carrito <span id="num_cart" class="badge bg-secondary"><?php echo $num_cart;?></span>
+                </a
               >
             </li>
             <?php
-            session_start();
+           
     if(!isset($_SESSION['cliente'])){
    
     echo  '<li class="nav-item dropdown">';
@@ -200,7 +200,7 @@ echo  '<li class="nav-item dropdown">';
 
             </article>
 
-            <article class= "pack col-md-6 order-md-2" >
+            <article class= "pack col-md-6 order-md-2" > 
                 <h2 class="nombre"><?php echo $nombre ?></h2>
 
                 <?php if($descuento > 0) { ?>
@@ -232,8 +232,7 @@ echo  '<li class="nav-item dropdown">';
     if(!isset($_SESSION['cliente'])){
    
     
-    echo '  <article class="d-grid gap-3 col-6">';
-    echo '<button id="comprarBtn" class="btn btn-primary" type="button">Comprar ahora</button>';
+    echo '  <article class="d-grid gap-3 col-6">'; 
     echo '   <button id="carritoBtn" class="btn btn-outline-primary" type="button">Agregar al carrito</button>';
     echo ' </article>';
     echo ' </article>';
@@ -241,22 +240,37 @@ echo  '<li class="nav-item dropdown">';
 }else{
 
   echo '  <article class="d-grid gap-3 col-6">';
-  echo '  <button class="btn btn-primary" type="button">Comprar ahora</button>';
-  echo '   <button class="btn btn-outline-primary" type="button">Agregar al carritoo</button>';
+  echo '<button class="btn btn-outline-primary" type="button" onclick="agregarProducto(' . $id . ', \'' . $token_tmp . '\')">Agregar al carrito</button>';
   echo ' </article>';
   echo ' </article>';
-
+  echo '</li>';
           
         }
+?>   
+            <script>
+                function agregarProducto(id,token){
+                       let url = '../BACKPHP/carrito.php';
+                      let formData = new FormData();
+                      formData.append('id', id);
+                      formData.append('token', token);
 
 
+                      fetch(url, {
+                          method: 'POST',
+                          body: formData,
+                          mode : 'cors'
+
+                      }).then(response => response.json())
+                      .then(data => {
+                              if(data.ok){
+                                  let elemento = document.getElementById("num_cart");
+                                  elemento.innerHTML = data.numero;
+                              }
+                      })
 
 
-?>
-
-            </li>
-              
-
+}
+</script>
               
 
 
