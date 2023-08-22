@@ -1,7 +1,5 @@
 <?php
 
-
-
 require '../config/config.php';
 require '../config/conexion.php';
 
@@ -147,7 +145,7 @@ echo  '<li class="nav-item dropdown">';
     
     <article class="col-12 text-center">
     <h2>Menús</h2>
-    <div class="styled-select">
+    <div class="styled-select" class="tipo_dieta">
         <select class="form-select custom-select" id="tipo_dieta" aria-label="Default select example" onchange="filtrarDieta(this.value)">
             <option value="" disabled selected>Selecciona una dieta</option>
             <?php

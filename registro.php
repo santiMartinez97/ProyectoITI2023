@@ -16,7 +16,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark" style="background: rgb(240, 240, 240,0.9); padding: 0px; ">
  
   <nav class="container justify-content-end">
-    <a class="navbar-brand" href="index.html" style="color: rgb(0, 0, 0); ">
+    <a class="navbar-brand" href="index.php" style="color: rgb(0, 0, 0); ">
     <img src="img/icono.png" class="icono1" alt=""></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -24,29 +24,29 @@
     <nav class="collapse navbar-collapse " id="navbarNav">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
-          <a class="nav-link" href="index.html"
+          <a class="nav-link" href="index.php"
             ><i class="fa-solid fa-home"></i> Inicio</a
           >
         <li class="nav-item">
           <a class="nav-link" href="#"><i class="fa-solid fa-cart-shopping"></i> Carrito</a> 
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="login.html"><i class="fa-solid fa-user"></i> Iniciar sesión</a>
+          <a class="nav-link" href="login.php"><i class="fa-solid fa-user"></i> Iniciar sesión</a>
         </li>
       </ul>
         <ul class="navbar-nav ms-auto">
         
           <li class="nav-item">
-            <a class="nav-link" href="Funcionalidades/contacto.html">Contacto</a>
+            <a class="nav-link" href="Funcionalidades/contacto.php">Contacto</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="Funcionalidades/catalogo.html">Catálogo</a>
+            <a class="nav-link" href="Funcionalidades/catalogo.php">Catálogo</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="Funcionalidades/nosotros.html">Nosotros</a>
+            <a class="nav-link" href="Funcionalidades/nosotros.php">Nosotros</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="Funcionalidades/preguntas.html">Preguntas</a>
+            <a class="nav-link" href="Funcionalidades/preguntas.php">Preguntas</a>
           </li>
         
       </ul>

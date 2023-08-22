@@ -126,8 +126,8 @@ echo  '<li class="nav-item dropdown">';
       <article class="contacto">
        <h1 class="titulo">Contacto</h1>
        <article class="camino">
-        <a class="index" href="../index.html">Inicio /</a>
-        <a class="nosotros" href="../Funcionalidades/contacto.html">Contacto</a>
+        <a class="index" href="../index.php">Inicio /</a>
+        <a class="nosotros" href="../Funcionalidades/contacto.php">Contacto</a>
         </article>
       </article>
     </section>

@@ -121,8 +121,8 @@ echo  '<li class="nav-item dropdown">';
                     <img src="../img/distribucion_cocina_rte-thegem-blog-default.jpg" class="d-block w-100" id="imagenSobreN1" alt="...">
                    <article class="image-text">NOSOTROS</article>
                    <article class="camino">
-                   <a class="index" href="../index.html">Inicio /</a>
-                   <a class="nosotros" href="../Funcionalidades/nosotros.html">Nosotros</a>
+                   <a class="index" href="../index.php">Inicio /</a>
+                   <a class="nosotros" href="../Funcionalidades/nosotros.php">Nosotros</a>
                    </article>
                   </article>
                 </article>
