@@ -4,38 +4,6 @@ body {
   background-size: cover;
   background-position: center center;
   overflow-x: hidden;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  
-
-}
-
-
-
-.site-content {
-  flex: 1; /* Ocupa todo el espacio restante */
-}
-
-.site-footer {
-  background: linear-gradient(45deg, #000000e5, #2a2a2a89);
-  
-  color: white;
-  height: 80.5px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 20px;
-}
-
-.footer-left, .footer-right {
-  flex: 1;
-  text-align: left;
-}
-
-.footer-right {
-  text-align: right;
 }
 
 .navbar .nav-link {
@@ -55,7 +23,7 @@ body {
 }
 
 .navbar-toggler {
-  background: rgba(225, 79, 6, 0.671);
+  background: rgb(153, 146, 159);
 }
 
 
@@ -88,15 +56,20 @@ body {
 .enlace {
   color: #8D2C2C;
   text-decoration: none;
-  
 }
 
-label {
-  font-size: 14px;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  color: rgb(66, 64, 64);
-  padding-top: 8px;
+
+.formulario__input {
+  border: 3px solid transparent;
+  border-radius: 3px;
+  transition: .3s ease all;
 }
+
+.formulario__input:focus{
+  border: 3px solid rgb(254, 80, 0);
+  box-shadow: 5px 0px 35px rgb(202, 78, 0);
+}
+
 
 .hijo {
 
@@ -108,8 +81,6 @@ label {
   right: 14%;
   /* */
   transform: translate(0, -50%);
-
-
 
 }
 
@@ -126,11 +97,7 @@ label {
 
 #tipo_usuario:hover {
   border: 1px solid rgb(230, 92, 6);
-
 }
-
-
-
 
 #enviar {
   background-color: rgb(196, 99, 39);
@@ -152,7 +119,6 @@ label {
   box-shadow: 1px 1px 9px rgb(0, 0, 0);
 }
 
-
 .padre {
   position: relative;
   height: 100vh;
@@ -166,32 +132,38 @@ label {
   font-weight: bold;
 }
 
-
-
 .icono1 {
   width: 40px;
   height: 40px;
+} 
+
+.grupo__correcto .formulario__input{
+  border: solid 3px green;
+  color: darkgreen;
 }
 
-.error{
+.grupo__error .formulario__input{
   border: solid 3px crimson;
   color: rgb(255, 98, 0);
 }
 
-.warnings{
-  font-size: 15px;
+.grupo_input-error{
+  font-size: 10px;
 	margin-bottom: 0;
+	display: none;
   color: crimson;
+  padding-top: -222px; /* Ajusta el padding superior según tus preferencias */
+  padding-bottom: -1222px;
+  margin-top: 2px;
 }
 
+.grupo_input-error-activo{
+  display: block;
+}
 
-
-
-
-
-
-
-
+#botonAlerta{
+  padding-top:6px;
+}
 
 @media screen and (min-width: 1500px) {
  
@@ -205,9 +177,7 @@ label {
     right: 18%;
     /* */
     transform: translate(0, -50%);
-  
-  
-  
+
   }
 
   .row {
@@ -231,23 +201,13 @@ label {
     font-size: 1.2rem;
   }
 
-  .navbar-nav{
-    --bs-nav-link-hover-color: rgb(255, 94, 0, 0.75) !important;
-  }
-
   #enviar {
-   
-    width: 180px;
+   width: 180px;
    height: 40px;
-  
   }
 
   #enviar:hover {
     width: 200px;
-    
-  
-  
-  
   }
   .enlace {
     color: #8D2C2C;
@@ -256,4 +216,21 @@ label {
    
   }
  
+}
+
+#campos {
+  position: relative¿;
+  min-height: 50px; /* Ajusta este valor según tus necesidades */
+}
+
+.grupo{
+  padding: 13px;
+}
+
+.grupo_input-error {
+  position: absolute;
+  color: red;
+  font-size: 12px;
+  margin-top: -2px;
+  /* Otros estilos de tu elección */
 }
