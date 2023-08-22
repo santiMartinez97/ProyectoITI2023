@@ -1,7 +1,3 @@
-<?php
-require 'config/config.php';
-?>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -23,7 +19,7 @@ require 'config/config.php';
       style="background: rgb(240, 240, 240, 0.9); padding: 0px"
     >
       <nav class="container justify-content-end">
-        <a class="navbar-brand" href="index.php" style="color: black">
+        <a class="navbar-brand" href="index.html" style="color: black">
           <img src="img/icono.png" class="icono1" alt=""
         /></a>
         <button
@@ -40,71 +36,28 @@ require 'config/config.php';
         <nav class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <a class="nav-link" href="index.php"
-                ><i class="fa-solid fa-home"></i> Inicio</a  >
-                </li>
-              <a class="nav-link" href="#"
-                ><i class="fa-solid fa-cart-shopping"></i> 
-                Carrito <span id="num_cart" class="badge bg-secondary"><?php echo $num_cart;?></span>
-                </a
+              <a class="nav-link" href="index.html"
+                ><i class="fa-solid fa-home"></i> Inicio</a
               >
+            <li class="nav-item">
+              <a class="nav-link" href="#"><i class="fa-solid fa-cart-shopping"></i> Carrito</a>
             </li>
-
-            <?php
-
-    if(!isset($_SESSION['cliente'])){
-   
-    echo  '<li class="nav-item dropdown">';
-      echo   '<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">';        
-          echo  ' <i class="fa-solid fa-user"></i> Iniciar Sesion </a>';
-        echo '<ul class="dropdown-menu">';
-          echo   '<li><a class="dropdown-item" href="registro.php">Registrarse</a></li>';
-         echo   '<li><a class="dropdown-item" href="login.php">Iniciar Sesion</a></li>';
-         echo  '<li><hr class="dropdown-divider"></li>';
-            echo  '</ul>';
-            echo  '</li>';
-
-
-           echo  '</ul>';
-
-        
-
-    
-}else{
-
-          
-echo  '<li class="nav-item dropdown">';
-      echo   '<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">';        
-          echo  ' <i class="fa-solid fa-user"></i>Usuario </a>';
-        echo '<ul class="dropdown-menu">';
-          echo   '<li><a class="dropdown-item" href="#">Ver Perfil</a></li>';
-         echo   '<li><a class="dropdown-item" href="#">Editar perfil</a></li>';
-         echo  '<li><hr class="dropdown-divider"></li>';
-            echo '<li><a class="dropdown-item" href="navegabilidad/cerrar_session.php">Cerrar Sesion</a></li>';
-            echo  '</ul>';
-            echo  '</li>';
-
-
-           echo  '</ul>';
-
-        }
-?>
-            
+            <li class="nav-item">
+              <a class="nav-link" href="#"><i class="fa-solid fa-user"></i> Iniciar sesión</a>
+            </li>
           </ul>
-
-         
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <a class="nav-link" href="Funcionalidades/contacto.php">Contacto</a>
+              <a class="nav-link" href="Funcionalidades/contacto.html">Contacto</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="Funcionalidades/catalogo.php">Catálogo</a>
+              <a class="nav-link" href="Funcionalidades/catalogo.html">Catálogo</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="Funcionalidades/nosotros.php">Nosotros</a>
+              <a class="nav-link" href="Funcionalidades/nosotros.html">Nosotros</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="Funcionalidades/preguntas.php">Preguntas</a>
+              <a class="nav-link" href="Funcionalidades/preguntas.html">Preguntas</a>
             </li>
           </ul>
         </nav>
@@ -117,13 +70,13 @@ echo  '<li class="nav-item dropdown">';
         <article class="container my-1">
           <h1 class="titulo text-center"  id="IniciarS" >Iniciar Sesión</h1>
           <p class="subtitulo">
-            ¿Es tu primera vez? <a href="registro.php" class="enlace">registrate</a>
+            ¿Es tu primera vez? <a href="registro.html" class="enlace">registrate</a>
           </p>
           <article id="campos">
             <form id="loginForm" class="row no-gutters">
               <article class="col-12">
                 <input
-                  class="form-control"
+                  class="formulario__input form-control"
                   name="email"
                   type="email"
                   placeholder="Ingrese su email aquí..."
@@ -133,7 +86,7 @@ echo  '<li class="nav-item dropdown">';
               <br /><br />
               <article class="col-12">
                 <input
-                  class="form-control"
+                  class="formulario__input form-control"
                   name="pass"
                   type="password"
                   placeholder="Ingrese su contraseña aquí..."
@@ -141,7 +94,7 @@ echo  '<li class="nav-item dropdown">';
                 />
               </article>
               <br />
-              <a href="#" class="enlace">¿Olvidaste tu contraseña?</a>
+              <a href="../ProyectoITI2023-blito/BACKPHP/passwordReset.php" class="enlace">¿Olvidaste tu contraseña?</a>
               <br /><br />
               <article class="col-12 text-center">
                 <button type="submit" class="btn btn-primary" id="enviar">
