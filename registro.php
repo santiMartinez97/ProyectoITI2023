@@ -220,7 +220,7 @@ require 'config/config.php';
                 </article>
               </article>
               <article class="col-12 text-center">
-                <button class="btn btn-primary " id="enviar" type="submit">Enviar</button>
+                <button class="btn btn-primary " idS="enviar" type="submit">Enviar</button>
               </article>
           </article>
           </form>
