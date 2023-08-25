@@ -43,6 +43,12 @@ formulario.addEventListener("submit", function (e) {
           alert("El usuario no se encuentra habilitado.");
           break;
 
+        case "Bloqueado":
+          document.getElementById("loginForm").reset();
+          document.getElementById("enviar").disabled = true;
+          alert("Limite de intentos excedido. Intente más tarde.");
+          break;
+
         default:
           document.getElementById("loginForm").reset();
           alert("Usuario y/o Contraseñas incorrectos.");
