@@ -233,3 +233,7 @@ body {
   margin-top: -2px;
   /* Otros estilos de tu elección */
 }
+
+.alert .fa-solid {
+  padding-right: 3px;
+}
