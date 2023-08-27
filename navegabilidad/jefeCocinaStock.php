@@ -5,12 +5,12 @@ require '../config/conexion.php';
 $db = new DataBase();
 $con = $db->conectar();
 
+$menu = $con->prepare("SELECT Nombre, Stock, StockMaximo, StockMinimo FROM menu WHERE Habilitacion='Habilitado'");
+$menu-> execute();
+$resultado = $menu->fetchAll(PDO::FETCH_ASSOC);
 
-$pedidos = $con->prepare("SELECT Cantidad, MenuesEncarga, Descripcion FROM `pedido_encarga_menu`");
-$pedidos-> execute();
-$resultados = $pedidos->fetchAll(PDO::FETCH_ASSOC);
+$menu_array=[];
 
-$pedidos_array=[];
 ?>
 
 <!DOCTYPE html>
@@ -26,40 +26,45 @@ $pedidos_array=[];
     <!-- Header -->
     <header>
         <h1>Jefe de cocina</h1>
-        <a class="cerrarSesion" href="cerrar_session.php">Cerrar sesion</a>
-    </header>    
+        <a class="cerrarSesion"href="cerrar_session.php">Cerrar sesion</a>
+    </header>
     
     <br>
 
-    <!-- Lista de pedidos -->
-    <h2 class="h2tit"><a href="jefeCocinaStock.php">Control de stock</a></h2>
+    <h2><a class="camino" href="jefeCocina.php">Ver pedidos /</a> Control de stock</h2>
 
-    <h2>Listado de pedidos</h2>
+    <!-- Lista de stcok -->
 
     <article class="pedidos">
     <table>
             <thead>
                 <tr>
-                    <th class="tablaArriba" >Pedido</th>
-                    <th class="tablaArriba">Descripción</th>
-                    <th class="tablaArriba">Cantidad</th>
+                    <th class="tablaArriba">Menu</th>
+                    <th class="tablaArriba">Stock actual</th>
+                    <th class="tablaArriba">Stock minimo</th>
+                    <th class="tablaArriba">Stock maximo</th>
+
                 </tr>
             </thead>
             <tbody>
                 <?php
-                    foreach ($resultados as $row) {
-                        $nombre = $row['MenuesEncarga'];    
-                        $descripcion = $row['Descripcion'];    
-                        $cantidad = $row['Cantidad'];    
-                        if (!in_array($pedidos, $pedidos_array)) {
-                            echo '<tr>';
-                            echo '<th >'.$nombre.'</th> ';   
-                            echo '<th >'.$descripcion.'</th> ';
-                            echo '<th >'.$cantidad.'</th> ';   
-                            echo '<th><button class="botonAceptar">Completar</button></th>';
-                            echo '<th><button class="botonDesechar">Desechar</button></th>';
-                            echo '</tr>';
-                         }
+                foreach ($resultado as $row) {
+                    $menu = $row['Nombre'];
+                    $stockActual = $row['Stock'];
+                    $stockMinimo = $row['StockMinimo'];
+                    $stockMaximo = $row['StockMaximo'];
+
+                    if (!in_array($menu, $menu_array)) {
+                        echo '<tr>';
+                        echo '<th >'.$menu.'</th> ';
+                        echo '<th >'.$stockActual.'</th> ';    
+                        echo '<th >'.$stockMinimo.'</th> ';    
+                        echo '<th >'.$stockMaximo.'</th> ';    
+                        echo '<th><button class="botonAceptar">Agregar</button></th>';
+                        echo '<th><button class="botonDesechar">Quitar</button></th>';
+                        echo '</tr>';
+                        $menu_array[] = $menu;
+                     }
                     }
                 ?>
             </tbody>

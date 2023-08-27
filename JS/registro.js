@@ -9,8 +9,8 @@ var botonId = document.getElementById("botonAlerta")
 
 const expresionesRegulares = {
   email : /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
-  nombre : /^[a-zA-ZÀ-ÿ\s]{2,40}$/, // Letras y espacios con acentos.
-  apellido : /^[a-zA-ZÀ-ÿ\s]{2,40}$/, //letras y espacion con acentos
+  nombre : /^[a-zA-ZÀ-ÿ\s]{2,15}$/, // Letras y espacios con acentos.
+  apellido : /^[a-zA-ZÀ-ÿ\s]{2,15}$/, //letras y espacion con acentos
   ci : /^\d{8}(\.\d+)?$/, // 8 digitos
   password : /^.{6,17}$/, // 6 a 17 digitos.
   telefono : /^09\d{7}$/, // 9 numeros.

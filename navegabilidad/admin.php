@@ -12,18 +12,39 @@ if(!isset($_SESSION['admin'])){
     session_destroy();
     die();
 }
-?>
 
+require '../config/conexion.php';
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Administrador | NutriBento</title>
+    <link rel="stylesheet" href="../CSS/admin.css" />
 </head>
 <body>
-    <h1>ADMINISTRADOR</h1>
-    <a href="cerrar_session.php">Cerrar Session</a>
+
+    <!-- Header -->
+    <header>
+        <h1>Bienvenido Administrador</h1>
+        <a class="cerrarSesion" href="cerrar_session.php">Cerrar sesion</a>
+    </header>
+    
+    <br>
+
+    <!-- Opciones -->
+
+    <h2>Que funcionalidad va a utilizar?</h2>
+    <h2><a href="adminPedidos.php">Control de pedidos</a></h2>
+    <h2> <a href="adminClientes.php">Visualizar clientes</a></h2>
+
+    <footer>
+    <section>
+      <h3>Administrador</h3>
+    </section>
+    </footer>
 </body>
 </html>

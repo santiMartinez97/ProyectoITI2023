@@ -14,38 +14,36 @@ formulario.addEventListener("submit", function (e) {
     })
     .then(function (data) {
       switch (data) {
-        case "cliente":
+        case "webPrueba@gmail.com":
           location.href = "index.php";
           break;
 
-        case "admin":
+        case "empresaPrueba@gmail.com":
+          location.href = "index.php";
+          break;
+
+        case "admin@sisviansa.com":
           location.href = "navegabilidad/admin.php";
           break;
 
-        case "gerente":
+        case "gerentePrueba@sisviansa.com":
           location.href = "navegabilidad/gerente.php";
           break;
 
-        case "informatico":
+        case "inforPrueba@sisviansa.com":
           location.href = "navegabilidad/informatico.php";
           break;
 
-        case "jefeCocina":
+        case "cocinaJefe@sisviansa.com":
           location.href = "navegabilidad/jefeCocina.php";
           break;
 
-        case "atencionPublico":
+        case "atencion@sisviansa.com":
           location.href = "navegabilidad/atencionPublico.php";
           break;
-
-        case "No habilitado":
-          document.getElementById("loginForm").reset();
-          alert("El usuario no se encuentra habilitado.");
-          break;
-
-        default:
-          document.getElementById("loginForm").reset();
-          alert("Usuario y/o Contraseñas incorrectos.");
+          default:
+            document.getElementById("loginForm").reset();
+            alert("Usuario y/o Contraseñas incorrectos");
       }
 
     })

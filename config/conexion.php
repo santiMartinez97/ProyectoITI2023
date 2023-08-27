@@ -3,7 +3,7 @@
 class Database
 {
     private $hostname = "localhost";
-    private $database = "sisviansanew";
+    private $database = "sisviansa";
     private $username = "root";
     private $password = "";
     private $charset = "utf8";
@@ -11,9 +11,9 @@ class Database
     public function conectar()
     {
         try {
-            $conexion = "mysql:host=" . $this->hostname . ";dbname=" . $this->database .
-                ";charset=" . $this->charset;
-
+            $conexion = "mysql:host=" . $this->hostname . ";dbname=" . $this->database . 
+            ";charset=" . $this->charset;
+            
             $options = [
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
                 PDO::ATTR_EMULATE_PREPARES => false

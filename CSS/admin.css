@@ -24,9 +24,6 @@ h2 {
     font-size: 20px;
 }
 
-.h2tit{
-    color: orange;
-}
 .pedidos {
     max-width: 900px; 
     margin: 0 auto; 
@@ -74,6 +71,24 @@ table th,table td {
     background-color: #ff8e04; 
 }
 
+.botonModificar {
+    background-color: #3543dc;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.botonModificar:hover {
+    background-color: orange; 
+}
+
+.botonModificar:active {
+    background-color: #ff8e04; 
+}
+
 .botonDesechar {
     background-color: #dc3545;
     color: #fff;
@@ -92,10 +107,6 @@ table th,table td {
     background-color: #ff8e04; 
 }
 
-.current-day {
-    color: orange;
-}
-
 a {
     text-align: right;
     color: black;
@@ -106,14 +117,13 @@ a:hover {
     text-decoration: underline; 
 }
 
- .camino{
+.camino{
     color: grey;
 }
 
 .cerrarSesion{
     color: white;
 }
-
 footer {
     text-align: center;
     background-color: rgb(56, 56, 56);

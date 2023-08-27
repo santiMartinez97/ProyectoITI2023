@@ -119,7 +119,10 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
  }
 
- 
+.agregarCarro:hover{
+  color: orange;
+  background-color: orange;
+} 
 
 .form-select-container {
     text-align: center; /* Centrar horizontalmente */

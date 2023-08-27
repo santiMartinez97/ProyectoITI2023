@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 require '../config/config.php';
 
@@ -15,14 +15,16 @@ if (isset($_POST['id']) && isset($_POST['token'])) {
             $_SESSION['carrito']['productos'][$id] = 1;
         }
         $datos['numero'] = count($_SESSION['carrito']['productos']);
-        $datos['ok'] = true; // Actualizamos 'ok' a verdadero si todo es exitoso
-    } else {
+        $datos['ok'] = true;  // Actualizamos 'ok' a verdadero si todo es exitoso
+    }else{
         $datos['ok'] = false;
     }
-} else {
+}else{
     $datos['ok'] = false;
 }
 
 echo json_encode($datos);
 
 ?>
+
+
