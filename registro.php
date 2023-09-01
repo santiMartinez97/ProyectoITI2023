@@ -1,5 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+
+require 'config/config.php';
+require 'config/conexion.php';
+
+$db = new DataBase();
+$con = $db->conectar();
+
+$dieta = $con->prepare("SELECT * FROM dieta ");
+$dieta-> execute();
+$resultado = $dieta->fetchAll(PDO::FETCH_ASSOC);
+
+?>
+
+<!DOCTYPE php>
+<php lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -135,10 +149,18 @@
                 <article class="col-6 grupo">
                   <select id="dieta" name="dieta" class="formulario__input form-select gray-text" aria-label="Preferencia de Dieta" >
                     <option value="" disabled selected>Dieta</option>
-                    <option value="omnivoro">Omnívoro</option>
-                    <option value="vegetariano">Vegetariano</option>
-                    <option value="vegano">Vegano</option>
-                    <option value="paleo">Paleo</option>
+                    <?php
+            $diets_added = []; // Array para almacenar las dietas agregadas
+            foreach ($resultado as $row) {
+                $dieta = $row['Tipo'];
+                $id = $row['ID'];
+                // Verifica si la dieta ya ha sido agregada al menú
+                if (!in_array($dieta, $diets_added)) {
+                    echo '<option value="' . $id . '" >' . $dieta . '</option>';
+                    $diets_added[] = $dieta; // Agrega la dieta al array de dietas agregadas
+                }
+            }
+            ?>
                   </select>
                 </article>
 
@@ -178,6 +200,8 @@
                       <p class="grupo_input-error">Ingrese un barrio valido</p>
                 </article>
 
+                <br>
+                
                 <article class="col-12 text-center" >
                   <button class="btn btn-primary " id="enviar"  type="submit" >Enviar</button> 
                 
@@ -195,7 +219,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
-
   
     </body>
-</html>
+</php>

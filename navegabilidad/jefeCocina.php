@@ -71,6 +71,8 @@ $pedidos_array=[];
     
     <?php
       // Obtener el mes y el año actual
+
+      data_time_set('America/montevideo');
       $mes_actual = date("n");
       $anio_actual = date("Y");
       $dia_actual = date("j");
