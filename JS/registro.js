@@ -98,6 +98,8 @@ if (validacionCampos.nombre && validacionCampos.apellido && validacionCampos.ci 
     method: "POST",
     body: datos,
   
+  }).then(function(res){
+    console.log(res.text());
   });
   
   formulario.reset();

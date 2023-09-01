@@ -1,5 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+
+require 'config/config.php';
+require 'config/conexion.php';
+
+$db = new DataBase();
+$con = $db->conectar();
+
+$dieta = $con->prepare("SELECT * FROM dieta ");
+$dieta-> execute();
+$resultado = $dieta->fetchAll(PDO::FETCH_ASSOC);
+
+?>
+
+<!DOCTYPE php>
+<php lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -135,10 +149,19 @@
                 <article class="col-6 grupo">
                   <select id="dieta" name="dieta" class="formulario__input form-select gray-text" aria-label="Preferencia de Dieta" >
                     <option value="" disabled selected>Dieta</option>
-                    <option value="omnivoro">Omnívoro</option>
-                    <option value="vegetariano">Vegetariano</option>
-                    <option value="vegano">Vegano</option>
-                    <option value="paleo">Paleo</option>
+                    <?php
+            $diets_added = []; // Array para almacenar las dietas agregadas
+
+            foreach ($resultado as $row) {
+                $dieta = $row['Tipo'];
+                $id = $row['ID'];
+                // Verifica si la dieta ya ha sido agregada al menú
+                if (!in_array($dieta, $diets_added)) {
+                    echo '<option value="' . $id . '" >' . $dieta . '</option>';
+                    $diets_added[] = $dieta; // Agrega la dieta al array de dietas agregadas
+                }
+            }
+            ?>
                   </select>
                 </article>
 
@@ -198,4 +221,4 @@
 
   
     </body>
-</html>
+</php>
