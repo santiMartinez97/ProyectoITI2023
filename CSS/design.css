@@ -234,6 +234,10 @@ body {
   /* Otros estilos de tu elección */
 }
 
+#errorRepeticion {
+  padding-top: 20px;
+}
+
 .alert .fa-solid {
   padding-right: 3px;
 }

@@ -1,19 +1,5 @@
-<?php
-
-require 'config/config.php';
-require 'config/conexion.php';
-
-$db = new DataBase();
-$con = $db->conectar();
-
-$dieta = $con->prepare("SELECT * FROM dieta ");
-$dieta-> execute();
-$resultado = $dieta->fetchAll(PDO::FETCH_ASSOC);
-
-?>
-
-<!DOCTYPE php>
-<php lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -140,28 +126,15 @@ $resultado = $dieta->fetchAll(PDO::FETCH_ASSOC);
                 <article class="col-6 grupo" id="grupo__telefono">
                   
                     <article class="grupo__input">
-                    <input type="number" name="telefono" id="telefono" class="formulario__input form-control"  placeholder="Telefono">
+                    <input type="number" name="telefono" id="telefono" class="formulario__input form-control"  placeholder="Teléfono">
                     </article>
-                      <p class="grupo_input-error">Ingrese su numero de telefono </p> 
+                      <p class="grupo_input-error">Ingrese su número de teléfono </p> 
                 </article>
                   
                 <!-- Grupo Seleccion de Dieta -->
                 <article class="col-6 grupo">
                   <select id="dieta" name="dieta" class="formulario__input form-select gray-text" aria-label="Preferencia de Dieta" >
-                    <option value="" disabled selected>Dieta</option>
-                    <?php
-            $diets_added = []; // Array para almacenar las dietas agregadas
-
-            foreach ($resultado as $row) {
-                $dieta = $row['Tipo'];
-                $id = $row['ID'];
-                // Verifica si la dieta ya ha sido agregada al menú
-                if (!in_array($dieta, $diets_added)) {
-                    echo '<option value="' . $id . '" >' . $dieta . '</option>';
-                    $diets_added[] = $dieta; // Agrega la dieta al array de dietas agregadas
-                }
-            }
-            ?>
+                    <option value="0" disabled selected>Dieta</option>
                   </select>
                 </article>
 
@@ -178,7 +151,7 @@ $resultado = $dieta->fetchAll(PDO::FETCH_ASSOC);
                 <article class="col-5 grupo" id="grupo__numero">
                   
                     <article class="grupo__input">
-                    <input type="number" name="numero" id="numero" class="formulario__input form-control" placeholder="Numero">
+                    <input type="number" name="numero" id="numero" class="formulario__input form-control" placeholder="Número">
                     </article>
                       <p class="grupo_input-error">N° de puerta invalido</p>
                 </article>
@@ -204,7 +177,8 @@ $resultado = $dieta->fetchAll(PDO::FETCH_ASSOC);
                 <article class="col-12 text-center" >
                   <button class="btn btn-primary " id="enviar"  type="submit" >Enviar</button> 
                 
-                  <p id="botonAlerta" class="grupo_input-error col-11 text-center">Complete correctamente los campos porfavor</p>
+                  <p id="botonAlerta" class="grupo_input-error col-11 text-center">Complete correctamente los campos por favor</p>
+                  <p id="errorRepeticion" class="grupo_input-error col-11 text-center"></p>
                 </article>       
         </article>
            </form>
@@ -218,7 +192,8 @@ $resultado = $dieta->fetchAll(PDO::FETCH_ASSOC);
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
-
+    <script src="JS/jquery-3.6.4.min.js"></script>
+    <script src="JS/mostrarDietas.js"></script>
   
     </body>
-</php>
+</html>

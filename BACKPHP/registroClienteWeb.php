@@ -17,19 +17,23 @@ $numero= $_POST['numero'];
 $esquina= $_POST['esquina'];
 $barrio= $_POST['barrio'];
 $menu = $_POST['dieta'];
+ob_clean(); //Limpio advertencia por posible null en dieta
 
+//Buscamos si el email está repetido
 $cuentas = $con->prepare("SELECT Email from usuario WHERE Email = :email UNION SELECT Email from cliente WHERE Email = :emaill ORDER BY 1");
 $cuentas->bindParam(':email', $email, PDO::PARAM_STR);
 $cuentas->bindParam(':emaill', $email, PDO::PARAM_STR);
 $cuentas->execute();
 $resultadoEmail = $cuentas->fetch(PDO::FETCH_ASSOC);
 
+//Buscamos si la cedula está repetida
 $cedulas = $con->prepare("SELECT CI from clientecomun WHERE CI = :ci");
 $cedulas->bindParam(':ci', $ci, PDO::PARAM_STR);
 $cedulas->execute();
 $resultadoCi = $cedulas->fetch(PDO::FETCH_ASSOC);
 
 if(!$resultadoEmail && !$resultadoCi){
+    //Obtenemos el tipo de dieta
     $dieta = $con->prepare("SELECT Tipo FROM dieta WHERE ID = :dietaid");
     $dieta->bindParam(':dietaid', $menu, PDO::PARAM_STR);
     $dieta->execute();
@@ -65,8 +69,14 @@ if(!$resultadoEmail && !$resultadoCi){
     $insertarTelefono= $con->prepare("INSERT INTO clientetelefono VALUES ($IDcliente, :telefono)");
     $insertarTelefono->bindParam(':telefono', $telefono, PDO::PARAM_STR);
     $insertarTelefono->execute();
+
+    echo json_encode("Completado");
+}else if($resultadoEmail && $resultadoCi){
+    echo json_encode("Email y cedula repetidos");
+}else if($resultadoEmail){
+    echo json_encode("Email repetido");
 }else{
-    echo json_encode("El email o cédula ya está en uso.");
+    echo json_encode("Cedula repetida");
 }
 
 }
