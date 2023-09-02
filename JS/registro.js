@@ -367,6 +367,7 @@ function web_empresa() {
     var datos = new FormData(formulario); 
       let url = 'BACKPHP/registroClienteWeb.php';
       botonId.classList.remove("grupo_input-error-activo");
+      errorRepeticion.classList.remove("grupo_input-error-activo");
     fetch(url, {
       method: "POST",
       body: datos,
@@ -518,7 +519,8 @@ function web_empresa() {
     <article class="col-12 text-center" >
     <br>
       <button class="btn btn-primary " id="enviar"  type="submit" >Enviar</button> 
-      <p id="botonAlerta" class="grupo_input-error">Complete bien los campos por favor</p>
+      <p id="botonAlerta" class="grupo_input-error col-11 text-center">Complete bien los campos por favor</p>
+      <p id="errorRepeticion" class="grupo_input-error col-11 text-center"></p>
     </article>       
 </article>
 
@@ -529,7 +531,8 @@ function web_empresa() {
 //formularioEmpresa
 var formulario = document.getElementById("formularioEmpresa");
 const inputs = document.querySelectorAll('#formularioEmpresa input');
-var botonId = document.getElementById("botonAlerta")
+var botonId = document.getElementById("botonAlerta");
+var errorRepeticion = document.getElementById("errorRepeticion");
 
 const expresionesRegulares = {
   email : /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
@@ -612,16 +615,56 @@ formulario.addEventListener('submit', (e) => {
   e.preventDefault(); // Evitar que se ejecute lo que viene por defecto en el navegador.
 if (validacionCampos.rut && validacionCampos.empresa && validacionCampos.email && validacionCampos.telefono && validacionCampos.password && validacionCampos.calle && validacionCampos.numero && validacionCampos.esquina && validacionCampos.barrio){
   var datos = new FormData(formulario); 
-    let url = 'BACKPHP/registroClienteWeb.php';
+    let url = 'BACKPHP/registroClienteEmpresa.php';
     botonId.classList.remove("grupo_input-error-activo");
+    errorRepeticion.classList.remove("grupo_input-error-activo");
   fetch(url, {
     method: "POST",
     body: datos,
-  
+  }).then(function(res){
+    return res.json();
+  }).then(function(data){
+    switch(data){
+      case "Email y RUT repetidos":
+        document.getElementById(`grupo__email`).classList.remove("grupo__correcto");
+        document.getElementById(`grupo__email`).classList.add("grupo__error");
+        document.querySelector(`#grupo__email .grupo_input-error`).classList.add('grupo_input-error-activo');
+        validacionCampos["email"] = false;
+
+        document.getElementById(`grupo__rut`).classList.remove("grupo__correcto");
+        document.getElementById(`grupo__rut`).classList.add("grupo__error");
+        document.querySelector(`#grupo__rut .grupo_input-error`).classList.add('grupo_input-error-activo');
+        validacionCampos["rut"] = false;
+
+        errorRepeticion.innerText = "El email y el RUT ingresado ya están en uso."
+        errorRepeticion.classList.add("grupo_input-error-activo");
+        break;
+      
+      case "Email repetido":
+        document.getElementById(`grupo__email`).classList.remove("grupo__correcto");
+        document.getElementById(`grupo__email`).classList.add("grupo__error");
+        document.querySelector(`#grupo__email .grupo_input-error`).classList.add('grupo_input-error-activo');
+        validacionCampos["email"] = false;
+
+        errorRepeticion.innerText = "El email ingresado ya está en uso."
+        errorRepeticion.classList.add("grupo_input-error-activo");
+        break;
+
+      case "RUT repetido":
+        document.getElementById(`grupo__rut`).classList.remove("grupo__correcto");
+        document.getElementById(`grupo__rut`).classList.add("grupo__error");
+        document.querySelector(`#grupo__rut .grupo_input-error`).classList.add('grupo_input-error-activo');
+        validacionCampos["rut"] = false;
+
+        errorRepeticion.innerText = "El RUT ingresado ya está en uso."
+        errorRepeticion.classList.add("grupo_input-error-activo");
+        break;
+        
+      default:
+        formulario.reset();
+        alerta();
+    }
   });
-  
-  formulario.reset();
-  alerta();
 }
 else {
   botonId.classList.add("grupo_input-error-activo");

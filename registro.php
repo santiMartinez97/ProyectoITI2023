@@ -1,3 +1,15 @@
+<?php
+// Si ya hay una sesión activa, redirecciona al index.
+session_start();
+
+// Verificar si hay una sesión activa
+if (isset($_SESSION['nombre'])) {
+    // Redirigir a index.html si hay una sesión activa
+    header("Location: index.php");
+    exit; // Salir del script después de la redirección
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
