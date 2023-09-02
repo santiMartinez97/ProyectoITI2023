@@ -13,22 +13,6 @@ if(!isset($_SESSION['gerente'])){
     die();
 }
 require '../config/conexion.php';
-
-$db = new DataBase();
-$con = $db->conectar();
-
-$per = $con->prepare("SELECT Periodicidad FROM menu");
-$per -> execute();
-$resultado = $per->fetchAll(PDO::FETCH_ASSOC);
-
-$per_array=[];
-
-
-$hab = $con->prepare("SELECT Habilitacion FROM menu");
-$hab -> execute();
-$resultado2 = $hab->fetchAll(PDO::FETCH_ASSOC);
-
-$hab_array=[];
 ?>
 
 <!DOCTYPE html>
@@ -42,22 +26,16 @@ $hab_array=[];
   
   <h1>Gerente</h1>
   
-<form action="subirMenu.php" method="post">
+<form   id=FrnINS  action="../persistencia/altaMenu.php" method="post">
     
   <H2>Formulario de menues:</H2>
   
-<label>Periocidad</label>
-<select id="periocidad" name="periocidad" >
-    <option value="" disabled selected>Periodicidad</option>
-        <?php
-         foreach ($resultado as $row) {
-            $peri = $row['Periodicidad'];
-            if (!in_array($per, $per_array)) {
-              echo '<option value="'.$peri.'" >'.$peri.'</option>';
-          }
-        }
-        ?>
-           </select>
+  <label for="periodicidad">Periodicidad:</label>
+<select id="periodicidad" name="periodicidad">
+<option value="semana">Semanal</option>
+<option value="quincenal">Quincenal</option>
+    <option value="mensual">Mensual</option>
+</select>
 <br>
   
   <label>Ingrese nombre de el menu:
@@ -66,18 +44,11 @@ $hab_array=[];
 
 <br>
 
-<label>Habilitacion</label>
-<select id="habilitacion" name="habilitacion" >
-    <option value="" disabled selected>Habilitacion</option>
-        <?php
-          foreach ($resultado2 as $row) {
-            $habilitacion = $row['Habilitacion'];
-            if (!in_array($hab, $hab_array)) {
-              echo '<option value="'.$habilitacion.'" >' . $habilitacion . '</option>';
-            }
-          }
-            ?>
-           </select>
+<label for="habilitacion">Estado de habilitación:</label>
+<select id="habilitacion" name="habilitacion">
+    <option value="Habilitado">Habilitado</option>
+    <option value="No habilitado">No habilitado</option>
+</select>
 <br>
 
   <label>Ingrese precio de el menu:
