@@ -5,7 +5,8 @@ var respues = document.getElementById("respuesta");
 //datos ingresados del html cliente web
 const inputs = document.querySelectorAll('#formulario input');
 
-var botonId = document.getElementById("botonAlerta")
+var botonId = document.getElementById("botonAlerta");
+var errorRepeticion = document.getElementById("errorRepeticion");
 
 const expresionesRegulares = {
   email : /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
@@ -94,16 +95,55 @@ if (validacionCampos.nombre && validacionCampos.apellido && validacionCampos.ci 
   var datos = new FormData(formulario); 
     let url = 'BACKPHP/registroClienteWeb.php';
     botonId.classList.remove("grupo_input-error-activo");
+    errorRepeticion.classList.remove("grupo_input-error-activo");
   fetch(url, {
     method: "POST",
     body: datos,
   
   }).then(function(res){
-    console.log(res.text());
+    return res.json();
+  }).then(function(data){
+    switch(data){
+      case "Email y cedula repetidos":
+        document.getElementById(`grupo__email`).classList.remove("grupo__correcto");
+        document.getElementById(`grupo__email`).classList.add("grupo__error");
+        document.querySelector(`#grupo__email .grupo_input-error`).classList.add('grupo_input-error-activo');
+        validacionCampos["email"] = false;
+
+        document.getElementById(`grupo__ci`).classList.remove("grupo__correcto");
+        document.getElementById(`grupo__ci`).classList.add("grupo__error");
+        document.querySelector(`#grupo__ci .grupo_input-error`).classList.add('grupo_input-error-activo');
+        validacionCampos["ci"] = false;
+
+        errorRepeticion.innerText = "El email y la cédula ingresada ya están en uso."
+        errorRepeticion.classList.add("grupo_input-error-activo");
+        break;
+      
+      case "Email repetido":
+        document.getElementById(`grupo__email`).classList.remove("grupo__correcto");
+        document.getElementById(`grupo__email`).classList.add("grupo__error");
+        document.querySelector(`#grupo__email .grupo_input-error`).classList.add('grupo_input-error-activo');
+        validacionCampos["email"] = false;
+
+        errorRepeticion.innerText = "El email ingresado ya está en uso."
+        errorRepeticion.classList.add("grupo_input-error-activo");
+        break;
+
+      case "Cedula repetida":
+        document.getElementById(`grupo__ci`).classList.remove("grupo__correcto");
+        document.getElementById(`grupo__ci`).classList.add("grupo__error");
+        document.querySelector(`#grupo__ci .grupo_input-error`).classList.add('grupo_input-error-activo');
+        validacionCampos["ci"] = false;
+
+        errorRepeticion.innerText = "La cédula ingresada ya está en uso."
+        errorRepeticion.classList.add("grupo_input-error-activo");
+        break;
+
+      default:
+        formulario.reset();
+        alerta();
+    }
   });
-  
-  formulario.reset();
-  alerta();
 }
 else {
   botonId.classList.add("grupo_input-error-activo");
@@ -112,7 +152,7 @@ else {
 
 function alerta(){
 
-swal('¡Formulario enviado exitosamente!', 'Se le notificara por correo electronico si cumple los requisitos para poder registrarse. Muchas gracias por querer ser parte de SISVIANSA ', 'success');
+swal('¡Formulario enviado exitosamente!', 'Se le notificará por correo electrónico si cumple los requisitos para poder registrarse. Muchas gracias por querer ser parte de SISVIANSA ', 'success');
 
 }
 
@@ -184,11 +224,7 @@ function web_empresa() {
                 <!-- Grupo Seleccion de Dieta -->
                 <article class="col-6 grupo">
                   <select id="dieta" name="dieta" class="form-select gray-text" aria-label="Preferencia de Dieta" required>
-                    <option value="" disabled selected>Dieta</option>
-                    <option value="omnivoro">Omnívoro</option>
-                    <option value="vegetariano">Vegetariano</option>
-                    <option value="vegano">Vegano</option>
-                    <option value="paleo">Paleo</option>
+                    <option value="0" disabled selected>Dieta</option>
                   </select>
                 </article>
 
@@ -216,7 +252,7 @@ function web_empresa() {
                     <article id="grupo__input">
                     <input type="text" name="esquina" id="esquina" class="formulario__input form-control" placeholder="Esquina">
                     </article>
-                      <p class="grupo_input-error">Ingrese una esquina valida</p>        
+                      <p class="grupo_input-error">Ingrese una esquina válida</p>        
                 </article>
                 
                  <!-- Grupo barrio -->
@@ -225,20 +261,24 @@ function web_empresa() {
                     <article  class="grupo__input">
                       <input type="text" name="barrio" id="barrio" class="formulario__input form-control" placeholder="Barrio"> 
                     </article> 
-                      <p class="grupo_input-error">Ingrese un barrio valido</p>
+                      <p class="grupo_input-error">Ingrese un barrio válido</p>
                 </article>
 
                 <article class="col-12 text-center" >
                   <br>
                   <button class="btn btn-primary " id="enviar"  type="submit" >Enviar</button> 
-                  <p id="botonAlerta" class="grupo_input-error">Complete bien los campos porfavor</p>
+                  <p id="botonAlerta" class="grupo_input-error col-11 text-center">Complete bien los campos por favor</p>
+                  <p id="errorRepeticion" class="grupo_input-error col-11 text-center"></p>
                 </article>       
         </article>
         </form>
         `;
       
+  //formulario
+  var formulario = document.getElementById("formularioWeb");
   const inputs = document.querySelectorAll('#formularioWeb input');
-  var botonId = document.getElementById("botonAlerta")
+  var botonId = document.getElementById("botonAlerta");
+  var errorRepeticion = document.getElementById("errorRepeticion");
         
   const expresionesRegulares = {
     email : /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
@@ -327,14 +367,55 @@ function web_empresa() {
     var datos = new FormData(formulario); 
       let url = 'BACKPHP/registroClienteWeb.php';
       botonId.classList.remove("grupo_input-error-activo");
+      errorRepeticion.classList.remove("grupo_input-error-activo");
     fetch(url, {
       method: "POST",
       body: datos,
     
-    });
-    
-    formulario.reset();
-    alerta();
+    }).then(function(res){
+    return res.json();
+  }).then(function(data){
+    switch(data){
+      case "Email y cedula repetidos":
+        document.getElementById(`grupo__email`).classList.remove("grupo__correcto");
+        document.getElementById(`grupo__email`).classList.add("grupo__error");
+        document.querySelector(`#grupo__email .grupo_input-error`).classList.add('grupo_input-error-activo');
+        validacionCampos["email"] = false;
+
+        document.getElementById(`grupo__ci`).classList.remove("grupo__correcto");
+        document.getElementById(`grupo__ci`).classList.add("grupo__error");
+        document.querySelector(`#grupo__ci .grupo_input-error`).classList.add('grupo_input-error-activo');
+        validacionCampos["ci"] = false;
+
+        errorRepeticion.innerText = "El email y la cédula ingresada ya están en uso."
+        errorRepeticion.classList.add("grupo_input-error-activo");
+        break;
+      
+      case "Email repetido":
+        document.getElementById(`grupo__email`).classList.remove("grupo__correcto");
+        document.getElementById(`grupo__email`).classList.add("grupo__error");
+        document.querySelector(`#grupo__email .grupo_input-error`).classList.add('grupo_input-error-activo');
+        validacionCampos["email"] = false;
+
+        errorRepeticion.innerText = "El email ingresado ya está en uso."
+        errorRepeticion.classList.add("grupo_input-error-activo");
+        break;
+
+      case "Cedula repetida":
+        document.getElementById(`grupo__ci`).classList.remove("grupo__correcto");
+        document.getElementById(`grupo__ci`).classList.add("grupo__error");
+        document.querySelector(`#grupo__ci .grupo_input-error`).classList.add('grupo_input-error-activo');
+        validacionCampos["ci"] = false;
+
+        errorRepeticion.innerText = "La cédula ingresada ya está en uso."
+        errorRepeticion.classList.add("grupo_input-error-activo");
+        break;
+        
+      default:
+        formulario.reset();
+        alerta();
+    }
+  });
   }
   else {
     botonId.classList.add("grupo_input-error-activo");
@@ -384,13 +465,20 @@ function web_empresa() {
     </article>
     
      <!-- Grupo telefono -->
-    <article class="col-8 grupo" id="grupo__telefono">
+    <article class="col-6 grupo" id="grupo__telefono">
         
         <article class="grupo__input">
         <input type="number" name="telefono" id="telefono" class="formulario__input form-control"  placeholder="Telefono">
         </article>
           <p class="grupo_input-error">Ingrese su numero de telefono </p> 
     </article>
+
+    <!-- Grupo Seleccion de Dieta -->
+                <article class="col-6 grupo">
+                  <select id="dieta" name="dieta" class="form-select gray-text" aria-label="Preferencia de Dieta" required>
+                    <option value="0" disabled selected>Dieta</option>
+                  </select>
+                </article>
     
      <!-- Grupo calle -->
     <article class="col-7 grupo" id="grupo__calle">
@@ -416,7 +504,7 @@ function web_empresa() {
         <article id="grupo__input">
         <input type="text" name="esquina" id="esquina" class="formulario__input form-control" placeholder="Esquina">
         </article>
-          <p class="grupo_input-error">Ingrese una esquina valida</p>        
+          <p class="grupo_input-error">Ingrese una esquina válida</p>        
     </article>
     
      <!-- Grupo barrio -->
@@ -425,13 +513,14 @@ function web_empresa() {
         <article  class="grupo__input">
           <input type="text" name="barrio" id="barrio" class="formulario__input form-control" placeholder="Barrio"> 
         </article> 
-          <p class="grupo_input-error">Ingrese un barrio valido</p>
+          <p class="grupo_input-error">Ingrese un barrio válido</p>
     </article>
 
     <article class="col-12 text-center" >
     <br>
       <button class="btn btn-primary " id="enviar"  type="submit" >Enviar</button> 
-      <p id="botonAlerta" class="grupo_input-error">Complete bien los campos porfavor</p>
+      <p id="botonAlerta" class="grupo_input-error col-11 text-center">Complete bien los campos por favor</p>
+      <p id="errorRepeticion" class="grupo_input-error col-11 text-center"></p>
     </article>       
 </article>
 
@@ -442,7 +531,8 @@ function web_empresa() {
 //formularioEmpresa
 var formulario = document.getElementById("formularioEmpresa");
 const inputs = document.querySelectorAll('#formularioEmpresa input');
-var botonId = document.getElementById("botonAlerta")
+var botonId = document.getElementById("botonAlerta");
+var errorRepeticion = document.getElementById("errorRepeticion");
 
 const expresionesRegulares = {
   email : /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
@@ -525,16 +615,56 @@ formulario.addEventListener('submit', (e) => {
   e.preventDefault(); // Evitar que se ejecute lo que viene por defecto en el navegador.
 if (validacionCampos.rut && validacionCampos.empresa && validacionCampos.email && validacionCampos.telefono && validacionCampos.password && validacionCampos.calle && validacionCampos.numero && validacionCampos.esquina && validacionCampos.barrio){
   var datos = new FormData(formulario); 
-    let url = 'BACKPHP/registroClienteWeb.php';
+    let url = 'BACKPHP/registroClienteEmpresa.php';
     botonId.classList.remove("grupo_input-error-activo");
+    errorRepeticion.classList.remove("grupo_input-error-activo");
   fetch(url, {
     method: "POST",
     body: datos,
-  
+  }).then(function(res){
+    return res.json();
+  }).then(function(data){
+    switch(data){
+      case "Email y RUT repetidos":
+        document.getElementById(`grupo__email`).classList.remove("grupo__correcto");
+        document.getElementById(`grupo__email`).classList.add("grupo__error");
+        document.querySelector(`#grupo__email .grupo_input-error`).classList.add('grupo_input-error-activo');
+        validacionCampos["email"] = false;
+
+        document.getElementById(`grupo__rut`).classList.remove("grupo__correcto");
+        document.getElementById(`grupo__rut`).classList.add("grupo__error");
+        document.querySelector(`#grupo__rut .grupo_input-error`).classList.add('grupo_input-error-activo');
+        validacionCampos["rut"] = false;
+
+        errorRepeticion.innerText = "El email y el RUT ingresado ya están en uso."
+        errorRepeticion.classList.add("grupo_input-error-activo");
+        break;
+      
+      case "Email repetido":
+        document.getElementById(`grupo__email`).classList.remove("grupo__correcto");
+        document.getElementById(`grupo__email`).classList.add("grupo__error");
+        document.querySelector(`#grupo__email .grupo_input-error`).classList.add('grupo_input-error-activo');
+        validacionCampos["email"] = false;
+
+        errorRepeticion.innerText = "El email ingresado ya está en uso."
+        errorRepeticion.classList.add("grupo_input-error-activo");
+        break;
+
+      case "RUT repetido":
+        document.getElementById(`grupo__rut`).classList.remove("grupo__correcto");
+        document.getElementById(`grupo__rut`).classList.add("grupo__error");
+        document.querySelector(`#grupo__rut .grupo_input-error`).classList.add('grupo_input-error-activo');
+        validacionCampos["rut"] = false;
+
+        errorRepeticion.innerText = "El RUT ingresado ya está en uso."
+        errorRepeticion.classList.add("grupo_input-error-activo");
+        break;
+        
+      default:
+        formulario.reset();
+        alerta();
+    }
   });
-  
-  formulario.reset();
-  alerta();
 }
 else {
   botonId.classList.add("grupo_input-error-activo");
