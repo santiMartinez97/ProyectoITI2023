@@ -25,7 +25,7 @@ h2 {
 }
 
 .pedidos {
-    max-width: 900px; 
+    max-width: 85%; 
     margin: 0 auto; 
     padding: 80px;
     border: 3px solid orange; 
@@ -33,7 +33,6 @@ h2 {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    height: 31vh; 
 }
 
 table {
@@ -52,6 +51,11 @@ table th,table td {
     color: orange;
 }
 
+button {
+    width: 120px;
+    height: 40px;
+  }
+
 .botonAceptar {
     background-color: #2ed14e;
     color: #fff;
@@ -68,6 +72,25 @@ table th,table td {
 }
 
 .botonAceptar:active {
+    background-color: #ff8e04; 
+}
+
+.botonRechazar {
+    background-color: #777777;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin-right: 10px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.botonRechazar:hover {
+    background-color: orange; 
+}
+
+.botonRechazar:active {
     background-color: #ff8e04; 
 }
 
@@ -130,3 +153,14 @@ footer {
     color: white;
     padding: 20px;
   } 
+
+.cajaSeleccion {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.seleccionClientes{
+    color: #ff8e04;
+}
+

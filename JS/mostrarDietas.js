@@ -14,7 +14,7 @@ $(document).ready(function() {
         });
     }
 
-    // Asigna la función al botón
+    // Asigna la función al selector de registro
     $('#tipo_usuario').on('change', function() {
         cargarLista();
     });

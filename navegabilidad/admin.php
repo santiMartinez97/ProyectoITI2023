@@ -4,7 +4,7 @@ session_start();
 if(!isset($_SESSION['admin'])){
     echo '
     <script>
-       alert("Por favor debes iniciar session");
+       alert("Por favor, debes iniciar sesión");
        window.location = "../index.php";
     </script>
 
@@ -30,14 +30,14 @@ require '../config/conexion.php';
     <!-- Header -->
     <header>
         <h1>Bienvenido Administrador</h1>
-        <a class="cerrarSesion" href="cerrar_session.php">Cerrar sesion</a>
+        <a class="cerrarSesion" href="cerrar_session.php">Cerrar sesión</a>
     </header>
     
     <br>
 
     <!-- Opciones -->
 
-    <h2>Que funcionalidad va a utilizar?</h2>
+    <h2>¿Qué funcionalidad va a utilizar?</h2>
     <h2><a href="adminPedidos.php">Control de pedidos</a></h2>
     <h2> <a href="adminClientes.php">Visualizar clientes</a></h2>
 
