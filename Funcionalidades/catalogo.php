@@ -148,6 +148,7 @@ echo  '<li class="nav-item dropdown">';
     <div class="styled-select" class="tipo_dieta">
         <select class="form-select custom-select" id="tipo_dieta" aria-label="Default select example" onchange="filtrarDieta(this.value)">
             <option value="" disabled selected>Selecciona una dieta</option>
+            <option value="todos">Todas las dietas</option>
             <?php
             $diets_added = []; // Array para almacenar las dietas agregadas
 
@@ -158,11 +159,14 @@ echo  '<li class="nav-item dropdown">';
                 if (!in_array($dieta, $diets_added)) {
                     echo '<option value="' . $id . '" >' . $dieta . '</option>';
                     $diets_added[] = $dieta; // Agrega la dieta al array de dietas agregadas
+      
                 }
             }
             ?>
           </select>
       </div>
+      <br>
+     
   </article>
 
 <article id="campos"> 

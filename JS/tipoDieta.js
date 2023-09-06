@@ -1,4 +1,10 @@
 function filtrarDieta(str) {
+  var select = document.getElementById('tipo_dieta');  
+  var selectedValue = select.value;
+  if (selectedValue === 'todos') {
+    // Si se selecciona "Mostrar Todo", recarga la página
+    location.reload();
+  }
     if (str == "") {
       return;
     } else {

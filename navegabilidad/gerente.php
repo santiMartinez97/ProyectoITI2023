@@ -27,17 +27,23 @@ require '../config/conexion.php';
   <h1>Gerente</h1>
   
 <form   id=FrnINS  action="../persistencia/altaMenu.php" method="post">
-    
+     <a href="gerenteBaja.php">Baja</a>
   <H2>Formulario de menues:</H2>
   
   <label for="periodicidad">Periodicidad:</label>
 <select id="periodicidad" name="periodicidad">
-<option value="semana">Semanal</option>
+<option value="semanal">Semanal</option>
 <option value="quincenal">Quincenal</option>
     <option value="mensual">Mensual</option>
 </select>
 <br>
-  
+
+<label>Ingrese el tipo de dieta:
+ <select id="dieta" name="dieta" class="formulario__input form-select gray-text" aria-label="Preferencia de Dieta" >
+     <option value="0" disabled selected>Dieta</option>
+    </select>
+    </article>
+  <br>
   <label>Ingrese nombre de el menu:
     <input type="text" name="menu" id="menu" placeholder="Nombre">
   </label>
@@ -92,9 +98,15 @@ require '../config/conexion.php';
   </label>
 <br>
 
-<button id="enviar"  type="submit" >Enviar</button> 
+<button id="enviar" type="submit" >Enviar</button> 
 </form>
 
 <a href="cerrar_session.php">Cerrar Session</a>
 </body>
+
+
+
+<script src="../JS/jquery-3.6.4.min.js"></script>
+    <script src="../JS/mostrarDietasGerente.js"></script>
+
 </html>
