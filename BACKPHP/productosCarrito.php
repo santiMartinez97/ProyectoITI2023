@@ -7,7 +7,6 @@ $db = new DataBase();
 $con = $db->conectar();
 
 // CREAR UNA CONSULTA PREPARADA
-print_r($_SESSION);
 $productos = isset($_SESSION['carrito']['productos']) ? $_SESSION['carrito']['productos'] : null;
 
 $lista_carrito = array();
