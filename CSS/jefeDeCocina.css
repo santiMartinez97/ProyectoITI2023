@@ -92,6 +92,26 @@ table th,table td {
     background-color: #ff8e04; 
 }
 
+
+.botonModificar {
+    background-color: #0b0bbb;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.botonModificar:hover {
+    background-color: orange; 
+}
+
+.botonModificar:active {
+    background-color: #ff8e04; 
+}
+
+
 .current-day {
     color: orange;
 }

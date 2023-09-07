@@ -10,15 +10,15 @@ var errorRepeticion = document.getElementById("errorRepeticion");
 
 const expresionesRegulares = {
   email : /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
-  nombre : /^[a-zA-ZÀ-ÿ\s]{2,15}$/, // Letras y espacios con acentos.
-  apellido : /^[a-zA-ZÀ-ÿ\s]{2,15}$/, //letras y espacion con acentos
+  nombre : /^[a-zA-Z]{2,15}$/, // Letras y espacios con acentos.
+  apellido : /^[a-zA-Z]{2,15}$/, //letras y espacion con acentos
   ci : /^\d{8}(\.\d+)?$/, // 8 digitos
   password : /^.{6,17}$/, // 6 a 17 digitos.
   telefono : /^09\d{7}$/, // 9 numeros.
-  calle : /^[a-zA-ZÀ-ÿ\s]{2,30}$/, //\d{2}
+  calle : /^[a-zA-Z0-9\s]{2,30}$/, //\d{2}
   numero : /^\d{3,4}(\.\d+)?$/, //numero casa
-  esquina : /^[a-zA-ZÀ-ÿ\s]{2,30}$/,
-  barrio : /^[a-zA-ZÀ-ÿ\s]{2,30}$/
+  esquina : /^[a-zA-Z0-9\s]{2,30}$/,
+  barrio : /^[a-zA-Z0-9\s]{2,30}$/
 }
 
 const validacionCampos = {

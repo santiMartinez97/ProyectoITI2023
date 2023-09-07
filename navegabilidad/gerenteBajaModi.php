@@ -18,19 +18,17 @@ $menu_array=[];
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jefe de cocina | NutriBento</title>
+    <title>GERENTE | NutriBento</title>
     <link rel="stylesheet" href="../CSS/jefeDeCocina.css" />
+    <link rel="stylesheet" type="text/css" href="../CSS/boostrap.css">
 </head>
 <body>
 
      <h1>Control de Menu</h1>
-
-       
         <a href="gerente.php">Alta</a>
         <a href="cerrar_session.php">Cerrar Session</a>
+<br><br>
 
-
-    <article class="pedidos">
     <table>
             <thead>
                 <tr>
@@ -61,7 +59,7 @@ $menu_array=[];
                         echo '<th >'.$Periocidad.'</th> ';
                         echo '<th >'.$menu.'</th> ';
                        
-                        echo '<th >'.$precio.'</th> ';
+                        echo '<th >$' .$precio.'</th> ';
                         echo '<th >'.$descuento.'</th> ';
                         echo '<th >'.$stockActual.'</th> ';    
                         echo '<th >'.$stockMinimo.'</th> ';    
@@ -72,14 +70,20 @@ $menu_array=[];
                             echo '<td data-client-status="false">'.$row['Habilitacion'].'</td>';
                             echo '<td><button class="botonAceptar habilitar-btn">Habilitar</button></td>';
                             echo '<td><button class="botonDesechar">Eliminar</button></td>';
+                            echo '<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editChildresn' . $row['ID'] . '">Modificar</button></td>';
+
+
                         }else{
                            echo '<td data-client-status="true">'.$row['Habilitacion'].'</td>';
                             echo '<td><button class="botonRechazar habilitar-btn">Deshabilitar</button></td>';
                             echo '<td><button class="botonDesechar">Eliminar</button></td>';
+                            echo '<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editChildresn' . $row['ID'] . '">Modificar</button></td>';
+                           
                         }
                         echo '</tr>';
                     
                      }
+                     include('ModalEditar.php'); 
                     }
                   
                     
@@ -90,4 +94,7 @@ $menu_array=[];
         </table>
         <script src="../JS/jquery-3.6.4.min.js"></script>
         <script src="../JS/adminGerente.js"></script>
+        <script src="../JS/popper.min.js"></script>
+        <script src="../JS/bootstrap.min.js"></script>        
+
         

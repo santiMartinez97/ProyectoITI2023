@@ -27,10 +27,10 @@ require '../config/conexion.php';
   <h1>Gerente</h1>
   
 <form   id=FrnINS  action="../persistencia/altaMenu.php" method="post">
-     <a href="gerenteBaja.php">Baja</a>
+     <a href="gerenteBajaModi.php">Baja</a>
   <H2>Formulario de menues:</H2>
   
-  <label for="periodicidad">Periodicidad:</label>
+<label for="periodicidad">Periodicidad:</label>
 <select id="periodicidad" name="periodicidad">
 <option value="semanal">Semanal</option>
 <option value="quincenal">Quincenal</option>

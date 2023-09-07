@@ -52,6 +52,7 @@ if(!isset($_SESSION['admin'])){
       <h3>Administrador</h3>
     </section>
     </footer>
+    
     <script src="../JS/jquery-3.6.4.min.js"></script>
     <script src="../JS/adminClientes.js"></script>
 </body>

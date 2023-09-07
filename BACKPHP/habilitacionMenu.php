@@ -20,6 +20,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Si la actualización se realiza con éxito, devuelve 'success'
     echo 'success';
+  
+
 } else {
     echo 'Error: Método no válido.';
 }
