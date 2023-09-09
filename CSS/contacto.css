@@ -1,7 +1,13 @@
-.icono1 {
-    width: 40px;
-    height: 40px;
-  }
+.icono1{
+  width: 40px;
+  height: 40px;
+  transition: transform 0.3s ease;
+}
+
+.icono1:hover{
+transform: scale(2);
+z-index: 2;
+}
   
   .navbar .nav-link {
     color: #080101;

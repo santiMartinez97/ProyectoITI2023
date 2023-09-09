@@ -19,6 +19,7 @@ $pedidos_array=[];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jefe de cocina | NutriBento</title>
+    <link rel="icon" href="../img/icono.png" />
     <link rel="stylesheet" href="../CSS/jefeDeCocina.css" />
 </head>
 <body>

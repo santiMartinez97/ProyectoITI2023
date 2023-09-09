@@ -131,10 +131,16 @@ body {
   font-weight: bold;
 }
 
-.icono1 {
+.icono1{
   width: 40px;
   height: 40px;
-} 
+  transition: transform 0.3s ease;
+}
+
+.icono1:hover{
+transform: scale(2);
+z-index: 2;
+}
 
 .grupo__correcto .formulario__input{
   border: solid 3px green;

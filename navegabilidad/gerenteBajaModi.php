@@ -18,7 +18,8 @@ $menu_array=[];
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GERENTE | NutriBento</title>
+    <title>Gerente | NutriBento</title>
+    <link rel="icon" href="../img/icono.png" />
     <link rel="stylesheet" href="../CSS/jefeDeCocina.css" />
     <link rel="stylesheet" type="text/css" href="../CSS/boostrap.css">
 </head>
