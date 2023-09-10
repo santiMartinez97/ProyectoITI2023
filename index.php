@@ -50,7 +50,7 @@ require 'config/config.php';
               <a class="nav-link" href="index.php"
                 ><i class="fa-solid fa-home"></i> Inicio</a  >
                 </li>
-              <a class="nav-link" href="#"
+              <a class="nav-link" href="BACKPHP/productosCarrito.php"
                 ><i class="fa-solid fa-cart-shopping"></i> 
                 Carrito <span id="num_cart" class="badge bg-secondary"><?php echo $num_cart;?></span>
                 </a
@@ -643,10 +643,12 @@ echo  '<li class="nav-item dropdown">';
       </section>
 
     <section class="zonas-disponibles text-center">
-      <p class="btn btn-orange disabled">Zonas Disponibles</p>
-      <br>
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3271.84403218136!2d-56.189107784762164!3d-34.910363380381206!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x959f81ceb54e547f%3A0x592102e53ece4546!2sInstituto%20Tecnologico%20de%20Inf%C3%B3rmatica!5e0!3m2!1ses-419!2suy!4v1667431425308!5m2!1ses-419!2suy" width="70%" height="70%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    </section>
+      
+      <br><br>
+          <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1FFZo3QKHcF3HrOnhi8VaWCPJy0aJu5I&ehbc=2E312F&noprof=1"  width="70%" height="80%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+         
+  </section>
+   
 
     <script src="JS/jquery-3.6.4.min.js"></script>
     <script

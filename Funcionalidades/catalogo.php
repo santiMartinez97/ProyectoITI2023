@@ -186,21 +186,24 @@ echo  '<li class="nav-item dropdown">';
                         $imagen = "../imgCatalogo/noimg.jpg";
                   }
                   ?>
+                  <a href="detalles.php?id=<?php echo $row ['id']; ?>&token=<?php echo hash_hmac('sha1', $row['id'], KEY_TOKEN); ?>" >
                       <img src="<?php echo $imagen; ?>">
+                </a>
                       <article class="card-body">
-                          <h5 class="card-title"><?php echo $row['Nombre']; ?></h5>
-                          <p class="card-text">$ <?php echo number_format( $row['Precio'],0, '.',','); ?></p>
+                          <h5 class="card-title "><?php echo $row['Nombre']; ?></h5>
+                          <p class="card-text ">$<?php echo number_format( $row['Precio'],0, '.','.'); ?></p>
                           <article class="d-flex justify-content-between align-items-center">
                               <article class="btn-group">
                               <!-- URL CON DISTINTO TOKEN -->
-                               <a href="detalles.php?id=<?php echo $row ['id']; ?>&token=<?php echo hash_hmac('sha1', $row['id'], KEY_TOKEN); ?>" class="btn btn-primary">Detalles</a>
+
+                              
                               </article>
                               
 
                               <?php
 
                               if(!isset($_SESSION['cliente'])){
-                                echo '<a href="#" class="btn btn-success">Agregar</a>';
+                                echo '<a href="#" class="btn btn-success d-flex justify-content-center align-items-center">Agregar al Carrito</a>';
                                 }else{
                                   echo '<button class="btn btn-outline-success" type="button" onclick="agregarProducto(' . $row['id'] . ', \'' . hash_hmac('sha1', $row['id'], KEY_TOKEN) . '\')">Agregar al carrito</button>';
 

@@ -1,9 +1,12 @@
-body {
+
+.fondo{
   background-image: url(../img/fondo.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
   overflow-x: hidden;
+  z-index: 2;
+  position: relative;
 }
 
 .navbar .nav-link {
@@ -61,7 +64,7 @@ body {
 
 .formulario__input {
   border: 3px solid transparent;
-  border-radius: 3px;
+  border-radius: 7px;
   transition: .3s ease all;
 }
 
@@ -81,6 +84,7 @@ body {
   right: 14%;
   /* */
   transform: translate(0, -50%);
+
 
 }
 
@@ -131,16 +135,17 @@ body {
   font-weight: bold;
 }
 
-.icono1{
+.icono1 {
   width: 40px;
   height: 40px;
-  transition: transform 0.3s ease;
+  transform: scale(2);
+  position: relative;
+  z-index: 1;
 }
 
-.icono1:hover{
-transform: scale(2);
-z-index: 2;
-}
+
+
+
 
 .grupo__correcto .formulario__input{
   border: solid 3px green;

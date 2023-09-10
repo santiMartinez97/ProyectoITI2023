@@ -2,13 +2,11 @@
 .icono1{
   width: 40px;
   height: 40px;
-  transition: transform 0.3s ease;
+  transform: scale(2);
+  position: relative;
+  z-index: 1;
 }
 
-.icono1:hover{
-transform: scale(2);
-z-index: 2;
-}
 
 .navbar .nav-link {
   color: #080101;
@@ -34,9 +32,11 @@ z-index: 2;
 
 .contacto{
     width: 100%;
-    background: linear-gradient(45deg, #b95a07, #FF6347);
-    opacity: 0.95;
+    background-color: #d66b0c;
     height: 70px;
+    position: relative;
+    z-index: 2; 
+   
   }
 
   .titulo{
@@ -89,7 +89,9 @@ z-index: 2;
   }
 
   .navbar-nav{
-    --bs-nav-link-hover-color: rgb(255, 94, 0, 0.75) !important;
+    --bs-nav-link-hover-color: rgb(255, 136, 0) !important;
+    
+    
   }
 
 

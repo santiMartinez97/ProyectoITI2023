@@ -1,13 +1,19 @@
 
-.icono1{
+.icono1 {
   width: 40px;
   height: 40px;
-  transition: transform 0.3s ease;
+  transform: scale(2);
+  position: relative;
+  z-index: 1;
 }
 
-.icono1:hover{
-transform: scale(2);
-z-index: 2;
+
+.contacto{
+  width: 100%;
+  background: linear-gradient(45deg, #b95a07, #FF6347);
+  height: 70px;
+  position: relative;
+  z-index: 1;
 }
 
 .navbar .nav-link {
@@ -32,12 +38,6 @@ z-index: 2;
 
 
 
-.contacto{
-    width: 100%;
-    background: linear-gradient(45deg, #b95a07, #FF6347);
-    opacity: 0.95;
-    height: 70px;
-  }
 
   .titulo{
     text-align: center;
@@ -47,7 +47,7 @@ z-index: 2;
 
   .camino{
     position: absolute;
-    top: 12%;
+    top: 30%;
     left: 9%;
     transform: translate(-50%, -50%);
     

@@ -52,6 +52,7 @@ if($id == '' || $token == ''){
     <title><?php $nombre ?> | NutriBento</title>
     <link rel="icon" href="../img/icono.png" />
     <link rel="stylesheet" href="../CSS/detalles.css" />
+    
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -92,7 +93,7 @@ if($id == '' || $token == ''){
               <a class="nav-link" href="../index.php"
                 ><i class="fa-solid fa-home"></i> Inicio</a  >
                 </li>
-              <a class="nav-link" href="#"
+              <a class="nav-link" href="../BACKPHP/productosCarrito.php"
                 ><i class="fa-solid fa-cart-shopping"></i> 
                 Carrito <span id="num_cart" class="badge bg-secondary"><?php echo $num_cart;?></span>
                 </a
@@ -240,7 +241,7 @@ echo  '<li class="nav-item dropdown">';
 }else{
 
   echo '  <article class="d-grid gap-3 col-6">';
-  echo '<button class="agregarCarro" type="button" onclick="agregarProducto(' . $id . ', \'' . $token_tmp . '\')">Agregar al carrito</button>';
+  echo '<button class="agregarCarro  btn btn-outline-primary" type="button" onclick="agregarProducto(' . $id . ', \'' . $token_tmp . '\')">Agregar al carrito</button>';
   echo ' </article>';
   echo ' </article>';
   echo '</li>';

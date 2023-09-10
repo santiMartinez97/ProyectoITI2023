@@ -95,16 +95,16 @@ if ($productos != null) {
           </ul>
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <a class="nav-link" href="contacto.php">Contacto</a>
+              <a class="nav-link" href="../funcionalidades/Contacto.php">Contacto</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="../funcionalidades/catalogo.php">Catálogo</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="nosotros.php">Nosotros</a>
+              <a class="nav-link" href="../funcionalidades/nosotros.php">Nosotros</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="preguntas.php">Preguntas</a>
+              <a class="nav-link" href="../funcionalidades/preguntas.php">Preguntas</a>
             </li>
           </ul>
         </nav>

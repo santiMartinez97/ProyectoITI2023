@@ -22,51 +22,63 @@ if (isset($_SESSION['nombre'])) {
     <title>Registro | NutriBento</title>
     <link rel="icon" href="img/icono.png" />
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> 
+    
+    
 </head>
 <body>
 
 
-<nav class="navbar navbar-expand-lg navbar-dark" style="background: rgb(240, 240, 240,0.9); padding: 0px; ">
- 
-  <nav class="container justify-content-end">
-    <a class="navbar-brand" href="index.php" style="color: rgb(0, 0, 0); ">
-    <img src="img/icono.png" class="icono1" alt=""></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <nav class="collapse navbar-collapse " id="navbarNav">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="index.php"
-            ><i class="fa-solid fa-home"></i> Inicio</a
-          >
-        <li class="nav-item">
-          <a class="nav-link" href="#"><i class="fa-solid fa-cart-shopping"></i> Carrito</a> 
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="login.php"><i class="fa-solid fa-user"></i> Iniciar sesión</a>
-        </li>
-      </ul>
-        <ul class="navbar-nav ms-auto">
-        
-          <li class="nav-item">
-            <a class="nav-link" href="Funcionalidades/contacto.php">Contacto</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="Funcionalidades/catalogo.php">Catálogo</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="Funcionalidades/nosotros.php">Nosotros</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="Funcionalidades/preguntas.php">Preguntas</a>
-          </li>
-        
-      </ul>
+ <nav
+      class="navbar navbar-expand-lg navbar-dark"
+      style="background: rgb(240, 240, 240, 0.9); padding: 0px"
+    >
+      <nav class="container justify-content-end">
+        <a class="navbar-brand" href="index.php" style="color: black">
+          <img src="img/icono.png" class="icono1" alt=""
+        /></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <nav class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.php"
+                ><i class="fa-solid fa-home"></i> Inicio</a
+              >
+            <li class="nav-item">
+              <a class="nav-link" href="#"><i class="fa-solid fa-cart-shopping"></i> Carrito</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#"><i class="fa-solid fa-user"></i> Iniciar sesión</a>
+            </li>
+          </ul>
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="Funcionalidades/contacto.php">Contacto</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="Funcionalidades/catalogo.php">Catálogo</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="Funcionalidades/nosotros.php">Nosotros</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="Funcionalidades/preguntas.php">Preguntas</a>
+            </li>
+          </ul>
+        </nav>
+      </nav>
     </nav>
-  </nav>
-</nav>
 
+<section class="fondo">
 <!-- Fin de menu -->
   <section>
    <article class="padre">
@@ -200,13 +212,14 @@ if (isset($_SESSION['nombre'])) {
     <article class="mt-3 " id="respuesta">  </article>
 </article>
 </section>
-
-    <script src="JS/registro.js"></script>
+</section>
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
     <script src="JS/jquery-3.6.4.min.js"></script>
     <script src="JS/mostrarDietas.js"></script>
+    <script src="JS/registro.js"></script>
   
     </body>
 </html>

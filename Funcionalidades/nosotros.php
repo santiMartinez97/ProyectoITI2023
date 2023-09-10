@@ -50,7 +50,7 @@ require '../config/config.php';
               <a class="nav-link" href="../index.php"
                 ><i class="fa-solid fa-home"></i> Inicio</a  >
                 </li>
-              <a class="nav-link" href="#"
+              <a class="nav-link" href="../BACKPHP/productosCarrito.php"
                 ><i class="fa-solid fa-cart-shopping"></i> 
                 Carrito <span id="num_cart" class="badge bg-secondary"><?php echo $num_cart;?></span>
                 </a

@@ -27,6 +27,7 @@ if (isset($_SESSION['nombre'])) {
     <script src="https://kit.fontawesome.com/e934b5c028.js" crossorigin="anonymous"></script>
   </head>
   <body>
+    
     <nav
       class="navbar navbar-expand-lg navbar-dark"
       style="background: rgb(240, 240, 240, 0.9); padding: 0px"
@@ -76,6 +77,9 @@ if (isset($_SESSION['nombre'])) {
         </nav>
       </nav>
     </nav>
+
+
+    <section class="fondo" >
     <!-- *************************************************************************** -->
     <section>
     <article class="padre">
@@ -132,7 +136,7 @@ if (isset($_SESSION['nombre'])) {
         <p>Facebook: Nutribento</p>
       </article>
     </footer>
-
+    </section>
 
 
 

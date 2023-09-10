@@ -1,9 +1,26 @@
 
-.icono1{
+.icono1 {
   width: 40px;
   height: 40px;
-  transition: transform 0.3s ease;
+  transform: scale(2);
+  position: relative;
+  z-index: 1;
 }
+
+
+.contacto{
+  width: 100%;
+  background: linear-gradient(45deg, #b95a07, #FF6347);
+  height: 70px;
+  position: relative;
+  z-index: 1;
+}
+
+.card-text {
+  color: rgb(241, 117, 9); /* Cambia el color del texto a naranja */
+  font-weight: bold; /* Hace que el texto sea en negrita */
+}
+
 
 .icono1:hover{
 transform: scale(2);
@@ -30,14 +47,12 @@ z-index: 2;
   background: rgb(153, 146, 159);
 }
 
+.card img {
+  width: 100%; 
+  height: 200px; 
+  display: block;
+}
 
-
-.contacto{
-    width: 100%;
-    background: linear-gradient(45deg, #b95a07, #FF6347);
-    opacity: 0.95;
-    height: 70px;
-  }
 
   .titulo{
     text-align: center;
@@ -47,12 +62,16 @@ z-index: 2;
 
   .camino{
     position: absolute;
-    top: 12%;
+    top: 30%;
     left: 9%;
     transform: translate(-50%, -50%);
     
   }
 
+  .card-title{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    
+  }
 
   .index{
     text-decoration: none;

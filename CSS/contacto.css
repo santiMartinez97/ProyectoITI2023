@@ -1,13 +1,3 @@
-.icono1{
-  width: 40px;
-  height: 40px;
-  transition: transform 0.3s ease;
-}
-
-.icono1:hover{
-transform: scale(2);
-z-index: 2;
-}
   
   .navbar .nav-link {
     color: #080101;
@@ -49,10 +39,23 @@ z-index: 2;
     --bs-nav-link-hover-color: rgb(255, 94, 0, 0.75) !important;
   }
 
+
+
+  .icono1 {
+    width: 40px;
+    height: 40px;
+    transform: scale(2);
+    position: relative;
+    z-index: 1;
+  }
+  
+
   .contacto{
     width: 100%;
     background: linear-gradient(45deg, #b95a07, #FF6347);
     height: 70px;
+    position: relative;
+    z-index: 1;
   }
 
   .titulo{
@@ -63,7 +66,7 @@ z-index: 2;
 
   .camino{
     position: absolute;
-    top: 12%;
+    top: 30%;
     left: 9%;
     transform: translate(-50%, -50%);
     
