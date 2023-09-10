@@ -46,8 +46,8 @@ $(document).ready(function() {
     //Función para habilitar o deshabilitar a un cliente
     $(document).on('click', '.habilitar-btn', function() {
         var button = $(this);
-        var clientId = button.closest('tr').data('client-id');
-        var clientStatus = button.closest('tr').find('[data-client-status]').data('client-status');
+        var clientId = button.closest('tr').data('client-id'); //Busca el tr padre del botón y lee su client-id
+        var clientStatus = button.closest('tr').find('[data-client-status]').data('client-status'); //Busca el tr padre, desde ahí busca un hijo con el atributo client status y por último recolecta la data
 
         // Mostrar una confirmación al usuario
         var confirmMessage = '¿Está seguro de que desea ' + (clientStatus ? 'deshabilitar' : 'habilitar') + ' al cliente de ID ' + clientId + '?';
@@ -115,7 +115,64 @@ $(document).ready(function() {
 
     //Función para modificar un cliente
     $(document).on('click', '.botonModificar', function(){
-        alert("Próximamente...");
+        var tipoCliente = $("#tipoCliente").val();
+
+        //Verificamos el tipo de cliente y asignamos sus datos al modal correspondiente
+        if(tipoCliente == "comun"){
+            var fila = $(this).closest('tr');
+            var clientId = fila.data('client-id');
+            var clientEmail = fila.find('td:eq(1)').text();
+            var clientCi = fila.find('td:eq(2)').text();
+            var clientNombre = fila.find('td:eq(3)').text();
+            var clientApellido = fila.find('td:eq(4)').text();
+            var clientDireccion = fila.find('td:eq(5)').text();
+            var clientTelefono = fila.find('td:eq(6)').text();
+            var clientDieta = fila.find('td:eq(7)').text();
+    
+            $("#modId").val(clientId);
+            $("#modEmail").val(clientEmail);
+            $("#modCi").val(clientCi);
+            $("#modNombre").val(clientNombre);
+            $("#modApellido").val(clientApellido);
+            $("#modDireccion").val(clientDireccion);
+            $("#modTelefono").val(clientTelefono);
+    
+            //Selecciona la dieta del cliente
+            $("#defaultDieta").prop("selected", true);
+            $("#dieta option").each(function() {
+                if ($(this).text() === clientDieta) {
+                    $(this).prop("selected", true);
+                    $("#defaultDieta").prop("selected", false);
+                }
+            });
+        }else{
+            var fila = $(this).closest('tr');
+            var clientId = fila.data('client-id');
+            var clientEmail = fila.find('td:eq(1)').text();
+            var clientRut = fila.find('td:eq(2)').text();
+            var clientNombre = fila.find('td:eq(3)').text();
+            var clientDireccion = fila.find('td:eq(4)').text();
+            var clientTelefono = fila.find('td:eq(5)').text();
+            var clientDieta = fila.find('td:eq(6)').text();
+
+            $("#modIdE").val(clientId);
+            $("#modEmailE").val(clientEmail);
+            $("#modRutE").val(clientRut);
+            $("#modNombreE").val(clientNombre);
+            $("#modDireccionE").val(clientDireccion);
+            $("#modTelefonoE").val(clientTelefono);
+
+            //Selecciona la dieta del cliente
+            $("#defaultDietaE").prop("selected", true);
+            $("#dietaE option").each(function() {
+                if ($(this).text() === clientDieta) {
+                    $(this).prop("selected", true);
+                    $("#defaultDietaE").prop("selected", false);
+                }
+            });
+        }
+
+       
     });
 
 });
