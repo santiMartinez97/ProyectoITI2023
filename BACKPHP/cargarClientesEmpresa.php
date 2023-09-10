@@ -49,12 +49,12 @@ foreach($resultadoCliente as $row){
         if($row['Habilitacion'] === "No habilitado"){
             $codigoCliente .= '<td data-client-status="false">'.$row['Habilitacion'].'</td>
             <td><button class="botonAceptar habilitar-btn">Habilitar</button></td>
-            <td><button class="botonModificar">Modificar</button></td>
+            <td><button class="botonModificar" data-toggle="modal" data-target="#modalClienteE">Modificar</button></td>
             <td><button class="botonDesechar">Eliminar</button></td>';
         }else{
             $codigoCliente .= '<td data-client-status="true">'.$row['Habilitacion'].'</td>
             <td><button class="botonRechazar habilitar-btn">Deshabilitar</button></td>
-            <td><button class="botonModificar">Modificar</button></td>
+            <td><button class="botonModificar" data-toggle="modal" data-target="#modalClienteE">Modificar</button></td>
             <td><button class="botonDesechar">Eliminar</button></td>';
         }
         $listaDeClientes[] = $codigoCliente;
