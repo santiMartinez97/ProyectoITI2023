@@ -38,22 +38,28 @@ $estado_array=[];
 
     <!-- Header -->
     <header>
-        <h1>Administrador</h1>
-        <a class="cerrarSesion" href="cerrar_session.php">Cerrar sesion</a>
+        <div class="admin-section">
+            <h1>Bienvenido administrador</h1>
+            <a class="enlace" href="admin.php">Volver al menu</a>
+        </div>
+        <div class="baja-section">
+            <a class="enlace" href="cerrar_session.php">Cerrar Sesión</a>
+        </div>
     </header>
+  
     
     <br>
 
     <!-- Control de pedidos -->
-    <h2><a class="camino" href="admin.php">Administrador /</a>Control de pedidos</h2>
-
-    <article class="pedidos">
-    <select class="tablaArriba">
-                <option> Todos los pedidos </option>
+    <h2 class=>Control de pedidos</h2>
+    <select class="seleccionClientes">
+                <option>Todos los pedidos</option>
                 <option>Entregados</option> 
                 <option>En proceso</option> 
                 <option>Enviado</option>
                 </select>
+    
+    <article class="pedidos">
     <table>
         <thead>
             <tr>
@@ -91,13 +97,7 @@ $estado_array=[];
                 ?>
             </tbody>
         </table>
-
     </article>
 
-    <footer>
-    <section>
-      <h3>Administrador</h3>
-    </section>
-    </footer>
 </body>
 </html>
