@@ -48,6 +48,7 @@ $(document).ready(function() {
         var button = $(this);
         var clientId = button.closest('tr').data('client-id'); //Busca el tr padre del botón y lee su client-id
         var clientStatus = button.closest('tr').find('[data-client-status]').data('client-status'); //Busca el tr padre, desde ahí busca un hijo con el atributo client status y por último recolecta la data
+        var clientEmail = button.closest('tr').find('td:eq(1)').text(); //Busca el email en la fila correspondiente
 
         // Mostrar una confirmación al usuario
         var confirmMessage = '¿Está seguro de que desea ' + (clientStatus ? 'deshabilitar' : 'habilitar') + ' al cliente de ID ' + clientId + '?';
@@ -60,7 +61,7 @@ $(document).ready(function() {
             $.ajax({
                 type: 'POST',
                 url: '../BACKPHP/habilitacionCliente.php',
-                data: { clientId: clientId, clientStatus: clientStatus },
+                data: { clientId: clientId, clientStatus: clientStatus, clientEmail: clientEmail },
                 success: function(response) {
                     if (response === 'success') {
                         // Cambia el texto y la clase del botón
@@ -76,6 +77,7 @@ $(document).ready(function() {
                         button.closest('tr').find('[data-client-status]').data('client-status', clientStatus);
                         button.closest('tr').find('[data-client-status]').text(clientStatus ? 'Habilitado' : 'No habilitado');
                     } else {
+                        //console.log(response);
                         alert('Error al actualizar el cliente.');
                     }
                 }
@@ -89,6 +91,7 @@ $(document).ready(function() {
     $(document).on('click', '.botonDesechar', function() {
         var button = $(this);
         var clientId = button.closest('tr').data('client-id');
+        var clientEmail = button.closest('tr').find('td:eq(1)').text(); //Busca el email en la fila correspondiente
 
         // Mostrar una confirmación al usuario
         var confirmMessage = '¿Está seguro de que desea eliminar al cliente de ID ' + clientId + '?';
@@ -98,7 +101,7 @@ $(document).ready(function() {
             $.ajax({
                 type: 'POST',
                 url: '../BACKPHP/eliminarCliente.php',
-                data: { clientId: clientId },
+                data: { clientId: clientId, clientEmail: clientEmail },
                 success: function(response) {
                     if (response === 'success') {
                         // Elimina la fila correspondiente de la tabla

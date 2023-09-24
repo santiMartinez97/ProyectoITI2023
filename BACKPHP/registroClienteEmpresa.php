@@ -1,5 +1,14 @@
 <?php
+//Cargar configuración previa de mail
+require '../vendor/autoload.php';
+require '../config/mail.php';
 
+$configMail = new Mail();
+$mail = $configMail->configurar();
+$mail->Subject = 'Registro - NutriBento';
+$mail->Body = 'Bienvenido a NutriBento, sus datos de registro serán revisados por Administración. Será notificado si es habilitado.'; // Definimos que el cuerpo del correo
+
+//Configuración base de datos
 require '../config/conexion.php';
 
 $db = new DataBase();
@@ -69,6 +78,9 @@ if(!$resultadoEmail && !$resultadoRut){
     $insertarTelefono->execute();
 
     echo json_encode("Completado");
+
+    $mail->addAddress($email); //Definimos el destinatario del correo
+    $mail->send(); // Enviamos un correo notificando al usuario de su registro.
 }else if($resultadoEmail && $resultadoRut){
     echo json_encode("Email y RUT repetidos");
 }else if($resultadoEmail){
