@@ -2,12 +2,19 @@
 
 require '../config/config.php';
 require '../config/conexion.php';
+require '../vendor/autoload.php';
+
+
+MercadoPago\SDK::setAccessToken(TOKEN_MP);
+$preference = new MercadoPago\Preference();
+$productos_mp = array();
+
 
 $db = new DataBase();
 $con = $db->conectar();
 
+
 // CREAR UNA CONSULTA PREPARADA
-print_r($_SESSION);
 $productos = isset($_SESSION['carrito']['productos']) ? $_SESSION['carrito']['productos'] : null;
 
 $lista_carrito = array();
@@ -19,6 +26,9 @@ if ($productos != null) {
     $sql->execute([$clave]);
     $lista_carrito[] = $sql->fetch(PDO::FETCH_ASSOC);
   }
+}else{
+  header("Location: index.php");
+  exit;
 }
 
 
@@ -38,6 +48,9 @@ if ($productos != null) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
       integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
     <script src="https://kit.fontawesome.com/e934b5c028.js" crossorigin="anonymous"></script>
+    <script src="https://sdk.mercadopago.com/js/v2"></script>
+    <script src="https://www.mercadopago.com/v2/security.js"></script>
+    
   </head>
 
   <body>
@@ -96,16 +109,16 @@ if ($productos != null) {
           </ul>
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <a class="nav-link" href="contacto.php">Contacto</a>
+              <a class="nav-link" href="../funcionalidades/Contacto.php">Contacto</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="../funcionalidades/catalogo.php">Catálogo</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="nosotros.php">Nosotros</a>
+              <a class="nav-link" href="../funcionalidades/nosotros.php">Nosotros</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="preguntas.php">Preguntas</a>
+              <a class="nav-link" href="../funcionalidades/preguntas.php">Preguntas</a>
             </li>
           </ul>
         </nav>
@@ -122,19 +135,28 @@ if ($productos != null) {
       </article>
     </section>
     <br><br>
+
     <section>
       <article class="container">
+        <article class="row">
+        <article class="col-6">
+            <ar class="video-container">
+        <iframe width="550" height="300" src="https://www.youtube.com/embed/Kb73RmknnQw" frameborder="0" allowfullscreen></iframe>
+    </div>
+        </article>
+  
+        <article class="col-6">
+       
         <article class="table-responsive">
           <table class="table">
             <thead>
               <tr>
                 <th>Productos</th>
-                <th>Precio</th>
-                <th>Cantidad</th>
                 <th>Subtotal</th>
                 <th></th>
               </tr>
             </thead>
+            
             <tbody>
               <?php if ($lista_carrito == null) {
                 echo '<tr><td colspan="5" class="text-center"><b>Lista Vacia</b></td></tr>';
@@ -149,32 +171,28 @@ if ($productos != null) {
                   $precio_desc = $precio - (($precio * $descuento) / 100);
                   $subtotal = $cantidad * $precio_desc;
                   $total += $subtotal;
+                 
+                  $item = new MercadoPago\Item();
+                  $item->id= $_id;
+                  $item->title = $nombre;
+                  $item->quantity = $cantidad;
+                  $item->unit_price = $precio_desc;
+                  array_push($productos_mp, $item);
+                  unset($item);
+                 
                   ?>
                   <tr>
                     <td>
                       <?php echo $nombre; ?>
-                    </td>
-                    <td>
-                      <?php echo '$' . number_format($precio, 0, '.', ','); ?>
-                      <?php if ($descuento > 0) { ?>
-                        <del class="no-underline-orange">
-                          <?php echo number_format($descuento, 0, '.', ','); ?>% descuento
-                        </del>
-                      <?php } ?>
-                    </td>
-                    <td>
-                      <input type="number" min="1" max="10" step="1" value="<?php echo $cantidad ?>" size="5"
-                        id="cantidad_<?php echo $_id; ?>" onchange="actualizaCantidad(this.value, <?php echo $_id; ?>)">
-                    </td>
+                     
+                    </td>               
                     <td>
                       <article id="subtotal_<?php echo $_id; ?>" name="subtotal[]">
                         <?php echo '$' . number_format($subtotal, 0, '.', ','); ?>
                       </article>
                     </td>
-                    <td>
-                      <a href="#" id="eliminar" class="btn btn-danger btn-sm text-white" data-bs-id="<?php echo $_id; ?>"
-                        data-bs-toggle="modal" data-bs-target="#eliminaModal">Eliminar</a>
                     </td>
+                    <td>
                   </tr>
                 <?php } ?>
 
@@ -185,136 +203,67 @@ if ($productos != null) {
                       <?php echo '$' . number_format($total, 0, '.', ','); ?>
                     </p>
                   </td>
-
+                 
                 </tr>
 
               </tbody>
+           
             <?php } ?>
           </table>
+          <div id="wallet_container"></div>
         </article>
-          
-        <?php if ($lista_carrito != null) { ?>
-        <article class="row">
-          <article class="col-md-5 offset-md-7 d-grid gap-2">
-            <a href="pago.php" class="btn btn-primary btn">Realizar pago</a>
-          </article>
+        
         </article>
-        <?php } ?>
-        <!-- Button trigger modal -->
-
-
-<!-- Modal -->
-<div class="modal fade" id="eliminaModal" tabindex="-1" aria-labelledby="eliminaModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-sm">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="eliminaModal">Alerta</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-      ¿Desea eliminar el producto de la lista ?
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button id="btn-elimina" type="button" class="btn btn-danger" onclick="eliminar()">Eliminar</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-
-
+        </article>
       </article>
     </section>
 
+    <?php
+    $preference->items = $productos_mp;
+    
+$preference->back_urls = array(
+  "success" => "http://localhost/proyectoITI2023/captura.php",
+  "failure" => "http://localhost/proyectoITI2023/fallo.php"
+);
 
-    <script>
+$preference->auto_return = "approved";
+$preference->binary_mode= true;
 
+$preference->save();
+  
 
-      let eliminaModal = document.getElementById('eliminaModal');
-      eliminaModal.addEventListener('show.bs.modal', function(event){
-      let button = event.relatedTarget
-      let id = button.getAttribute('data-bs-id')
-      let buttonElimina = eliminaModal.querySelector('.modal-footer #btn-elimina') 
-      buttonElimina.value = id
-      })
-
-
-      function actualizaCantidad(cantidad, id) {
-        let url = 'actualizar_carrito.php';
-        let formData = new FormData();
-        formData.append('action', 'agregar');
-        formData.append('id', id);
-        formData.append('cantidad', cantidad);
-
-
-        fetch(url, {
-          method: 'POST',
-          body: formData,
-          mode: 'cors'
-
-        }).then(response => response.json())
-          .then(data => {
-
-
-            if (data.ok) {
-              let divsubtotal = document.getElementById('subtotal_' + id);
-              divsubtotal.innerHTML = data.sub;
-
-              let total = 0.0;
-              let list = document.getElementsByName('subtotal[]');
-
-              for (let i = 0; i < list.length; i++) {
-                let valor = list[i].innerHTML.replace(/[$,]/g, '');
-                let valorParsed = parseFloat(valor);
-                total += valorParsed;
-              }
-              total = new Intl.NumberFormat('en-US', {
-                minimunFractionDigits: 2
-              }).format(total)
-              document.getElementById('total').innerHTML = '$' + total;;
-            }
-          })
-          .catch(error => {
-            console.error('Error:', error);
-          });
-
-      }
-
-      
-      function eliminar() {
-
-        let botonElimina =document.getElementById('btn-elimina');
-        let id =botonElimina.value;
-        let url = 'actualizar_carrito.php';
-        let formData = new FormData();
-        formData.append('action', 'eliminar');
-        formData.append('id', id);
-       
-
-        fetch(url, {
-          method: 'POST',
-          body: formData,
-          mode: 'cors'
-
-        }).then(response => response.json())
-          .then(data => {
-          if (data.ok) {
-           location.reload();
-          }     
-
-      })
-    }
-    </script>
+    ?>
 
 
 
 
+    <style>
+        .video-container {
+            float: right; /* Alinea el elemento a la derecha */
+        }
+
+    </style>
+
+
+<script>
+            
+ const mp = new MercadoPago('TEST-541f11cc-8d3b-4750-aac2-52e3b54050d1', {
+    locale: 'es-UY',
+});
+const bricksBuilder = mp.bricks();
+const preferenceId = '<?php echo $preference->id; ?>';
+
+mp.bricks().create("wallet", "wallet_container", {
+    initialization: {
+       preferenceId: preferenceId,
+        redirectMode: "modal"
+    },
+});
 
 
 
+
+</script>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
