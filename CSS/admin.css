@@ -1,0 +1,178 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: rgb(253, 222, 196);
+    margin: 0;
+    padding: 0;
+  }
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(45deg, #b95a07, #FF6347);
+    color: #fff;
+    padding: 10px 20px;
+}
+
+.admin-section {
+    display: flex;
+    align-items: center;
+}
+
+.admin-section h1 {
+    margin-right: 10px;
+}
+
+.baja-section h1 {
+    margin-left: 10px;
+}
+
+.enlace{
+    color: #fff;
+    text-decoration: none;
+    border: 1px solid #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+h2 {
+    justify-content: left;
+    color: orange;
+    text-align: left;
+    font-size: 20px;
+}
+
+.pedidos {
+    max-width: 95%; 
+    margin: 0 auto; 
+    padding: 80px;
+    border: 3px solid orange; 
+    background-color: rgb(255, 232, 187); 
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20PX; 
+}
+
+table th,table td {
+    padding: 5px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.tablaArriba{
+    color: orange;
+}
+
+button {
+    width: 120px;
+    height: 40px;
+  }
+
+.botonAceptar {
+    background-color: #2ed14e;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.botonAceptar:hover {
+    background-color: orange; 
+}
+
+.botonAceptar:active {
+    background-color: #ff8e04; 
+}
+
+.botonRechazar {
+    background-color: #777777;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.botonRechazar:hover {
+    background-color: orange; 
+}
+
+.botonRechazar:active {
+    background-color: #ff8e04; 
+}
+
+.botonModificar {
+    background-color: #3543dc;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.botonModificar:hover {
+    background-color: orange; 
+}
+
+.botonModificar:active {
+    background-color: #ff8e04; 
+}
+
+.botonDesechar {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.botonDesechar:hover {
+    background-color: orange; 
+}
+
+.botonDesechar:active {
+    background-color: #ff8e04; 
+}
+
+a {
+    color: orange;
+    text-decoration: none;
+    border: 1px solid orange;
+    padding: 5px 10px;
+    border-radius: 5px;
+}    
+a:hover {
+    text-decoration: underline; 
+}
+
+.cerrarSesion{
+    color: white;
+}
+
+.cajaSeleccion {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.seleccionClientes{
+    color: #ff8e04;
+}
+
+.CAMBIACOLOR{
+    background-color: rgb(253, 222, 196);
+}

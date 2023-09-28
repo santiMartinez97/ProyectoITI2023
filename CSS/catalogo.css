@@ -1,0 +1,200 @@
+
+.icono1 {
+  width: 40px;
+  height: 40px;
+  transform: scale(2);
+  position: relative;
+  z-index: 1;
+}
+
+
+.contacto{
+  width: 100%;
+  background: linear-gradient(45deg, #b95a07, #FF6347);
+  height: 70px;
+  position: relative;
+  z-index: 1;
+}
+
+.card-text {
+  color: rgb(241, 117, 9); /* Cambia el color del texto a naranja */
+  font-weight: bold; /* Hace que el texto sea en negrita */
+}
+
+
+.icono1:hover{
+transform: scale(2);
+z-index: 2;
+}
+
+.navbar .nav-link {
+  color: #080101;
+}
+
+.navbar-nav .nav-item {
+  margin-right: 40px;
+}
+
+.navbar-nav {
+  margin-left: auto;
+}
+
+.navbar-nav .nav-item {
+  margin-left: 20px;
+}
+
+.navbar-toggler {
+  background: rgb(153, 146, 159);
+}
+
+.card img {
+  width: 100%; 
+  height: 200px; 
+  display: block;
+}
+
+
+  .titulo{
+    text-align: center;
+    color: white;
+    padding-top: 10px;
+  }
+
+  .camino{
+    position: absolute;
+    top: 30%;
+    left: 9%;
+    transform: translate(-50%, -50%);
+    
+  }
+
+  .card-title{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    
+  }
+
+  .index{
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+  }
+
+  .index:hover{
+    color: black;
+  }
+
+  .nosotros{
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+  }
+
+
+ .nosotros:hover {
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  
+ }
+
+ .hovered{
+  color: red;
+ }
+
+
+  .container{ 
+    margin: auto;
+  }
+
+  .navbar-nav{
+    --bs-nav-link-hover-color: rgb(255, 94, 0, 0.75) !important;
+  }
+
+
+#carouselExampleCaptions .carousel-item {
+    height: 79vh;
+    min-height: 300px;
+    background: no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+
+  section>.container {
+    padding: 15px 0;
+}
+
+.h2, h2{
+    padding-top: 10.5px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: bold;
+    font-size: calc(1.725rem + .9vw) !important;
+    letter-spacing: 3px;
+ }
+
+
+ .tipo_dieta {
+  color: rgb(230, 92, 6);
+  border: none;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.556);
+  cursor: pointer;
+  padding: 3px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+}
+
+.tipo_dieta:hover {
+  border: 1px solid rgb(230, 92, 6);
+}
+
+.form-select-container {
+    text-align: center; /* Centrar horizontalmente */
+  }
+
+select.form-select {
+    width: 200px;
+    height: 40px;
+   margin: auto;
+   cursor: pointer;
+   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  }
+
+
+#tipo_vianda{
+    margin-left: 20px;
+    
+}
+
+.custom-select {
+   
+    box-shadow: 0 0 10px rgba(228, 95, 0, 0.476); /* Cambiar el color de la sombra */
+  }
+
+ body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-image: url(../img/flat-lay-fusilli-broccoli-carrots-bowl-with-copy-space.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed; /* Asegura que la imagen de fondo permanezca fija */
+} 
+
+img{
+    height: 220px;
+    
+}
+
+.card{
+    box-shadow: 0px 1px 10px rgb(211, 99, 0,0.5) !important;
+    transition: all 400ms ease;
+    cursor: pointer;
+}
+
+.card:hover{
+    box-shadow: 5px 5px 25px rgb(255, 123, 0) !important;
+    transform:  translateY(-3%);
+}
+

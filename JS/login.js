@@ -1,5 +1,12 @@
 var formulario = document.getElementById("loginForm");
 
+let datosIncorrectos = `<article class="alert alert-danger d-flex align-items-center" role="alert">
+<i class="fa-solid fa-circle-exclamation"></i> Usuario y/o contraseña incorrecto.</article>`;
+let limiteExcedido = `<article class="alert alert-danger d-flex align-items-center" role="alert">
+<i class="fa-solid fa-lock"></i> Limite de intentos excedido. Intente más tarde.</article>`;
+let usuarioNoHabilitado = `<article class="alert alert-danger d-flex align-items-center" role="alert">
+<i class="fa-solid fa-user-slash"></i> El usuario no se encuentra habilitado.</article>`;
+
 formulario.addEventListener("submit", function (e) {
   e.preventDefault();
 
@@ -14,36 +21,44 @@ formulario.addEventListener("submit", function (e) {
     })
     .then(function (data) {
       switch (data) {
-        case "webPrueba@gmail.com":
-          location.href = "navegabilidad/homeCliente.php";
+        case "cliente":
+          location.href = "index.php";
           break;
 
-        case "empresaPrueba@gmail.com":
-          location.href = "navegabilidad/homeCliente.php";
-          break;
-
-        case "admin@sisviansa.com":
+        case "admin":
           location.href = "navegabilidad/admin.php";
           break;
 
-        case "gerentePrueba@sisviansa.com":
+        case "gerente":
           location.href = "navegabilidad/gerente.php";
           break;
 
-        case "inforPrueba@sisviansa.com":
+        case "informatico":
           location.href = "navegabilidad/informatico.php";
           break;
 
-        case "cocinaJefe@sisviansa.com":
+        case "jefeCocina":
           location.href = "navegabilidad/jefeCocina.php";
           break;
 
-        case "atencion@sisviansa.com":
+        case "atencionPublico":
           location.href = "navegabilidad/atencionPublico.php";
           break;
-          default:
-            document.getElementById("loginForm").reset();
-            alert("Usuario y/o Contraseñas incorrectos");
+
+        case "No habilitado":
+          document.getElementById("loginForm").reset();
+          document.getElementById("loginError").innerHTML = usuarioNoHabilitado;
+          break;
+
+        case "Bloqueado":
+          document.getElementById("loginForm").reset();
+          document.getElementById("enviar").disabled = true;
+          document.getElementById("loginError").innerHTML = limiteExcedido;
+          break;
+
+        default:
+          document.getElementById("loginForm").reset();
+          document.getElementById("loginError").innerHTML = datosIncorrectos;
       }
 
     })

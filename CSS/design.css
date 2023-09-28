@@ -1,9 +1,12 @@
-body {
+
+.fondo{
   background-image: url(../img/fondo.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
   overflow-x: hidden;
+  z-index: 2;
+  position: relative;
 }
 
 .navbar .nav-link {
@@ -23,7 +26,7 @@ body {
 }
 
 .navbar-toggler {
-  background: rgb(153, 146, 159);
+  background:rgb(254, 80, 0);
 }
 
 
@@ -54,17 +57,14 @@ body {
 }
 
 .enlace {
-  color: #8D2C2C;
+  color: rgb(254, 80, 0);
   text-decoration: none;
 }
 
-.formulario__grupo-input{
-  position: relative;
-}
 
 .formulario__input {
   border: 3px solid transparent;
-  border-radius: 3px;
+  border-radius: 7px;
   transition: .3s ease all;
 }
 
@@ -85,9 +85,8 @@ body {
   /* */
   transform: translate(0, -50%);
 
+
 }
-
-
 
 #tipo_usuario {
   color: rgb(230, 92, 6);
@@ -97,7 +96,6 @@ body {
   padding: 3px;
   border: 1px solid #ccc;
   border-radius: 20px;
-
 }
 
 #tipo_usuario:hover {
@@ -124,7 +122,6 @@ body {
   box-shadow: 1px 1px 9px rgb(0, 0, 0);
 }
 
-
 .padre {
   position: relative;
   height: 100vh;
@@ -141,7 +138,14 @@ body {
 .icono1 {
   width: 40px;
   height: 40px;
-} 
+  transform: scale(2);
+  position: relative;
+  z-index: 1;
+}
+
+
+
+
 
 .grupo__correcto .formulario__input{
   border: solid 3px green;
@@ -167,8 +171,8 @@ body {
   display: block;
 }
 
-.grupo_input-error-activo{
-  display: block;
+#botonAlerta{
+  padding-top:6px;
 }
 
 @media screen and (min-width: 1500px) {
@@ -183,9 +187,7 @@ body {
     right: 18%;
     /* */
     transform: translate(0, -50%);
-  
-  
-  
+
   }
 
   .row {
@@ -241,4 +243,12 @@ body {
   font-size: 12px;
   margin-top: -2px;
   /* Otros estilos de tu elección */
+}
+
+#errorRepeticion {
+  padding-top: 20px;
+}
+
+.alert .fa-solid {
+  padding-right: 3px;
 }

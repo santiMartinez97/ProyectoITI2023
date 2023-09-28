@@ -1,55 +1,131 @@
 <?php
+require '../config/config.php';
+require '../config/conexion.php';
 
-session_start();
+//session_start();
 
-$clienteWeb = ["webPrueba@gmail.com", "12345"];
-$clienteEmpresa = ["empresaPrueba@gmail.com", "67890"];
-$admin = ["admin@sisviansa.com", "qwerty"];
-$gerente = ["gerentePrueba@sisviansa.com", "asdfg"];
-$informatico = ["inforPrueba@sisviansa.com", "zxcvb"];
-$jefeCocina = ["cocinaJefe@sisviansa.com", "hjklñ"];
-$atencionPublico = ["atencion@sisviansa.com", "uiopn"];
-$usuarios = [$clienteWeb, $clienteEmpresa,$admin, $gerente, $informatico, $jefeCocina, $atencionPublico];
+$db = new DataBase();
+$con = $db->conectar();
 
 $email = $_POST["email"];
 $pass = $_POST["pass"];
-$aux = "";
 
-$iteraciones = count($usuarios);
-for($i = 0 ; $i < $iteraciones ; $i++){
-    if(($email == $usuarios[$i][0]) && ($pass == $usuarios[$i][1])){  
-        echo json_encode($usuarios[$i][0]);
-        $aux = $usuarios[$i][0];
-        break;
-    } else if($i == ($iteraciones - 1)){
-        echo json_encode('Email y/o contraseña incorrecto/s.');
+if(conteoIntentosLogin($con) == 3){
+    echo json_encode('Bloqueado');
+}else{
+    $cliente = $con->prepare("SELECT ID, Contrasenia, Habilitacion FROM cliente WHERE Email = :email");
+    $cliente->bindParam(':email', $email, PDO::PARAM_STR);
+    $cliente->execute();
+    $resultado = $cliente->fetch(PDO::FETCH_ASSOC);
+
+    if($resultado){
+        $hashedPass = $resultado["Contrasenia"];
+        if(password_verify($pass, $hashedPass)){
+            if($resultado["Habilitacion"] == "No habilitado"){
+                echo json_encode('No habilitado');
+            }else{
+                $clienteID = $resultado["ID"];
+                echo json_encode('cliente');
+                $_SESSION['cliente'] = 'cliente';
+                $_SESSION['id'] = $clienteID;
+
+                $cliComun = $con->prepare("SELECT Nombre, Apellido FROM clientecomun WHERE ID = :id");
+                $cliComun->bindParam(':id', $clienteID, PDO::PARAM_STR);
+                $cliComun->execute();
+                $subresultado = $cliComun->fetch(PDO::FETCH_ASSOC);
+
+                if($subresultado){
+                    $_SESSION['nombre'] = $subresultado["Nombre"]." ".$subresultado["Apellido"];
+                }else{
+                    $cliEmpresa = $con->prepare("SELECT NombreEmpresa FROM clienteempresa WHERE ID = :id");
+                    $cliEmpresa->bindParam(':id', $clienteID, PDO::PARAM_STR);
+                    $cliEmpresa->execute();
+                    $subresultado = $cliEmpresa->fetch(PDO::FETCH_ASSOC);
+
+                    $_SESSION['nombre'] = $subresultado["NombreEmpresa"];
+                }
+            }
+        }else{
+            intentoFallido($con);
+            echo json_encode('Email y/o contraseña incorrecto/s.');
+        }
+    }else{
+        $usuario = $con->prepare("SELECT Contrasenia, Rol FROM usuario WHERE Email = :email");
+        $usuario->bindParam(':email', $email, PDO::PARAM_STR);
+        $usuario->execute();
+        $resultado = $usuario->fetch(PDO::FETCH_ASSOC);
+
+        if($resultado){
+            $hashedPass = $resultado["Contrasenia"];
+            if(password_verify($pass, $hashedPass)){
+                asignarRolASesion($resultado["Rol"]);
+            }else{
+                intentoFallido($con);
+                echo json_encode('Email y/o contraseña incorrecto/s.');
+            }
+        }else{
+            intentoFallido($con);
+            echo json_encode('Email y/o contraseña incorrecto/s.');
+        }
     }
 }
 
-// PROTEGER LA PAGINA PARA QUE UNA VEZ DENTRO NO PUEDA ENTRAR EN DIFERENTES CATEGORIAS DE NAVEGABILIDAD POR LA URL//
-switch($aux){
-
-    case "webPrueba@gmail.com":
-        $_SESSION['cliente'] = $usuarios[0][0];
-        break;
-    case "empresaPrueba@gmail.com":
-        $_SESSION['cliente'] = $usuarios[1][0];
-        break;;
-    case "admin@sisviansa.com":
-        $_SESSION['admin'] = $usuarios[2][0];
-        break;
-    case "gerentePrueba@sisviansa.com":
-        $_SESSION['gerente'] = $usuarios[3][0];
-        break;
-     case "inforPrueba@sisviansa.com":
-        $_SESSION['informatico'] = $usuarios[4][0];
-     break;
-     case "cocinaJefe@sisviansa.com":
-        $_SESSION['jefeCocina'] = $usuarios[5][0];
-        break;
-     case "atencion@sisviansa.com":
-        $_SESSION['atencionPublico'] = $usuarios[6][0];
-        break;   
+function asignarRolASesion($rol){
+    switch($rol){
+        case "Administración":
+            echo json_encode('admin');
+            $_SESSION['admin'] = 'admin';
+            $_SESSION['nombre'] = 'Administración';
+            break;
+        case "Gerente":
+            echo json_encode('gerente');
+            $_SESSION['gerente'] = 'gerente';
+            $_SESSION['nombre'] = "Gerente";
+            break;
+         case "Informático":
+            echo json_encode('informatico');
+            $_SESSION['informatico'] = 'informatico';
+            $_SESSION['nombre'] = 'Informático';
+            break;
+         case "JefeCocina":
+            echo json_encode('jefeCocina');
+            $_SESSION['jefeCocina'] = 'jefeCocina';
+            $_SESSION['nombre'] = 'Jefe de Cocina';
+            break;
+         case "AtenciónPúblico":
+            echo json_encode('atencionPublico');
+            $_SESSION['atencionPublico'] = 'atencionPublico';
+            $_SESSION['nombre'] = 'Atención al Público';
+            break; 
+        default:
+            echo json_encode('Error');
+    }
 }
-//Este PHP es una versión provisoria mientras no se tenga una base de datos.
-?>
+
+function getIpAddr(){
+    if (!empty($_SERVER['HTTP_CLIENT_IP'])){
+        $ipAddr=$_SERVER['HTTP_CLIENT_IP'];
+    }elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])){
+        $ipAddr=$_SERVER['HTTP_X_FORWARDED_FOR'];
+    }else{
+        $ipAddr=$_SERVER['REMOTE_ADDR'];
+    }
+        return $ipAddr;
+}
+
+function conteoIntentosLogin($con){
+    $ip = getIpAddr();
+    $login_time = time()-30; //Especificar tiempo de bloqueo en segundos
+    $intentos = $con->prepare("SELECT COUNT(*) AS total_count FROM intentos_login WHERE IP='$ip' AND Tiempo>$login_time");
+    $intentos->execute();
+    $contador = $intentos->fetch(PDO::FETCH_ASSOC);
+    $contador = $contador['total_count'];
+    return $contador;
+}
+
+function intentoFallido($con){
+    $ip = $_SERVER['REMOTE_ADDR'];
+    $login_time = time();
+    $guardar = $con->prepare("INSERT INTO intentos_login SET IP='$ip', Tiempo=$login_time");
+    $guardar->execute();
+}

@@ -5,7 +5,7 @@ if(!isset($_SESSION['atencionPublico'])){
     echo '
     <script>
        alert("Por favor debes iniciar session");
-       window.location = "../index.html";
+       window.location = "../index.php";
     </script>
 
     ';
@@ -21,7 +21,8 @@ if(!isset($_SESSION['atencionPublico'])){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Atención al Público | NutriBento</title>
+    <link rel="icon" href="../img/icono.png" />
 </head>
 <body>
     <h1>ATENCION AL PUBLICO</h1>

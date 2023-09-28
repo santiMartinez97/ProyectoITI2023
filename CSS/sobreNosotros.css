@@ -8,7 +8,13 @@
   .icono1 {
     width: 40px;
     height: 40px;
+    transform: scale(2);
+    position: relative;
+    z-index: 1;
   }
+  
+
+
   
   .navbar .nav-link {
     color: #080101;
@@ -138,6 +144,7 @@
    .carousel-item{
     position: relative;
     display: inline-block; 
+    z-index: 1;
    }
 
    .image-text {

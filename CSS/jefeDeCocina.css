@@ -1,0 +1,142 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+  }
+
+header {
+    background: linear-gradient(45deg, #b95a07, #FF6347);
+    color: white;
+    padding: 10px 0;
+}
+
+h1 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+h2 {
+    justify-content: center;
+    color: orange;
+    text-align: center;
+    font-size: 20px;
+}
+
+.h2tit{
+    color: orange;
+}
+.pedidos {
+    max-width: 900px; 
+    margin: 0 auto; 
+    padding: 80px;
+    border: 3px solid orange; 
+    background-color: rgb(255, 232, 187); 
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 31vh; 
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20PX; 
+}
+
+table th,table td {
+    padding: 5px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.tablaArriba{
+    color: orange;
+}
+
+.botonAceptar {
+    background-color: #2ed14e;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin-right: 10px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.botonAceptar:hover {
+    background-color: orange; 
+}
+
+.botonAceptar:active {
+    background-color: #ff8e04; 
+}
+
+.botonDesechar {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.botonDesechar:hover {
+    background-color: orange; 
+}
+
+.botonDesechar:active {
+    background-color: #ff8e04; 
+}
+
+
+.botonModificar {
+    background-color: #0b0bbb;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.botonModificar:hover {
+    background-color: orange; 
+}
+
+.botonModificar:active {
+    background-color: #ff8e04; 
+}
+
+
+.current-day {
+    color: orange;
+}
+
+a {
+    text-align: right;
+    color: black;
+    text-decoration: none;
+    margin-right: 10px; 
+}    
+a:hover {
+    text-decoration: underline; 
+}
+
+ .camino{
+    color: grey;
+}
+
+.cerrarSesion{
+    color: white;
+}
+
+footer {
+    text-align: center;
+    background-color: rgb(56, 56, 56);
+    color: white;
+    padding: 20px;
+  } 
