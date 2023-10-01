@@ -622,6 +622,7 @@ if (validacionCampos.rut && validacionCampos.empresa && validacionCampos.email &
     method: "POST",
     body: datos,
   }).then(function(res){
+    //console.log(res.text());
     return res.json();
   }).then(function(data){
     switch(data){

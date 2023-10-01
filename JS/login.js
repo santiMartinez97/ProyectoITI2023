@@ -17,6 +17,7 @@ formulario.addEventListener("submit", function (e) {
     body: datos,
   })
     .then(function (res) {
+      //console.log(res.text());
       return res.json();
     })
     .then(function (data) {

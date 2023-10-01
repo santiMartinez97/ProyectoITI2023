@@ -1,8 +1,9 @@
 <?php
-require '../config/config.php';
 require '../config/conexion.php';
+require '../Clases/clientecomun.php';
+require '../Clases/clienteempresa.php';
 
-//session_start();
+session_start();
 
 $db = new DataBase();
 $con = $db->conectar();
@@ -10,69 +11,51 @@ $con = $db->conectar();
 $email = $_POST["email"];
 $pass = $_POST["pass"];
 
+//Si el conteo es tres, el usuario no puede hacer login
 if(conteoIntentosLogin($con) == 3){
     echo json_encode('Bloqueado');
 }else{
-    $cliente = $con->prepare("SELECT ID, Contrasenia, Habilitacion FROM cliente WHERE Email = :email");
-    $cliente->bindParam(':email', $email, PDO::PARAM_STR);
-    $cliente->execute();
-    $resultado = $cliente->fetch(PDO::FETCH_ASSOC);
+    $usuario = Usuario::findBy($con,'Email',$email);
 
-    if($resultado){
-        $hashedPass = $resultado["Contrasenia"];
-        if(password_verify($pass, $hashedPass)){
-            if($resultado["Habilitacion"] == "No habilitado"){
-                echo json_encode('No habilitado');
-            }else{
-                $clienteID = $resultado["ID"];
-                echo json_encode('cliente');
-                $_SESSION['cliente'] = 'cliente';
-                $_SESSION['id'] = $clienteID;
-
-                $cliComun = $con->prepare("SELECT Nombre, Apellido FROM clientecomun WHERE ID = :id");
-                $cliComun->bindParam(':id', $clienteID, PDO::PARAM_STR);
-                $cliComun->execute();
-                $subresultado = $cliComun->fetch(PDO::FETCH_ASSOC);
-
-                if($subresultado){
-                    $_SESSION['nombre'] = $subresultado["Nombre"]." ".$subresultado["Apellido"];
+    //Buscamos si el email está registrado
+    if($usuario){
+        //Chequeamos si la contraseña es correcta
+        if($usuario->checkPassword($pass)){
+            //Chequeamos el tipo de usuario
+            if($usuario->getUsuarioTipo() === 'Cliente'){
+                $cliente = Cliente::findByID($con,$usuario->getID());
+                if($cliente->getHabilitacion() == 'No habilitado'){
+                    echo json_encode('No habilitado');
                 }else{
-                    $cliEmpresa = $con->prepare("SELECT NombreEmpresa FROM clienteempresa WHERE ID = :id");
-                    $cliEmpresa->bindParam(':id', $clienteID, PDO::PARAM_STR);
-                    $cliEmpresa->execute();
-                    $subresultado = $cliEmpresa->fetch(PDO::FETCH_ASSOC);
+                    echo json_encode('cliente');
+                    $_SESSION['cliente'] = 'cliente';
+                    $_SESSION['id'] = $cliente->getID();
 
-                    $_SESSION['nombre'] = $subresultado["NombreEmpresa"];
+                    $cliComun = ClienteComun::findByID($con, $cliente->getID());
+
+                    if($cliComun){
+                        $_SESSION['nombre'] = $cliComun->getNombreCompleto();
+                    }else{
+                        $cliEmpresa = ClienteEmpresa::findByID($con, $cliente->getID());
+                        $_SESSION['nombre'] = $cliEmpresa->getNombreEmpresa();
+                    }
                 }
+            }else{
+                asignarRolASesion($usuario->getUsuarioTipo());
             }
         }else{
             intentoFallido($con);
             echo json_encode('Email y/o contraseña incorrecto/s.');
         }
     }else{
-        $usuario = $con->prepare("SELECT Contrasenia, Rol FROM usuario WHERE Email = :email");
-        $usuario->bindParam(':email', $email, PDO::PARAM_STR);
-        $usuario->execute();
-        $resultado = $usuario->fetch(PDO::FETCH_ASSOC);
-
-        if($resultado){
-            $hashedPass = $resultado["Contrasenia"];
-            if(password_verify($pass, $hashedPass)){
-                asignarRolASesion($resultado["Rol"]);
-            }else{
-                intentoFallido($con);
-                echo json_encode('Email y/o contraseña incorrecto/s.');
-            }
-        }else{
-            intentoFallido($con);
-            echo json_encode('Email y/o contraseña incorrecto/s.');
-        }
+        intentoFallido($con);
+        echo json_encode('Email y/o contraseña incorrecto/s.');
     }
 }
 
 function asignarRolASesion($rol){
     switch($rol){
-        case "Administración":
+        case "Administracion":
             echo json_encode('admin');
             $_SESSION['admin'] = 'admin';
             $_SESSION['nombre'] = 'Administración';
@@ -82,7 +65,7 @@ function asignarRolASesion($rol){
             $_SESSION['gerente'] = 'gerente';
             $_SESSION['nombre'] = "Gerente";
             break;
-         case "Informático":
+         case "Informatico":
             echo json_encode('informatico');
             $_SESSION['informatico'] = 'informatico';
             $_SESSION['nombre'] = 'Informático';
@@ -92,7 +75,7 @@ function asignarRolASesion($rol){
             $_SESSION['jefeCocina'] = 'jefeCocina';
             $_SESSION['nombre'] = 'Jefe de Cocina';
             break;
-         case "AtenciónPúblico":
+         case "AtencionPublico":
             echo json_encode('atencionPublico');
             $_SESSION['atencionPublico'] = 'atencionPublico';
             $_SESSION['nombre'] = 'Atención al Público';
@@ -116,7 +99,7 @@ function getIpAddr(){
 function conteoIntentosLogin($con){
     $ip = getIpAddr();
     $login_time = time()-30; //Especificar tiempo de bloqueo en segundos
-    $intentos = $con->prepare("SELECT COUNT(*) AS total_count FROM intentos_login WHERE IP='$ip' AND Tiempo>$login_time");
+    $intentos = $con->prepare("SELECT COUNT(*) AS total_count FROM login WHERE IP='$ip' AND Tiempo>$login_time");
     $intentos->execute();
     $contador = $intentos->fetch(PDO::FETCH_ASSOC);
     $contador = $contador['total_count'];
@@ -126,6 +109,6 @@ function conteoIntentosLogin($con){
 function intentoFallido($con){
     $ip = $_SERVER['REMOTE_ADDR'];
     $login_time = time();
-    $guardar = $con->prepare("INSERT INTO intentos_login SET IP='$ip', Tiempo=$login_time");
+    $guardar = $con->prepare("INSERT INTO login SET IP='$ip', Tiempo=$login_time");
     $guardar->execute();
 }
