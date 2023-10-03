@@ -1,17 +1,15 @@
 <?php
 
-require '../config/config.php';
 require '../config/conexion.php';
+require '../Clases/clientecomun.php';
 
 $db = new DataBase();
 $con = $db->conectar();
 
-$cliente = $con->prepare("SELECT * FROM cliente");
-$cliente-> execute();
-$resultadoCliente = $cliente->fetchAll(PDO::FETCH_ASSOC);
+$listaClientes = ClienteComun::listarClientesComunes($con);
 
-$listaDeClientes = []; // Array para almacenar los clientes
-$listaDeClientes[] = '<tr>
+$codigoHtml = []; // Array para almacenar los clientes
+$codigoHtml[] = '<tr>
     <th class="tablaArriba">ID</th>
     <th class="tablaArriba">Email</th>
     <th class="tablaArriba">CI</th>
@@ -24,45 +22,38 @@ $listaDeClientes[] = '<tr>
 </tr>
 ';
 
-foreach($resultadoCliente as $row){
-    $clienteComun = $con->prepare("SELECT * FROM clientecomun WHERE ID = :id");
-    $clienteComun->bindParam(':id', $row['ID'], PDO::PARAM_STR);
-    $clienteComun-> execute();
-    $resultadoClienteComun = $clienteComun->fetchAll(PDO::FETCH_ASSOC);
+foreach($listaClientes as $cliente){
+    $telefonos = $cliente->obtenerTelefonos();
+    $dieta = $cliente->getTipoDieta();
 
-    $telefono = $con->prepare("SELECT * FROM clientetelefono WHERE ID = :id");
-    $telefono->bindParam(':id', $row['ID'], PDO::PARAM_STR);
-    $telefono-> execute();
-    $resultadoTelefono = $telefono->fetchAll(PDO::FETCH_ASSOC);
-
-    $unTelefono = $resultadoTelefono[0];
-
-    if($resultadoClienteComun){
-        $comun = $resultadoClienteComun[0];
-        $codigoCliente = '<tr data-client-id="'.$row['ID'].'">
-            <td>'.$row['ID'].'</td>
-            <td>'.$row['Email'].'</td>
-            <td>'.$comun['CI'].'</td>
-            <td>'.$comun['Nombre'].'</td>
-            <td>'.$comun['Apellido'].'</td>
-            <td>'.$row['DireccionCompleta'].'</td>
-            <td>'.$unTelefono['Telefono'].'</td>
-            <td>'.$row['Dieta'].'</td>';
-        if($row['Habilitacion'] === "No habilitado"){
-            $codigoCliente .= '<td data-client-status="false">'.$row['Habilitacion'].'</td>
+    $codigoCliente = '<tr data-client-id="'.$cliente->getID().'">
+        <td>'.$cliente->getID().'</td>
+        <td>'.$cliente->getEmail().'</td>
+        <td>'.$cliente->getCI().'</td>
+        <td>'.$cliente->getNombre().'</td>
+        <td>'.$cliente->getApellido().'</td>
+        <td>'.$cliente->getDireccionCompleta().'</td>
+        <td>';
+    foreach($telefonos as $telefono){
+        $codigoCliente .= $telefono.'<br>';
+    }
+    $codigoCliente .= '</td>
+        <td>'.$dieta.'</td>';
+    if($cliente->getHabilitacion() === "No habilitado"){
+        $codigoCliente .= '<td data-client-status="false">'.$cliente->getHabilitacion().'</td>
             <td><button class="botonAceptar habilitar-btn">Habilitar</button></td>
             <td><button class="botonModificar" data-toggle="modal" data-target="#modalCliente">Modificar</button></td>
             <td><button class="botonDesechar">Eliminar</button></td>';
-        }else{
-            $codigoCliente .= '<td data-client-status="true">'.$row['Habilitacion'].'</td>
+    }else{
+        $codigoCliente .= '<td data-client-status="true">'.$cliente->getHabilitacion().'</td>
             <td><button class="botonRechazar habilitar-btn">Deshabilitar</button></td>
             <td><button class="botonModificar" data-toggle="modal" data-target="#modalCliente">Modificar</button></td>
             <td><button class="botonDesechar">Eliminar</button></td>';
-        }
-        $listaDeClientes[] = $codigoCliente;
     }
+    $codigoHtml[] = $codigoCliente;
+    
 }
 
-echo json_encode($listaDeClientes);
+echo json_encode($codigoHtml);
 
 ?>

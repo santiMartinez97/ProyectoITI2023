@@ -93,18 +93,6 @@ class Cliente extends Usuario {
         return $stmt->execute();
     }
 
-    // Método para crear un nuevo cliente en la base de datos
-    public function create() {
-        parent::create();
-        $sql = "INSERT INTO Cliente (ID, DireccionCompleta, Habilitacion) VALUES (:id, :direccion, :habilitacion)";
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->bindParam(':id', $this->ID, PDO::PARAM_INT);
-        $stmt->bindParam(':direccion', $this->DireccionCompleta, PDO::PARAM_STR);
-        $stmt->bindParam(':habilitacion', $this->Habilitacion, PDO::PARAM_STR);
-        
-        return $stmt->execute();
-    }
-
     // Método para agregar un teléfono al cliente
     public function agregarTelefono($telefono) {
         $sql = "INSERT INTO ClienteTelefono (ID, Telefono) VALUES (:idCliente, :telefono)";
@@ -129,6 +117,18 @@ class Cliente extends Usuario {
         }
 
         return $telefonos;
+    }
+
+    // Método para crear un nuevo cliente en la base de datos
+    public function create() {
+        parent::create();
+        $sql = "INSERT INTO Cliente (ID, DireccionCompleta, Habilitacion) VALUES (:id, :direccion, :habilitacion)";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':id', $this->ID, PDO::PARAM_INT);
+        $stmt->bindParam(':direccion', $this->DireccionCompleta, PDO::PARAM_STR);
+        $stmt->bindParam(':habilitacion', $this->Habilitacion, PDO::PARAM_STR);
+        
+        return $stmt->execute();
     }
 
     // Método para actualizar la información del cliente
