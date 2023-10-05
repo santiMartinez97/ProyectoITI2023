@@ -142,7 +142,7 @@ $resultado = $dieta->fetchAll(PDO::FETCH_ASSOC);
                                             foreach($resultado as $row){
                                                 $dieta = $row['Tipo'];
                                                 $id = $row['ID'];
-                                                echo '<option value="' . $dieta . '" >' . $dieta . '</option>';
+                                                echo '<option value="' . $id . '" >' . $dieta . '</option>';
                                             } 
                                         ?>
                                     </select>
@@ -237,7 +237,7 @@ $resultado = $dieta->fetchAll(PDO::FETCH_ASSOC);
                                             foreach($resultado as $row){
                                                 $dieta = $row['Tipo'];
                                                 $id = $row['ID'];
-                                                echo '<option value="' . $dieta . '" >' . $dieta . '</option>';
+                                                echo '<option value="' . $id . '" >' . $dieta . '</option>';
                                             } 
                                         ?>
                                     </select>

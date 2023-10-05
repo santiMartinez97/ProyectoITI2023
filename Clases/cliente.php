@@ -93,9 +93,28 @@ class Cliente extends Usuario {
         return $stmt->execute();
     }
 
+    // Método para quitar una dieta
+    public function quitarDieta() {
+        $sql = "DELETE FROM ClienteSigueDieta WHERE IDcliente = :idCliente";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':idCliente', $this->ID, PDO::PARAM_INT);
+        
+        return $stmt->execute();
+    }
+
     // Método para agregar un teléfono al cliente
     public function agregarTelefono($telefono) {
         $sql = "INSERT INTO ClienteTelefono (ID, Telefono) VALUES (:idCliente, :telefono)";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':idCliente', $this->ID, PDO::PARAM_INT);
+        $stmt->bindParam(':telefono', $telefono, PDO::PARAM_STR);
+        
+        return $stmt->execute();
+    }
+
+    //Método para modificar el télefono de un cliente
+    public function modificarTelefono($telefono) {
+        $sql = "UPDATE ClienteTelefono SET Telefono = :telefono WHERE ID = :idCliente";
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindParam(':idCliente', $this->ID, PDO::PARAM_INT);
         $stmt->bindParam(':telefono', $telefono, PDO::PARAM_STR);
@@ -136,7 +155,7 @@ class Cliente extends Usuario {
         parent::update();
         $sql = "UPDATE Cliente SET DireccionCompleta = :direccion, Habilitacion = :habilitacion WHERE ID = :id";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->bindParam(':id', $this->getID(), PDO::PARAM_INT);
+        $stmt->bindParam(':id', $this->ID, PDO::PARAM_INT);
         $stmt->bindParam(':direccion', $this->DireccionCompleta, PDO::PARAM_STR);
         $stmt->bindParam(':habilitacion', $this->Habilitacion, PDO::PARAM_STR);
         

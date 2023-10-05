@@ -75,11 +75,15 @@ class Usuario {
 
     // Método para eliminar un usuario
     public function delete() {
-        $sql = "DELETE FROM Usuario WHERE ID = :id";
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->bindParam(':id', $this->ID, PDO::PARAM_INT);
-        
-        return $stmt->execute();
+        try{
+            $sql = "DELETE FROM Usuario WHERE ID = :id";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->bindParam(':id', $this->ID, PDO::PARAM_INT);
+            $stmt->execute();
+            return true;
+        }catch(PDOException $e){
+            return false;
+        }
     }
 
     //Función para saber qué rol tiene un usuario

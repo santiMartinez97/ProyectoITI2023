@@ -106,7 +106,10 @@ $(document).ready(function() {
                     if (response === 'success') {
                         // Elimina la fila correspondiente de la tabla
                         button.closest('tr').remove();
-                    } else {
+                    }else if (response === 'Error: No se puede eliminar.') {
+                        alert('Error, no se puede eliminar el cliente. No se pueden eliminar clientes con pedidos o compras.');
+                    }else {
+                        //console.log(response);
                         alert('Error al eliminar el cliente.');
                     }
                 }

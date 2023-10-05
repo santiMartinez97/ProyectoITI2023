@@ -18,12 +18,24 @@ class ClienteComun extends Cliente {
         return $this->CI;
     }
 
+    public function setCI($ci){
+        $this->CI = $ci;
+    }
+
     public function getNombre() {
         return $this->Nombre;
     }
 
+    public function setNombre($nombre){
+        $this->Nombre = $nombre;
+    }
+
     public function getApellido() {
         return $this->Apellido;
+    }
+
+    public function setApellido($apellido){
+        $this->Apellido = $apellido;
     }
 
     public function getNombreCompleto(){
@@ -38,7 +50,20 @@ class ClienteComun extends Cliente {
         $stmt->execute();
 
         if ($stmt->rowCount() > 0) {
-            return true;
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+            $cliente = parent::findByID($pdo, $row['ID']);
+            $clienteComun = new ClienteComun(
+                $pdo,
+                $cliente->getEmail(),
+                '', // Contraseña no se necesita para la búsqueda
+                $cliente->getDireccionCompleta(),
+                $cliente->getHabilitacion(),
+                $row['CI'],
+                $row['Nombre'],
+                $row['Apellido']
+            );
+            $clienteComun->ID = $cliente->getID();
+            return $clienteComun;
         } else {
             return null;
         }
@@ -92,7 +117,7 @@ class ClienteComun extends Cliente {
         parent::update();
         $sql = "UPDATE ClienteComun SET CI = :ci, Nombre = :nombre, Apellido = :apellido WHERE ID = :id";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->bindParam(':id', $this->getID(), PDO::PARAM_INT);
+        $stmt->bindParam(':id', $this->ID, PDO::PARAM_INT);
         $stmt->bindParam(':ci', $this->CI, PDO::PARAM_STR);
         $stmt->bindParam(':nombre', $this->Nombre, PDO::PARAM_STR);
         $stmt->bindParam(':apellido', $this->Apellido, PDO::PARAM_STR);
