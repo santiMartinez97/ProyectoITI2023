@@ -1,19 +1,23 @@
 <?php
 
-require '../config/config.php';
 require '../config/conexion.php';
+require '../config/config.php';
+require '../Clases/menu.php';
+require '../Clases/dieta.php';
 
 $db = new DataBase();
 $con = $db->conectar();
 
-// CREAR UNA CONSULTA PREPARADA
-$menu = $con->prepare("SELECT  id,Nombre,Precio FROM menu WHERE Habilitacion='Habilitado'");
-$menu-> execute();
-$resultado = $menu->fetchAll(PDO::FETCH_ASSOC);
+// CLASE MENU, traer la informacion de los menus para el catalogo
+$menu = new Menu($con, null, null, null, null, null, null, null, null, null, null, null);
+$resultado = $menu->InfoMenu();
 
-$dieta = $con->prepare("SELECT * FROM dieta ");
-$dieta-> execute();
-$resultado2 = $dieta->fetchAll(PDO::FETCH_ASSOC);
+
+// CLASE DIETA, traer las todas las dietas
+$dieta = new Dieta($con);
+$resultado2 = $dieta->ObtenerDieta();
+
+
 ?>
 
 
@@ -171,55 +175,54 @@ echo  '<li class="nav-item dropdown">';
 
 <article id="campos"> 
  <br>
-     <section>
-      <article class="container">
-          <article id="listaMenus" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        
-            <?php foreach($resultado as $row){ ?>
-              <article class="col">
-                  <article class="card shadow-sm">  
-                  <?php 
-                  $id = $row['id'];
-                  $imagen = "../imgCatalogo/". $id . "/img.jpg";
+ <section>
+    <div class="container">
+        <div id="listaMenus" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            <?php foreach($resultado as $row){ 
+                $menu = new Menu(
+                  $con,
+                  $row['ID'], 
+                  null, 
+                  $row['Nombre'], 
+                  null, 
+                  $row['Precio'], 
+                  null, null, null, null, null, null
+              );
+                $id = $menu->getID();
+                $imagen = "../imgCatalogo/". $id . "/img.jpg";
 
-                  if(!file_exists($imagen)){
-                        $imagen = "../imgCatalogo/noimg.jpg";
-                  }
-                  ?>
-                  <a href="detalles.php?id=<?php echo $row ['id']; ?>&token=<?php echo hash_hmac('sha1', $row['id'], KEY_TOKEN); ?>" >
-                      <img src="<?php echo $imagen; ?>">
-                </a>
-                      <article class="card-body">
-                          <h5 class="card-title "><?php echo $row['Nombre']; ?></h5>
-                          <p class="card-text ">$<?php echo number_format( $row['Precio'],0, '.','.'); ?></p>
-                          <article class="d-flex justify-content-between align-items-center">
-                              <article class="btn-group">
-                              <!-- URL CON DISTINTO TOKEN -->
+                if(!file_exists($imagen)){
+                    $imagen = "../imgCatalogo/noimg.jpg";
+                }
+            ?>
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <a href="detalles.php?id=<?php echo $menu->getID(); ?>&token=<?php echo hash_hmac('sha1', $menu->getID(), KEY_TOKEN); ?>">
+                            <img src="<?php echo $imagen; ?>">
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title "><?php echo $menu->getNombre(); ?></h5>
+                            <p class="card-text ">$<?php echo number_format($menu->getPrecio(), 0, '.', '.'); ?></p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <!-- URL CON DISTINTO TOKEN -->
+                                </div>
+                                <?php
+                                    if(!isset($_SESSION['cliente'])){
+                                        echo '<a href="#" class="btn btn-success d-flex justify-content-center align-items-center" onclick="agregarProducto('.$menu->getID().',\''.hash_hmac('sha1', $menu->getID(), KEY_TOKEN).'\')">Agregar al Carrito</a>';
+                                    } else {
+                                        echo '<button class="btn btn-outline-success" type="button" onclick="agregarProducto(' . $menu->getID() . ', \'' . hash_hmac('sha1', $menu->getID(), KEY_TOKEN) . '\')">Agregar al carrito</button>';
+                                    }
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <?php } ?>
+        </div>
+    </div>
+</section>
 
-                              
-                              </article>
-                              
-
-                              <?php
-
-                              if(!isset($_SESSION['cliente'])){
-                                echo '<a href="#" class="btn btn-success d-flex justify-content-center align-items-center">Agregar al Carrito</a>';
-                                }else{
-                                  echo '<button class="btn btn-outline-success" type="button" onclick="agregarProducto(' . $row['id'] . ', \'' . hash_hmac('sha1', $row['id'], KEY_TOKEN) . '\')">Agregar al carrito</button>';
-
-                                }
-                              ?>
-                          </article>
-                      </article>
-                  </article>
-              </article >
-              <?php } ?>
-          </article> 
-        </section>
-    </section>
-    <articule>
- <br>
- 
   
  <script src="../JS/tipoDieta.js"></script>
  <script>

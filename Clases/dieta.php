@@ -64,6 +64,14 @@ class Dieta {
         
         return $stmt->execute();
     }
+
+     // Método para obtener todas las dietas
+     public function ObtenerDieta() {
+        $dieta = $this->pdo->prepare("SELECT * FROM dieta ");
+        $dieta-> execute();
+        return $dieta->fetchAll(PDO::FETCH_ASSOC);
+        
+    }
 }
 
 
