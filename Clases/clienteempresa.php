@@ -16,8 +16,16 @@ class ClienteEmpresa extends Cliente {
         return $this->RUT;
     }
 
+    public function setRUT($rut){
+        $this->RUT = $rut;
+    }
+
     public function getNombreEmpresa() {
         return $this->NombreEmpresa;
+    }
+
+    public function setNombreEmpresa($nombre){
+        $this->NombreEmpresa = $nombre;
     }
 
     public static function findByRUT($pdo, $rut) {
@@ -27,7 +35,19 @@ class ClienteEmpresa extends Cliente {
         $stmt->execute();
 
         if ($stmt->rowCount() > 0) {
-            return true;
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+            $cliente = parent::findByID($pdo, $row['ID']);
+            $clienteEmpresa = new ClienteEmpresa(
+            $pdo,
+            $cliente->getEmail(),
+            '', // Contraseña no se necesita para la búsqueda
+            $cliente->getDireccionCompleta(),
+            $cliente->getHabilitacion(),
+            $row['RUT'],
+            $row['NombreEmpresa']
+            );
+            $clienteEmpresa->ID = $cliente->getID();
+            return $clienteEmpresa;
         } else {
             return null;
         }
