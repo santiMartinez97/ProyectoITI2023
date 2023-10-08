@@ -82,11 +82,10 @@ class Usuario {
 
     // Método para actualizar la información del usuario
     public function update() {
-        $sql = "UPDATE Usuario SET Email = :email, Contrasenia = :contrasenia WHERE ID = :id";
+        $sql = "UPDATE Usuario SET Email = :email WHERE ID = :id";
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindParam(':id', $this->ID, PDO::PARAM_INT);
         $stmt->bindParam(':email', $this->Email, PDO::PARAM_STR);
-        $stmt->bindParam(':contrasenia', $this->Contrasenia, PDO::PARAM_STR);
         
         return $stmt->execute();
     }
