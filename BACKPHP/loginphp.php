@@ -2,6 +2,7 @@
 require '../config/conexion.php';
 require '../Clases/clientecomun.php';
 require '../Clases/clienteempresa.php';
+require '../Clases/intentologin.php';
 
 session_start();
 
@@ -12,7 +13,7 @@ $email = $_POST["email"];
 $pass = $_POST["pass"];
 
 //Si el conteo es tres, el usuario no puede hacer login
-if(conteoIntentosLogin($con) == 3){
+if(loginBloqueado($con)){
     echo json_encode('Bloqueado');
 }else{
     $usuario = Usuario::findBy($con,'Email',$email);
@@ -96,19 +97,12 @@ function getIpAddr(){
         return $ipAddr;
 }
 
-function conteoIntentosLogin($con){
+function loginBloqueado($con){
     $ip = getIpAddr();
-    $login_time = time()-30; //Especificar tiempo de bloqueo en segundos
-    $intentos = $con->prepare("SELECT COUNT(*) AS total_count FROM login WHERE IP='$ip' AND Tiempo>$login_time");
-    $intentos->execute();
-    $contador = $intentos->fetch(PDO::FETCH_ASSOC);
-    $contador = $contador['total_count'];
-    return $contador;
+    return Login::verificarIntentos($con,$ip);
 }
 
 function intentoFallido($con){
-    $ip = $_SERVER['REMOTE_ADDR'];
-    $login_time = time();
-    $guardar = $con->prepare("INSERT INTO login SET IP='$ip', Tiempo=$login_time");
-    $guardar->execute();
+    $ip = getIpAddr();
+    Login::insertarLogin($con,$ip);
 }
