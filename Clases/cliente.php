@@ -160,17 +160,26 @@ class Cliente extends Usuario {
         $stmt->bindParam(':habilitacion', $this->Habilitacion, PDO::PARAM_STR);
         
         return $stmt->execute();
-    }
+    } 
 
-    // Método para eliminar un cliente
+    // Método para eliminar un cliente       
     public function delete() {
         parent::delete();
         $sql = "DELETE FROM Cliente WHERE ID = :id";
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindParam(':id', $this->getID(), PDO::PARAM_INT);
+
         
         return $stmt->execute();
     }
+
+
+
+
+    
+
+    
+
 }
 
 ?>

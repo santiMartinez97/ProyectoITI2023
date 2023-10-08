@@ -195,6 +195,11 @@ public function InfoMenu(){
     
 }
 
-
+public function eliminarMenu($menuID) {
+    $menu = $this->pdo->prepare("DELETE FROM menu WHERE ID = ?");
+    $menu->execute([$menuID]);
+    
+    return $menu->rowCount() > 0; // Verifica si se eliminó algún registro
+}
 
 }

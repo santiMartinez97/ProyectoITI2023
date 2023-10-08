@@ -40,12 +40,30 @@ class Usuario {
         }
     }
 
-    // Método para buscar un usuario por su ID o correo electrónico
+    // Método para buscar un usuario por su ID o correo electrónico 
     public static function findBy($pdo, $field, $value) {
         $sql = "SELECT * FROM Usuario WHERE $field = :value";
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(':value', $value, PDO::PARAM_STR);
         $stmt->execute();
+
+        if ($stmt->rowCount() > 0) {
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+            $usuario = new Usuario($pdo, $row['Email'], $row['Contrasenia']);
+            $usuario->ID = $row['ID'];
+            return $usuario;
+        } else {
+            return null;
+        }
+    }
+
+    public static function findUpdate($pdo, $field, $value) {
+        $sql = "SELECT * FROM Usuario WHERE $field = :value";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(':value', $value, PDO::PARAM_STR);
+        $stmt->execute();
+
+
 
         if ($stmt->rowCount() > 0) {
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -105,6 +123,22 @@ class Usuario {
         $stmt->bindParam(':id', $this->ID, PDO::PARAM_INT);
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public static function listarPersonal($pdo) {
+        $personal = array();
+    
+        $sql = "SELECT ID,Email FROM usuario";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute();
+    
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $usuario = new Usuario($pdo, $row['Email'], null);
+            $usuario->ID = $row['ID'];
+            $personal[] = $usuario;
+        }
+    
+        return $personal;
     }
 }
 
