@@ -1,4 +1,13 @@
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-image: url(../img/flat-lay-fusilli-broccoli-carrots-bowl-with-copy-space.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
 
+} 
 .icono1 {
   width: 40px;
   height: 40px;
@@ -6,6 +15,7 @@
   position: relative;
   z-index: 1;
 }
+
 
 
 .contacto{
@@ -30,6 +40,7 @@ z-index: 2;
 .navbar .nav-link {
   color: #080101;
 }
+
 
 .navbar-nav .nav-item {
   margin-right: 40px;
@@ -170,22 +181,8 @@ select.form-select {
     box-shadow: 0 0 10px rgba(228, 95, 0, 0.476); /* Cambiar el color de la sombra */
   }
 
- body {
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    background-image: url(../img/flat-lay-fusilli-broccoli-carrots-bowl-with-copy-space.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
-    background-attachment: fixed; /* Asegura que la imagen de fondo permanezca fija */
-} 
 
-img{
-    height: 220px;
-    
-}
+
 
 .card{
     box-shadow: 0px 1px 10px rgb(211, 99, 0,0.5) !important;
