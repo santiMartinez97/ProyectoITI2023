@@ -15,7 +15,7 @@ if (isset($_SESSION['nombre'])) {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Iniciar Sesión | NutriBento</title>
+    <title>Olvidé mi contraseña | NutriBento</title>
     <link rel="icon" href="img/icono.png" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
@@ -58,7 +58,7 @@ if (isset($_SESSION['nombre'])) {
               <a class="nav-link" href="#"><i class="fa-solid fa-cart-shopping"></i> Carrito</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#"><i class="fa-solid fa-user"></i> Iniciar sesión</a>
+              <a class="nav-link" href="login.php"><i class="fa-solid fa-user"></i> Iniciar sesión</a>
             </li>
           </ul>
           <ul class="navbar-nav ms-auto">
@@ -86,10 +86,7 @@ if (isset($_SESSION['nombre'])) {
     <article class="padre">
       <article class="hijo">
         <article class="container my-1">
-          <h1 class="titulo text-center"  id="IniciarS" >Iniciar Sesión</h1>
-          <p class="subtitulo">
-            ¿Es tu primera vez? <a href="registro.php" class="enlace">registrate</a>
-          </p>
+          <h1 class="titulo text-center"  id="IniciarS" >Recuperar contraseña</h1>
           <article id="campos">
             <form id="loginForm" class="row no-gutters">
               <article class="col-12">
@@ -102,22 +99,20 @@ if (isset($_SESSION['nombre'])) {
                 />
               </article>
               <br /><br />
-              <article class="col-12">
-                <input
-                  class="formulario__input form-control"
-                  name="pass"
-                  type="password"
-                  placeholder="Ingrese su contraseña aquí..."
-                  required
-                />
+              <article id="mensajeSalida">
+                <?php 
+                  if(isset($_GET['status'])){
+                    $status = $_GET['status'];
+                    if($status == 'expired'){
+                      echo '<article class="alert alert-danger d-flex align-items-center" role="alert">
+                      <i class="fa-solid fa-hourglass-end"></i> Su link ha expirado, ingrese nuevamente su correo y vuelva a intentarlo.</article>';
+                    }
+                  }
+                ?>
               </article>
-              <br />
-              <a href="recoverPassword.php" class="enlace">¿Olvidaste tu contraseña?</a>
-              <br /><br />
-              <article id="loginError"></article>
               <article class="col-12 text-center">
                 <button type="submit" class="btn btn-primary" id="enviar">
-                  Iniciar Sesión
+                  Resetear contraseña
                 </button>
               </article>
             </form>
@@ -161,6 +156,6 @@ if (isset($_SESSION['nombre'])) {
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
       crossorigin="anonymous"
     ></script>
-    <script src="JS/login.js"></script>
+    <script src="JS/recover.js"></script>
   </body>
 </html>

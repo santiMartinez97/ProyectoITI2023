@@ -1,12 +1,31 @@
 <?php
+require 'config/conexion.php';
+require 'Clases/usuario.php';
+require 'Clases/tokenPassword.php';
+
 // Si ya hay una sesión activa, redirecciona al index.
 session_start();
 
 // Verificar si hay una sesión activa
-if (isset($_SESSION['nombre'])) {
+if (isset($_SESSION['nombre']) || !isset($_GET['token'])) {
     // Redirigir a index.html si hay una sesión activa
     header("Location: index.php");
     exit; // Salir del script después de la redirección
+}
+
+$db = new DataBase();
+$con = $db->conectar();
+
+$token = $_GET['token'];
+
+$token_hash = hash('sha256', $token);
+
+$objToken = new TokenRecuperacion($con);
+$tokenValido = $objToken->obtenerTokenPorHash($token_hash);
+
+//Si el token está expirado
+if(!$tokenValido){
+    header("Location: recoverPassword.php?status=expired");
 }
 ?>
 
@@ -15,7 +34,7 @@ if (isset($_SESSION['nombre'])) {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Iniciar Sesión | NutriBento</title>
+    <title>Cambiar contraseña | NutriBento</title>
     <link rel="icon" href="img/icono.png" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
@@ -58,7 +77,7 @@ if (isset($_SESSION['nombre'])) {
               <a class="nav-link" href="#"><i class="fa-solid fa-cart-shopping"></i> Carrito</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#"><i class="fa-solid fa-user"></i> Iniciar sesión</a>
+              <a class="nav-link" href="login.php"><i class="fa-solid fa-user"></i> Iniciar sesión</a>
             </li>
           </ul>
           <ul class="navbar-nav ms-auto">
@@ -86,19 +105,14 @@ if (isset($_SESSION['nombre'])) {
     <article class="padre">
       <article class="hijo">
         <article class="container my-1">
-          <h1 class="titulo text-center"  id="IniciarS" >Iniciar Sesión</h1>
-          <p class="subtitulo">
-            ¿Es tu primera vez? <a href="registro.php" class="enlace">registrate</a>
-          </p>
+          <h1 class="titulo text-center"  id="IniciarS" >Cambiar Contraseña</h1>
           <article id="campos">
             <form id="loginForm" class="row no-gutters">
-              <article class="col-12">
+              <article>
                 <input
-                  class="formulario__input form-control"
-                  name="email"
-                  type="email"
-                  placeholder="Ingrese su email aquí..."
-                  required
+                  name="token"
+                  type="hidden"
+                  value="<?= htmlspecialchars($token) ?>"
                 />
               </article>
               <br /><br />
@@ -107,17 +121,25 @@ if (isset($_SESSION['nombre'])) {
                   class="formulario__input form-control"
                   name="pass"
                   type="password"
-                  placeholder="Ingrese su contraseña aquí..."
+                  placeholder="Ingrese su nueva contraseña aquí..."
                   required
                 />
               </article>
-              <br />
-              <a href="recoverPassword.php" class="enlace">¿Olvidaste tu contraseña?</a>
               <br /><br />
-              <article id="loginError"></article>
+              <article class="col-12">
+              <input
+                  class="formulario__input form-control"
+                  name="passConfirm"
+                  type="password"
+                  placeholder="Confirme su contraseña..."
+                  required
+                />
+              </article>
+              <br /><br />
+              <article id="mensajeSalida"></article>
               <article class="col-12 text-center">
                 <button type="submit" class="btn btn-primary" id="enviar">
-                  Iniciar Sesión
+                  Cambiar
                 </button>
               </article>
             </form>
@@ -161,6 +183,6 @@ if (isset($_SESSION['nombre'])) {
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
       crossorigin="anonymous"
     ></script>
-    <script src="JS/login.js"></script>
+    <script src="JS/resetpass.js"></script>
   </body>
 </html>
