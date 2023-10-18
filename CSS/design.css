@@ -13,6 +13,10 @@
   color: #080101;
 }
 
+.navbar .nav-link:hover {
+  color: rgb(255, 94, 0, 0.75);
+}
+
 .navbar-nav .nav-item {
   margin-right: 40px;
 }
@@ -26,7 +30,7 @@
 }
 
 .navbar-toggler {
-  background:rgb(254, 80, 0);
+  background: rgb(153, 146, 159);
 }
 
 
@@ -87,6 +91,7 @@
 
 
 }
+
 
 #tipo_usuario {
   color: rgb(230, 92, 6);
@@ -190,12 +195,7 @@
 
   }
 
-  .row {
-   font-size: 29px;
   
-  
-  
-  }
   .titulo {
     text-align: center;
     font-size: 47px;
@@ -252,3 +252,4 @@
 .alert .fa-solid {
   padding-right: 3px;
 }
+

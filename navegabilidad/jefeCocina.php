@@ -1,16 +1,11 @@
 <?php
 
 require '../config/conexion.php';
+require '../Clases/pedido.php';
 
 $db = new DataBase();
 $con = $db->conectar();
 
-
-$pedidos = $con->prepare("SELECT Cantidad, MenuesEncarga, Descripcion FROM `pedido_encarga_menu`");
-$pedidos-> execute();
-$resultados = $pedidos->fetchAll(PDO::FETCH_ASSOC);
-
-$pedidos_array=[];
 ?>
 
 <!DOCTYPE html>
@@ -33,7 +28,10 @@ $pedidos_array=[];
     <br>
 
     <!-- Lista de pedidos -->
-    <h2 class="h2tit"><a href="jefeCocinaStock.php">Control de stock</a></h2>
+    <h2 class="h2tit"><a href="jefeMain.php">Menu principal</a>
+    <a href="jefeCocinaStock.php">Control de stock</a>
+    <a href="jefeComida.php">Preparacion comidas</a>
+    </h2>
 
     <h2>Listado de pedidos</h2>
 
@@ -48,19 +46,16 @@ $pedidos_array=[];
             </thead>
             <tbody>
                 <?php
-                    foreach ($resultados as $row) {
-                        $nombre = $row['MenuesEncarga'];    
-                        $descripcion = $row['Descripcion'];    
-                        $cantidad = $row['Cantidad'];    
-                        if (!in_array($pedidos, $pedidos_array)) {
+                    $pedidos = Pedido::listarPedidos($pdo);
+                  
+                    foreach ($pedidos as $pedido) {   
                             echo '<tr>';
-                            echo '<th >'.$nombre.'</th> ';   
-                            echo '<th >'.$descripcion.'</th> ';
-                            echo '<th >'.$cantidad.'</th> ';   
+                            echo '<th >' . $pedido->getID() .'</th> ';   
+                            echo '<th >'. $pedido->getFecha().'</th> ';
+                            echo '<th >'. $pedido->getDescripcion() .'</th> ';   
                             echo '<th><button class="botonAceptar">Completar</button></th>';
                             echo '<th><button class="botonDesechar">Desechar</button></th>';
                             echo '</tr>';
-                         }
                     }
                 ?>
             </tbody>
@@ -73,7 +68,6 @@ $pedidos_array=[];
     <?php
       // Obtener el mes y el año actual
 
-      data_time_set('America/montevideo');
       $mes_actual = date("n");
       $anio_actual = date("Y");
       $dia_actual = date("j");
