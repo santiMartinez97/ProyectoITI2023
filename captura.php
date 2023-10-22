@@ -1,14 +1,14 @@
 <?php
 
-require '../config/config.php';
-require '../config/conexion.php';
-require '../vendor/autoload.php';
+require 'config/config.php';
+require 'config/conexion.php';
+require 'vendor/autoload.php';
 
 
 // CREAR UNA CONSULTA PARA NOMBRE DE PERFIL
-$cliente = $con->prepare("SELECT ID FROM cliente ");
-$cliente-> execute();
-$cliente1 = $cliente->fetchAll(PDO::FETCH_ASSOC);
+// $cliente = $con->prepare("SELECT ID FROM cliente ");
+// $cliente-> execute();
+// $cliente1 = $cliente->fetchAll(PDO::FETCH_ASSOC);
 
 $payment = $_GET['payment_id'];
 $status = $_GET['status'];
