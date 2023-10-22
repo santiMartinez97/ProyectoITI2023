@@ -14,7 +14,6 @@ $db = new DataBase();
 $con = $db->conectar();
 
 
-
 // CREAR UNA CONSULTA PARA NOMBRE DE PERFIL
 $menu = $con->prepare("SELECT  id,Nombre,Precio FROM menu WHERE Habilitacion='Habilitado'");
 $menu-> execute();
@@ -190,7 +189,40 @@ if ($productos != null) {
                   $item->unit_price = $precio_desc;
                   array_push($productos_mp, $item);
                   unset($item);
-                 
+
+
+      
+
+                
+//                     // CREAR UNA CONSULTA PARA NOMBRE DE PERFIL
+//  $cliente = $con->prepare("SELECT * FROM cliente ");
+//  $cliente-> execute();
+// $cliente1 = $cliente->fetch(PDO::FETCH_ASSOC);
+
+// // //Falta agregar todo esto a la base de datos//
+//  $fecha_hoy = date("Y-m-d");
+//  $fecha_menos_un_dia = date("Y-m-d", strtotime($fecha_hoy . " -1 day"));
+//  if ($cliente1 && isset($cliente1['ID'])) {
+//   $idCliente = $cliente1['ID'];
+
+//  $query = $con->prepare("INSERT INTO pedido (Fecha, IDCliente) VALUES (:fecha, :id_cliente)");
+//   $query->bindParam(':fecha', $fecha_menos_un_dia, PDO::PARAM_STR);
+//   $query->bindParam(':id_cliente', $idCliente, PDO::PARAM_INT);
+//   $query->execute();
+
+//   $idPedido = $con->lastInsertId();
+
+//   $query2 = $con->prepare("INSERT INTO pedido_encarga_menu (IDMenu, IDPedido,Cantidad) VALUES (:idmenu, :idpedido, :cantidad)");
+//   $query2->bindParam(':idmenu', $_id, PDO::PARAM_STR);
+//   $query2->bindParam(':idpedido', $idPedido, PDO::PARAM_INT);
+//   $query2->bindParam(':cantidad', $cantidad, PDO::PARAM_INT);
+//   $query2->execute();
+
+//  } else {
+//    echo "No se encontró ningún cliente habilitado o el ID del cliente no está definido.";
+//    echo $idCliente;
+//  }  
+       
                   ?>
                   <tr>
                     <td>
@@ -219,7 +251,28 @@ if ($productos != null) {
 
               </tbody>
            
-            <?php } ?>
+            <?php 
+   
+          
+          }             
+            ?>
+          <script>
+          window.onload = function() {
+            var productos = <?php echo json_encode($lista_carrito); ?>;
+            console.log(productos);
+              $.ajax({
+                  url: '../captura.php',
+                  method: 'POST',
+                  data: { productos: productos },
+                  success: function(response) {
+                      // console.log(response);
+                  }
+              });
+          }
+
+          </script>
+
+            
           </table>
           <div id="wallet_container"></div>
         </article>
@@ -280,3 +333,4 @@ mp.bricks().create("wallet", "wallet_container", {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
       crossorigin="anonymous"></script>
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
