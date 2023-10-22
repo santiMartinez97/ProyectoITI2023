@@ -4,13 +4,19 @@ let noCoincide = `<article class="alert alert-danger d-flex align-items-center" 
 <i class="fa-solid fa-triangle-exclamation"></i> Las contraseñas ingresadas no coinciden.</article>`;
 let cambioExitoso = `<article class="alert alert-success d-flex align-items-center" role="alert">
 <i class="fa-solid fa-check"></i> La contraseña ha sido modificada con éxito. Ya puede intentar iniciar sesión.</article>`;
+let passNoAceptable = `<article class="alert alert-danger d-flex align-items-center" role="alert">
+<i class="fa-solid fa-triangle-exclamation"></i> Las contraseña debe tener entre 6 y 17 caracteres.</article>`;
+
+const passVal = /^.{6,17}$/; // 6 a 17 digitos.
 
 formulario.addEventListener("submit", function (e) {
     e.preventDefault();
   
     let datos = new FormData(formulario);
 
-    if(datos.get('pass') != datos.get('passConfirm')){
+    if(!passVal.test(datos.get('pass'))){
+      document.getElementById("mensajeSalida").innerHTML = passNoAceptable;
+    }else if(datos.get('pass') != datos.get('passConfirm')){
         document.getElementById("mensajeSalida").innerHTML = noCoincide;
     }else{
         let url = 'BACKPHP/resetpass.php';

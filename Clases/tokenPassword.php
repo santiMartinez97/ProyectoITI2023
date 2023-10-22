@@ -43,11 +43,10 @@ class TokenRecuperacion {
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
     
         if ($result) {
-            $expiracion = new DateTime($result['expiracion']);
-            $now = new DateTime();
-            $now->setTimezone(new DateTimeZone('America/Montevideo'));
+            $expiracion = new DateTime($result['expiracion'], new DateTimeZone('America/Montevideo'));
+            $now = new DateTime('now', new DateTimeZone('America/Montevideo'));
     
-            if ($now < $expiracion) {
+            if ($now > $expiracion) {
                 // El token está expirado, elimina la fila y retorna false
                 $this->eliminarTokenPorHash($hashToken);
                 return false;
