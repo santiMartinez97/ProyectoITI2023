@@ -13,6 +13,10 @@ $productos_mp = array();
 $db = new DataBase();
 $con = $db->conectar();
 
+// CREAR UNA CONSULTA PARA NOMBRE DE PERFIL
+$cliente = $con->prepare("SELECT ID FROM cliente ");
+$cliente-> execute();
+$cliente1 = $cliente->fetchAll(PDO::FETCH_ASSOC);
 
 
 // CREAR UNA CONSULTA PARA NOMBRE DE PERFIL
@@ -190,7 +194,8 @@ if ($productos != null) {
                   $item->unit_price = $precio_desc;
                   array_push($productos_mp, $item);
                   unset($item);
-                 
+                
+    
                   ?>
                   <tr>
                     <td>
@@ -219,7 +224,15 @@ if ($productos != null) {
 
               </tbody>
            
-            <?php } ?>
+            <?php 
+
+          
+          
+          }
+            
+            
+            
+            ?>
           </table>
           <div id="wallet_container"></div>
         </article>

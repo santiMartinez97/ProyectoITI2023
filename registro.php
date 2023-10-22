@@ -22,12 +22,12 @@ if (isset($_SESSION['nombre'])) {
     <title>Registro | NutriBento</title>
     <link rel="icon" href="img/icono.png" />
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> 
-    <link
+    <!-- <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
       crossorigin="anonymous"
-    />
+    /> -->
     <script src="https://kit.fontawesome.com/e934b5c028.js" crossorigin="anonymous"></script>
     
 </head>
