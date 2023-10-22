@@ -16,16 +16,7 @@ class Stock {
         $resultado = $menu->fetchAll(PDO::FETCH_ASSOC);
 
         $menu_array = [];
-        echo '<section class="cajaSeleccion">';
-            echo '<form method="post" action="jefeCocinaStock.php">';
-                echo '<h2>Agregue o quite stock</h2>';
-                echo '<input type="text" name="menu" class="input-text" placeholder="Nombre del menú">';
-                echo '<input type="number" name="cantidad" class="input-number" placeholder="Cantidad" min="0">';
-                echo '<input type="submit" class="botonAceptar" name="agregarStock" value="Agregar Stock">';
-                echo '<input type="submit" class="botonDesechar" name="quitarStock" value="Quitar Stock">';
-            echo '</form>';
-        echo '</section>';
-        
+    
         echo '<article class="pedidos">';
         echo '<table>';
         echo '<thead>';

@@ -18,7 +18,7 @@ $stock = new Stock();
     <!-- Header -->
     <header>
         <h1>Jefe de cocina</h1>
-        <h2 class="h2tit">
+        <h2 >
         <a class= "nav" href="jefeMain.php">Menu principal</a>
         <a class= "nav" href="jefeCocina.php">Ver pedidos </a>
         <a class= "nav" href="jefeComida.php">Preparacion comidas</a>
@@ -32,16 +32,24 @@ $stock = new Stock();
     <h2 class="titulo">Gestion de stocks</h2>
 
     <!-- Lista de stcok -->
-    
+        <section class="cajaSeleccion">
+            <form method="post" action="jefeCocinaStock.php">
+                <h2>Agregue o quite stock</h2>
+                <input type="text" name="menu" class="input-text" placeholder="Nombre del menú">
+                <input type="number" name="cantidad" class="input-number" placeholder="Cantidad" min="0">
+                <input type="submit" class="botonAceptar" name="agregarStock" value="Agregar Stock">
+                <input type="submit" class="botonDesechar" name="quitarStock" value="Quitar Stock">
+            </form>
+       </section>
+
         <?php        
-          $stock->listarStocks();
 
           if (isset($_POST['agregarStock'])) {
             $menu = $_POST['menu'];
             $cantidad = (int)$_POST['cantidad'];
         
             if ($stock->agregarStock($menu, $cantidad)) {
-                echo "Stock agregado exitosamente.";
+                echo "Stock agregado exitosamente." ;
             } else {
                 echo "Error al agregar stock.";
             }
@@ -58,7 +66,7 @@ $stock = new Stock();
             }
         }
 
-
+        $stock->listarStocks();
         ?>
 
 
@@ -69,5 +77,6 @@ $stock = new Stock();
       <h3>Jefe de cocina</h3>
     </section>
     </footer>
+    <script src="JS/jquery-3.6.4.min.js"></script>
 </body>
 </html>

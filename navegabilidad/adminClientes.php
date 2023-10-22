@@ -1,7 +1,7 @@
 <?php
 require '../config/config.php';
 require '../config/conexion.php';
-
+include_once '../Clases/clientecomun.php';
 if(!isset($_SESSION['admin'])){
     echo '
     <script>
@@ -37,17 +37,15 @@ $resultado = $dieta->fetchAll(PDO::FETCH_ASSOC);
     <!-- Header -->
     <header>
         <h1>Administrador</h1>
-        <a class="cerrarSesion" href="cerrar_session.php">Cerrar sesión</a>
+        <h2 class="h2tit">
+            <a class = "nav" href="admin.php">Menu principal</a>
+        <a class = "nav" href="adminPedidos.php">Gestión de pedidos</a>
+            <a class="nav" href="cerrar_session.php">Cerrar sesión</a>
+        </h2>
     </header>
     
     <br>
-
-    <!-- Control de pedidos -->
-    <h2 class="h2tit">
-        <a href="admin.php">Menu principal</a>
-        <a href="adminPedidos.php">Gestión de pedidos</a>
-    </h2>
-    
+        
     <section class="cajaSeleccion">
         <select id="tipoCliente"class="seleccionClientes">
                 <option value="comun">Clientes común</option> 
@@ -253,7 +251,7 @@ $resultado = $dieta->fetchAll(PDO::FETCH_ASSOC);
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                         <button type="submit" class="btn btn-primary">Guardar</button>
                     </div>
-                </form>
+                </form> 
 
             </div>
         </div>
