@@ -27,7 +27,17 @@ unset($_SESSION['carrito']);
 
 
 
-?>
+//   $query = $con->prepare("INSERT INTO pedido (Fecha, IDCliente) VALUES (:fecha, :id_cliente)");
+//   $query->bindParam(':fecha', $fecha_hoy, PDO::PARAM_STR);
+//   $query->bindParam(':id_cliente', $idCliente, PDO::PARAM_INT);
+//   $query->execute();
+// } else {
+//   echo "No se encontró ningún cliente habilitado o el ID del cliente no está definido.";
+//   $idCliente = $cliente1['id'];
+//   echo $idCliente;
+// }  
+
+// ?>
 
 
 

@@ -36,7 +36,7 @@ $resultadoEmail = Usuario::findBy($con,'Email',$email);
 $resultadoCi = ClienteComun::findByCI($con,$ci);
 
 if(!$resultadoEmail && !$resultadoCi){
-    $dirCompleta = $barrio.' '.$calle.' '.$numero.' '.$esquina;
+    $dirCompleta = $barrio.'-'.$calle.'-'.$numero.'-'.$esquina;
 
     $clienteComun = new ClienteComun($con,$email,$password,$dirCompleta,'No habilitado',$ci,$nombre,$apellido);
     $clienteComun->create();

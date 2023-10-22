@@ -13,6 +13,10 @@ $productos_mp = array();
 $db = new DataBase();
 $con = $db->conectar();
 
+// CREAR UNA CONSULTA PARA NOMBRE DE PERFIL
+$cliente = $con->prepare("SELECT ID FROM cliente ");
+$cliente-> execute();
+$cliente1 = $cliente->fetchAll(PDO::FETCH_ASSOC);
 
 // CREAR UNA CONSULTA PARA NOMBRE DE PERFIL
 $menu = $con->prepare("SELECT  id,Nombre,Precio FROM menu WHERE Habilitacion='Habilitado'");
