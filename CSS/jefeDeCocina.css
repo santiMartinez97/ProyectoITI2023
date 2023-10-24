@@ -68,6 +68,38 @@ table th,table td {
 .tablaArriba{
     color: orange;
 }
+.alerta {
+    background-color: #ff0000; 
+    color: #ffffff; 
+    padding: 10px; 
+    border: 1px solid #ff0000; 
+    margin: 10px 0; 
+    max-width: 440;
+}
+.alert {
+    background-color: #ff7700; 
+    color: #ffffff; 
+    padding: 10px; 
+    border: 1px solid #ff7700;
+    margin: 10px 0; 
+    max-width: 440px;
+}
+.alert2 {
+    background-color: #2ed14e;
+    color: #ffffff; 
+    padding: 10px; 
+    border: 1px solid  #2ed14e; 
+    margin: 10px 0; 
+    max-width: 440px;
+}
+
+.alert-confirmacion {
+    background-color: #3498DB;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    max-width: 440px;
+}
 
 button {
     width: 120px;
@@ -141,6 +173,7 @@ a {
     border-radius: 5px;
 }
 a:hover {
+    color: #ffc59e;
     text-decoration: underline; 
 }
 
@@ -166,3 +199,4 @@ a:hover {
 .CAMBIACOLOR{
     background-color: rgb(253, 222, 196);
 }
+

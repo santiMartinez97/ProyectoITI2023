@@ -1,0 +1,6 @@
+{
+    "require": {
+        "phpmailer/phpmailer": "^6.8",
+        "mercadopago/dx-php": "^2.6"
+    }
+}

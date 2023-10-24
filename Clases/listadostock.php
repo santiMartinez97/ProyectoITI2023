@@ -30,6 +30,7 @@ class Stock {
         echo '<tbody>';
         
         foreach ($resultado as $row) {
+            
             $menu = $row['Nombre'];
             $stockActual = $row['Stock'];
             $stockMinimo = $row['StockMinimo'];
@@ -41,42 +42,86 @@ class Stock {
                 echo '<th>' . $stockActual . '</th>';
                 echo '<th>' . $stockMinimo . '</th>';
                 echo '<th>' . $stockMaximo . '</th>';
+                if ($stockActual < $stockMinimo) {
+                    echo '<th class="alerta">¡Alerta! El stock de ' . $menu . ' está por debajo del mínimo.</th>';
+                }
+                else if ($stockActual <= ($stockMinimo + 4)) {
+                    echo '<th class="alert">¡Alerta! El stock de ' . $menu . ' está cerca del mínimo.</th>';
+                }
                 echo '</tr>';
                 $menu_array[] = $menu;
             }
+
         }
         
         echo '</tbody>';
         echo '</table>';
+
         echo '</article>';
     }
 
     
     public function agregarStock($menu, $cantidad) {
-        $sql = "UPDATE menu SET Stock = Stock + :cantidad WHERE Nombre = :menu";
-        $stmt = $this->con->prepare($sql);
-        $stmt->bindParam(':menu', $menu, PDO::PARAM_STR);
-        $stmt->bindParam(':cantidad', $cantidad, PDO::PARAM_INT);
-
-        if ($stmt->execute()) {
-            return true; // Éxito
-        } else {
-            return false; // Error
+        $stockMaximo = 0;
+        
+        $query = $this->con->prepare("SELECT StockMaximo FROM menu WHERE Nombre = :menu");
+        $query->bindParam(':menu', $menu, PDO::PARAM_STR);
+        $query->execute();
+        
+        $resultado = $query->fetch(PDO::FETCH_ASSOC);
+        if ($resultado) {
+            $stockMaximo = $resultado['StockMaximo'];
         }
-    }
+        
+        $query = $this->con->prepare("SELECT Stock FROM menu WHERE Nombre = :menu");
+        $query->bindParam(':menu', $menu, PDO::PARAM_STR);
+        $query->execute();
+        $resultado = $query->fetch(PDO::FETCH_ASSOC);
+        
+        $stockActual = $resultado['Stock'];
+        foreach ($resultado as $row) {
 
-    public function quitarStock($menu, $cantidad) {
-        $sql = "UPDATE menu SET Stock = Stock - :cantidad WHERE Nombre = :menu";
-        $stmt = $this->con->prepare($sql);
-        $stmt->bindParam(':menu', $menu, PDO::PARAM_STR);
-        $stmt->bindParam(':cantidad', $cantidad, PDO::PARAM_INT);
-
-        if ($stmt->execute()) {
-            return true; 
+        if ($stockActual + $cantidad <= $stockMaximo) {
+            $sql = "UPDATE menu SET Stock = Stock + :cantidad WHERE Nombre = :menu";
+            $stmt = $this->con->prepare($sql);
+            $stmt->bindParam(':menu', $menu, PDO::PARAM_STR);
+            $stmt->bindParam(':cantidad', $cantidad, PDO::PARAM_INT);
+    
+            if ($stmt->execute()) {
+                return true; 
+            } else {
+                return false; 
+            }
         } else {
             return false; 
         }
     }
+    }
+
+    public function quitarStock($menu, $cantidad) {
+        $query = $this->con->prepare("SELECT Stock FROM menu WHERE Nombre = :menu");
+        $query->bindParam(':menu', $menu, PDO::PARAM_STR);
+        $query->execute();
+        $resultado = $query->fetch(PDO::FETCH_ASSOC);
+        
+        $stockActual = $resultado['Stock'];
+        
+        if ($cantidad <= $stockActual) {
+            $sql = "UPDATE menu SET Stock = Stock - :cantidad WHERE Nombre = :menu";
+            $stmt = $this->con->prepare($sql);
+            $stmt->bindParam(':menu', $menu, PDO::PARAM_STR);
+            $stmt->bindParam(':cantidad', $cantidad, PDO::PARAM_INT);
+        
+            if ($stmt->execute()) {
+                return true;
+            } else {
+                return false; 
+            }
+        } else {
+            return false; 
+        }
+    }
+    
 
     public function mostrarCalendario() {
       $mes_actual = date("n");

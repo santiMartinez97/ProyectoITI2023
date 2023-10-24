@@ -49,9 +49,9 @@ $stock = new Stock();
             $cantidad = (int)$_POST['cantidad'];
         
             if ($stock->agregarStock($menu, $cantidad)) {
-                echo "Stock agregado exitosamente." ;
+                echo '<p class="alert2">Se ha agregado correctamente el stock de: ' . $menu . '</p>' ;
             } else {
-                echo "Error al agregar stock.";
+                echo '<p class="alert-confirmacion">¡Alerta! No puedes agregar mas stock de ' . $menu . ' por que excede el stock maximo.</p>';
             }
         }
         
@@ -60,13 +60,15 @@ $stock = new Stock();
             $cantidad = (int)$_POST['cantidad'];
         
             if ($stock->quitarStock($menu, $cantidad)) {
-                echo "Stock quitado exitosamente.";
+                echo '<p class="alerta">Se ha quitado correctamente el stock de: ' . $menu . '</p>';
             } else {
-                echo "Error al quitar stock.";
+                echo '<p class="alert-confirmacion">¡Alerta! El stock de ' . $menu . ' no puede ser negativo.</p>';
             }
         }
 
         $stock->listarStocks();
+
+        
         ?>
 
 

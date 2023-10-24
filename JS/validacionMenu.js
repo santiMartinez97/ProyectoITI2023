@@ -96,6 +96,6 @@ else {
 
 function alerta(){
 
-swal('¡Menu publicado exitosamente!', 'Ya se encuentra publicado en la parte de catalogos', 'success');
+swal('¡Menu publicado exitosamente!', 'Ya se encuentra publicado en la base de datos', 'success');
 
 }
