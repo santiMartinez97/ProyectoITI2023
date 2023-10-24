@@ -13,10 +13,13 @@ $productos_mp = array();
 $db = new DataBase();
 $con = $db->conectar();
 
-
+// CREAR UNA CONSULTA PARA NOMBRE DE PERFIL
+$cliente = $con->prepare("SELECT ID FROM cliente ");
+$cliente-> execute();
+$cliente1 = $cliente->fetchAll(PDO::FETCH_ASSOC);
 
 // CREAR UNA CONSULTA PARA NOMBRE DE PERFIL
-$menu = $con->prepare("SELECT  id,Nombre,Precio FROM menu WHERE Habilitacion='Habilitado'");
+$menu = $con->prepare("SELECT id,Nombre,Precio FROM menu WHERE Habilitacion='Habilitado'");
 $menu-> execute();
 $resultado = $menu->fetchAll(PDO::FETCH_ASSOC);
 
@@ -190,7 +193,9 @@ if ($productos != null) {
                   $item->unit_price = $precio_desc;
                   array_push($productos_mp, $item);
                   unset($item);
-                 
+
+
+      
                   ?>
                   <tr>
                     <td>
@@ -219,7 +224,13 @@ if ($productos != null) {
 
               </tbody>
            
-            <?php } ?>
+            <?php 
+   
+          
+          }             
+            ?>
+
+            
           </table>
           <div id="wallet_container"></div>
         </article>
@@ -233,7 +244,8 @@ if ($productos != null) {
     $preference->items = $productos_mp;
     
 $preference->back_urls = array(
-  "success" => "http://localhost/proyectoITI2023/captura.php",
+  "success" => "http://localhost/proyectoITI2023/BACKPHP/captura.php"  
+  ,
   "failure" => "http://localhost/proyectoITI2023/fallo.php"
 );
 
@@ -241,19 +253,13 @@ $preference->auto_return = "approved";
 $preference->binary_mode= true;
 
 $preference->save();
-  
-
     ?>
-
-
-
-
     <style>
         .video-container {
             float: right; /* Alinea el elemento a la derecha */
         }
 
-    </style>
+ </style>
 
 
 <script>
@@ -280,3 +286,5 @@ mp.bricks().create("wallet", "wallet_container", {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
       crossorigin="anonymous"></script>
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+

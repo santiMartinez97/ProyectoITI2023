@@ -35,7 +35,7 @@ $resultadoEmail = Usuario::findBy($con,'Email',$email);
 $resultadoRut = ClienteEmpresa::findByRUT($con,$rut);
 
 if(!$resultadoEmail && !$resultadoRut){
-    $dirCompleta = $barrio.' '.$calle.' '.$numero.' '.$esquina;
+    $dirCompleta = $barrio.'-'.$calle.'-'.$numero.'-'.$esquina;
 
     $clienteEmpresa = new ClienteEmpresa($con,$email,$password,$dirCompleta,'No habilitado',$rut,$nombreEmpresa);
     $clienteEmpresa->create();

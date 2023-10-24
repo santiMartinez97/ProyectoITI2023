@@ -90,6 +90,18 @@ class Usuario {
         return $stmt->execute();
     }
 
+    // Método para actualizar la contraseña del usuario
+    public function updatePassword($password) {
+        $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+
+        $sql = "UPDATE Usuario SET Contrasenia = :contrasenia WHERE ID = :id";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':id', $this->ID, PDO::PARAM_INT);
+        $stmt->bindParam(':contrasenia', $hashedPassword, PDO::PARAM_STR);
+        
+        return $stmt->execute();
+    }
+
     // Método para eliminar un usuario
     public function delete() {
         try{

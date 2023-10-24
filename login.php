@@ -112,7 +112,7 @@ if (isset($_SESSION['nombre'])) {
                 />
               </article>
               <br />
-              <a href="../BACKPHP/passwordReset.php" class="enlace">¿Olvidaste tu contraseña?</a>
+              <a href="recoverPassword.php" class="enlace">¿Olvidaste tu contraseña?</a>
               <br /><br />
               <article id="loginError"></article>
               <article class="col-12 text-center">
