@@ -25,42 +25,79 @@ require '../config/conexion.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Informático | NutriBento</title>
+    <link rel="stylesheet" href="../CSS/informatico.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="icon" href="../img/icono.png" />
 </head>
 <body>
     
+    <header>
+        <div class="gerente-section">
+            <h1>Informatico</h1>
+        </div>
+        <div class="baja-section">
+        <a class="enlace" href="informaticoBajaM.php">Baja</a>   
+        <a class ="enlace" href="cerrar_session.php">Cerrar Session</a>
+        </div>
+    </header>
+    <section>
+   <article class="padre">
+    <article class="hijo">
+    
+        <article class="container my-1">
+  
+      
+        <h1 class="titulo text-center">Formulario de usuarios</h1> <br>
+        <article class="col-12 text-center">
+          </article>
 
-<h1>INFORMATICO</h1>
-<a href="informaticoBajaM.php">Baja</a>
+            <article id="campos">          
 
-<form action="regInformatico.php" method="post">
-    <H2>Formulario de usuarios:</H2>
-<label>Ingrese email de el usuario:
-    <input type="email" name="email" id="email" placeholder="Email">
-</label>
-
+            <form action="regInformatico.php" class="row no-gutters" method="post">
+    
+    <article class="col-6 grupo" id="grupo__email">              
+                  <article class="grupo__input">
+                  <input type="email" name="email" id="email" class="formulario__input form-control" placeholder="Email">
+                  </article> 
+                    <p class="grupo_input-error">Ingrese un email valido</p>
+              </article>
 <br>
 
-<label>Ingrese contrasena de el usuario:
-    <input type="password" name="password" id="password" placeholder="Password" >
-</label>
-
+    <article class="col-6 grupo" id="grupo__password">     
+                  <article class="grupo__input">
+                  <input type="password" name="password" id="password"  class="formulario__input form-control" placeholder="Contraseña"> 
+                </article>
+                    <p class="grupo_input-error">Contraseña de 6-17 digitos</p> 
+              </article>
+              
 <br>
+    <article class="col-6 grupo">
+    <select id="rol" name="rol"  class="formulario__input form-select gray-text" aria-label="Preferencia de Dieta">
+        <option value="" disabled selected>Rol</option>
+        <option value="JefeCocina">Jefe de Cocina</option>
+        <option value="Informatico">Informático</option>
+        <option value="Gerente">Gerente</option>
+        <option value="AtencionPublico">Atención al Público</option>
+        <option value="Administracion">Administración</option>
+    </select>
+    </article>
+    <br>
+    
+    <article class="col-12 text-center" >
+        <button class="btn btn-primary " id="enviar"  type="submit" >Enviar</button>        
+            <p id="botonAlerta" class="grupo_input-error col-11 text-center">Complete correctamente los campos por favor</p>
+            <p id="errorRepeticion" class="grupo_input-error col-11 text-center"></p>
+    </article>       
+    </article>
 
-<label>Rol</label>
-<select id="rol" name="rol">
-    <option value="" disabled selected>Rol</option>
-    <option value="JefeCocina">Jefe de Cocina</option>
-    <option value="Informatico">Informático</option>
-    <option value="Gerente">Gerente</option>
-    <option value="AtencionPublico">Atención al Público</option>
-    <option value="Administracion">Administración</option>
-</select>
-<br>
-
-<button id="enviar"  type="submit" >Enviar</button> 
 </form>
+</article>
+</article>
+</article>
+</section>
 
-<a href="cerrar_session.php">Cerrar Session</a>
+<script src="JS/registro.js"></script>
+
+
 </body>
 </html>

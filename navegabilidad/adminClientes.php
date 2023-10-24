@@ -1,7 +1,7 @@
 <?php
 require '../config/config.php';
 require '../config/conexion.php';
-
+include_once '../Clases/clientecomun.php';
 if(!isset($_SESSION['admin'])){
     echo '
     <script>
@@ -32,36 +32,34 @@ $resultado = $dieta->fetchAll(PDO::FETCH_ASSOC);
     <link rel="stylesheet" href="../CSS/admin.css" />
     <link rel="stylesheet" type="text/css" href="../CSS/boostrap.css">
 </head>
-<body class="CAMBIACOLOR" >
+<body>
 
     <!-- Header -->
     <header>
-        <div class="admin-section">
-            <h1>Bienvenido administrador</h1>
-            <a class="enlace" href="admin.php">Vovler al menu</a>
-        </div>
-        <div class="baja-section">
-            <a class="enlace" href="cerrar_session.php">Cerrar Sesión</a>
-        </div>
+        <h1>Administrador</h1>
+        <h2 class="h2tit">
+            <a class = "nav" href="admin.php">Menu principal</a>
+        <a class = "nav" href="adminPedidos.php">Gestión de pedidos</a>
+            <a class="nav" href="cerrar_session.php">Cerrar sesión</a>
+        </h2>
     </header>
-  
-
-
-    <!-- Control de pedidos -->
-    <h2>Gestión de usuarios</h2>
+    
+    <br>
+        
     <section class="cajaSeleccion">
         <select id="tipoCliente"class="seleccionClientes">
                 <option value="comun">Clientes común</option> 
                 <option value="empresa">Clientes empresa</option> 
         </select>
     </section>
-
+    <br>
     <article class="pedidos">
         <table id="tablaClientes">
+        
         </table>
 
     </article>
-
+    <br>
     <!-- Modal para modificar clientes comunes-->
     <div class="modal fade" id="modalCliente" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -253,7 +251,7 @@ $resultado = $dieta->fetchAll(PDO::FETCH_ASSOC);
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                         <button type="submit" class="btn btn-primary">Guardar</button>
                     </div>
-                </form>
+                </form> 
 
             </div>
         </div>
@@ -261,6 +259,12 @@ $resultado = $dieta->fetchAll(PDO::FETCH_ASSOC);
 
     <!--Fin de los modal-->
 
+    <footer>
+    <section>
+      <h3>Administrador</h3>
+    </section>
+    </footer>
+    
     <script src="../JS/jquery-3.6.4.min.js"></script>
     <script src="../JS/adminClientes.js"></script>
     <script src="../JS/popper.min.js"></script>
