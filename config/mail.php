@@ -20,7 +20,7 @@ class Mail {
         $mail->SMTPAuth   = true;                                   //Habilitar autentificación de SMTP
         $mail->SMTPSecure = 'tls';
         $mail->Username   = 'nutribento1@gmail.com';                //SMTP correo
-        $mail->Password   = 'PREGUNTAR';                     //SMTP contraseña
+        $mail->Password   = 'amymthmsdzypvlwc';                     //SMTP contraseña
         $mail->Port       = 587;                                    //Puerto TCP
         $mail->CharSet = 'UTF-8';                                   //Habilita caracteres especiales
         $mail->SMTPOptions=array('ssl'=>array(
