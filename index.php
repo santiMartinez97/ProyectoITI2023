@@ -1,5 +1,7 @@
 <?php
 require 'config/config.php';
+require 'Clases/cliente.php';
+require 'Clases/menu.php';
 
 ?>
 

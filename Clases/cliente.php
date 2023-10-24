@@ -77,6 +77,23 @@ class Cliente extends Usuario {
         }
     }
 
+    // Método para conseguir id de dieta que sigue el cliente
+    public function getIDDieta() {
+        $sql = "SELECT IDdieta FROM ClienteSigueDieta
+                WHERE IDcliente = :idCliente";
+        
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':idCliente', $this->ID, PDO::PARAM_INT);
+        $stmt->execute();
+
+        if ($stmt->rowCount() > 0) {
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $row['IDdieta'];
+        } else {
+            return null;
+        }
+    }
+
     // Método para asociar un cliente con una dieta
     public function asociarDieta($idDieta) {
         // Verificar si la ID de la dieta es válida
