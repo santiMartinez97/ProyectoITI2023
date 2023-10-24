@@ -6,6 +6,16 @@ require '../config/conexion.php';
 $db = new DataBase();
 $con = $db->conectar();
 
+
+// CREAR UNA CONSULTA PREPARADA
+$menu = $con->prepare("SELECT  id,Nombre,Precio FROM menu WHERE Habilitacion='Habilitado'");
+$menu-> execute();
+$resultado = $menu->fetchAll(PDO::FETCH_ASSOC);
+
+$dieta = $con->prepare("SELECT * FROM dieta ");
+$dieta-> execute();
+$resultado2 = $dieta->fetchAll(PDO::FETCH_ASSOC);
+
 // CREAR UNA CONSULTA PREPARADA
 $productos = isset($_SESSION['carrito']['productos']) ? $_SESSION['carrito']['productos'] : null;
 
@@ -80,7 +90,7 @@ if ($productos != null) {
 
               echo '<li class="nav-item dropdown">';
               echo '<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">';
-              echo ' <i class="fa-solid fa-user"></i>Usuario </a>';
+              echo  ' <i class="fa-solid fa-user"></i> '.$_SESSION['nombre'].'</a>';
               echo '<ul class="dropdown-menu">';
               echo '<li><a class="dropdown-item" href="#">Ver Perfil</a></li>';
               echo '<li><a class="dropdown-item" href="#">Editar perfil</a></li>';
@@ -191,13 +201,14 @@ if ($productos != null) {
             <?php } ?>
           </table>
         </article>
-
+          
+        <?php if ($lista_carrito != null) { ?>
         <article class="row">
           <article class="col-md-5 offset-md-7 d-grid gap-2">
-            <button class="btn btn-primary btn">Realizar pago</button>
+            <a href="pago.php" class="btn btn-primary btn">Realizar pago</a>
           </article>
         </article>
-
+        <?php } ?>
         <!-- Button trigger modal -->
 
 
@@ -227,7 +238,7 @@ if ($productos != null) {
       </article>
     </section>
 
-
+    
     <script>
 
 
@@ -306,9 +317,6 @@ if ($productos != null) {
       })
     }
     </script>
-
-
-
 
 
 

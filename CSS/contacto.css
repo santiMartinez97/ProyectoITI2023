@@ -31,8 +31,7 @@
 
   .container{ 
     margin: auto;
-   
-
+  
   }
 
   .navbar-nav{
@@ -130,15 +129,7 @@ body {
   flex: 1; /* Ocupa todo el espacio restante */
 }
 
-.site-footer {
-  background: linear-gradient(90deg, #040404, #2b2a2a);
-  color: white;
-  height: 80.5px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 20px;
-}
+
 
 .footer-left, .footer-right {
   flex: 1;
@@ -178,6 +169,7 @@ body {
   color: rgb(215, 110, 17); /* Color naranja para el marcador */
   margin-right: 0.5em; /* Espacio entre el marcador y el texto */
 }
+
 
 
 

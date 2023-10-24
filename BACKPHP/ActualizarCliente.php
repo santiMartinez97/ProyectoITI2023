@@ -12,75 +12,50 @@ $dieta = $_POST["dieta"];
 // Incluir el archivo de configuración de la conexión
 require '../config/conexion.php';
 
+// Incluir clase
+require '../Clases/clientecomun.php';
+
 // Crear una instancia de Database y obtener la conexión
 $db = new DataBase();
 $con = $db->conectar();
 
 // Consultas para verificar que el email recibido no esté en uso por otro usuario o cliente
-$sqlEmailU = "SELECT * FROM usuario WHERE Email = :email";
-$stmtEmailU = $con->prepare($sqlEmailU);
-$stmtEmailU->bindParam(":email", $email);
-$stmtEmailU->execute();
-$resultadoEmailU = $stmtEmailU->fetchAll(PDO::FETCH_ASSOC);
+$resultadoEmail = Usuario::findBy($con,'Email',$email);
 
-$sqlEmailC = "SELECT * FROM cliente WHERE Email = :email AND ID <> :id";
-$stmtEmailC = $con->prepare($sqlEmailC);
-$stmtEmailC->bindParam(":email", $email);
-$stmtEmailC->bindParam(":id", $id);
-$stmtEmailC->execute();
-$resultadoEmailC = $stmtEmailC->fetchAll(PDO::FETCH_ASSOC);
-
-if($resultadoEmailU || $resultadoEmailC){
+if($resultadoEmail && $resultadoEmail->getID() != $id){
     echo "Error, email en uso.";
     echo '<br>';
     echo '<a href="../navegabilidad/adminClientes.php">Volver</a>';
 }else{
     // Consulta para verificar que la CI no esté en uso por otro cliente
-    $sqlCiC = "SELECT * FROM clientecomun WHERE CI = :ci AND ID <> :id";
-    $stmtCiC = $con->prepare($sqlCiC);
-    $stmtCiC->bindParam(":ci", $ci);
-    $stmtCiC->bindParam(":id", $id);
-    $stmtCiC->execute();
-    $resultadoCiC = $stmtCiC->fetchAll(PDO::FETCH_ASSOC);
+    $resultadoCiC = ClienteComun::findByCI($con,$ci);
 
-    if($resultadoCiC){
+    if($resultadoCiC && $resultadoCiC->getID() != $id){
         echo "Error, CI en uso.";
         echo '<br>';
         echo '<a href="../navegabilidad/adminClientes.php">Volver</a>';
     }else{
-        // Prepara la consulta SQL de actualización
-        $sql = "UPDATE cliente AS c 
-        JOIN clientecomun AS cc ON c.ID = cc.ID
-        JOIN clientetelefono AS ct ON c.ID = ct.ID
-        SET c.Email = :email,
-            c.DireccionCompleta = :direccion,
-            c.Dieta = :dieta,
-            cc.CI = :ci,
-            cc.Nombre = :nombre,
-            cc.Apellido = :apellido,
-            ct.Telefono = :telefono
-        WHERE c.ID = :id";
-        
-        // Prepara la sentencia SQL
-        $stmt = $con->prepare($sql);
+        try{
+            // Creamos el objeto cliente y actualizamos
+            $cliente = ClienteComun::findByID($con,$id);
+            $cliente->setEmail($email);
+            $cliente->setCI($ci);
+            $cliente->setNombre($nombre);
+            $cliente->setApellido($apellido);
+            $cliente->setDireccionCompleta($direccion);
+            $cliente->update();
 
-        // Enlaza los parámetros
-        $stmt->bindParam(":email", $email);
-        $stmt->bindParam(":direccion", $direccion);
-        $stmt->bindParam(":dieta", $dieta);
-        $stmt->bindParam(":ci", $ci);
-        $stmt->bindParam(":nombre", $nombre);
-        $stmt->bindParam(":apellido", $apellido);
-        $stmt->bindParam(":telefono", $telefono);
-        $stmt->bindParam(":id", $id);
+            // Modificamos relaciones del cliente
+            $cliente->modificarTelefono($telefono);
+            $cliente->quitarDieta();
+            $cliente->asociarDieta($dieta);
 
-        //Ejecutar la consulta
-        if($stmt->execute()){
+            //Redireccionamos
             header("Location: ../navegabilidad/adminClientes.php");
             exit();
-        }else{
-            // Error al ejecutar la consulta
-            echo "Error al actualizar los datos: " . $stmt->errorInfo()[2];
+        }catch(Exception $e){
+            // Error al actualizar
+            echo "Error al actualizar los datos: " . $e;
             echo '<br>';
             echo '<a href="../navegabilidad/adminClientes.php">Volver</a>';
         }

@@ -14,7 +14,6 @@
   }
   
 
-
   
   .navbar .nav-link {
     color: #080101;
@@ -36,11 +35,7 @@
     background: rgb(153, 146, 159);
   }
 
-  .container{ 
-    margin: auto;
-   
 
-  }
  
 
   .section_2{
@@ -116,16 +111,6 @@
     flex: 1; /* Ocupa todo el espacio restante */
   }
   
-  .site-footer {
-    background: linear-gradient(90deg, #040404, #2b2a2a);
-    
-    color: white;
-    height: 80.5px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-  }
   
   .footer-left, .footer-right {
     flex: 1;
