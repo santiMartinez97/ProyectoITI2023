@@ -19,7 +19,7 @@ $cliente-> execute();
 $cliente1 = $cliente->fetchAll(PDO::FETCH_ASSOC);
 
 // CREAR UNA CONSULTA PARA NOMBRE DE PERFIL
-$menu = $con->prepare("SELECT  id,Nombre,Precio FROM menu WHERE Habilitacion='Habilitado'");
+$menu = $con->prepare("SELECT id,Nombre,Precio FROM menu WHERE Habilitacion='Habilitado'");
 $menu-> execute();
 $resultado = $menu->fetchAll(PDO::FETCH_ASSOC);
 
@@ -259,7 +259,7 @@ $preference->save();
             float: right; /* Alinea el elemento a la derecha */
         }
 
-    </style>
+ </style>
 
 
 <script>
@@ -287,3 +287,4 @@ mp.bricks().create("wallet", "wallet_container", {
       integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
       crossorigin="anonymous"></script>
       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
