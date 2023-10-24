@@ -196,37 +196,6 @@ if ($productos != null) {
 
 
       
-
-                
-//                     // CREAR UNA CONSULTA PARA NOMBRE DE PERFIL
-//  $cliente = $con->prepare("SELECT * FROM cliente ");
-//  $cliente-> execute();
-// $cliente1 = $cliente->fetch(PDO::FETCH_ASSOC);
-
-// // //Falta agregar todo esto a la base de datos//
-//  $fecha_hoy = date("Y-m-d");
-//  $fecha_menos_un_dia = date("Y-m-d", strtotime($fecha_hoy . " -1 day"));
-//  if ($cliente1 && isset($cliente1['ID'])) {
-//   $idCliente = $cliente1['ID'];
-
-//  $query = $con->prepare("INSERT INTO pedido (Fecha, IDCliente) VALUES (:fecha, :id_cliente)");
-//   $query->bindParam(':fecha', $fecha_menos_un_dia, PDO::PARAM_STR);
-//   $query->bindParam(':id_cliente', $idCliente, PDO::PARAM_INT);
-//   $query->execute();
-
-//   $idPedido = $con->lastInsertId();
-
-//   $query2 = $con->prepare("INSERT INTO pedido_encarga_menu (IDMenu, IDPedido,Cantidad) VALUES (:idmenu, :idpedido, :cantidad)");
-//   $query2->bindParam(':idmenu', $_id, PDO::PARAM_STR);
-//   $query2->bindParam(':idpedido', $idPedido, PDO::PARAM_INT);
-//   $query2->bindParam(':cantidad', $cantidad, PDO::PARAM_INT);
-//   $query2->execute();
-
-//  } else {
-//    echo "No se encontró ningún cliente habilitado o el ID del cliente no está definido.";
-//    echo $idCliente;
-//  }  
-       
                   ?>
                   <tr>
                     <td>
@@ -260,21 +229,6 @@ if ($productos != null) {
           
           }             
             ?>
-          <script>
-          window.onload = function() {
-            var productos = <?php echo json_encode($lista_carrito); ?>;
-            console.log(productos);
-              $.ajax({
-                  url: '../captura.php',
-                  method: 'POST',
-                  data: { productos: productos },
-                  success: function(response) {
-                      // console.log(response);
-                  }
-              });
-          }
-
-          </script>
 
             
           </table>
@@ -290,7 +244,8 @@ if ($productos != null) {
     $preference->items = $productos_mp;
     
 $preference->back_urls = array(
-  "success" => "http://localhost/proyectoITI2023/captura.php",
+  "success" => "http://localhost/proyectoITI2023/BACKPHP/captura.php"  
+  ,
   "failure" => "http://localhost/proyectoITI2023/fallo.php"
 );
 
@@ -298,13 +253,7 @@ $preference->auto_return = "approved";
 $preference->binary_mode= true;
 
 $preference->save();
-  
-
     ?>
-
-
-
-
     <style>
         .video-container {
             float: right; /* Alinea el elemento a la derecha */
