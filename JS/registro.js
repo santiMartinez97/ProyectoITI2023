@@ -91,6 +91,7 @@ inputs.forEach((input) => {
 
 formulario.addEventListener('submit', (e) => {
   e.preventDefault(); // Evitar que se ejecute lo que viene por defecto en el navegador.
+  document.getElementById('loader-div').style.display = "block"; // Mostrar carga
 if (validacionCampos.nombre && validacionCampos.apellido && validacionCampos.ci && validacionCampos.email && validacionCampos.telefono && validacionCampos.password && validacionCampos.calle && validacionCampos.numero && validacionCampos.esquina && validacionCampos.barrio){
   var datos = new FormData(formulario); 
     let url = 'BACKPHP/registroClienteWeb.php';
@@ -117,6 +118,7 @@ if (validacionCampos.nombre && validacionCampos.apellido && validacionCampos.ci 
 
         errorRepeticion.innerText = "El email y la cédula ingresada ya están en uso."
         errorRepeticion.classList.add("grupo_input-error-activo");
+        document.getElementById('loader-div').style.display = "none"; // Ocultar carga
         break;
       
       case "Email repetido":
@@ -127,6 +129,7 @@ if (validacionCampos.nombre && validacionCampos.apellido && validacionCampos.ci 
 
         errorRepeticion.innerText = "El email ingresado ya está en uso."
         errorRepeticion.classList.add("grupo_input-error-activo");
+        document.getElementById('loader-div').style.display = "none"; // Ocultar carga
         break;
 
       case "Cedula repetida":
@@ -137,16 +140,19 @@ if (validacionCampos.nombre && validacionCampos.apellido && validacionCampos.ci 
 
         errorRepeticion.innerText = "La cédula ingresada ya está en uso."
         errorRepeticion.classList.add("grupo_input-error-activo");
+        document.getElementById('loader-div').style.display = "none"; // Ocultar carga
         break;
 
       default:
         formulario.reset();
+        document.getElementById('loader-div').style.display = "none"; // Ocultar carga
         alerta();
     }
   });
 }
 else {
   botonId.classList.add("grupo_input-error-activo");
+  document.getElementById('loader-div').style.display = "none"; // Ocultar carga
 }
 });
 
@@ -363,6 +369,7 @@ function web_empresa() {
   
   formulario.addEventListener('submit', (e) => {
     e.preventDefault(); // Evitar que se ejecute lo que viene por defecto en el navegador.
+    document.getElementById('loader-div').style.display = "block"; // Mostrar carga
   if (validacionCampos.nombre && validacionCampos.apellido && validacionCampos.ci && validacionCampos.email && validacionCampos.telefono && validacionCampos.password && validacionCampos.calle && validacionCampos.numero && validacionCampos.esquina && validacionCampos.barrio){
     var datos = new FormData(formulario); 
       let url = 'BACKPHP/registroClienteWeb.php';
@@ -389,6 +396,7 @@ function web_empresa() {
 
         errorRepeticion.innerText = "El email y la cédula ingresada ya están en uso."
         errorRepeticion.classList.add("grupo_input-error-activo");
+        document.getElementById('loader-div').style.display = "none"; // Ocultar carga
         break;
       
       case "Email repetido":
@@ -399,6 +407,7 @@ function web_empresa() {
 
         errorRepeticion.innerText = "El email ingresado ya está en uso."
         errorRepeticion.classList.add("grupo_input-error-activo");
+        document.getElementById('loader-div').style.display = "none"; // Ocultar carga
         break;
 
       case "Cedula repetida":
@@ -409,16 +418,19 @@ function web_empresa() {
 
         errorRepeticion.innerText = "La cédula ingresada ya está en uso."
         errorRepeticion.classList.add("grupo_input-error-activo");
+        document.getElementById('loader-div').style.display = "none"; // Ocultar carga
         break;
         
       default:
         formulario.reset();
+        document.getElementById('loader-div').style.display = "none"; // Ocultar carga
         alerta();
     }
   });
   }
   else {
     botonId.classList.add("grupo_input-error-activo");
+    document.getElementById('loader-div').style.display = "none"; // Ocultar carga
   }
   });        
   } else if (tipoUsuario === "empresa") {
@@ -613,6 +625,7 @@ inputs.forEach((input) => {
 
 formulario.addEventListener('submit', (e) => {
   e.preventDefault(); // Evitar que se ejecute lo que viene por defecto en el navegador.
+  document.getElementById('loader-div').style.display = "block"; // Mostrar carga
 if (validacionCampos.rut && validacionCampos.empresa && validacionCampos.email && validacionCampos.telefono && validacionCampos.password && validacionCampos.calle && validacionCampos.numero && validacionCampos.esquina && validacionCampos.barrio){
   var datos = new FormData(formulario); 
     let url = 'BACKPHP/registroClienteEmpresa.php';
@@ -639,6 +652,7 @@ if (validacionCampos.rut && validacionCampos.empresa && validacionCampos.email &
 
         errorRepeticion.innerText = "El email y el RUT ingresado ya están en uso."
         errorRepeticion.classList.add("grupo_input-error-activo");
+        document.getElementById('loader-div').style.display = "none"; // Ocultar carga
         break;
       
       case "Email repetido":
@@ -649,6 +663,7 @@ if (validacionCampos.rut && validacionCampos.empresa && validacionCampos.email &
 
         errorRepeticion.innerText = "El email ingresado ya está en uso."
         errorRepeticion.classList.add("grupo_input-error-activo");
+        document.getElementById('loader-div').style.display = "none"; // Ocultar carga
         break;
 
       case "RUT repetido":
@@ -659,16 +674,19 @@ if (validacionCampos.rut && validacionCampos.empresa && validacionCampos.email &
 
         errorRepeticion.innerText = "El RUT ingresado ya está en uso."
         errorRepeticion.classList.add("grupo_input-error-activo");
+        document.getElementById('loader-div').style.display = "none"; // Ocultar carga
         break;
         
       default:
         formulario.reset();
+        document.getElementById('loader-div').style.display = "none"; // Ocultar carga
         alerta();
     }
   });
 }
 else {
   botonId.classList.add("grupo_input-error-activo");
+  document.getElementById('loader-div').style.display = "none"; // Ocultar carga
 }
 });
   }

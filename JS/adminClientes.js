@@ -1,6 +1,7 @@
 $(document).ready(function() {
     // Función para cargar y mostrar clientes comunes
     function cargarListaComun() {
+        $("#loader-div").show(); // Mostrar carga
         $.ajax({
             url: '../BACKPHP/cargarClientesComunes.php',
             dataType: 'json',
@@ -10,6 +11,7 @@ $(document).ready(function() {
                     listaHTML += data[i];
                 }
                 $('#tablaClientes').html(listaHTML);
+                $("#loader-div").hide(); // Oculta carga
             },
             error: function(e,r,o){
                 console.log(e.responseText);
@@ -19,6 +21,7 @@ $(document).ready(function() {
 
     // Función para cargar y mostrar clientes empresa
     function cargarListaEmpresa() {
+        $("#loader-div").show(); // Mostrar carga
         $.ajax({
             url: '../BACKPHP/cargarClientesEmpresa.php',
             dataType: 'json',
@@ -28,6 +31,7 @@ $(document).ready(function() {
                     listaHTML += data[i];
                 }
                 $('#tablaClientes').html(listaHTML);
+                $("#loader-div").hide(); // Oculta carga
             }
         });
     }
@@ -54,6 +58,8 @@ $(document).ready(function() {
         var confirmMessage = '¿Está seguro de que desea ' + (clientStatus ? 'deshabilitar' : 'habilitar') + ' al cliente de ID ' + clientId + '?';
 
         if (window.confirm(confirmMessage)) {
+            $("#loader-div").show(); // Mostrar carga
+
             // Si el usuario hace clic en "Aceptar" en la confirmación, procede con la actualización
             clientStatus = !clientStatus;
 
@@ -76,8 +82,11 @@ $(document).ready(function() {
                         // Actualiza la interfaz de usuario
                         button.closest('tr').find('[data-client-status]').data('client-status', clientStatus);
                         button.closest('tr').find('[data-client-status]').text(clientStatus ? 'Habilitado' : 'No habilitado');
+
+                        $("#loader-div").hide(); // Oculta carga
                     } else {
                         //console.log(response);
+                        $("#loader-div").hide(); // Oculta carga
                         alert('Error al actualizar el cliente.');
                     }
                 }
@@ -97,6 +106,8 @@ $(document).ready(function() {
         var confirmMessage = '¿Está seguro de que desea eliminar al cliente de ID ' + clientId + '?';
 
         if (window.confirm(confirmMessage)) {
+            $("#loader-div").show(); // Mostrar carga
+
             // Envía la solicitud al servidor PHP para eliminar el cliente
             $.ajax({
                 type: 'POST',
@@ -106,10 +117,13 @@ $(document).ready(function() {
                     if (response === 'success') {
                         // Elimina la fila correspondiente de la tabla
                         button.closest('tr').remove();
+                        $("#loader-div").hide(); // Oculta carga
                     }else if (response === 'Error: No se puede eliminar.') {
+                        $("#loader-div").hide(); // Oculta carga
                         alert('Error, no se puede eliminar el cliente. No se pueden eliminar clientes con pedidos o compras.');
                     }else {
                         //console.log(response);
+                        $("#loader-div").hide(); // Oculta carga
                         alert('Error al eliminar el cliente.');
                     }
                 }
