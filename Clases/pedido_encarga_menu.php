@@ -107,7 +107,5 @@ class Pedido_Encarga_Menu {
         $stmt->execute();
     }
     
-    
-
 
 }

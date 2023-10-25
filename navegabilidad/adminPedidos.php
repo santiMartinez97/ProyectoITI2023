@@ -2,6 +2,7 @@
 
 require '../Clases/pedido_encarga_menu.php';
 $control = new Pedido_Encarga_Menu();
+
 ?>
 
 <!DOCTYPE html>
@@ -29,7 +30,7 @@ $control = new Pedido_Encarga_Menu();
 
     <!-- Control de pedidos -->
 
-    <center><h2 class="titulo">Control de pedidos</h2></center>
+    <h2 class="titulo">Control de pedidos</h2>
 
     <form method="POST">
         <label for="idPedido">ID del Pedido:</label>
@@ -44,16 +45,17 @@ $control = new Pedido_Encarga_Menu();
 
             </select> 
                 <input type="submit" value="Cambiar estado">
-    </form>
-
+                
     <?php
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $IDPedido = $_POST['IDPedido'];
-            $nuevoEstado = $_POST['nuevoEstado'];
-            $control->cambiarEstado($IDPedido, $nuevoEstado);
-        }   
-    ?>
 
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $IDPedido = $_POST['IDPedido'];
+    $nuevoEstado = $_POST['nuevoEstado'];
+    $control->cambiarEstado($IDPedido, $nuevoEstado);
+}   
+
+?>
+    </form>
     <article class="pedidos">
 
     <table>

@@ -54,10 +54,6 @@ $pedidos = new Pedido_Encarga_Menu();
     </article>
 
     <h2>Calendario</h2>
-    
-    <?php
-      
-    ?>
 
     <footer>
     <section>
