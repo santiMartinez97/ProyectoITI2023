@@ -11,7 +11,7 @@ var multipleCardCarousel = document.querySelector(
     var scrollPositionPreferidos = 0;
     var scrollPositionNovedades = 0;
 
-    //Carousel "Preferidos de la semana"
+    //Carousel de menúes recomendados
     $("#carouselWeeklyCards .carousel-control-next").on("click", function () {
       if (scrollPositionPreferidos < carouselWidth - cardWidth * 4) {
         scrollPositionPreferidos += cardWidth;
@@ -43,37 +43,6 @@ var multipleCardCarousel = document.querySelector(
       }
     });
 
-    //Carousel "Novedades"
-    $("#carouselNewCards .carousel-control-next").on("click", function () {
-        if (scrollPositionNovedades < carouselWidth - cardWidth * 4) {
-          scrollPositionNovedades += cardWidth;
-          $("#carouselNewCards .carousel-inner").animate(
-            { scrollLeft: scrollPositionNovedades },
-            600
-          );
-        }else{
-            scrollPositionNovedades = 0;
-            $("#carouselNewCards .carousel-inner").animate(
-                { scrollLeft: scrollPositionNovedades },
-                600
-            );
-          }
-      });
-      $("#carouselNewCards .carousel-control-prev").on("click", function () {
-        if (scrollPositionNovedades >= 1) {
-          scrollPositionNovedades -= cardWidth;
-          $("#carouselNewCards .carousel-inner").animate(
-            { scrollLeft: scrollPositionNovedades },
-            600
-          );
-        }else{
-            scrollPositionNovedades = cardWidth * 6;
-            $("#carouselNewCards .carousel-inner").animate(
-                { scrollLeft: scrollPositionNovedades },
-                600
-              );
-          }
-      });
   } else {
     $(multipleCardCarousel).addClass("slide");
   }

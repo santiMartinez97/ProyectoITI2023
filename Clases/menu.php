@@ -202,4 +202,70 @@ public function eliminarMenu($menuID) {
     return $menu->rowCount() > 0; // Verifica si se eliminó algún registro
 }
 
+// Método para listar todos los menúes habilitados por dieta
+public static function listarMenusHabilitadosPorDieta($pdo, $idDieta) {
+    $listaMenues = array();
+
+    $sql = "SELECT *
+    FROM menu
+    JOIN menu_sigue_dieta ON menu.ID = menu_sigue_dieta.IDMenu
+    WHERE menu_sigue_dieta.IDDieta = :id AND menu.Habilitacion = 'Habilitado' ORDER BY menu.Stock DESC;
+    ";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':id', $idDieta, PDO::PARAM_INT);
+    $stmt->execute();
+
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        $menu = new Menu(
+            $pdo,
+            $row['ID'],
+            $row['Periodicidad'],
+            $row['Nombre'],
+            $row['Habilitacion'],
+            $row['Precio'],
+            $row['Descuento'],
+            $row['Stock'],
+            $row['StockMinimo'],
+            $row['StockMaximo'],
+            $row['Descripcion'],
+            $row['Imagen']
+        );
+        $listaMenues[] = $menu;
+    }
+
+    return $listaMenues;
+}
+
+// Método para listar todos los menúes habilitados
+public static function listarMenusHabilitados($pdo) {
+    $listaMenues = array();
+
+    $sql = "SELECT *
+    FROM menu
+    WHERE Habilitacion = 'Habilitado' ORDER BY Stock DESC;
+    ";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        $menu = new Menu(
+            $pdo,
+            $row['ID'],
+            $row['Periodicidad'],
+            $row['Nombre'],
+            $row['Habilitacion'],
+            $row['Precio'],
+            $row['Descuento'],
+            $row['Stock'],
+            $row['StockMinimo'],
+            $row['StockMaximo'],
+            $row['Descripcion'],
+            $row['Imagen']
+        );
+        $listaMenues[] = $menu;
+    }
+
+    return $listaMenues;
+}
+
 }
