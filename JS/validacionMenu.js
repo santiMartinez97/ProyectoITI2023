@@ -41,9 +41,21 @@ const validarFormulario = (e) => {
     break;
     case "stockMinimo":
       validarCampos(expresionesRegulares.stockMinimo, e.target, 'stockMinimo');
-    break;
+      if (parseInt(e.target.value) > parseInt(formulario.stockMaximo.value)) {
+        document.getElementById(`grupo__stockMinimo`).classList.remove("grupo__correcto");
+        document.getElementById(`grupo__stockMinimo`).classList.add("grupo__error");
+        document.querySelector(`#grupo__stockMinimo .grupo_input-error`).classList.add('grupo_input-error-activo');
+        validacionCampos.stockMinimo = false;
+      }
+      break;
     case "stockMaximo":
       validarCampos(expresionesRegulares.stockMaximo, e.target, 'stockMaximo');
+        if (parseInt(e.target.value) < parseInt(formulario.stockMinimo.value)) {
+        document.getElementById(`grupo__stockMaximo`).classList.remove("grupo__correcto");
+        document.getElementById(`grupo__stockMaximo`).classList.add("grupo__error");
+        document.querySelector(`#grupo__stockMaximo .grupo_input-error`).classList.add('grupo_input-error-activo');
+        validacionCampos.stockMaximo = false;
+      }
     break;
     case "descripcion":
       validarCampos(expresionesRegulares.descripcion, e.target, 'descripcion');
