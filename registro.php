@@ -166,6 +166,8 @@ if (isset($_SESSION['nombre'])) {
                 <article class="col-6 grupo">
                   <select id="dieta" name="dieta" class="formulario__input form-select gray-text" aria-label="Preferencia de Dieta" >
                     <option value="0" disabled selected>Dieta</option>
+                    <option value="" id="defaultDieta">Sin dieta</option>
+
                   </select>
                 </article>
 

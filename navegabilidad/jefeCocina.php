@@ -31,7 +31,7 @@ $pedidos = new Pedido_Encarga_Menu();
 
     <!-- Lista de pedidos -->
 
-    <h2>Listado de pedidos</h2>
+    <h2 class="titulo">Listado de pedidos</h2>
 
     <article class="pedidos">
     <table>
