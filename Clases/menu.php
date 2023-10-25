@@ -209,7 +209,7 @@ public static function listarMenusHabilitadosPorDieta($pdo, $idDieta) {
     $sql = "SELECT *
     FROM menu
     JOIN menu_sigue_dieta ON menu.ID = menu_sigue_dieta.IDMenu
-    WHERE menu_sigue_dieta.IDDieta = :id AND menu.Habilitacion = 'Habilitado';
+    WHERE menu_sigue_dieta.IDDieta = :id AND menu.Habilitacion = 'Habilitado' ORDER BY menu.Stock DESC;
     ";
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':id', $idDieta, PDO::PARAM_INT);
@@ -242,7 +242,7 @@ public static function listarMenusHabilitados($pdo) {
 
     $sql = "SELECT *
     FROM menu
-    WHERE Habilitacion = 'Habilitado';
+    WHERE Habilitacion = 'Habilitado' ORDER BY Stock DESC;
     ";
     $stmt = $pdo->prepare($sql);
     $stmt->execute();

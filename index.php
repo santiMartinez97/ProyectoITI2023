@@ -1,7 +1,11 @@
 <?php
 require 'config/config.php';
+require 'config/conexion.php';
 require 'Clases/cliente.php';
 require 'Clases/menu.php';
+
+$db = new DataBase();
+$con = $db->conectar();
 
 ?>
 
@@ -241,7 +245,7 @@ echo  '<li class="nav-item dropdown">';
     <!-- FIN DEL SLIDER -->
     
       <section>
-        <article class="section-title">Preferidos de la Semana</article>
+        <article class="section-title">Te recomendamos</article>
         <article class="section-articles">
           <article
             id="carouselWeeklyCards"
@@ -249,373 +253,87 @@ echo  '<li class="nav-item dropdown">';
             data-bs-ride="carousel"
           >
             <article class="carousel-inner">
-              <article class="carousel-item active">
-                <a href="#"><article class="card">
-                  <article class="img-wrapper">
-                    <img
-                      src="img/menu-placeholder.png"
-                      class="d-block w-100"
-                      alt="..."
-                    />
-                  </article>
-                  <article class="card-body">
-                    <h5 class="card-title text-center">Menú 1</h5>
-                    <p class="card-text">
-                      Some quick example text to build on the card title and
-                      make up the bulk of the card's content.
-                    </p>
-                  </article>
-                </article></a>
-              </article>
-              <article class="carousel-item">
-                <a href="#"><article class="card">
-                  <article class="img-wrapper">
-                    <img
-                      src="img/menu-placeholder.png"
-                      class="d-block w-100"
-                      alt="..."
-                    />
-                  </article>
-                  <article class="card-body">
-                    <h5 class="card-title text-center">Menú 2</h5>
-                    <p class="card-text">
-                      Some quick example text to build on the card title and
-                      make up the bulk of the card's content.
-                    </p>
-                  </article>
-                </article></a>
-              </article>
-              <article class="carousel-item">
-                <a href="#"><article class="card">
-                  <article class="img-wrapper">
-                    <img
-                      src="img/menu-placeholder.png"
-                      class="d-block w-100"
-                      alt="..."
-                    />
-                  </article>
-                  <article class="card-body">
-                    <h5 class="card-title text-center">Menú 3</h5>
-                    <p class="card-text">
-                      Some quick example text to build on the card title and
-                      make up the bulk of the card's content.
-                    </p>
-                  </article>
-                </article></a>
-              </article>
-              <article class="carousel-item">
-                <a href="#"><article class="card">
-                  <article class="img-wrapper">
-                    <img
-                      src="img/menu-placeholder.png"
-                      class="d-block w-100"
-                      alt="..."
-                    />
-                  </article>
-                  <article class="card-body">
-                    <h5 class="card-title text-center">Menú 4</h5>
-                    <p class="card-text">
-                      Some quick example text to build on the card title and
-                      make up the bulk of the card's content.
-                    </p>
-                  </article>
-                </article></a>
-              </article>
-              <article class="carousel-item">
-                <a href="#"><article class="card">
-                  <article class="img-wrapper">
-                    <img
-                      src="img/menu-placeholder.png"
-                      class="d-block w-100"
-                      alt="..."
-                    />
-                  </article>
-                  <article class="card-body">
-                    <h5 class="card-title text-center">Menú 5</h5>
-                    <p class="card-text">
-                      Some quick example text to build on the card title and
-                      make up the bulk of the card's content.
-                    </p>
-                  </article>
-                </article></a>
-              </article>
-              <article class="carousel-item">
-                <a href="#"><article class="card">
-                  <article class="img-wrapper">
-                    <img
-                      src="img/menu-placeholder.png"
-                      class="d-block w-100"
-                      alt="..."
-                    />
-                  </article>
-                  <article class="card-body">
-                    <h5 class="card-title text-center">Menú 6</h5>
-                    <p class="card-text">
-                      Some quick example text to build on the card title and
-                      make up the bulk of the card's content.
-                    </p>
-                  </article>
-                </article></a>
-              </article>
-              <article class="carousel-item">
-                <a href="#"><article class="card">
-                  <article class="img-wrapper">
-                    <img
-                      src="img/menu-placeholder.png"
-                      class="d-block w-100"
-                      alt="..."
-                    />
-                  </article>
-                  <article class="card-body">
-                    <h5 class="card-title text-center">Menú 7</h5>
-                    <p class="card-text">
-                      Some quick example text to build on the card title and
-                      make up the bulk of the card's content.
-                    </p>
-                  </article>
-                </article></a>
-              </article>
-              <article class="carousel-item">
-                <a href="#"><article class="card">
-                  <article class="img-wrapper">
-                    <img
-                      src="img/menu-placeholder.png"
-                      class="d-block w-100"
-                      alt="..."
-                    />
-                  </article>
-                  <article class="card-body">
-                    <h5 class="card-title text-center">Menú 8</h5>
-                    <p class="card-text">
-                      Some quick example text to build on the card title and
-                      make up the bulk of the card's content.
-                    </p>
-                  </article>
-                </article></a>
-              </article>
-              <article class="carousel-item">
-                <a href="#"><article class="card">
-                  <article class="img-wrapper">
-                    <img
-                      src="img/menu-placeholder.png"
-                      class="d-block w-100"
-                      alt="..."
-                    />
-                  </article>
-                  <article class="card-body">
-                    <h5 class="card-title text-center">Menú 9</h5>
-                    <p class="card-text">
-                      Some quick example text to build on the card title and
-                      make up the bulk of the card's content.
-                    </p>
-                  </article>
-                </article></a>
-              </article>
-            </article>
-            <button
-              class="carousel-control-prev"
-              type="button"
-              data-bs-target="#carouselWeeklyCards"
-              data-bs-slide="prev"
-            >
-              <span
-                class="carousel-control-prev-icon"
-                aria-hidden="true"
-              ></span>
-              <span class="visually-hidden">Previous</span>
-            </button>
-            <button
-              class="carousel-control-next"
-              type="button"
-              data-bs-target="#carouselWeeklyCards"
-              data-bs-slide="next"
-            >
-              <span
-                class="carousel-control-next-icon"
-                aria-hidden="true"
-              ></span>
-              <span class="visually-hidden">Next</span>
-            </button>
-          </article>
-        </article>
-      </section>
+            <?php
+              $contadorMenuesInsertados = 0; // Variable utilizada para identificar el primer menú insertado y que sean nueve en lista.
 
-      <section>
-        <article class="section-title">Novedades</article>
-        <article class="section-articles">
-          <article
-            id="carouselNewCards"
-            class="carousel carousel-cards"
-            data-bs-ride="carousel"
-          >
-            <article class="carousel-inner">
-              <article class="carousel-item active">
-                <a href="#"><article class="card">
-                  <article class="img-wrapper">
-                    <img
-                      src="img/menu-placeholder.png"
-                      class="d-block w-100"
-                      alt="..."
-                    />
-                  </article>
-                  <article class="card-body">
-                    <h5 class="card-title text-center">Menú 1</h5>
-                    <p class="card-text">
-                      Some quick example text to build on the card title and
-                      make up the bulk of the card's content.
-                    </p>
-                  </article>
-                </article></a>
-              </article>
-              <article class="carousel-item">
-                <a href="#"><article class="card">
-                  <article class="img-wrapper">
-                    <img
-                      src="img/menu-placeholder.png"
-                      class="d-block w-100"
-                      alt="..."
-                    />
-                  </article>
-                  <article class="card-body">
-                    <h5 class="card-title text-center">Menú 2</h5>
-                    <p class="card-text">
-                      Some quick example text to build on the card title and
-                      make up the bulk of the card's content.
-                    </p>
-                  </article>
-                </article></a>
-              </article>
-              <article class="carousel-item">
-                <a href="#"><article class="card">
-                  <article class="img-wrapper">
-                    <img
-                      src="img/menu-placeholder.png"
-                      class="d-block w-100"
-                      alt="..."
-                    />
-                  </article>
-                  <article class="card-body">
-                    <h5 class="card-title text-center">Menú 3</h5>
-                    <p class="card-text">
-                      Some quick example text to build on the card title and
-                      make up the bulk of the card's content.
-                    </p>
-                  </article>
-                </article></a>
-              </article>
-              <article class="carousel-item">
-                <a href="#"><article class="card">
-                  <article class="img-wrapper">
-                    <img
-                      src="img/menu-placeholder.png"
-                      class="d-block w-100"
-                      alt="..."
-                    />
-                  </article>
-                  <article class="card-body">
-                    <h5 class="card-title text-center">Menú 4</h5>
-                    <p class="card-text">
-                      Some quick example text to build on the card title and
-                      make up the bulk of the card's content.
-                    </p>
-                  </article>
-                </article></a>
-              </article>
-              <article class="carousel-item">
-                <a href="#"><article class="card">
-                  <article class="img-wrapper">
-                    <img
-                      src="img/menu-placeholder.png"
-                      class="d-block w-100"
-                      alt="..."
-                    />
-                  </article>
-                  <article class="card-body">
-                    <h5 class="card-title text-center">Menú 5</h5>
-                    <p class="card-text">
-                      Some quick example text to build on the card title and
-                      make up the bulk of the card's content.
-                    </p>
-                  </article>
-                </article></a>
-              </article>
-              <article class="carousel-item">
-                <a href="#"><article class="card">
-                  <article class="img-wrapper">
-                    <img
-                      src="img/menu-placeholder.png"
-                      class="d-block w-100"
-                      alt="..."
-                    />
-                  </article>
-                  <article class="card-body">
-                    <h5 class="card-title text-center">Menú 6</h5>
-                    <p class="card-text">
-                      Some quick example text to build on the card title and
-                      make up the bulk of the card's content.
-                    </p>
-                  </article>
-                </article></a>
-              </article>
-              <article class="carousel-item">
-                <a href="#"><article class="card">
-                  <article class="img-wrapper">
-                    <img
-                      src="img/menu-placeholder.png"
-                      class="d-block w-100"
-                      alt="..."
-                    />
-                  </article>
-                  <article class="card-body">
-                    <h5 class="card-title text-center">Menú 7</h5>
-                    <p class="card-text">
-                      Some quick example text to build on the card title and
-                      make up the bulk of the card's content.
-                    </p>
-                  </article>
-                </article></a>
-              </article>
-              <article class="carousel-item">
-                <a href="#"><article class="card">
-                  <article class="img-wrapper">
-                    <img
-                      src="img/menu-placeholder.png"
-                      class="d-block w-100"
-                      alt="..."
-                    />
-                  </article>
-                  <article class="card-body">
-                    <h5 class="card-title text-center">Menú 8</h5>
-                    <p class="card-text">
-                      Some quick example text to build on the card title and
-                      make up the bulk of the card's content.
-                    </p>
-                  </article>
-                </article></a>
-              </article>
-              <article class="carousel-item">
-                <a href="#"><article class="card">
-                  <article class="img-wrapper">
-                    <img
-                      src="img/menu-placeholder.png"
-                      class="d-block w-100"
-                      alt="..."
-                    />
-                  </article>
-                  <article class="card-body">
-                    <h5 class="card-title text-center">Menú 9</h5>
-                    <p class="card-text">
-                      Some quick example text to build on the card title and
-                      make up the bulk of the card's content.
-                    </p>
-                  </article>
-                </article></a>
-              </article>
-            </article>
+              // Procedimiento para crear un carrusel con los menúes
+              function listarMenues($listaMenues, $contadorMenuesInsertados){
+                while($contadorMenuesInsertados < 9){
+                  foreach($listaMenues as $menu){
+                    if($contadorMenuesInsertados == 0){
+                      echo '<article class="carousel-item active">';
+                      echo '<a href="Funcionalidades/detalles.php?id='.$menu->getID().'&token='.hash_hmac('sha1', $menu->getID(), KEY_TOKEN).'"><article class="card">';
+                      echo '<article class="img-wrapper">';
+                      echo '<img src="imgCatalogo/'.$menu->getImagen().'" class="d-block w-100" alt="..."/>';
+                      echo '</article>';
+                      echo '<article class="card-body">';
+                      echo '<h5 class="card-title text-center">'.$menu->getNombre().'</h5>';
+                      echo '<p class="card-text">';
+                      echo $menu->getDescripcion();
+                      if($menu->getDescuento() == 0){
+                        echo '<h4>$'.$menu->getPrecio().'</h4>';
+                      }else{
+                        echo '<h4><span style="text-decoration:line-through;">$'.$menu->getPrecio().'</span> <span style="font-weight:bold;">$'.$menu->getPrecio()-($menu->getPrecio()*$menu->getDescuento()/100).'</span></h4>';
+                      }
+                      echo '</p>';
+                      echo '</article>';
+                      echo '</article></a>';
+                      echo '</article>';
+
+                      $contadorMenuesInsertados++;
+                    } else if($contadorMenuesInsertados == 9){
+                        break;
+                    } else {
+                        echo '<article class="carousel-item">';
+                        echo '<a href="Funcionalidades/detalles.php?id='.$menu->getID().'&token='.hash_hmac('sha1', $menu->getID(), KEY_TOKEN).'"><article class="card">';
+                        echo '<article class="img-wrapper">';
+                        echo '<img src="imgCatalogo/'.$menu->getImagen().'" class="d-block w-100" alt="..."/>';
+                        echo '</article>';
+                        echo '<article class="card-body">';
+                        echo '<h5 class="card-title text-center">'.$menu->getNombre().'</h5>';
+                        echo '<p class="card-text">';
+                        echo $menu->getDescripcion();
+                        if($menu->getDescuento() == 0){
+                          echo '<h4>$'.$menu->getPrecio().'</h4>';
+                        }else{
+                          echo '<h4><span style="text-decoration:line-through;">$'.$menu->getPrecio().'</span> <span style="font-weight:bold;">$'.$menu->getPrecio()-($menu->getPrecio()*$menu->getDescuento()/100).'</span></h4>';
+                      }
+                      echo '</p>';
+                      echo '</article>';
+                      echo '</article></a>';
+                      echo '</article>';
+
+                      $contadorMenuesInsertados++;
+                    }
+
+                  }
+                }
+              }
+
+              // Verificamos si el cliente ha iniciado sesión
+              if(isset($_SESSION['id'])){
+                $cliente = Cliente::findByID($con, $_SESSION['id']);
+                $idDieta = $cliente->getIDDieta();
+
+                // Verificamos si el cliente tiene una dieta
+                if($idDieta){
+                  $listaMenues = Menu::listarMenusHabilitadosPorDieta($con,$idDieta);
+                  listarMenues($listaMenues,$contadorMenuesInsertados);
+                }else{
+                  $listaMenues = Menu::listarMenusHabilitados($con);
+                  listarMenues($listaMenues, $contadorMenuesInsertados);
+                }
+              } else{
+                $listaMenues = Menu::listarMenusHabilitados($con);
+                listarMenues($listaMenues, $contadorMenuesInsertados);
+
+              }
+            ?>
+          </article>
             <button
               class="carousel-control-prev"
               type="button"
-              data-bs-target="#carouselNewCards"
+              data-bs-target="#carouselWeeklyCards"
               data-bs-slide="prev"
             >
               <span
@@ -627,7 +345,7 @@ echo  '<li class="nav-item dropdown">';
             <button
               class="carousel-control-next"
               type="button"
-              data-bs-target="#carouselNewCards"
+              data-bs-target="#carouselWeeklyCards"
               data-bs-slide="next"
             >
               <span
