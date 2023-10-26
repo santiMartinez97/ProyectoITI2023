@@ -2,7 +2,7 @@ $(document).ready(function() {
     // Función para cargar y actualizar la lista
     function cargarLista() {
         $.ajax({
-            url: 'BACKPHP/cargarDietas.php',
+            url: 'cargarDietas.php',
             dataType: 'json',
             success: function(data) { //Recibe una lista de dietas
                 var listaHTML = '';
