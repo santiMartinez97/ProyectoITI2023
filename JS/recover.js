@@ -7,6 +7,7 @@ let correoEnviado = `<article class="alert alert-success d-flex align-items-cent
 
 formulario.addEventListener("submit", function (e) {
   e.preventDefault();
+  document.getElementById('loader-div').style.display = "block"; // Mostrar carga
 
   let datos = new FormData(formulario);
     let url = 'BACKPHP/recover.php';
@@ -22,14 +23,17 @@ formulario.addEventListener("submit", function (e) {
 
         case "success":
           document.getElementById("mensajeSalida").innerHTML = correoEnviado;
+          document.getElementById('loader-div').style.display = "none"; // Ocultar carga
           break;
 
         case "not found":
           document.getElementById("mensajeSalida").innerHTML = noEncontrado;
+          document.getElementById('loader-div').style.display = "none"; // Ocultar carga
           break;
 
         default:
           console.log(data);
+          document.getElementById('loader-div').style.display = "none"; // Ocultar carga
       }
 
     })

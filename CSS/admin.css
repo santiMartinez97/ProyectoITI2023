@@ -1,14 +1,38 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #ffffff;
+    background-color: rgb(253, 222, 196);
     margin: 0;
     padding: 0;
   }
 
 header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background: linear-gradient(45deg, #b95a07, #FF6347);
-    color: white;
-    padding: 10px 0;
+    color: #fff;
+    padding: 10px 20px;
+}
+
+.admin-section {
+    display: flex;
+    align-items: center;
+}
+
+.admin-section h1 {
+    margin-right: 10px;
+}
+
+.baja-section h1 {
+    margin-left: 10px;
+}
+
+.enlace{
+    color: #fff;
+    text-decoration: none;
+    border: 1px solid #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
 }
 
 h1 {
@@ -18,9 +42,9 @@ h1 {
   }
 
 h2 {
-    justify-content: center;
+    justify-content: left;
     color: orange;
-    text-align: center;
+    text-align: left;
     font-size: 20px;
 }
 
@@ -125,28 +149,27 @@ button {
 }
 
 a {
-    text-align: right;
-    color: black;
+    color: orange;
     text-decoration: none;
-    margin-right: 10px; 
-}    
+    border: 1px solid orange;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
 a:hover {
     text-decoration: underline; 
 }
-
-.camino{
-    color: grey;
+.nav {
+    color: white;
+    text-decoration: none;
+    border: 1px solid white;
+    padding: 5px 10px;
+    border-radius: 5px;
 }
 
 .cerrarSesion{
     color: white;
 }
-footer {
-    text-align: center;
-    background-color: rgb(56, 56, 56);
-    color: white;
-    padding: 20px;
-  } 
 
 .cajaSeleccion {
     display: flex;
@@ -158,3 +181,6 @@ footer {
     color: #ff8e04;
 }
 
+.CAMBIACOLOR{
+    background-color: rgb(253, 222, 196);
+}

@@ -20,17 +20,22 @@ $menu_array=[];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerente | NutriBento</title>
     <link rel="icon" href="../img/icono.png" />
-    <link rel="stylesheet" href="../CSS/jefeDeCocina.css" />
+    <link rel="stylesheet" href="../CSS/gerente.css" />
     <link rel="stylesheet" type="text/css" href="../CSS/boostrap.css">
 </head>
-<body>
+<body class="mainBaja">
 
-     <h1>Control de Menu</h1>
-        <a href="gerente.php">Alta</a>
-        <a href="cerrar_session.php">Cerrar Session</a>
-<br><br>
+    <header>
+        <div class="gerente-section">
+            <h1>Control de Menu</h1>
+            <a class="enlace" href="gerente.php">Alta de menú</a>
+        </div>
+        <div class="baja-section">
+          <a class ="enlace" href="cerrar_session.php">Cerrar Session</a>
+        </div>
+    </header>
 
-    <table>
+        <table>
             <thead>
                 <tr>
                     <th class="tablaArriba">Periocidad</th>
@@ -93,6 +98,8 @@ $menu_array=[];
                   
             </tbody>
         </table>
+        </article>
+
         <script src="../JS/jquery-3.6.4.min.js"></script>
         <script src="../JS/adminGerente.js"></script>
         <script src="../JS/popper.min.js"></script>

@@ -1,28 +1,7 @@
 <?php
 
-require '../config/conexion.php';
-
-$db = new DataBase();
-$con = $db->conectar();
-
-$infoCliente = $con->prepare("SELECT Email FROM `cliente`");
-$infoCliente-> execute();
-$resultado = $infoCliente->fetchAll(PDO::FETCH_ASSOC);
-
-$infoCliente_array=[];
-
-$pedido = $con->prepare("SELECT ID, Fecha FROM `pedido`");
-$pedido-> execute();
-$resultadop = $pedido->fetchAll(PDO::FETCH_ASSOC);
-
-$pedido_array=[];
-
-$estado = $con->prepare("SELECT Estado FROM `estado_pedido`");
-$estado-> execute();
-$resultadoe = $estado->fetchAll(PDO::FETCH_ASSOC);
-
-$estado_array=[];
-
+require '../Clases/pedido_encarga_menu.php';
+$control = new Pedido_Encarga_Menu();
 ?>
 
 <!DOCTYPE html>
@@ -39,25 +18,48 @@ $estado_array=[];
     <!-- Header -->
     <header>
         <h1>Administrador</h1>
-        <a class="cerrarSesion" href="cerrar_session.php">Cerrar sesion</a>
+        <h2>
+        <a class ="nav"href="admin.php">Menu principal</a>
+        <a class ="nav"href="adminClientes.php">Gestion clientes</a>
+        <a class="nav" href="cerrar_session.php">Cerrar sesion</a>
+        </h2>
     </header>
     
     <br>
 
     <!-- Control de pedidos -->
-    <h2><a class="camino" href="admin.php">Administrador /</a>Control de pedidos</h2>
+
+    <center><h2 class="titulo">Control de pedidos</h2></center>
+
+    <form method="POST">
+        <label for="idPedido">ID del Pedido:</label>
+            <input type="text" name="IDPedido" id="IDPedido"> 
+        <label for="nuevoEstado">Cambiar Estado:</label>
+            <select name="nuevoEstado" id="nuevoEstado">
+                <option value="solicitado">Solicitado</option>
+                <option value="confirmado">Confirmado</option>
+                <option value="enviado">Enviado</option>
+                <option value="entregado">Entregado</option>
+                <option value="rechazado">Rechazado</option>
+
+            </select> 
+                <input type="submit" value="Cambiar estado">
+    </form>
+
+    <?php
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $IDPedido = $_POST['IDPedido'];
+            $nuevoEstado = $_POST['nuevoEstado'];
+            $control->cambiarEstado($IDPedido, $nuevoEstado);
+        }   
+    ?>
 
     <article class="pedidos">
-    <select class="tablaArriba">
-                <option> Todos los pedidos </option>
-                <option>Entregados</option> 
-                <option>En proceso</option> 
-                <option>Enviado</option>
-                </select>
+
     <table>
         <thead>
             <tr>
-                   <th class="tablaArriba">Cliente</th>
+                   <th class="tablaArriba">ID Cliente</th>
                     <th class="tablaArriba">ID Pedido</th>
                     <th class="tablaArriba">Fecha</th>
                     <th class="tablaArriba">Estado</th>
@@ -65,29 +67,7 @@ $estado_array=[];
             </thead>
             <tbody>
                 <?php
-                    foreach ($resultado as $row) {
-                        $cliente = $row['Email'];    
-                        if (!in_array($infoCliente, $infoCliente_array)) {
-                            echo '<tr>';
-                            echo '<th >'.$cliente.'</th> ';   
-                         }
-                    }
-                    foreach ($resultadop as $row) {
-                        $id = $row['ID']; 
-                        $fecha = $row['Fecha'];       
-                        if (!in_array($pedido, $pedido_array)) {
-                            echo '<th >'.$id.'</th> ';
-                            echo '<th >'.$fecha.'</th> ';   
-                         }
-                    }
-                    foreach ($resultadoe as $row) {
-                        $estado = $row['Estado'];        
-                        if (!in_array($estado, $estado_array)) {
-                            echo '<th >'.$estado.'</th> ';
-                            echo '<th><button class="botonAceptar">Detalles</button></th> ';   
-                            echo '</tr>';
-                         }
-                    }
+                  $control->controlPedidos();
                 ?>
             </tbody>
         </table>

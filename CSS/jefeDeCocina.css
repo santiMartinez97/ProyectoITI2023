@@ -1,14 +1,26 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #ffffff;
+    background-color: rgb(253, 222, 196);
     margin: 0;
     padding: 0;
   }
 
 header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background: linear-gradient(45deg, #b95a07, #FF6347);
-    color: white;
-    padding: 10px 0;
+    color: #fff;
+    padding: 10px 20px;
+}
+
+
+.enlace{
+    color: #fff;
+    text-decoration: none;
+    border: 1px solid #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
 }
 
 h1 {
@@ -17,18 +29,21 @@ h1 {
     margin-bottom: 10px;
   }
 
-h2 {
-    justify-content: center;
+.titulo{
     color: orange;
     text-align: center;
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+h2 {
+    justify-content: left;
+    color: orange;
+    text-align: left;
     font-size: 20px;
 }
 
-.h2tit{
-    color: orange;
-}
 .pedidos {
-    max-width: 900px; 
+    max-width: 95%; 
     margin: 0 auto; 
     padding: 80px;
     border: 3px solid orange; 
@@ -36,7 +51,6 @@ h2 {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    height: 31vh; 
 }
 
 table {
@@ -55,13 +69,16 @@ table th,table td {
     color: orange;
 }
 
+button {
+    width: 120px;
+    height: 40px;
+  }
+
 .botonAceptar {
     background-color: #2ed14e;
     color: #fff;
     border: none;
     border-radius: 5px;
-    padding: 10px 20px;
-    margin-right: 10px;
     cursor: pointer;
     font-size: 16px;
 }
@@ -74,12 +91,28 @@ table th,table td {
     background-color: #ff8e04; 
 }
 
+.botonRechazar {
+    background-color: #777777;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.botonRechazar:hover {
+    background-color: orange; 
+}
+
+.botonRechazar:active {
+    background-color: #ff8e04; 
+}
+
 .botonDesechar {
     background-color: #dc3545;
     color: #fff;
     border: none;
     border-radius: 5px;
-    padding: 10px 20px;
     cursor: pointer;
     font-size: 16px;
 }
@@ -92,51 +125,44 @@ table th,table td {
     background-color: #ff8e04; 
 }
 
-
-.botonModificar {
-    background-color: #0b0bbb;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-.botonModificar:hover {
-    background-color: orange; 
-}
-
-.botonModificar:active {
-    background-color: #ff8e04; 
-}
-
-
-.current-day {
-    color: orange;
-}
-
 a {
-    text-align: right;
-    color: black;
+    color: orange;
     text-decoration: none;
-    margin-right: 10px; 
+    border: 1px solid orange;
+    padding: 5px 10px;
+    border-radius: 5px;
 }    
+
+.nav {
+    color: white;
+    text-decoration: none;
+    border: 1px solid white;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
 a:hover {
     text-decoration: underline; 
-}
-
- .camino{
-    color: grey;
 }
 
 .cerrarSesion{
     color: white;
 }
 
-footer {
-    text-align: center;
-    background-color: rgb(56, 56, 56);
-    color: white;
-    padding: 20px;
-  } 
+.cajaSeleccion {
+    background-color: rgb(253, 222, 196);
+    padding: 10px;
+    margin: 10px;
+    display: inline-block;
+}
+
+.cajaSeleccion input[type="text"],
+.cajaSeleccion input[type="number"] {
+    padding: 5px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.CAMBIACOLOR{
+    background-color: rgb(253, 222, 196);
+}

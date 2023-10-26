@@ -1,7 +1,7 @@
 <?php
 require '../config/config.php';
 require '../config/conexion.php';
-
+include_once '../Clases/clientecomun.php';
 if(!isset($_SESSION['admin'])){
     echo '
     <script>
@@ -30,6 +30,7 @@ $resultado = $dieta->fetchAll(PDO::FETCH_ASSOC);
     <title>Administrador | NutriBento</title>
     <link rel="icon" href="../img/icono.png" />
     <link rel="stylesheet" href="../CSS/admin.css" />
+    <link rel="stylesheet" href="../CSS/loading.css"/>
     <link rel="stylesheet" type="text/css" href="../CSS/boostrap.css">
 </head>
 <body>
@@ -37,13 +38,15 @@ $resultado = $dieta->fetchAll(PDO::FETCH_ASSOC);
     <!-- Header -->
     <header>
         <h1>Administrador</h1>
-        <a class="cerrarSesion" href="cerrar_session.php">Cerrar sesión</a>
+        <h2 class="h2tit">
+            <a class = "nav" href="admin.php">Menu principal</a>
+        <a class = "nav" href="adminPedidos.php">Gestión de pedidos</a>
+            <a class="nav" href="cerrar_session.php">Cerrar sesión</a>
+        </h2>
     </header>
     
     <br>
-
-    <!-- Control de pedidos -->
-    <h2><a class="camino" href="admin.php">Administrador /</a>Gestión de usuarios</h2>
+        
     <section class="cajaSeleccion">
         <select id="tipoCliente"class="seleccionClientes">
                 <option value="comun">Clientes común</option> 
@@ -249,7 +252,7 @@ $resultado = $dieta->fetchAll(PDO::FETCH_ASSOC);
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                         <button type="submit" class="btn btn-primary">Guardar</button>
                     </div>
-                </form>
+                </form> 
 
             </div>
         </div>
@@ -262,6 +265,10 @@ $resultado = $dieta->fetchAll(PDO::FETCH_ASSOC);
       <h3>Administrador</h3>
     </section>
     </footer>
+
+    <div id="loader-div">
+        <img class="loader-img" src="../img/loader.gif" style="height: 120px;width: auto;" />
+    </div> 
     
     <script src="../JS/jquery-3.6.4.min.js"></script>
     <script src="../JS/adminClientes.js"></script>
