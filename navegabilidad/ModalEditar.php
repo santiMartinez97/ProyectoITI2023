@@ -13,7 +13,7 @@
       </div>
 
 
-      <form id="formularioMenus"  method="POST" action="ActualizarMenu.php" onsubmit="return validarFormularioMenu();">
+      <form id="formularioMenus"  method="POST" action="ActualizarMenu.php" >
         <input type="hidden" name="id" value="<?php echo $row['ID']; ?>">
 <div class="modal-body" id="cont_modal">
 
@@ -21,7 +21,7 @@
         <div class="col-md-4">
             <div class="form-group">
                 <label for="recipient-name" class="col-form-label">ID</label>
-                <input type="text" name="id" class="form-control" value="<?php echo $row['ID']; ?>" required="true">
+                <input type="text" name="id" class="form-control" value="<?php echo $row['ID']; ?>" disabled>
             </div>
         </div>
     </div>
@@ -109,4 +109,5 @@
     </div>
   </div>
 </div>
+
 <!---fin ventana Update --->

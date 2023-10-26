@@ -1,4 +1,5 @@
 <?php
+require '../config/conexion.php';
 class Menu {
     protected $ID;
     private $periodicidad;
@@ -13,8 +14,13 @@ class Menu {
     private $imagen;
 
     protected $pdo;
+    private $con;
 
-    public function __construct($pdo,$ID ,$periodicidad, $nombre, $habilitacion, $precio, $descuento, $stock, $stockMinimo, $stockMaximo, $descripcion, $imagen) {
+    public function __construct() {
+        $db = new DataBase();
+        $this->con = $db->conectar();
+    }
+   /* public function __construct($pdo,$ID ,$periodicidad, $nombre, $habilitacion, $precio, $descuento, $stock, $stockMinimo, $stockMaximo, $descripcion, $imagen) {
         $this->pdo = $pdo;
         $this->ID = $ID;
         $this->periodicidad = $periodicidad;
@@ -28,7 +34,7 @@ class Menu {
         $this->descripcion = $descripcion;
         $this->imagen = $imagen;
     }
-
+*/
     public function getID() {
         return $this->ID;
     }
@@ -202,6 +208,131 @@ public function eliminarMenu($menuID) {
     return $menu->rowCount() > 0; // Verifica si se eliminó algún registro
 }
 
+public function listadoMenus() {
+    $menu = $this->con->prepare("SELECT * FROM menu");
+    $menu->execute();
+    $resultado = $menu->fetchAll(PDO::FETCH_ASSOC);
+
+    $menu_array=[];
+    echo '</article>';
+    echo '<table>';
+    echo '<thead>';
+    echo '<tr>';
+    echo '<th class="tablaArriba">Periocidad</th>';
+    echo '<th class="tablaArriba">Menu</th>';
+    echo '<th class="tablaArriba">Precio</th>';
+    echo '<th class="tablaArriba">Descuento</th>';
+    echo '<th class="tablaArriba">Stock</th>';
+    echo '<th class="tablaArriba">Stock minimo</th>';
+    echo '<th class="tablaArriba">Stock maximo</th>';
+    echo '<th class="tablaArriba">Habilitacion</th>';
+    echo '</tr>';
+    echo '</thead>';
+    echo '<tbody>';
+    foreach ($resultado as $row) {
+        $Periocidad = $row['Periodicidad'];
+        $menu = $row['Nombre'];
+        $precio = $row['Precio']; 
+        $descuento = $row['Descuento']; 
+        $stockActual = $row['Stock'];
+        $stockMinimo = $row['StockMinimo'];
+        $stockMaximo = $row['StockMaximo'];
+
+        if (!in_array($menu, $menu_array)) {      
+            echo '<tr data-client-id="'.$row['ID'].'">';
+            echo '<th >'.$Periocidad.'</th> ';
+            echo '<th >'.$menu.'</th> ';
+           
+            echo '<th >$' .$precio.'</th> ';
+            echo '<th >'.$descuento.'</th> ';
+            echo '<th >'.$stockActual.'</th> ';    
+            echo '<th >'.$stockMinimo.'</th> ';    
+            echo '<th >'.$stockMaximo.'</th> ';    
+            include('ModalEditar.php'); 
+            
+
+            if($row['Habilitacion'] === "No habilitado"){
+                echo '<td data-client-status="false">'.$row['Habilitacion'].'</td>';
+                echo '<td><button class="botonAceptar habilitar-btn">Habilitar</button></td>';
+                echo '<td><button class="botonDesechar">Eliminar</button></td>';
+                echo '<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editChildresn' . $row['ID'] . '">Modificar</button></td>';
+
+
+            }else{
+               echo '<td data-client-status="true">'.$row['Habilitacion'].'</td>';
+                echo '<td><button class="botonRechazar habilitar-btn">Deshabilitar</button></td>';
+                echo '<td><button class="botonDesechar">Eliminar</button></td>';
+                echo '<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editChildresn' . $row['ID'] . '">Modificar</button></td>';
+               
+            }
+         }
+        }
+        echo '</tr>';
+        echo '</tbody>';
+        
+        echo '</table>';
+        
+        echo '</article>';
+    }
+
+    public function listadoMenuSinBoton() {
+        $menu = $this->con->prepare("SELECT * FROM menu");
+        $menu->execute();
+        $resultado = $menu->fetchAll(PDO::FETCH_ASSOC);
+    
+        $menu_array=[];
+        echo '</article>';
+        echo '<table>';
+        echo '<thead>';
+        echo '<tr>';
+        echo '<th class="tablaArriba">Periocidad</th>';
+        echo '<th class="tablaArriba">Menu</th>';
+        echo '<th class="tablaArriba">Precio</th>';
+        echo '<th class="tablaArriba">Descuento</th>';
+        echo '<th class="tablaArriba">Stock</th>';
+        echo '<th class="tablaArriba">Stock minimo</th>';
+        echo '<th class="tablaArriba">Stock maximo</th>';
+        echo '<th class="tablaArriba">Habilitacion</th>';
+        echo '</tr>';
+        echo '</thead>';
+        echo '<tbody>';
+        foreach ($resultado as $row) {
+            $Periocidad = $row['Periodicidad'];
+            $menu = $row['Nombre'];
+            $precio = $row['Precio']; 
+            $descuento = $row['Descuento']; 
+            $stockActual = $row['Stock'];
+            $stockMinimo = $row['StockMinimo'];
+            $stockMaximo = $row['StockMaximo'];
+    
+            if (!in_array($menu, $menu_array)) {      
+                echo '<tr data-client-id="'.$row['ID'].'">';
+                echo '<th >'.$Periocidad.'</th> ';
+                echo '<th >'.$menu.'</th> ';
+               
+                echo '<th >$' .$precio.'</th> ';
+                echo '<th >'.$descuento.'</th> ';
+                echo '<th >'.$stockActual.'</th> ';    
+                echo '<th >'.$stockMinimo.'</th> ';    
+                echo '<th >'.$stockMaximo.'</th> ';                    
+    
+                if($row['Habilitacion'] === "No habilitado"){
+                    echo '<th data-client-status="false">'.$row['Habilitacion'].'</th>';
+    
+                }else{
+                   echo '<th data-client-status="true">'.$row['Habilitacion'].'</th>';
+
+                }
+             }
+            }
+            echo '</tr>';
+            echo '</tbody>';
+            
+            echo '</table>';
+            
+            echo '</article>';
+        }
+    
 }
 
 
