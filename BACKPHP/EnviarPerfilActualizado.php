@@ -2,7 +2,6 @@
 
 
 $email = $_POST["email"];
-$ci = $_POST["ci"];
 $nombre = $_POST["nombre"];
 $apellido = $_POST["apellido"];
 $telefono = $_POST["telefono"];
@@ -14,7 +13,7 @@ $esquina= $_POST['esquina'];
 $barrio= $_POST['barrio'];
 $direccion = $barrio.'-'.$calle.'-'.$numero.'-'.$esquina;
 
-echo $dieta;
+
 
 // Incluir el archivo de configuración de la conexión
 require '../config/conexion.php';
@@ -31,27 +30,10 @@ $cliente = $con->prepare("SELECT * FROM cliente");
  $resultadoCliente = $cliente->fetchAll(PDO::FETCH_ASSOC);
  $id = $resultadoCliente[0]['ID'];
 
-// Consultas para verificar que el email recibido no esté en uso por otro usuario o cliente
-$resultadoEmail = Usuario::findBy($con,'Email',$email);
-
-if($resultadoEmail && $resultadoEmail->getID() != $id){
-    echo "Error, email en uso.";
-    echo '<br>';
-    echo '<a href="../navegabilidad/adminClientes.php">Volver</a>';
-}else{
-    // Consulta para verificar que la CI no esté en uso por otro cliente
-    $resultadoCiC = ClienteComun::findByCI($con,$ci);
-
-    if($resultadoCiC && $resultadoCiC->getID() != $id){
-        echo "Error, CI en uso.";
-        echo '<br>';
-        echo '<a href="../navegabilidad/adminClientes.php">Volver</a>';
-    }else{
         try{
             // Creamos el objeto cliente y actualizamos
             $cliente = ClienteComun::findByID($con,$id);
             $cliente->setEmail($email);
-            $cliente->setCI($ci);
             $cliente->setNombre($nombre);
             $cliente->setApellido($apellido);
             $cliente->setDireccionCompleta($direccion);
@@ -59,7 +41,7 @@ if($resultadoEmail && $resultadoEmail->getID() != $id){
 
             // Modificamos relaciones del cliente
             $cliente->modificarTelefono($telefono);
-        
+            $cliente->quitarDieta();
             $cliente->asociarDieta($dieta);
 
             //Redireccionamos
@@ -71,7 +53,6 @@ if($resultadoEmail && $resultadoEmail->getID() != $id){
             echo '<br>';
             echo '<a href="../navegabilidad/adminClientes.php">Volver</a>';
         }
-    }
-}
+    
 
 ?>

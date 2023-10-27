@@ -35,12 +35,15 @@ if(loginBloqueado($con)){
                     $cliComun = ClienteComun::findByID($con, $cliente->getID());
 
                     if($cliComun){
-                        // $_SESSION['ClienteComun'] = 'ClienteComun';
-                        $_SESSION['nombre'] = $cliComun->getNombreCompleto();
+                       
+                       $_SESSION['nombre'] = $cliComun->getNombreCompleto();
+                        $_SESSION['ClienteComun'] = 'ClienteComun';
+                        
                     }else{
                         $cliEmpresa = ClienteEmpresa::findByID($con, $cliente->getID());
                         $_SESSION['nombre'] = $cliEmpresa->getNombreEmpresa();
-                        // $_SESSION['ClienteEmpresa'] = 'ClienteEmpresa';
+                         $_SESSION['ClienteEmpresa'] = 'ClienteEmpresa';
+                         
                     }
                 }
             }else{

@@ -11,7 +11,6 @@ const expresionesRegulares = {
   email : /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
   nombre : /^[a-zA-Z]{2,15}$/, // Letras y espacios con acentos.
   apellido : /^[a-zA-Z]{2,15}$/, //letras y espacion con acentos
-  ci : /^\d{8}(\.\d+)?$/, // 8 digitos
   telefono : /^09\d{7}$/, // 9 numeros.
   calle : /^[a-zA-Z0-9\s]{2,30}$/, //\d{2}
   numero : /^\d{3,4}(\.\d+)?$/, //numero casa
@@ -23,7 +22,6 @@ const validacionCampos = {
   email : false,
   nombre : false,
   apellido : false,
-  ci : false,
   telefono : false, 
   calle : false,
   numero : false,
@@ -38,9 +36,6 @@ const validarFormulario = (e) => {
     break;
     case "apellido":
       validarCampos(expresionesRegulares.apellido, e.target, 'apellido');      
-    break;
-    case "ci":
-      validarCampos(expresionesRegulares.ci, e.target, 'ci');
     break;
     case "email":
       validarCampos(expresionesRegulares.email, e.target, 'email');
@@ -95,7 +90,7 @@ inputs.forEach((input) => {
 formulario.addEventListener('submit', (e) => {
   e.preventDefault(); // Evitar que se ejecute lo que viene por defecto en el navegador.
 
-  if (validacionCampos.nombre && validacionCampos.apellido && validacionCampos.ci && validacionCampos.email && validacionCampos.telefono  && validacionCampos.calle && validacionCampos.numero && validacionCampos.esquina && validacionCampos.barrio) {
+  if (validacionCampos.nombre && validacionCampos.apellido && validacionCampos.email && validacionCampos.telefono  && validacionCampos.calle && validacionCampos.numero && validacionCampos.esquina && validacionCampos.barrio) {
     var datos = new FormData(formulario); 
     let url = 'EnviarPerfilActualizado.php';
     botonId.classList.remove("grupo_input-error-activo");

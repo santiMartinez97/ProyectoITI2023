@@ -188,14 +188,7 @@ $con = $db->conectar();
                 </article> 
                 
             
-                 <!-- Grupo cedula -->
-                <article class="col-8 grupo" id="grupo__ci">
-                  
-                    <article class="grupo__input">
-                    <input type="number" name="ci" id="ci" class="formulario__input form-control"  value="<?php echo $usuario->getCI(); ?>" placeholder="Documento">
-                    </article>  
-                    <p class="grupo_input-error">Ingrese su cedula sin puntos ni guiones</p>
-                </article >
+               
                 
                  <!-- Grupo email -->
                 <article class="col-7 grupo" id="grupo__email">

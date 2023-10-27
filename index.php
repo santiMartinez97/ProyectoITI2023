@@ -80,18 +80,15 @@ $con = $db->conectar();
 
            echo  '</ul>';
     
-}else{
-//  $menu = $con->prepare("SELECT  id,Nombre,Precio FROM menu WHERE Habilitacion='Habilitado'");
-// $menu-> execute();
-// $resultado = $menu->fetchAll(PDO::FETCH_ASSOC);
-
+}else if(!isset($_SESSION['ClienteComun'])){
+ 
           
 echo  '<li class="nav-item dropdown">';
       echo   '<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">';        
           echo  ' <i class="fa-solid fa-user"></i> '.$_SESSION['nombre'].'</a>';
         echo '<ul class="dropdown-menu">';
           echo   '<li><a class="dropdown-item" href="#">Ver Perfil</a></li>';
-         echo   '<li><a class="dropdown-item" href="editarPerfil.php">Editar perfil</a></li>';
+         echo   '<li><a class="dropdown-item" href="BACKPHP/editarPerfilEmpresa.php">Editar perfil</a></li>';
          echo  '<li><hr class="dropdown-divider"></li>';
             echo '<li><a class="dropdown-item" href="navegabilidad/cerrar_session.php">Cerrar Sesion</a></li>';
             echo  '</ul>';
@@ -101,6 +98,25 @@ echo  '<li class="nav-item dropdown">';
            echo  '</ul>';
 
         }
+
+        else{
+                    
+          echo  '<li class="nav-item dropdown">';
+          echo   '<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">';        
+              echo  ' <i class="fa-solid fa-user"></i> '.$_SESSION['nombre'].'</a>';
+            echo '<ul class="dropdown-menu">';
+              echo   '<li><a class="dropdown-item" href="#">Ver Perfil</a></li>';
+            echo   '<li><a class="dropdown-item" href="BACKPHP/editarPerfil.php">Editar perfil</a></li>';
+            echo  '<li><hr class="dropdown-divider"></li>';
+                echo '<li><a class="dropdown-item" href="navegabilidad/cerrar_session.php">Cerrar Sesion</a></li>';
+                echo  '</ul>';
+                echo  '</li>';
+
+
+              echo  '</ul>';
+
+  }
+        
 ?>
 
   

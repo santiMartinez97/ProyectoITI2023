@@ -70,3 +70,4 @@ formulario.addEventListener("submit", function (e) {
       console.error("Error al enviar el resultado al servidor:", error);
     });
 });
+
