@@ -9,7 +9,7 @@ let usuarioNoHabilitado = `<article class="alert alert-danger d-flex align-items
 
 formulario.addEventListener("submit", function (e) {
   e.preventDefault();
-
+  document.getElementById('loader-div').style.display = "block"; // Mostrar carga
   let datos = new FormData(formulario);
     let url = 'BACKPHP/loginphp.php';
   fetch(url, {
@@ -49,17 +49,20 @@ formulario.addEventListener("submit", function (e) {
         case "No habilitado":
           document.getElementById("loginForm").reset();
           document.getElementById("loginError").innerHTML = usuarioNoHabilitado;
+          document.getElementById('loader-div').style.display = "none"; // Ocultar carga
           break;
 
         case "Bloqueado":
           document.getElementById("loginForm").reset();
           document.getElementById("enviar").disabled = true;
           document.getElementById("loginError").innerHTML = limiteExcedido;
+          document.getElementById('loader-div').style.display = "none"; // Ocultar carga
           break;
 
         default:
           document.getElementById("loginForm").reset();
           document.getElementById("loginError").innerHTML = datosIncorrectos;
+          document.getElementById('loader-div').style.display = "none"; // Ocultar carga
       }
 
     })

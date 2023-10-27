@@ -258,6 +258,10 @@ echo  '<li class="nav-item dropdown">';
 
               // Procedimiento para crear un carrusel con los menúes
               function listarMenues($listaMenues, $contadorMenuesInsertados){
+                if(empty($listaMenues)){
+                  $contadorMenuesInsertados = 9;
+                  echo '<p>No se encontraron menús, contacte con gerente.</p>';
+                }
                 while($contadorMenuesInsertados < 9){
                   foreach($listaMenues as $menu){
                     if($contadorMenuesInsertados == 0){
@@ -318,7 +322,12 @@ echo  '<li class="nav-item dropdown">';
                 // Verificamos si el cliente tiene una dieta
                 if($idDieta){
                   $listaMenues = Menu::listarMenusHabilitadosPorDieta($con,$idDieta);
-                  listarMenues($listaMenues,$contadorMenuesInsertados);
+                  if(empty($listaMenues)){
+                    $listaMenues = Menu::listarMenusHabilitados($con);
+                    listarMenues($listaMenues, $contadorMenuesInsertados);
+                  }else{
+                    listarMenues($listaMenues,$contadorMenuesInsertados);
+                  }
                 }else{
                   $listaMenues = Menu::listarMenusHabilitados($con);
                   listarMenues($listaMenues, $contadorMenuesInsertados);
