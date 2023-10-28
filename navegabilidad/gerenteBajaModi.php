@@ -104,3 +104,5 @@ $menu_array=[];
         <script src="../JS/adminGerente.js"></script>
         <script src="../JS/popper.min.js"></script>
         <script src="../JS/bootstrap.min.js"></script>        
+
+        

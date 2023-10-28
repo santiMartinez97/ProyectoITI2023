@@ -19,6 +19,7 @@ if (isset($_SESSION['nombre'])) {
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous"> 
 
     <link rel="stylesheet" href="CSS/design.css">
+    <link rel="stylesheet" href="CSS/loading.css">
     <title>Registro | NutriBento</title>
     <link rel="icon" href="img/icono.png" />
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> 
@@ -166,8 +167,6 @@ if (isset($_SESSION['nombre'])) {
                 <article class="col-6 grupo">
                   <select id="dieta" name="dieta" class="formulario__input form-select gray-text" aria-label="Preferencia de Dieta" >
                     <option value="0" disabled selected>Dieta</option>
-                    <option value="" id="defaultDieta">Sin dieta</option>
-
                   </select>
                 </article>
 
@@ -209,7 +208,7 @@ if (isset($_SESSION['nombre'])) {
 
                 <article class="col-12 text-center" >
                   <button class="btn btn-primary " id="enviar"  type="submit" >Enviar</button> 
-                
+                  
                   <p id="botonAlerta" class="grupo_input-error col-11 text-center">Complete correctamente los campos por favor</p>
                   <p id="errorRepeticion" class="grupo_input-error col-11 text-center"></p>
                 </article>       
@@ -246,6 +245,9 @@ if (isset($_SESSION['nombre'])) {
   </article>
 </footer>
 
+<div id="loader-div">
+    <img class="loader-img" src="img/loader.gif" style="height: 120px;width: auto;" />
+</div> 
 
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"

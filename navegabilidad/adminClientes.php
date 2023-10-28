@@ -30,6 +30,7 @@ $resultado = $dieta->fetchAll(PDO::FETCH_ASSOC);
     <title>Administrador | NutriBento</title>
     <link rel="icon" href="../img/icono.png" />
     <link rel="stylesheet" href="../CSS/admin.css" />
+    <link rel="stylesheet" href="../CSS/loading.css"/>
     <link rel="stylesheet" type="text/css" href="../CSS/boostrap.css">
 </head>
 <body>
@@ -74,7 +75,7 @@ $resultado = $dieta->fetchAll(PDO::FETCH_ASSOC);
                 </div>
 
 
-                <form id="formularioComun" method="POST" action="../BACKPHP/ActualizarCliente.php" onsubmit="return validarFormulario();">
+                <form method="POST" action="../BACKPHP/ActualizarCliente.php">
                     <input type="hidden" name="id" value="">
                     <div class="modal-body" id="cont_modal">
 
@@ -175,7 +176,8 @@ $resultado = $dieta->fetchAll(PDO::FETCH_ASSOC);
                     </button>
                 </div>
 
-                <form id="formularioEmpresa" method="POST" action="../BACKPHP/ActualizarClienteEmpresa.php" onsubmit="return validarFormularioEmpresa();">
+
+                <form method="POST" action="../BACKPHP/ActualizarClienteEmpresa.php">
                     <input type="hidden" name="id" value="">
                     <div class="modal-body" id="cont_modal">
 
@@ -264,10 +266,12 @@ $resultado = $dieta->fetchAll(PDO::FETCH_ASSOC);
     </section>
     </footer>
 
+    <div id="loader-div">
+        <img class="loader-img" src="../img/loader.gif" style="height: 120px;width: auto;" />
+    </div> 
+    
     <script src="../JS/jquery-3.6.4.min.js"></script>
     <script src="../JS/adminClientes.js"></script>
-    <script src="../JS/modal.js"></script>   
-
     <script src="../JS/popper.min.js"></script>
     <script src="../JS/bootstrap.min.js"></script>   
 </body>
