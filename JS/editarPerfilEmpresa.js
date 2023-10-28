@@ -7,7 +7,6 @@ const expresionesRegulares = {
   email : /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
   empresa : /^[a-zA-ZÀ-ÿ\s]{2,40}$/, // Letras y espacios con acentos.
   rut : /^.{12}$/, 
-  password : /^.{6,17}$/, // 6 a 17 digitos.
   emai : /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/, //valida email
   telefono : /^2\d{7}$/, // 9 numeros.
   calle : /^[a-zA-ZÀ-ÿ\s]{2,30}$/, //\d{2}
@@ -76,70 +75,55 @@ inputs.forEach((input) => {
 	input.addEventListener('blur', validarFormulario);
 });
 
-formulario.addEventListener('submit', (e) => {
-  e.preventDefault(); // Evitar que se ejecute lo que viene por defecto en el navegador.
-  document.getElementById('loader-div').style.display = "block"; // Mostrar carga
-if (validacionCampos.rut && validacionCampos.empresa && validacionCampos.email && validacionCampos.telefono &&  validacionCampos.calle && validacionCampos.numero && validacionCampos.esquina && validacionCampos.barrio){
-  var datos = new FormData(formulario); 
-    let url = 'EnviarPerfilActualizadoEmpresa.php';
-    botonId.classList.remove("grupo_input-error-activo");
-    errorRepeticion.classList.remove("grupo_input-error-activo");
-  fetch(url, {
-    method: "POST",
-    body: datos,
-  }).then(function(res){
-    //console.log(res.text());
-    return res.json();
-  }).then(function(data){
-    switch(data){
-      case "Email y RUT repetidos":
-        document.getElementById(`grupo__email`).classList.remove("grupo__correcto");
-        document.getElementById(`grupo__email`).classList.add("grupo__error");
-        document.querySelector(`#grupo__email .grupo_input-error`).classList.add('grupo_input-error-activo');
-        validacionCampos["email"] = false;
 
-        document.getElementById(`grupo__rut`).classList.remove("grupo__correcto");
-        document.getElementById(`grupo__rut`).classList.add("grupo__error");
-        document.querySelector(`#grupo__rut .grupo_input-error`).classList.add('grupo_input-error-activo');
-        validacionCampos["rut"] = false;
+document.addEventListener('DOMContentLoaded', function() {
+  validarCamposIniciales();
+});
 
-        errorRepeticion.innerText = "El email y el RUT ingresado ya están en uso."
-        errorRepeticion.classList.add("grupo_input-error-activo");
-        document.getElementById('loader-div').style.display = "none"; // Ocultar carga
-        break;
-      
-      case "Email repetido":
-        document.getElementById(`grupo__email`).classList.remove("grupo__correcto");
-        document.getElementById(`grupo__email`).classList.add("grupo__error");
-        document.querySelector(`#grupo__email .grupo_input-error`).classList.add('grupo_input-error-activo');
-        validacionCampos["email"] = false;
-
-        errorRepeticion.innerText = "El email ingresado ya está en uso."
-        errorRepeticion.classList.add("grupo_input-error-activo");
-        document.getElementById('loader-div').style.display = "none"; // Ocultar carga
-        break;
-
-      case "RUT repetido":
-        document.getElementById(`grupo__rut`).classList.remove("grupo__correcto");
-        document.getElementById(`grupo__rut`).classList.add("grupo__error");
-        document.querySelector(`#grupo__rut .grupo_input-error`).classList.add('grupo_input-error-activo');
-        validacionCampos["rut"] = false;
-
-        errorRepeticion.innerText = "El RUT ingresado ya está en uso."
-        errorRepeticion.classList.add("grupo_input-error-activo");
-        document.getElementById('loader-div').style.display = "none"; // Ocultar carga
-        break;
-        
-      default:
-        formulario.reset();
-        document.getElementById('loader-div').style.display = "none"; // Ocultar carga
-        alerta();
-    }
+function validarCamposIniciales() {
+  inputs.forEach((input) => {
+    validarCampos(expresionesRegulares[input.name], input, input.name);
   });
 }
-else {
-  botonId.classList.add("grupo_input-error-activo");
-  document.getElementById('loader-div').style.display = "none"; // Ocultar carga
-}
+
+
+formulario.addEventListener('submit', (e) => {
+  e.preventDefault(); 
+
+  if (validacionCampos.rut && validacionCampos.empresa && validacionCampos.email && validacionCampos.telefono &&  
+      validacionCampos.calle && validacionCampos.numero && validacionCampos.esquina && validacionCampos.barrio) {
+
+    var datos = new FormData(formulario); 
+    let url = 'EnviarPerfilActualizadoEmpresa.php';
+    botonId.classList.remove("grupo_input-error-activo");
+
+    fetch(url, {
+      method: "POST",
+      body: datos,
+    }).then(function(res){
+      if (!res.ok) {
+        throw new Error('La solicitud fetch falló');
+      }
+      return res.json();
+    }).then(function(data){
+    
+      console.log('Solicitud completada con éxito:', data);
+      
+      
+    }).catch(function(error) {
+      console.error('Error:', error);
+
+    });
+    
+  } else {
+    botonId.classList.add("grupo_input-error-activo");
+  }
+  alerta();
 });
+
+function alerta(){
+
+  swal('¡Datos actualizados correctamente!');
+  
+  }
   

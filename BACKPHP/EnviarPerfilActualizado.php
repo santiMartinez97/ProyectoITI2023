@@ -14,10 +14,10 @@ $barrio= $_POST['barrio'];
 $direccion = $barrio.'-'.$calle.'-'.$numero.'-'.$esquina;
 
 
-
 // Incluir el archivo de configuración de la conexión
 require '../config/conexion.php';
 
+require '../config/config.php';
 // Incluir clase
 require '../Clases/clientecomun.php';
 
@@ -25,10 +25,7 @@ require '../Clases/clientecomun.php';
 $db = new DataBase();
 $con = $db->conectar();
 
-$cliente = $con->prepare("SELECT * FROM cliente");
- $cliente-> execute();
- $resultadoCliente = $cliente->fetchAll(PDO::FETCH_ASSOC);
- $id = $resultadoCliente[0]['ID'];
+$id = $_SESSION['id'];
 
         try{
             // Creamos el objeto cliente y actualizamos
@@ -41,12 +38,12 @@ $cliente = $con->prepare("SELECT * FROM cliente");
 
             // Modificamos relaciones del cliente
             $cliente->modificarTelefono($telefono);
-            $cliente->quitarDieta();
-            $cliente->asociarDieta($dieta);
-
-            //Redireccionamos
-            header("Location: ../navegabilidad/adminClientes.php");
-            exit();
+           
+             $cliente->quitarDieta();
+             $cliente->asociarDieta($dieta);
+            
+           
+            
         }catch(Exception $e){
             // Error al actualizar
             echo "Error al actualizar los datos: " . $e;

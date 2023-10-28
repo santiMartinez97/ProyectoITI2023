@@ -12,37 +12,27 @@ $db = new DataBase();
 $con = $db->conectar();
 
 
-//  $cliente = $con->prepare("SELECT * FROM cliente");
-//  $cliente-> execute();
-//  $resultadoCliente = $cliente->fetchAll(PDO::FETCH_ASSOC);
+$idCliente = $_SESSION['id'];
 
-// Obtener el ID del cliente
-// $idCliente = $cliente->getID();
-
+ $usuario = ClienteEmpresa::findByID($con, $idCliente);
+ $usuarioTelefono = ClienteTelefono::findByID($con, $idCliente);
+ $usuarioDieta = ClienteDieta::findByID($con, $idCliente);
 
 
-// $consulta = $con->prepare("SELECT ID FROM usuario WHERE email = :email");
-// $consulta->bindParam(':email', $email, PDO::PARAM_STR);
-// $consulta->execute();
-// $resultado = $consulta->fetch(PDO::FETCH_ASSOC);
-// $idUsuario = $resultado['ID'];
+ if ($usuarioDieta !== null) {
+  if ($usuarioDieta->getIDdieta() === null) {
+      $usuarioDietaDefinido = "Sin especificar";
+  } else {
+      $idUsuarioDieta = $usuarioDieta->getIDdieta();
+      $dieta = new Dieta($con);
+      $usuarioDietaDefinido = $dieta->NombreDieta($idUsuarioDieta);
+  }
+} else {
+  $usuarioDietaDefinido = "Sin especificar";
+}
 
-
-
-// $usuario = ClienteEmpresa::findByID($con, $idCliente);
-
-
-//  $usuario = ClienteEmpresa::findByID($con, $idCliente);
-//  $usuarioTelefono = ClienteTelefono::findByID($con, $idCliente);
-//  $usuarioDieta = ClienteDieta::findByID($con, $idCliente);
-
-
-//  $idUsuarioDieta = $usuarioDieta->getIDdieta();
  
-//  $dieta = new Dieta($con);
-//  $usuarioDietaDefinido = $dieta->NombreDieta($idUsuarioDieta);
- 
-//  $dire = $usuario-> getDireccionCompleta();
+  $dire = $usuario-> getDireccionCompleta();//ok
  
   preg_match('/^([^\\-]+)/', $dire, $matches);
   $barrio = $matches[1];
@@ -102,7 +92,7 @@ $con = $db->conectar();
             <li class="nav-item">
               <a class="nav-link" href="../index.php"><i class="fa-solid fa-home"></i> Inicio</a>
             </li>
-            <a class="nav-link" href="#"><i class="fa-solid fa-cart-shopping"></i>
+            <a class="nav-link" href="productosCarrito.php"><i class="fa-solid fa-cart-shopping"></i>
               Carrito <span id="num_cart" class="badge bg-secondary">
                 <?php echo $num_cart; ?>
               </span>
@@ -111,32 +101,57 @@ $con = $db->conectar();
             <?php
 
 
-            if (!isset($_SESSION['cliente'])) {
+if(!isset($_SESSION['cliente'])){
+   
+  echo  '<li class="nav-item dropdown">';
+    echo   '<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">';        
+        echo  ' <i class="fa-solid fa-user"></i> Iniciar Sesion </a>';
+      echo '<ul class="dropdown-menu">';
+        echo   '<li><a class="dropdown-item" href="registro.php">Registrarse</a></li>';
+       echo   '<li><a class="dropdown-item" href="login.php">Iniciar Sesion</a></li>';
+       echo  '<li><hr class="dropdown-divider"></li>';
+          echo  '</ul>';
+          echo  '</li>';
 
-              echo '<li class="nav-item dropdown">';
-              echo '<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">';
-              echo ' <i class="fa-solid fa-user"></i> Iniciar Sesion </a>';
-              echo '<ul class="dropdown-menu">';
-              echo '<li><a class="dropdown-item" href="../registro.php">Registrarse</a></li>';
-              echo '<li><a class="dropdown-item" href="../login.php">Iniciar Sesion</a></li>';
-              echo '<li><hr class="dropdown-divider"></li>';
-              echo '</ul>';
-              echo '</li>';
-              echo '</ul>';
-            } else {
 
-              echo '<li class="nav-item dropdown">';
-              echo '<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">';
-              echo  ' <i class="fa-solid fa-user"></i> '.$_SESSION['nombre'].'</a>';
-              echo '<ul class="dropdown-menu">';
-              echo '<li><a class="dropdown-item" href="#">Ver Perfil</a></li>';
-              echo '<li><a class="dropdown-item" href="#">Editar perfil</a></li>';
-              echo '<li><hr class="dropdown-divider"></li>';
+         echo  '</ul>';
+  
+}else if(!isset($_SESSION['ClienteComun'])){
+
+        
+echo  '<li class="nav-item dropdown">';
+    echo   '<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">';        
+        echo  ' <i class="fa-solid fa-user"></i> '.$_SESSION['nombre'].'</a>';
+      echo '<ul class="dropdown-menu">';
+        echo   '<li><a class="dropdown-item" href="#">Ver Perfil</a></li>';
+       echo   '<li><a class="dropdown-item" href="../BACKPHP/editarPerfilEmpresa.php">Editar perfil</a></li>';
+       echo  '<li><hr class="dropdown-divider"></li>';
+          echo '<li><a class="dropdown-item" href="../navegabilidad/cerrar_session.php">Cerrar Sesion</a></li>';
+          echo  '</ul>';
+          echo  '</li>';
+
+
+         echo  '</ul>';
+
+      }
+
+      else{
+                  
+        echo  '<li class="nav-item dropdown">';
+        echo   '<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">';        
+            echo  ' <i class="fa-solid fa-user"></i> '.$_SESSION['nombre'].'</a>';
+          echo '<ul class="dropdown-menu">';
+            echo   '<li><a class="dropdown-item" href="#">Ver Perfil</a></li>';
+          echo   '<li><a class="dropdown-item" href="../BACKPHP/editarPerfil.php">Editar perfil</a></li>';
+          echo  '<li><hr class="dropdown-divider"></li>';
               echo '<li><a class="dropdown-item" href="../navegabilidad/cerrar_session.php">Cerrar Sesion</a></li>';
-              echo '</ul>';
-              echo '</li>';
-              echo '</ul>';
-            }
+              echo  '</ul>';
+              echo  '</li>';
+
+
+            echo  '</ul>';
+
+}
             ?>
 
           </ul>
@@ -183,7 +198,7 @@ $con = $db->conectar();
   <!-- Grupo RUT -->
   <article class="col-7 grupo" id="grupo__rut">
     <article class="grupo__input">  
-      <input type="text" name="rut" id="rut" class="formulario__input form-control" placeholder="RUT">
+      <input type="text" name="rut" id="rut" class="formulario__input form-control" placeholder="RUT" value="<?php echo $usuario->getRUT(); ?>"> 
     </article>       
     <p class="grupo_input-error">Ingrese un rut valido</p>
   </article>
@@ -191,7 +206,7 @@ $con = $db->conectar();
   <!-- Grupo Nombre empresa-->
   <article class="col-7 grupo" id="grupo__empresa">
     <article class="grupo__input">
-      <input type="text" name="empresa" id="empresa" class="formulario__input form-control" placeholder="Nombre Empresa">
+      <input type="text" name="empresa" id="empresa" class="formulario__input form-control" value="<?php echo $usuario->getNombreEmpresa(); ?>" placeholder="Nombre Empresa">
     </article>   
     <p class="grupo_input-error">Ingrese un nombre valido</p>
   </article> 
@@ -199,7 +214,7 @@ $con = $db->conectar();
   <!-- Grupo email -->
   <article class="col-6 grupo" id="grupo__email">
     <article class="grupo__input">
-      <input type="email" name="email" id="email" class="formulario__input form-control" placeholder="Email">
+      <input type="email" name="email" id="email" class="formulario__input form-control" value="<?php echo $usuario->getEmail(); ?>" placeholder="Email">
     </article> 
     <p class="grupo_input-error">Ingrese un email valido</p>
   </article>
@@ -208,7 +223,7 @@ $con = $db->conectar();
   <!-- Grupo telefono -->
   <article class="col-6 grupo" id="grupo__telefono">
     <article class="grupo__input">
-      <input type="number" name="telefono" id="telefono" class="formulario__input form-control"  placeholder="Telefono">
+      <input type="number" name="telefono" id="telefono" class="formulario__input form-control" value="<?php echo $usuarioTelefono->getTelefono(); ?>"   placeholder="Telefono">
     </article>
     <p class="grupo_input-error">Ingrese su numero de telefono </p> 
   </article>
@@ -216,14 +231,14 @@ $con = $db->conectar();
   <!-- Grupo Seleccion de Dieta -->
   <article class="col-6 grupo">
     <select id="dieta" name="dieta" class="form-select gray-text" aria-label="Preferencia de Dieta" required>
-      <option value="0" disabled selected>Dieta</option>
+      <option value="0"><?php echo $usuarioDietaDefinido; ?></option>
     </select>
   </article>
 
   <!-- Grupo calle -->
   <article class="col-7 grupo" id="grupo__calle">
     <article class="grupo__input">
-      <input type="text" name="calle" id="calle" class="formulario__input form-control" placeholder="Calle">
+      <input type="text" name="calle" id="calle" class="formulario__input form-control" placeholder="Calle" value="<?php echo $calle; ?>">
     </article>
     <p class="grupo_input-error">Ingrese una calle valida</p>
   </article>
@@ -231,7 +246,7 @@ $con = $db->conectar();
   <!-- Grupo numero -->
   <article class="col-5 grupo" id="grupo__numero">
     <article class="grupo__input">
-      <input type="number" name="numero" id="numero" class="formulario__input form-control" placeholder="Numero">
+      <input type="number" name="numero" id="numero" class="formulario__input form-control" placeholder="Numero" value="<?php echo $numero; ?>">
     </article>
     <p class="grupo_input-error">N° de puerta invalido</p>
   </article>
@@ -239,7 +254,7 @@ $con = $db->conectar();
   <!-- Grupo esquina -->
   <article class="col-6 grupo" id="grupo__esquina">
     <article id="grupo__input">
-      <input type="text" name="esquina" id="esquina" class="formulario__input form-control" placeholder="Esquina">
+      <input type="text" name="esquina" id="esquina" class="formulario__input form-control" placeholder="Esquina" value="<?php echo $esquina; ?>">
     </article>
     <p class="grupo_input-error">Ingrese una esquina válida</p>        
   </article>
@@ -247,22 +262,18 @@ $con = $db->conectar();
   <!-- Grupo barrio -->
   <article class="col-6 grupo" id="grupo__barrio">
     <article class="grupo__input">
-      <input type="text" name="barrio" id="barrio" class="formulario__input form-control" placeholder="Barrio"> 
+      <input type="text" name="barrio" id="barrio" class="formulario__input form-control" placeholder="Barrio" value="<?php echo $barrio; ?>"> 
     </article> 
     <p class="grupo_input-error">Ingrese un barrio válido</p>
   </article>
 
   <article class="col-12 text-center" >
     <br>
-    <button class="btn btn-primary " id="enviar"  type="submit" >Enviar</button> 
+    <button class="btn btn-primary " id="enviar"  type="submit" >Actualizar</button> 
     <p id="botonAlerta" class="grupo_input-error col-11 text-center">Complete bien los campos por favor</p>
     <p id="errorRepeticion" class="grupo_input-error col-11 text-center"></p>
   </article>       
 </form>
-
-
-
-
 
 
 </article>

@@ -37,15 +37,18 @@ if ($productos != null) {
         // $subtotal = $cantidad * $precio_desc;
         // // $total += $subtotal;
 
-      $cliente = $con->prepare("SELECT * FROM cliente ");
-      $cliente-> execute();
-      $cliente1 = $cliente->fetch(PDO::FETCH_ASSOC);
+      // $cliente = $con->prepare("SELECT * FROM cliente ");
+      // $cliente-> execute();
+      // $cliente1 = $cliente->fetch(PDO::FETCH_ASSOC);
+
+      $idCliente= $_SESSION['id'];
       
       // // // //Agregar a la BASE DE DATOS   ////////
      $fecha_hoy = date("Y-m-d");
      $fecha_menos_un_dia = date("Y-m-d", strtotime($fecha_hoy . " -1 day"));
-     if ($cliente1 && isset($cliente1['ID'])) {
-     $idCliente = $cliente1['ID'];
+
+     if ($idCliente) {
+     
   
      $query = $con->prepare("INSERT INTO pedido (Fecha, IDCliente) VALUES (:fecha, :id_cliente)");
      $query->bindParam(':fecha', $fecha_menos_un_dia, PDO::PARAM_STR);

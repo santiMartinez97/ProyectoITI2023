@@ -10,11 +10,9 @@ require_once '../Clases/dieta.php';
 
 $db = new DataBase();
 $con = $db->conectar();
-// $cliComun = ClienteComun::findByID($con, $cliente->getID());
- $cliente = $con->prepare("SELECT * FROM cliente");
- $cliente-> execute();
- $resultadoCliente = $cliente->fetchAll(PDO::FETCH_ASSOC);
- $idCliente = $resultadoCliente[0]['ID'];
+
+$idCliente = $_SESSION['id'];
+
 
 
  $usuario = ClienteComun::findByID($con, $idCliente);
@@ -22,10 +20,17 @@ $con = $db->conectar();
  $usuarioDieta = ClienteDieta::findByID($con, $idCliente);
 
 
- $idUsuarioDieta = $usuarioDieta->getIDdieta();
- 
- $dieta = new Dieta($con);
- $usuarioDietaDefinido = $dieta->NombreDieta($idUsuarioDieta);
+ if ($usuarioDieta !== null) {
+  if ($usuarioDieta->getIDdieta() === null) {
+      $usuarioDietaDefinido = "Sin especificar";
+  } else {
+      $idUsuarioDieta = $usuarioDieta->getIDdieta();
+      $dieta = new Dieta($con);
+      $usuarioDietaDefinido = $dieta->NombreDieta($idUsuarioDieta);
+  }
+} else {
+  $usuarioDietaDefinido = "Sin especificar";
+}
  
  $dire = $usuario-> getDireccionCompleta();
  
@@ -74,6 +79,7 @@ $con = $db->conectar();
 <body>
     <!-- Inicio de Menu -->
 
+    
     <nav class="navbar navbar-expand-lg navbar-dark" style="background: rgb(240, 240, 240, 0.9); padding: 0px">
       <nav class="container justify-content-end">
         <a class="navbar-brand" href="#" style="color: black">
@@ -87,7 +93,7 @@ $con = $db->conectar();
             <li class="nav-item">
               <a class="nav-link" href="../index.php"><i class="fa-solid fa-home"></i> Inicio</a>
             </li>
-            <a class="nav-link" href="#"><i class="fa-solid fa-cart-shopping"></i>
+            <a class="nav-link" href="productosCarrito.php"><i class="fa-solid fa-cart-shopping"></i>
               Carrito <span id="num_cart" class="badge bg-secondary">
                 <?php echo $num_cart; ?>
               </span>
@@ -96,32 +102,57 @@ $con = $db->conectar();
             <?php
 
 
-            if (!isset($_SESSION['cliente'])) {
+if(!isset($_SESSION['cliente'])){
+   
+  echo  '<li class="nav-item dropdown">';
+    echo   '<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">';        
+        echo  ' <i class="fa-solid fa-user"></i> Iniciar Sesion </a>';
+      echo '<ul class="dropdown-menu">';
+        echo   '<li><a class="dropdown-item" href="registro.php">Registrarse</a></li>';
+       echo   '<li><a class="dropdown-item" href="login.php">Iniciar Sesion</a></li>';
+       echo  '<li><hr class="dropdown-divider"></li>';
+          echo  '</ul>';
+          echo  '</li>';
 
-              echo '<li class="nav-item dropdown">';
-              echo '<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">';
-              echo ' <i class="fa-solid fa-user"></i> Iniciar Sesion </a>';
-              echo '<ul class="dropdown-menu">';
-              echo '<li><a class="dropdown-item" href="../registro.php">Registrarse</a></li>';
-              echo '<li><a class="dropdown-item" href="../login.php">Iniciar Sesion</a></li>';
-              echo '<li><hr class="dropdown-divider"></li>';
-              echo '</ul>';
-              echo '</li>';
-              echo '</ul>';
-            } else {
 
-              echo '<li class="nav-item dropdown">';
-              echo '<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">';
-              echo  ' <i class="fa-solid fa-user"></i> '.$_SESSION['nombre'].'</a>';
-              echo '<ul class="dropdown-menu">';
-              echo '<li><a class="dropdown-item" href="#">Ver Perfil</a></li>';
-              echo '<li><a class="dropdown-item" href="#">Editar perfil</a></li>';
-              echo '<li><hr class="dropdown-divider"></li>';
+         echo  '</ul>';
+  
+}else if(!isset($_SESSION['ClienteComun'])){
+
+        
+echo  '<li class="nav-item dropdown">';
+    echo   '<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">';        
+        echo  ' <i class="fa-solid fa-user"></i> '.$_SESSION['nombre'].'</a>';
+      echo '<ul class="dropdown-menu">';
+        echo   '<li><a class="dropdown-item" href="#">Ver Perfil</a></li>';
+       echo   '<li><a class="dropdown-item" href="../BACKPHP/editarPerfilEmpresa.php">Editar perfil</a></li>';
+       echo  '<li><hr class="dropdown-divider"></li>';
+          echo '<li><a class="dropdown-item" href="navegabilidad/cerrar_session.php">Cerrar Sesion</a></li>';
+          echo  '</ul>';
+          echo  '</li>';
+
+
+         echo  '</ul>';
+
+      }
+
+      else{
+                  
+        echo  '<li class="nav-item dropdown">';
+        echo   '<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">';        
+            echo  ' <i class="fa-solid fa-user"></i> '.$_SESSION['nombre'].'</a>';
+          echo '<ul class="dropdown-menu">';
+            echo   '<li><a class="dropdown-item" href="#">Ver Perfil</a></li>';
+          echo   '<li><a class="dropdown-item" href="../BACKPHP/editarPerfil.php">Editar perfil</a></li>';
+          echo  '<li><hr class="dropdown-divider"></li>';
               echo '<li><a class="dropdown-item" href="../navegabilidad/cerrar_session.php">Cerrar Sesion</a></li>';
-              echo '</ul>';
-              echo '</li>';
-              echo '</ul>';
-            }
+              echo  '</ul>';
+              echo  '</li>';
+
+
+            echo  '</ul>';
+
+}
             ?>
 
           </ul>

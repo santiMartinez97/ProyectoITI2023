@@ -95,8 +95,7 @@ formulario.addEventListener('submit', (e) => {
     let url = 'EnviarPerfilActualizado.php';
     botonId.classList.remove("grupo_input-error-activo");
 
-    // Eliminamos el bloque del switch de repeticion
-    // ...
+
 
     fetch(url, {
       method: "POST",
@@ -105,14 +104,14 @@ formulario.addEventListener('submit', (e) => {
       return res.json();
     }).then(function(data){
       // Resto del código después de la eliminación del switch de repeticion
-      // ...
+     
     });
     alerta();
   }
   else {
     botonId.classList.add("grupo_input-error-activo");
   }
-});
+  });
 
 
 function alerta(){
