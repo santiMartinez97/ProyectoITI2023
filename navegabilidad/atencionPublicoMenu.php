@@ -30,7 +30,7 @@ $menus = new Menu();
      <header>
         <h1>Bienvenido Personal</h1>
         <h2 class="h2tit">
-        <a class="nav" href="atencionPublico.php">Menu principal</a>
+        <a class="nav" href="atencionPublico.php">Menú principal</a>
         <a class="nav" href="atencionPublicoClientes.php">Visualizar clientes</a>
         <a class="nav" href="atencionPublicoEstado.php">Visualizar estados</a> 
         <a class="nav" href="cerrar_session.php">Cerrar sesión</a>

@@ -18,9 +18,9 @@ $menus = new Pedido_Encarga_Menu();
      <header>
         <h1>Bienvenido Personal</h1>
         <h2 class="h2tit">
-        <a class="nav" href="atencionPublico.php">Menu principal</a>
+        <a class="nav" href="atencionPublico.php">Menú principal</a>
         <a class="nav" href="atencionPublicoClientes.php">Visualizar clientes</a> 
-        <a class="nav" href="atencionPublicoMenu.php">Ver menus</a> 
+        <a class="nav" href="atencionPublicoMenu.php">Ver menús</a> 
         <a class="nav" href="cerrar_session.php">Cerrar sesión</a>
     </h2>
     </header>
@@ -44,8 +44,8 @@ $menus = new Pedido_Encarga_Menu();
 
     <?php
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $IDPedido = $_POST['IDPedido'];
-            $nuevoEstado = $_POST['nuevoEstado'];
+            $IDPedido = isset($_POST['IDPedido']) ? $_POST['IDPedido'] : "";
+            $nuevoEstado = isset($_POST['nuevoEstado']) ? $_POST['nuevoEstado'] : "";
             $menus->cambiarEstado($IDPedido, $nuevoEstado);
         }   
     ?>

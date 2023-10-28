@@ -9,7 +9,7 @@ $con = $db->conectar();
 
 $configMail = new Mail();
 $mail = $configMail->configurar();
-$mail->Subject = 'Solicitar habilitacion - NutriBento';
+$mail->Subject = 'Solicitar habilitación - NutriBento';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $clientId = $_POST['clientId'];
@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $mail->addAddress($adminMail);
 
-    $mensaje = 'El usuario de ID:'.$clientID.' ha solicitado su habilitacion';
+    $mensaje = 'El usuario de ID:'.$clientId.' ha solicitado su habilitación.';
    
     try{
         $mail->Body = $mensaje; // Definimos que el cuerpo del correo será el mensaje previamente definido.

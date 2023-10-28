@@ -12,7 +12,7 @@ $con = $db->conectar();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Atencion al publico | NutriBento</title>
+    <title>Atención al Público | NutriBento</title>
     <link rel="icon" href="../img/icono.png" />
     <link rel="stylesheet" href="../CSS/admin.css" />
 </head>
@@ -20,12 +20,12 @@ $con = $db->conectar();
 
     <!-- Header -->
     <header>
-        <h1>Atencion al publico</h1>
+        <h1>Atención al público</h1>
         <h2>
-        <a class ="nav"href="atencionPublico.php">Menu principal</a>
-        <a class ="nav"href="atencionPublicoMenu.php">Consultar menus</a>
+        <a class ="nav"href="atencionPublico.php">Menú principal</a>
+        <a class ="nav"href="atencionPublicoMenu.php">Consultar menús</a>
         <a class ="nav"href="atencionPublicoEstado.php">Estado pedidos</a>
-        <a class="nav" href="cerrar_session.php">Cerrar sesion</a>
+        <a class="nav" href="cerrar_session.php">Cerrar sesión</a>
         </h2>
     </header>
 
