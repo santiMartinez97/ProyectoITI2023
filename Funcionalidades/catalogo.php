@@ -84,8 +84,8 @@ $resultado2 = $dieta->ObtenerDieta();
               echo   '<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">';        
                   echo  ' <i class="fa-solid fa-user"></i> Iniciar Sesion </a>';
                 echo '<ul class="dropdown-menu">';
-                  echo   '<li><a class="dropdown-item" href="registro.php">Registrarse</a></li>';
-                 echo   '<li><a class="dropdown-item" href="login.php">Iniciar Sesion</a></li>';
+                  echo   '<li><a class="dropdown-item" href="../registro.php">Registrarse</a></li>';
+                 echo   '<li><a class="dropdown-item" href="../login.php">Iniciar Sesión</a></li>';
                  echo  '<li><hr class="dropdown-divider"></li>';
                     echo  '</ul>';
                     echo  '</li>';
@@ -103,7 +103,7 @@ $resultado2 = $dieta->ObtenerDieta();
                   echo   '<li><a class="dropdown-item" href="#">Ver Perfil</a></li>';
                  echo   '<li><a class="dropdown-item" href="../BACKPHP/editarPerfilEmpresa.php">Editar perfil</a></li>';
                  echo  '<li><hr class="dropdown-divider"></li>';
-                    echo '<li><a class="dropdown-item" href="navegabilidad/cerrar_session.php">Cerrar Sesion</a></li>';
+                    echo '<li><a class="dropdown-item" href="../navegabilidad/cerrar_session.php">Cerrar Sesión</a></li>';
                     echo  '</ul>';
                     echo  '</li>';
           
@@ -203,7 +203,7 @@ $resultado2 = $dieta->ObtenerDieta();
                   null, null, null, null, null, null
               );
                 $id = $menu->getID();
-                $imagen = "../imgCatalogo/". $id . "/img.jpg";
+                $imagen = "../imgCatalogo/". $row['Imagen'];
 
                 if(!file_exists($imagen)){
                     $imagen = "../imgCatalogo/noimg.jpg";

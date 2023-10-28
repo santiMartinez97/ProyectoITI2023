@@ -25,13 +25,14 @@ if($id == '' || $token == ''){
     $sql->execute([$id]);
             if($sql->fetchColumn() > 0 ){
 
-                $sql = $con->prepare("SELECT Nombre,Precio,descripcion,descuento FROM menu WHERE id=? AND Habilitacion='Habilitado'");
+                $sql = $con->prepare("SELECT Nombre,Precio,descripcion,descuento,Imagen FROM menu WHERE id=? AND Habilitacion='Habilitado'");
                 $sql->execute([$id]);
                 $row = $sql ->fetch(PDO::FETCH_ASSOC);
                 $precio = $row['Precio'];
                 $nombre = $row['Nombre'];  
                 $descripcion = $row['descripcion'];
                 $descuento = $row['descuento'];
+                $imagen = $row['Imagen'];
                 $precio_desc = $precio - (($precio * $descuento) / 100);
 
              }
@@ -194,7 +195,7 @@ if($id == '' || $token == ''){
     <article class="carousel-inner">
         <article class="carousel-item active">
         <?php 
-                  $imagen = "../imgCatalogo/". $id . "/img.jpg";
+                  $imagen = "../imgCatalogo/". $imagen;
 
                   if(!file_exists($imagen)){
                         $imagen = "../imgCatalogo/noimg.jpg";

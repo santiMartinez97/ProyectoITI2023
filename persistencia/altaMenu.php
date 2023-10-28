@@ -15,11 +15,35 @@ $con = $db->conectar();
     $stockMaximo= $_POST["stockMaximo"];
     $descripcion= $_POST["descripcion"];
     $dieta= $_POST["dieta"];
+    
+    // Verifica si se ha enviado un archivo y si no hay errores
+    if (isset($_FILES["imagen"]) && $_FILES["imagen"]["error"] == 0) {
+        $nombre_original = $_FILES["imagen"]["name"];
+        $nombre_temporal = $_FILES["imagen"]["tmp_name"];
+        $extension = pathinfo($nombre_original, PATHINFO_EXTENSION);
 
+        // Genera un nombre aleatorio para el archivo
+        $nombre_unico = uniqid() . "." . $extension;
+
+        // Carpeta de destino para almacenar las imágenes
+        $carpeta_destino = "../imgCatalogo/";
+
+        // Mueve el archivo a la carpeta de destino
+        if (move_uploaded_file($nombre_temporal, $carpeta_destino . $nombre_unico)) {
+            // El archivo se ha movido correctamente
+
+            // Ahora, puedes guardar $nombre_unico en tu base de datos
+            $imagen = $nombre_unico;
+        }else{
+            $imagen = 'noimg.jpg';
+        }
+    }else{
+        $imagen = 'noimg.jpg';
+    }
        $con->beginTransaction();
 
        $sql1 = "INSERT INTO `menu` (`ID`, `Periodicidad`, `Nombre`, `Habilitacion`, `Precio`, `Descuento`, `Stock`, `StockMinimo`, `StockMaximo`, `Descripcion`, `Imagen`) 
-       VALUES (NULL, '$periodicidadSeleccionada', '$nombreMenu', '$habilitacionSeleccionada', '$precio', '$descuento', '$stock', '$stockMinimo', '$stockMaximo', '$descripcion', 'noimg.jpg')";
+       VALUES (NULL, '$periodicidadSeleccionada', '$nombreMenu', '$habilitacionSeleccionada', '$precio', '$descuento', '$stock', '$stockMinimo', '$stockMaximo', '$descripcion', '$imagen')";
        
        $result1 = $con->prepare($sql1);
        
