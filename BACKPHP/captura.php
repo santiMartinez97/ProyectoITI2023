@@ -44,14 +44,14 @@ if ($productos != null) {
       $idCliente= $_SESSION['id'];
       
       // // // //Agregar a la BASE DE DATOS   ////////
-     $fecha_hoy = date("Y-m-d");
-     $fecha_menos_un_dia = date("Y-m-d", strtotime($fecha_hoy . " -1 day"));
+      date_default_timezone_set('America/Montevideo');
+      $fecha_hoy = date("Y-m-d H:i:s");
 
      if ($idCliente) {
      
   
      $query = $con->prepare("INSERT INTO pedido (Fecha, IDCliente) VALUES (:fecha, :id_cliente)");
-     $query->bindParam(':fecha', $fecha_menos_un_dia, PDO::PARAM_STR);
+     $query->bindParam(':fecha', $fecha_hoy, PDO::PARAM_STR);
      $query->bindParam(':id_cliente', $idCliente, PDO::PARAM_INT);
      $query->execute();
 

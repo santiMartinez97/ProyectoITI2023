@@ -35,9 +35,10 @@ if ($productos != null) {
 ?>
 
 
-<!DOCTYPE php>
-<php lang="en">
-  <head>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -342,7 +343,28 @@ echo  '<li class="nav-item dropdown">';
       })
     }
     </script>
+<footer class="site-footer bg-dark text-white py-0">
+  <article class="container">
+    <article class="row">
+      <article class="col-md-2 col-6 text-center  mx-auto" style="margin-top: 30px;">
+        <img src="../img/icono.png" alt="Tu imagen" class="imgfooter" style="max-width: 50%; margin: 0 auto;">
+      </article>
 
+      <article class="col-md-5 col-12 text-center">
+        <br>
+        <p>&copy; 2023 SISVIANSA. Todos los derechos reservados.</p>
+        <p><i class="fas fa-phone phone-icon"></i>  (+598) 2204 5199</p>
+        <p><i class="fas fa-home"></i> Avenida Uruguay 1291</p>
+      </article>
+
+      <article class="col-md-5 col-12 text-center" style="margin-top: 26px;">
+        <p><i class="fas fa-envelope"></i> EmpresaNutribento@gmail.com</p>
+        <p><i class="fab fa-facebook-square" style="color: #1877f2;"></i> Nutribento</p>
+        <p><i class="fab fa-instagram" style="color: #e4405f;"></i> Nutribento</p>
+      </article>
+    </article>
+  </article>
+</footer>
 
 
 
