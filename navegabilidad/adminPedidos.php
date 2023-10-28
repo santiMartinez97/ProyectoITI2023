@@ -48,10 +48,10 @@ $control = new Pedido_Encarga_Menu();
 
     <?php
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $IDPedido = $_POST['IDPedido'];
-            $nuevoEstado = $_POST['nuevoEstado'];
+            $IDPedido = isset($_POST['IDPedido']) ? $_POST['IDPedido'] : "";
+            $nuevoEstado = isset($_POST['nuevoEstado']) ? $_POST['nuevoEstado'] : "";
             $control->cambiarEstado($IDPedido, $nuevoEstado);
-        }   
+        }
     ?>
 
     <article class="pedidos">
