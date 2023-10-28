@@ -6,13 +6,13 @@ var botonId = document.getElementById("botonAlerta");
 var errorRepeticion = document.getElementById("errorRepeticion");
 
 const expresionesRegulares = {
-  menu : /^[a-zA-Z0-9\s]{2,30}$/, // Letras y espacios con acentos.
+  menu : /^[a-zA-Z0-9-ZáéíóúüÁÉÍÓÚÜ\s]{2,30}$/, // Letras y espacios con acentos.
   precio : /^\d{2,6}$/, //letras y espacion con acentos
   descuento : /^\d{1,2}$/, //letras y espacion con acentos
   stock : /^\d{1,4}$/, // 8 digitos
   stockMinimo : /^\d{1,4}$/, // 6 a 17 digitos.
   stockMaximo : /^\d{1,4}$/, // 9 numeros.
-  descripcion : /^[a-zA-Z0-9\s]{2,500}$/, //\d{2}
+  descripcion : /^[a-zA-Z0-9-ZáéíóúüÁÉÍÓÚÜ\s]{2,500}$/, //\d{2}
 }
 
 const validacionCampos = {

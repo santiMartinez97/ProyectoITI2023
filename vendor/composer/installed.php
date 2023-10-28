@@ -47,9 +47,9 @@
             'dev_requirement' => false,
         ),
         'doctrine/event-manager' => array(
-            'pretty_version' => '1.2.0',
-            'version' => '1.2.0.0',
-            'reference' => '95aa4cb529f1e96576f3fda9f5705ada4056a520',
+            'pretty_version' => '2.0.0',
+            'version' => '2.0.0.0',
+            'reference' => '750671534e0241a7c50ea5b43f67e23eb5c96f32',
             'type' => 'library',
             'install_path' => __DIR__ . '/../doctrine/event-manager',
             'aliases' => array(),
