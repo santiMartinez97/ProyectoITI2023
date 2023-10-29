@@ -8,7 +8,7 @@ var errorRepeticion = document.getElementById("errorRepeticion");
 const expresionesRegulares = {
   nombre : /^[a-zA-Z0-9-ZáéíóúüÁÉÍÓÚÜ\s]{2,30}$/, // Letras y espacios con acentos.
   vidaUtil : /^\d{1,2}$/, //letras y espacion con acentos
-  cantidad : /^\d{1,2}$/, //letras y espacion con acentos    
+  cantidad :  /^[1-9\s]{1,2}$/, //letras y espacion con acentos    
   descripcion : /^[a-zA-Z0-9-ZáéíóúüÁÉÍÓÚÜ\s]{2,500}$/, //\d{2}
 }
 

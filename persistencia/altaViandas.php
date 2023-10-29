@@ -10,13 +10,12 @@ $fecha = date(format: 'Y-m-d H:i:s');
     $nombreVianda= $_POST["nombre"];
     $vidaUtil= $_POST["vidaUtil"];
     $cantidad= $_POST["cantidad"];
-    $habilitacionSeleccionada= $_POST["habilitacion"];
     $descripcion= $_POST["descripcion"];
 
-    for($i=0; $i <= $cantidad; $i++){
+    for($i=1; $i <= $cantidad; $i++){
        $con->beginTransaction();
 
-       $sql1 = "INSERT INTO vianda (Nombre, Habilitacion, VidaUtil, Descripcion) VALUES ('$nombreVianda', '$vidaUtil', '$habilitacionSeleccionada', '$descripcion');";
+       $sql1 = "INSERT INTO vianda (Nombre, VidaUtil, Descripcion) VALUES ('$nombreVianda', '$vidaUtil', '$descripcion');";
        
        $result1 = $con->prepare($sql1);
 
@@ -24,13 +23,11 @@ $fecha = date(format: 'Y-m-d H:i:s');
 
         $idViandaGenerado = $con->lastInsertId();
         $default = 'Envasado';
-        $sql2 = "INSERT INTO `estado_vianda` (`IDDVianda`, `Estado`, 'Fecha') VALUES ('$idViandaGenerado', '$default', '$fecha')";
+        $sql2 = "INSERT INTO `estado_vianda` (`IDVianda`, `Estado`, `Fecha`) VALUES ('$idViandaGenerado', '$default', '$fecha')";
         $result2 = $con->prepare($sql2);
  
-        if ($result2->execute()) {
-            
+        if ($result2->execute()) {    
             $con->commit();
-            echo "Se ejecutaron correctamente.";
         } 
      }
     }

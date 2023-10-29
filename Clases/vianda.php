@@ -1,6 +1,8 @@
 <?php
 require_once('estadovianda.php');
-
+require '../config/conexion.php';
+$db = new DataBase();
+$con = $db->conectar();
 class Vianda {
     private $pdo;
     private $ID;
@@ -90,21 +92,53 @@ class Vianda {
     }
 
     // Método para listar todas las viandas disponibles en la base de datos
-    public static function listarViandas($pdo) {
-        $viandas = array();
+    public function listarViandas($pdo) {
+        $viandas = $pdo->prepare("SELECT via.ID, via.Nombre, via.VidaUtil, est.Estado, est.Fecha FROM vianda AS via INNER JOIN estado_vianda AS est ON via.ID = est.IDVianda");
+        $viandas->execute();
+        $resultado = $viandas->fetchAll(PDO::FETCH_ASSOC);
+    
+        $viandas_array = [];
+    
+        echo '<div class="tabla-container">';
+        echo '<article class="pedidos">';
+        echo '<table>';
+        echo '<thead>';
+        echo '<tr>';
+        echo '<th class="tablaArriba">ID</th>';
+        echo '<th class="tablaArriba">Nombre</th>';
+        echo '<th class="tablaArriba">Vida util</th>';
+        echo '<th class="tablaArriba">Estado</th>';
+        echo '<th class="tablaArriba">Fecha</th>';
+        echo '</tr>';
+        echo '</thead>';
+        echo '<tbody>';
 
-        $sql = "SELECT * FROM Vianda";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute();
-
-        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            $vianda = new Vianda($pdo);
-            $vianda->ID = $row['ID'];
-            $vianda->IDComida = $row['IDComida'];
-            $viandas[] = $vianda;
+        foreach ($resultado as $row) {
+            $ID = $row['ID'];
+            $nombre = $row['Nombre'];
+            $vidautil = $row['VidaUtil'];
+            $estado = $row['Estado'];
+            $fecha = $row['Fecha']; 
+            if (!in_array($row, $viandas_array)) { 
+                echo '<form method="POST">';
+                echo '<tr>';
+                echo '<th >'.$ID .'</th>';
+                echo '<th >'.$nombre .'</th>';
+                echo '<th >'.$vidautil.'</th>';
+                echo '<th >'.$estado.'</th>';
+                echo '<th >'.$fecha.'</th>';
+                echo '<th><button class="botonAceptar" name="botonAceptar" value="'.$ID.'">Completar</button></th>';
+                echo '<th><button class="botonDesechar" name="botonDesechar" value="'.$ID.'">Desechar</button></th>';
+                echo '</tr>';
+                echo '</form>';
+                
+            }
         }
+        echo '</tbody>';
+        echo '</table>';
 
-        return $viandas;
+        echo '</article>';
+        echo '<div/>';
     }
 
     // Función para cambiar el estado de la Vianda

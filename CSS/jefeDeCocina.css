@@ -29,11 +29,15 @@ header {
   .hijo {
     max-width: 40em;
     display: flex;
-    justify-self: left;
+    justify-content: left;
     position: absolute;
     top: 19.5rem;
     transform: translate(0, -50%);
   }
+
+  .tabla-container {
+    float: right; 
+}
 
   #enviar {
     background-color: rgb(196, 99, 39);
