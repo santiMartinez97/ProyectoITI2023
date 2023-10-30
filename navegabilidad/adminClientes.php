@@ -274,5 +274,7 @@ $resultado = $dieta->fetchAll(PDO::FETCH_ASSOC);
     <script src="../JS/adminClientes.js"></script>
     <script src="../JS/popper.min.js"></script>
     <script src="../JS/bootstrap.min.js"></script>   
+    <script src="../JS/modal.js"></script>   
+
 </body>
 </html>
