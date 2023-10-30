@@ -75,7 +75,7 @@ class Pedido_Encarga_Menu {
         echo '</form';
         
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $estadoSeleccionado = isset($_POST['estado']) ? $_POST['estado'] : ""; 
+            $estadoSeleccionado = strtolower($_POST['estado']); 
         }
     
         foreach ($resultado as $row) {

@@ -153,34 +153,6 @@ class ClienteComun extends Cliente {
 
         return $clientesComunes;
     }
-
-    public static function listarClientesComunesNoHabilitados($pdo) {
-        $clientesComunes = array();
-
-        $sql = "SELECT Cliente.ID, Usuario.Email, Cliente.DireccionCompleta, Cliente.Habilitacion, ClienteComun.CI, ClienteComun.Nombre, ClienteComun.Apellido
-                FROM ClienteComun
-                INNER JOIN Cliente ON ClienteComun.ID = Cliente.ID
-                INNER JOIN Usuario ON Cliente.ID = Usuario.ID WHERE Habilitacion = 'No habilitado'";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute();
-
-        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            $clienteComun = new ClienteComun(
-                $pdo,
-                $row['Email'],
-                '', // Contraseña no se necesita aquí
-                $row['DireccionCompleta'],
-                $row['Habilitacion'],
-                $row['CI'],
-                $row['Nombre'],
-                $row['Apellido']
-            );
-            $clienteComun->ID = $row['ID'];
-            $clientesComunes[] = $clienteComun;
-        }
-
-        return $clientesComunes;
-    }
 }
 
 ?>
