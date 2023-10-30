@@ -134,6 +134,33 @@ class ClienteEmpresa extends Cliente {
 
         return $clientesEmpresa;
     }
+
+    public static function listarEmpresasNoHabilitados($pdo) {
+        $clientesComunes = array();
+
+        $sql = "SELECT Cliente.ID, Usuario.Email, Cliente.DireccionCompleta, Cliente.Habilitacion,  ClienteEmpresa.RUT, ClienteEmpresa.NombreEmpresa
+                FROM ClienteEmpresa
+                INNER JOIN Cliente ON ClienteEmpresa.ID = Cliente.ID
+                INNER JOIN Usuario ON Cliente.ID = Usuario.ID WHERE Habilitacion = 'No habilitado'";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute();
+
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $clienteEmpresa = new ClienteEmpresa(
+                $pdo,
+                $row['Email'],
+                '', // Contraseña no se necesita aquí
+                $row['DireccionCompleta'],
+                $row['Habilitacion'],
+                $row['RUT'],
+                $row['NombreEmpresa']
+            );
+            $clienteEmpresa->ID = $row['ID'];
+            $clientesEmpresa[] = $clienteEmpresa;
+        }
+
+        return $clientesEmpresa;
+    }
 }
 
 ?>

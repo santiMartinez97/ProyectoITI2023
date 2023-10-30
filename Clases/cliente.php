@@ -191,13 +191,6 @@ class Cliente extends Usuario {
         return $stmt->execute();
     }
 
-
-
-
-    
-
-    
-
 }
 
 ?>

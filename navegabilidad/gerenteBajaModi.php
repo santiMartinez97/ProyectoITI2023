@@ -11,17 +11,6 @@ $resultado = $menu->fetchAll(PDO::FETCH_ASSOC);
 
 $menu_array=[];
 
-require '../config/conexion.php';
-
-$db = new DataBase();
-$con = $db->conectar();
-
-$menu = $con->prepare("SELECT *  FROM menu ");
-$menu-> execute();
-$resultado = $menu->fetchAll(PDO::FETCH_ASSOC);
-
-$menu_array=[];
-
 ?>
 
 <!DOCTYPE html>
