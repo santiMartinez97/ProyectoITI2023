@@ -76,14 +76,14 @@ $menu_array=[];
                             echo '<td data-client-status="false">'.$row['Habilitacion'].'</td>';
                             echo '<td><button class="botonAceptar habilitar-btn">Habilitar</button></td>';
                             echo '<td><button class="botonDesechar">Eliminar</button></td>';
-                            echo '<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editChildresn' . $row['ID'] . '">Modificar</button></td>';
+                            echo '<td><button type="button" class="btn btn-primary botonModificar" data-toggle="modal" data-target="#editChildresn' . $row['ID'] . '">Modificar</button></td>';
 
 
                         }else{
                            echo '<td data-client-status="true">'.$row['Habilitacion'].'</td>';
                             echo '<td><button class="botonRechazar habilitar-btn">Deshabilitar</button></td>';
                             echo '<td><button class="botonDesechar">Eliminar</button></td>';
-                            echo '<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editChildresn' . $row['ID'] . '">Modificar</button></td>';
+                            echo '<td><button type="button" class="btn btn-primary botonModificar" data-toggle="modal" data-target="#editChildresn' . $row['ID'] . '">Modificar</button></td>';
                            
                         }
                         echo '</tr>';
