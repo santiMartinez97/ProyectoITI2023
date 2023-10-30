@@ -61,12 +61,12 @@ const validarFormulario = (e) => {
 const validarCampos = (expresion, input, campo) => {
   if (expresion.test(input.value)) {
     document.getElementById(`grupo__${campo}`).classList.remove("grupo__error");
-    document.getElementById(`grupo__${campo}`).classList.add("grupo__correcto");
+
     document.querySelector(`#grupo__${campo} .grupo_input-error`).classList.remove('grupo_input-error-activo');
     validacionCampos[campo] = true;
   }
   else {
-    document.getElementById(`grupo__${campo}`).classList.remove("grupo__correcto");
+    
     document.getElementById(`grupo__${campo}`).classList.add("grupo__error");
     document.querySelector(`#grupo__${campo} .grupo_input-error`).classList.add('grupo_input-error-activo');
     validacionCampos[campo] = false;
