@@ -78,43 +78,57 @@ $resultado2 = $dieta->ObtenerDieta();
             <?php
            
            
-    if(!isset($_SESSION['cliente'])){
+           if(!isset($_SESSION['cliente'])){
    
-    echo  '<li class="nav-item dropdown">';
-      echo   '<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">';        
-          echo  ' <i class="fa-solid fa-user"></i> Iniciar Sesion </a>';
-        echo '<ul class="dropdown-menu">';
-          echo   '<li><a class="dropdown-item" href="../registro.php">Registrarse</a></li>';
-         echo   '<li><a class="dropdown-item" href="../login.php">Iniciar Sesion</a></li>';
-         echo  '<li><hr class="dropdown-divider"></li>';
-            echo  '</ul>';
-            echo  '</li>';
-
-
-           echo  '</ul>';
-
-        
-
-    
-}else{
-
-
+            echo  '<li class="nav-item dropdown">';
+              echo   '<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">';        
+                  echo  ' <i class="fa-solid fa-user"></i> Iniciar Sesion </a>';
+                echo '<ul class="dropdown-menu">';
+                  echo   '<li><a class="dropdown-item" href="../registro.php">Registrarse</a></li>';
+                 echo   '<li><a class="dropdown-item" href="../login.php">Iniciar Sesión</a></li>';
+                 echo  '<li><hr class="dropdown-divider"></li>';
+                    echo  '</ul>';
+                    echo  '</li>';
           
-echo  '<li class="nav-item dropdown">';
-      echo   '<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">';        
-      echo  ' <i class="fa-solid fa-user"></i> '.$_SESSION['nombre'].'</a>';
-        echo '<ul class="dropdown-menu">';
-          echo   '<li><a class="dropdown-item" href="#">Ver Perfil</a></li>';
-         echo   '<li><a class="dropdown-item" href="#">Editar perfil</a></li>';
-         echo  '<li><hr class="dropdown-divider"></li>';
-            echo '<li><a class="dropdown-item" href="../navegabilidad/cerrar_session.php">Cerrar Sesion</a></li>';
-            echo  '</ul>';
-            echo  '</li>';
-
-
-           echo  '</ul>';
-
-        }
+          
+                   echo  '</ul>';
+            
+          }else if(!isset($_SESSION['ClienteComun'])){
+          
+                  
+          echo  '<li class="nav-item dropdown">';
+              echo   '<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">';        
+                  echo  ' <i class="fa-solid fa-user"></i> '.$_SESSION['nombre'].'</a>';
+                echo '<ul class="dropdown-menu">';
+                  echo   '<li><a class="dropdown-item" href="#">Ver Perfil</a></li>';
+                 echo   '<li><a class="dropdown-item" href="../BACKPHP/editarPerfilEmpresa.php">Editar perfil</a></li>';
+                 echo  '<li><hr class="dropdown-divider"></li>';
+                    echo '<li><a class="dropdown-item" href="../navegabilidad/cerrar_session.php">Cerrar Sesión</a></li>';
+                    echo  '</ul>';
+                    echo  '</li>';
+          
+          
+                   echo  '</ul>';
+          
+                }
+          
+                else{
+                            
+                  echo  '<li class="nav-item dropdown">';
+                  echo   '<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">';        
+                      echo  ' <i class="fa-solid fa-user"></i> '.$_SESSION['nombre'].'</a>';
+                    echo '<ul class="dropdown-menu">';
+                      echo   '<li><a class="dropdown-item" href="#">Ver Perfil</a></li>';
+                    echo   '<li><a class="dropdown-item" href="../BACKPHP/editarPerfil.php">Editar perfil</a></li>';
+                    echo  '<li><hr class="dropdown-divider"></li>';
+                        echo '<li><a class="dropdown-item" href="navegabilidad/cerrar_session.php">Cerrar Sesion</a></li>';
+                        echo  '</ul>';
+                        echo  '</li>';
+          
+          
+                      echo  '</ul>';
+          
+          }
 ?>
 
           </ul>
@@ -189,7 +203,7 @@ echo  '<li class="nav-item dropdown">';
                   null, null, null, null, null, null
               );
                 $id = $menu->getID();
-                $imagen = "../imgCatalogo/". $id . "/img.jpg";
+                $imagen = "../imgCatalogo/". $row['Imagen'];
 
                 if(!file_exists($imagen)){
                     $imagen = "../imgCatalogo/noimg.jpg";
@@ -249,6 +263,29 @@ echo  '<li class="nav-item dropdown">';
 
 }
 </script>
+
+<footer class="site-footer bg-dark text-white py-0">
+  <article class="container">
+    <article class="row">
+      <article class="col-md-2 col-6 text-center  mx-auto" style="margin-top: 30px;">
+        <img src="../img/icono.png" alt="Tu imagen" class="imgfooter" style="max-width: 50%; margin: 0 auto;">
+      </article>
+
+      <article class="col-md-5 col-12 text-center">
+        <br>
+        <p>&copy; 2023 SISVIANSA. Todos los derechos reservados.</p>
+        <p><i class="fas fa-phone phone-icon"></i>  (+598) 2204 5199</p>
+        <p><i class="fas fa-home"></i> Avenida Uruguay 1291</p>
+      </article>
+
+      <article class="col-md-5 col-12 text-center" style="margin-top: 26px;">
+        <p><i class="fas fa-envelope"></i> EmpresaNutribento@gmail.com</p>
+        <p><i class="fab fa-facebook-square" style="color: #1877f2;"></i> Nutribento</p>
+        <p><i class="fab fa-instagram" style="color: #e4405f;"></i> Nutribento</p>
+      </article>
+    </article>
+  </article>
+</footer>
     
  <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"

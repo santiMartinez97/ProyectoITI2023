@@ -16,6 +16,10 @@ class Usuario {
         return $this->ID;
     }
 
+    public function getConstrasenia() {
+        return $this->Contrasenia;
+    }
+
     public function getEmail() {
         return $this->Email;
     }

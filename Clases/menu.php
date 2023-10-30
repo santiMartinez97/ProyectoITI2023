@@ -195,7 +195,7 @@ public function delete() {
 }
 
 public function InfoMenu(){
-    $menu = $this->pdo->prepare("SELECT ID,Nombre,Precio FROM menu WHERE Habilitacion='Habilitado'");
+    $menu = $this->pdo->prepare("SELECT ID,Nombre,Precio,Imagen FROM menu WHERE Habilitacion='Habilitado'");
     $menu->execute();
     return $menu->fetchAll(PDO::FETCH_ASSOC); 
     

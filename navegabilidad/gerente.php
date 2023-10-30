@@ -31,10 +31,10 @@ require '../config/conexion.php';
   <header>
         <div class="gerente-section">
             <h1>Gerente</h1>
-            <a class="enlace" href="gerenteBajaModi.php">Baja y modificacion de menú</a>
+            <a class="enlace" href="gerenteBajaModi.php">Baja y modificación de menú</a>
         </div>
         <div class="baja-section">
-          <a class ="enlace" href="cerrar_session.php">Cerrar Session</a>
+          <a class ="enlace" href="cerrar_session.php">Cerrar Sesión</a>
         </div>
     </header>
   
@@ -43,9 +43,9 @@ require '../config/conexion.php';
       <article class="container my-3">
   
       <article id="campos">
-        <form  class="row no-gutters" id="FrnINS"  action="../persistencia/altaMenu.php" method="post">
+        <form  class="row no-gutters" id="FrnINS"  enctype="multipart/form-data" action="../persistencia/altaMenu.php" method="post">
 
-  <H2 class="titulo">Formulario de menu</H2>
+  <H2 class="titulo">Formulario de menú</H2>
   
   <article class="col-6 grupo">
   <select id="periodicidad" class="formulario__input form-select gray-text" name="periodicidad">
@@ -67,7 +67,7 @@ require '../config/conexion.php';
     <article class="grupo__input">  
       <input type="text" name="menu" id="menu" class="formulario__input form-control" placeholder="Nombre" >
     </article>       
-    <p class="grupo_input-error">Ingrese un nombre valido </p>
+    <p class="grupo_input-error">Ingrese un nombre válido. </p>
   </article>
  
   <article class="col-6 grupo">
@@ -83,7 +83,7 @@ require '../config/conexion.php';
     <article class="grupo__input">  
       <input type="number" name="precio" id="precio" class="formulario__input form-control" placeholder="Precio">
     </article>       
-    <p class="grupo_input-error">Ingrese precio valido </p>
+    <p class="grupo_input-error">Ingrese precio válido. </p>
   </article>
 
 
@@ -91,43 +91,46 @@ require '../config/conexion.php';
     <article class="grupo__input">  
       <input type="number" name="descuento" id="descuento" class="formulario__input form-control" placeholder="Descuento">
     </article>       
-    <p class="grupo_input-error">Ingrese un descuento valido </p>
+    <p class="grupo_input-error">Ingrese un descuento válido. </p>
   </article>
 
   <article class="col-6 grupo" id="grupo__stock">
     <article class="grupo__input">  
       <input type="number" name="stock" id="stock" class="formulario__input form-control" placeholder="Stock">
     </article>       
-    <p class="grupo_input-error">Ingrese stock valido </p>
+    <p class="grupo_input-error">Ingrese stock válido. </p>
   </article>
  
   <article class="col-6 grupo" id="grupo__stockMinimo">
     <article class="grupo__input">  
       <input type="number" name="stockMinimo" id="stockMinimo" class="formulario__input form-control" placeholder="Stock Minimo">
     </article>       
-    <p class="grupo_input-error">Ingrese stock valido </p>
+    <p class="grupo_input-error">Ingrese stock válido. </p>
   </article>
   
   <article class="col-6 grupo" id="grupo__stockMaximo">
     <article class="grupo__input"> 
         <input type="number" name="stockMaximo" id="stockMaximo" class="formulario__input form-control" placeholder="Stock Maximo">
     </article>       
-    <p class="grupo_input-error">Ingrese stock valido </p>
+    <p class="grupo_input-error">Ingrese stock válido. </p>
   </article>
   
   <article class="col-6 grupo" id="grupo__descripcion">
     <article class="grupo__input">  
       <input type="text" name="descripcion" id="descripcion" class="formulario__input form-control" placeholder="Descripcion">
     </article>       
-    <p class="grupo_input-error">Ingrese una descpricion valida </p>
+    <p class="grupo_input-error">Ingrese una descripción válida. </p>
   </article>
 
-  
- 
+  <article class="col-12 grupo" id="grupo__imagen">
+    <label>Subir imagen: <input type="file" name="imagen" id="imagen"></label>
+    <p class="grupo_input-error">Solamente se aceptan formatos .jpg, .jpeg, .gif y .png. La imagen no debe superar 1 MB. </p>
+  </article><br>
+<br>
 <br>
   <article  class="col-12 text-center">
-    <button id="enviar"class="btn btn-primary" type="submit" >Subir menu</button> 
-    <p id="botonAlerta" class="grupo_input-error col-6 text-center">Complete correctamente los campos por favor</p>
+    <button id="enviar"class="btn btn-primary" type="submit" >Subir menú</button> 
+    <p id="botonAlerta" class="grupo_input-error col-6 text-center">Complete correctamente los campos por favor.</p>
     <p id="errorRepeticion" class="grupo_input-error col-6 text-center"></p>
     </article>
   </form>

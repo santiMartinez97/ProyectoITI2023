@@ -24,6 +24,7 @@ if (isset($_SESSION['nombre'])) {
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="CSS/design.css" />
+    <link rel="stylesheet" href="CSS/loading.css">
     <script src="https://kit.fontawesome.com/e934b5c028.js" crossorigin="anonymous"></script>
     
   </head>
@@ -153,7 +154,9 @@ if (isset($_SESSION['nombre'])) {
 
     </section>
 
-
+    <div id="loader-div">
+    <img class="loader-img" src="img/loader.gif" style="height: 120px;width: auto;" />
+</div> 
 
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script

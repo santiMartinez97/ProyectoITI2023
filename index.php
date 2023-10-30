@@ -80,18 +80,15 @@ $con = $db->conectar();
 
            echo  '</ul>';
     
-}else{
-//  $menu = $con->prepare("SELECT  id,Nombre,Precio FROM menu WHERE Habilitacion='Habilitado'");
-// $menu-> execute();
-// $resultado = $menu->fetchAll(PDO::FETCH_ASSOC);
-
+}else if(!isset($_SESSION['ClienteComun'])){
+ 
           
 echo  '<li class="nav-item dropdown">';
       echo   '<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">';        
           echo  ' <i class="fa-solid fa-user"></i> '.$_SESSION['nombre'].'</a>';
         echo '<ul class="dropdown-menu">';
           echo   '<li><a class="dropdown-item" href="#">Ver Perfil</a></li>';
-         echo   '<li><a class="dropdown-item" href="editarPerfil.php">Editar perfil</a></li>';
+         echo   '<li><a class="dropdown-item" href="BACKPHP/editarPerfilEmpresa.php">Editar perfil</a></li>';
          echo  '<li><hr class="dropdown-divider"></li>';
             echo '<li><a class="dropdown-item" href="navegabilidad/cerrar_session.php">Cerrar Sesion</a></li>';
             echo  '</ul>';
@@ -101,6 +98,25 @@ echo  '<li class="nav-item dropdown">';
            echo  '</ul>';
 
         }
+
+        else{
+                    
+          echo  '<li class="nav-item dropdown">';
+          echo   '<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">';        
+              echo  ' <i class="fa-solid fa-user"></i> '.$_SESSION['nombre'].'</a>';
+            echo '<ul class="dropdown-menu">';
+              echo   '<li><a class="dropdown-item" href="#">Ver Perfil</a></li>';
+            echo   '<li><a class="dropdown-item" href="BACKPHP/editarPerfil.php">Editar perfil</a></li>';
+            echo  '<li><hr class="dropdown-divider"></li>';
+                echo '<li><a class="dropdown-item" href="navegabilidad/cerrar_session.php">Cerrar Sesion</a></li>';
+                echo  '</ul>';
+                echo  '</li>';
+
+
+              echo  '</ul>';
+
+  }
+        
 ?>
 
   
@@ -258,6 +274,10 @@ echo  '<li class="nav-item dropdown">';
 
               // Procedimiento para crear un carrusel con los menúes
               function listarMenues($listaMenues, $contadorMenuesInsertados){
+                if(empty($listaMenues)){
+                  $contadorMenuesInsertados = 9;
+                  echo '<p>No se encontraron menús, contacte con gerente.</p>';
+                }
                 while($contadorMenuesInsertados < 9){
                   foreach($listaMenues as $menu){
                     if($contadorMenuesInsertados == 0){
@@ -318,7 +338,12 @@ echo  '<li class="nav-item dropdown">';
                 // Verificamos si el cliente tiene una dieta
                 if($idDieta){
                   $listaMenues = Menu::listarMenusHabilitadosPorDieta($con,$idDieta);
-                  listarMenues($listaMenues,$contadorMenuesInsertados);
+                  if(empty($listaMenues)){
+                    $listaMenues = Menu::listarMenusHabilitados($con);
+                    listarMenues($listaMenues, $contadorMenuesInsertados);
+                  }else{
+                    listarMenues($listaMenues,$contadorMenuesInsertados);
+                  }
                 }else{
                   $listaMenues = Menu::listarMenusHabilitados($con);
                   listarMenues($listaMenues, $contadorMenuesInsertados);

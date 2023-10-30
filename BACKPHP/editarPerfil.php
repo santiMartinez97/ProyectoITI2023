@@ -1,38 +1,55 @@
 <?php
 
-require 'config/config.php';
-require 'config/conexion.php';
+require '../config/config.php';
+require '../config/conexion.php';
+require '../Clases/clientecomun.php';
+require '../Clases/clienteTelefono.php';
+require '../Clases/clienteSigueDieta.php';
+require_once '../Clases/dieta.php';
+
 
 $db = new DataBase();
 $con = $db->conectar();
 
+$idCliente = $_SESSION['id'];
 
 
- $cliente = $con->prepare("SELECT * FROM cliente");
- $cliente-> execute();
- $resultadoCliente = $cliente->fetchAll(PDO::FETCH_ASSOC);
+
+ $usuario = ClienteComun::findByID($con, $idCliente);
+ $usuarioTelefono = ClienteTelefono::findByID($con, $idCliente);
+ $usuarioDieta = ClienteDieta::findByID($con, $idCliente);
 
 
- $idCliente = $resultadoCliente[0]['ID'];
- $email = $resultadoCliente[0]['Email'];
- $direccion= $resultadoCliente[0]['DireccionCompleta'];
- $dieta = $resultadoCliente[0]['Dieta'];
+ if ($usuarioDieta !== null) {
+  if ($usuarioDieta->getIDdieta() === null) {
+      $usuarioDietaDefinido = "Sin especificar";
+  } else {
+      $idUsuarioDieta = $usuarioDieta->getIDdieta();
+      $dieta = new Dieta($con);
+      $usuarioDietaDefinido = $dieta->NombreDieta($idUsuarioDieta);
+  }
+} else {
+  $usuarioDietaDefinido = "Sin especificar";
+}
  
-
-  // Consulta para obtener el cliente correspondiente de la tabla clientecomun usando el ID
-  $clienteComun = $con->prepare("SELECT * FROM clientecomun WHERE ID = :id");
-  $clienteComun->bindParam(':id', $idCliente, PDO::PARAM_INT);
-  $clienteComun->execute();
-  $resultadoClienteComun = $clienteComun->fetch(PDO::FETCH_ASSOC);
-
-  $telefono = $con->prepare("SELECT * FROM clientetelefono WHERE ID = :id");
-  $telefono->bindParam(':id', $idCliente, PDO::PARAM_STR);
-  $telefono-> execute();
-  $resultadoTelefono = $telefono->fetchAll(PDO::FETCH_ASSOC);
-
-  $unTelefono = $resultadoTelefono[0]['Telefono'];
-
+ $dire = $usuario-> getDireccionCompleta();
  
+  preg_match('/^([^\\-]+)/', $dire, $matches);
+  $barrio = $matches[1];
+  
+  preg_match('/^[^-]+-([^\\-]+)/', $dire, $matches);
+  $calle = $matches[1];
+
+
+  preg_match('/^[^-]+-[^-]+-([^\\-]+)/', $dire, $matches);
+  $numero = $matches[1];
+  
+
+  preg_match('/^[^-]+-[^-]+-[^-]+-([^\\-]+)/', $dire, $matches);
+  $esquina = $matches[1];
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -43,7 +60,7 @@ $con = $db->conectar();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="CSS/design2.css">
+    <link rel="stylesheet" href="../CSS/design2.css">
     <title>Registro | NutriBento</title>
     <link rel="icon" href="img/icono.png" />
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> 
@@ -62,10 +79,11 @@ $con = $db->conectar();
 <body>
     <!-- Inicio de Menu -->
 
+    
     <nav class="navbar navbar-expand-lg navbar-dark" style="background: rgb(240, 240, 240, 0.9); padding: 0px">
       <nav class="container justify-content-end">
         <a class="navbar-brand" href="#" style="color: black">
-          <img src="img/icono.png" class="icono1" alt="" /></a>
+          <img src="../img/icono.png" class="icono1" alt="" /></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
           aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -75,7 +93,7 @@ $con = $db->conectar();
             <li class="nav-item">
               <a class="nav-link" href="../index.php"><i class="fa-solid fa-home"></i> Inicio</a>
             </li>
-            <a class="nav-link" href="#"><i class="fa-solid fa-cart-shopping"></i>
+            <a class="nav-link" href="productosCarrito.php"><i class="fa-solid fa-cart-shopping"></i>
               Carrito <span id="num_cart" class="badge bg-secondary">
                 <?php echo $num_cart; ?>
               </span>
@@ -84,32 +102,57 @@ $con = $db->conectar();
             <?php
 
 
-            if (!isset($_SESSION['cliente'])) {
+if(!isset($_SESSION['cliente'])){
+   
+  echo  '<li class="nav-item dropdown">';
+    echo   '<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">';        
+        echo  ' <i class="fa-solid fa-user"></i> Iniciar Sesion </a>';
+      echo '<ul class="dropdown-menu">';
+        echo   '<li><a class="dropdown-item" href="registro.php">Registrarse</a></li>';
+       echo   '<li><a class="dropdown-item" href="login.php">Iniciar Sesion</a></li>';
+       echo  '<li><hr class="dropdown-divider"></li>';
+          echo  '</ul>';
+          echo  '</li>';
 
-              echo '<li class="nav-item dropdown">';
-              echo '<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">';
-              echo ' <i class="fa-solid fa-user"></i> Iniciar Sesion </a>';
-              echo '<ul class="dropdown-menu">';
-              echo '<li><a class="dropdown-item" href="../registro.php">Registrarse</a></li>';
-              echo '<li><a class="dropdown-item" href="../login.php">Iniciar Sesion</a></li>';
-              echo '<li><hr class="dropdown-divider"></li>';
-              echo '</ul>';
-              echo '</li>';
-              echo '</ul>';
-            } else {
 
-              echo '<li class="nav-item dropdown">';
-              echo '<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">';
-              echo  ' <i class="fa-solid fa-user"></i> '.$_SESSION['nombre'].'</a>';
-              echo '<ul class="dropdown-menu">';
-              echo '<li><a class="dropdown-item" href="#">Ver Perfil</a></li>';
-              echo '<li><a class="dropdown-item" href="#">Editar perfil</a></li>';
-              echo '<li><hr class="dropdown-divider"></li>';
+         echo  '</ul>';
+  
+}else if(!isset($_SESSION['ClienteComun'])){
+
+        
+echo  '<li class="nav-item dropdown">';
+    echo   '<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">';        
+        echo  ' <i class="fa-solid fa-user"></i> '.$_SESSION['nombre'].'</a>';
+      echo '<ul class="dropdown-menu">';
+        echo   '<li><a class="dropdown-item" href="#">Ver Perfil</a></li>';
+       echo   '<li><a class="dropdown-item" href="../BACKPHP/editarPerfilEmpresa.php">Editar perfil</a></li>';
+       echo  '<li><hr class="dropdown-divider"></li>';
+          echo '<li><a class="dropdown-item" href="navegabilidad/cerrar_session.php">Cerrar Sesion</a></li>';
+          echo  '</ul>';
+          echo  '</li>';
+
+
+         echo  '</ul>';
+
+      }
+
+      else{
+                  
+        echo  '<li class="nav-item dropdown">';
+        echo   '<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">';        
+            echo  ' <i class="fa-solid fa-user"></i> '.$_SESSION['nombre'].'</a>';
+          echo '<ul class="dropdown-menu">';
+            echo   '<li><a class="dropdown-item" href="#">Ver Perfil</a></li>';
+          echo   '<li><a class="dropdown-item" href="../BACKPHP/editarPerfil.php">Editar perfil</a></li>';
+          echo  '<li><hr class="dropdown-divider"></li>';
               echo '<li><a class="dropdown-item" href="../navegabilidad/cerrar_session.php">Cerrar Sesion</a></li>';
-              echo '</ul>';
-              echo '</li>';
-              echo '</ul>';
-            }
+              echo  '</ul>';
+              echo  '</li>';
+
+
+            echo  '</ul>';
+
+}
             ?>
 
           </ul>
@@ -161,7 +204,7 @@ $con = $db->conectar();
               <article class="col-6 grupo" id="grupo__nombre">
               
                 <article class="grupo__input">  
-                 <input type="text" name="nombre" id="nombre" class="formulario__input form-control"  value="<?php echo $resultadoClienteComun['Nombre']; ?>"  placeholder="Nombre">
+                 <input type="text" name="nombre" id="nombre" class="formulario__input form-control"  value="<?php echo $usuario->getNombre(); ?>"  placeholder="Nombre">
                 </article>       
                  <p class="grupo_input-error">Ingrese un nombre valido </p>
               </article>
@@ -170,26 +213,19 @@ $con = $db->conectar();
                 <article class="col-6 grupo" id="grupo__apellido">
                
                  <article class="grupo__input">
-                  <input type="text" name="apellido" id="apellido" class="formulario__input form-control"  value="<?php echo $resultadoClienteComun['Apellido']; ?>" placeholder="Apellido">
+                  <input type="text" name="apellido" id="apellido" class="formulario__input form-control"  value="<?php echo  $usuario->getApellido(); ?>" placeholder="Apellido">
                  </article>   
                  <p class="grupo_input-error">Ingrese un apellido valido</p>
                 </article> 
                 
             
-                 <!-- Grupo cedula -->
-                <article class="col-8 grupo" id="grupo__ci">
-                  
-                    <article class="grupo__input">
-                    <input type="number" name="ci" id="ci" class="formulario__input form-control"  value="<?php echo $resultadoClienteComun['CI']; ?>" placeholder="Documento">
-                    </article>  
-                    <p class="grupo_input-error">Ingrese su cedula sin puntos ni guiones</p>
-                </article >
+               
                 
                  <!-- Grupo email -->
                 <article class="col-7 grupo" id="grupo__email">
                   
                     <article class="grupo__input">
-                    <input type="email" name="email" id="email" class="formulario__input form-control"  value="<?php echo $email; ?>" placeholder="Email">
+                    <input type="email" name="email" id="email" class="formulario__input form-control"  value="<?php echo $usuario->getEmail(); ?>" placeholder="Email">
                     </article> 
                       <p class="grupo_input-error">Ingrese un email valido</p>
                 </article>
@@ -197,7 +233,7 @@ $con = $db->conectar();
                  <!-- Grupo telefono -->
                 <article class="col-5 grupo" id="grupo__telefono">
                     <article class="grupo__input">
-                    <input type="number" name="telefono" id="telefono" class="formulario__input form-control" value="<?php echo $unTelefono; ?>"   placeholder="Teléfono">
+                    <input type="number" name="telefono" id="telefono" class="formulario__input form-control" value="<?php echo $usuarioTelefono->getTelefono(); ?>"   placeholder="Teléfono">
                     </article>
                       <p class="grupo_input-error">Ingrese su número de teléfono </p> 
                 </article>
@@ -205,7 +241,7 @@ $con = $db->conectar();
                 <!-- Grupo Seleccion de Dieta -->
                 <article class="col-6 grupo">
                   <select id="dieta" name="dieta" class="formulario__input form-select gray-text"  aria-label="Preferencia de Dieta" >
-                    <option value="0"><?php echo $dieta; ?></option>
+                    <option value="0"><?php echo $usuarioDietaDefinido; ?></option>
                   </select>
                 </article>
 
@@ -213,7 +249,7 @@ $con = $db->conectar();
                 <article class="col-7 grupo" id="grupo__calle">
                   
                     <article class="grupo__input">
-                    <input type="text" name="calle" id="calle" class="formulario__input form-control" placeholder="Calle">
+                    <input type="text" name="calle" id="calle" class="formulario__input form-control" placeholder="Calle"  value="<?php echo $calle; ?>">
                     </article>
                       <p class="grupo_input-error">Ingrese una calle valida</p>
                 </article>
@@ -222,7 +258,7 @@ $con = $db->conectar();
                 <article class="col-5 grupo" id="grupo__numero">
                   
                     <article class="grupo__input">
-                    <input type="number" name="numero" id="numero" class="formulario__input form-control" placeholder="Número">
+                    <input type="number" name="numero" id="numero" class="formulario__input form-control" placeholder="Número" value="<?php echo $numero; ?>">
                     </article>
                       <p class="grupo_input-error">N° de puerta invalido</p>
                 </article>
@@ -231,7 +267,7 @@ $con = $db->conectar();
                 <article class="col-6 grupo" id="grupo__esquina">
                   
                     <article id="grupo__input">
-                    <input type="text" name="esquina" id="esquina" class="formulario__input form-control" placeholder="Esquina">
+                    <input type="text" name="esquina" id="esquina" class="formulario__input form-control" placeholder="Esquina" value="<?php echo $esquina; ?>">
                     </article>
                       <p class="grupo_input-error">Ingrese una esquina valida</p>        
                 </article>
@@ -240,14 +276,14 @@ $con = $db->conectar();
                 <article class="col-6 grupo" id="grupo__barrio">
                   
                     <article  class="grupo__input">
-                      <input type="text" name="barrio" id="barrio" class="formulario__input form-control" placeholder="Barrio"> 
+                      <input type="text" name="barrio" id="barrio" class="formulario__input form-control" placeholder="Barrio" value="<?php echo $barrio; ?>"> 
                     </article> 
                       <p class="grupo_input-error">Ingrese un barrio valido</p>
                 </article>
          
                 <article class="col-12 text-center" >
                   
-                  <button class="btn btn-primary " id="enviar"  type="submit" >Actualizar</button> 
+                  <button class="btn btn-primary "  id="enviar"  type="submit" >Actualizar</button> 
                 
                   <p id="botonAlerta" class="grupo_input-error col-11 text-center">Complete correctamente los campos por favor</p>
                   <p id="errorRepeticion" class="grupo_input-error col-11 text-center"></p>
@@ -265,9 +301,9 @@ $con = $db->conectar();
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
-    <script src="JS/jquery-3.6.4.min.js"></script>
-    <script src="JS/mostrarDietas.js"></script>
-    <script src="JS/registro.js"></script>
+    <script src="../JS/jquery-3.6.4.min.js"></script>
+    <script src="../JS/mostrarDietasPerfil.js"></script>
+    <script src="../JS/editarPerfil.js"></script> 
   
 
     </body>

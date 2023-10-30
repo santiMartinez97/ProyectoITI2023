@@ -8,8 +8,7 @@ require '../vendor/autoload.php';
 // $status = $_GET['status'];
 // $payment_type = $_GET['payment_type'];
 // $order_id = $_GET['merchant_order_id'];
-date_default_timezone_set('America/Montevideo');
-$fecha = date(format: 'Y-m-d H:i:s');
+
 
 // Insertar información en la base de datos
 $db = new DataBase();
@@ -38,15 +37,21 @@ if ($productos != null) {
         // $subtotal = $cantidad * $precio_desc;
         // // $total += $subtotal;
 
-      $cliente   = $con->prepare("SELECT * FROM cliente ");
-      $cliente-> execute();
-      $cliente1 = $cliente->fetch(PDO::FETCH_ASSOC);
+      // $cliente = $con->prepare("SELECT * FROM cliente ");
+      // $cliente-> execute();
+      // $cliente1 = $cliente->fetch(PDO::FETCH_ASSOC);
+
+      $idCliente= $_SESSION['id'];
       
-     if ($cliente1 && isset($cliente1['ID'])) {
-     $idCliente = $cliente1['ID'];
+      // // // //Agregar a la BASE DE DATOS   ////////
+      date_default_timezone_set('America/Montevideo');
+      $fecha_hoy = date("Y-m-d H:i:s");
+
+     if ($idCliente) {
+     
   
      $query = $con->prepare("INSERT INTO pedido (Fecha, IDCliente) VALUES (:fecha, :id_cliente)");
-     $query->bindParam(':fecha', $fecha, PDO::PARAM_STR);
+     $query->bindParam(':fecha', $fecha_hoy, PDO::PARAM_STR);
      $query->bindParam(':id_cliente', $idCliente, PDO::PARAM_INT);
      $query->execute();
 
@@ -57,15 +62,6 @@ if ($productos != null) {
       $query2->bindParam(':idpedido', $idPedido, PDO::PARAM_INT);
       $query2->bindParam(':cantidad', $cantidad, PDO::PARAM_INT);
       $query2->execute();
-
-      $default='Solicitado';
-
-      $query3 = $con->prepare("INSERT INTO estado_pedido (ID, Estado,Fecha) VALUES (:idpedido, :estado,:fecha)");
-      $query3->bindParam(':idpedido', $idPedido, PDO::PARAM_STR);   
-      $query3->bindParam(':estado', $default, PDO::PARAM_INT);
-      $query3->bindParam(':fecha', $fecha, PDO::PARAM_INT);
-      $query3->execute();
-
 
       $restarCantidad = $con->prepare("UPDATE menu SET Stock = Stock - :cantidad WHERE ID = :id");
       $restarCantidad->bindParam(':cantidad', $cantidad, PDO::PARAM_INT);

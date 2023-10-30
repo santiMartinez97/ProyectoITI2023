@@ -1,4 +1,17 @@
 
+html{
+  height: 100vh;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.site-footer {
+  margin-top: auto;
+}
 .icono1{
   width: 40px;
   height: 40px;

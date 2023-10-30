@@ -31,6 +31,22 @@ class Dieta {
         }
     }
 
+     // Método para obtener una dieta por su ID
+     public function NombreDieta($id) {
+        $sql = "SELECT * FROM Dieta WHERE ID = :id";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+
+        if ($stmt->rowCount() > 0) {
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $row['Tipo'];
+        } else {
+            return null;
+        }
+    }
+
+
     // Método para obtener una dieta por su tipo
     public function findByTipo($tipo) {
         $sql = "SELECT * FROM Dieta WHERE Tipo = :tipo";

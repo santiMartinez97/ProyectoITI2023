@@ -106,7 +106,7 @@ table th,table td {
     display: flex;
     justify-self: left;
     position: absolute;
-    top: 19.5rem;
+    top: 21rem;
     transform: translate(0, -50%);
   }
 
@@ -287,4 +287,24 @@ header {
   
   .alert .fa-solid {
     padding-right: 3px;
+  }
+
+  .ver-imagen {
+    position: relative;
+  }
+
+  .imagen-preview {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+  }
+
+  .ver-imagen:hover + .imagen-preview {
+    display: block;
   }

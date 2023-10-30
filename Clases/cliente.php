@@ -24,6 +24,7 @@ class Cliente extends Usuario {
     public function getHabilitacion() {
         return $this->Habilitacion;
     }
+    
 
     public function changeHabilitacion() {
         if ($this->Habilitacion === 'Habilitado') {

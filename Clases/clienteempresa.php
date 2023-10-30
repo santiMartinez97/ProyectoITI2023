@@ -6,7 +6,7 @@ class ClienteEmpresa extends Cliente {
     private $RUT;
     private $NombreEmpresa;
 
-    public function __construct($pdo, $email, $contrasenia, $direccion, $habilitacion, $rut, $nombreEmpresa) {
+    public function __construct($pdo,$email, $contrasenia, $direccion, $habilitacion, $rut, $nombreEmpresa) {
         parent::__construct($pdo, $email, $contrasenia, $direccion, $habilitacion);
         $this->RUT = $rut;
         $this->NombreEmpresa = $nombreEmpresa;
@@ -15,6 +15,7 @@ class ClienteEmpresa extends Cliente {
     public function getRUT() {
         return $this->RUT;
     }
+
 
     public function setRUT($rut){
         $this->RUT = $rut;
