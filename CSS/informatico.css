@@ -30,6 +30,35 @@ table th,table td {
   border-bottom: 1px solid #ddd;
 }
 
+
+.grupo__correcto .formulario__input{
+  border: solid 3px green;
+  color: darkgreen;
+}
+
+.grupo__error .formulario__input{
+  border: solid 3px crimson;
+  color: rgb(255, 98, 0);
+}
+
+.grupo_input-error{
+  font-size: 10px;
+	margin-bottom: 0;
+	display: none;
+  color: crimson;
+  padding-top: -222px; /* Ajusta el padding superior según tus preferencias */
+  padding-bottom: -1222px;
+  margin-top: 2px;
+}
+
+.grupo_input-error-activo{
+  display: block;
+}
+
+#botonAlerta{
+  padding-top:6px;
+}
+
 .tablaArriba{
   color: orange;
 }
@@ -184,34 +213,7 @@ header {
     z-index: 1;
   }
   
-  .grupo__correcto .formulario__input{
-    border: solid 3px green;
-    color: darkgreen;
-  }
-  
-  .grupo__error .formulario__input{
-    border: solid 3px crimson;
-    color: rgb(255, 98, 0);
-  }
-  
-  .grupo_input-error{
-    font-size: 10px;
-    margin-bottom: 0;
-    display: none;
-    color: crimson;
-    padding-top: -222px; 
-    padding-bottom: -1222px;
-    margin-top: 2px;
-  }
-  
-  .grupo_input-error-activo{
-    display: block;
-  }
 
-  #botonAlerta{
-    padding-top:6px;
-  }
-  
   @media screen and (min-width: 1500px) {
    
     .hijo {

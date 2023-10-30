@@ -13,7 +13,7 @@
       </div>
 
 
-      <form method="POST" action="ActualizarMenu.php">
+      <form id="formularioMenus"  method="POST" action="ActualizarMenu.php" >
         <input type="hidden" name="id" value="<?php echo $row['ID']; ?>">
 <div class="modal-body" id="cont_modal">
 
@@ -21,7 +21,7 @@
         <div class="col-md-4">
             <div class="form-group">
                 <label for="recipient-name" class="col-form-label">ID</label>
-                <input type="text" name="id" class="form-control" value="<?php echo $row['ID']; ?>" required="true">
+                <input type="text" name="id" class="form-control" value="<?php echo $row['ID']; ?>" disabled>
             </div>
         </div>
     </div>
@@ -46,7 +46,7 @@
         <div class="col-md-6">
             <div class="form-group">
                 <label for="recipient-name" class="col-form-label">Nombre:</label>
-                <input type="text" name="nombre" class="form-control" value="<?php echo $row['Nombre']; ?>" required="true">
+                <input id="nombreMenu" type="text" name="nombre" class="form-control" value="<?php echo $row['Nombre']; ?>" required="true">
             </div>
         </div>
 
@@ -57,43 +57,43 @@
         <div class="col-md-4">
             <div class="form-group">
                 <label for="recipient-name" class="col-form-label">Precio:</label>
-                <input type="text" name="precio" class="form-control" value="<?php echo $row['Precio']; ?>" required="true">
+                <input id="precio" type="text" name="precio" class="form-control" value="<?php echo $row['Precio']; ?>" required="true">
             </div>
         </div>
 
         <div class="col-md-4">
             <div class="form-group">
                 <label for="recipient-name" class="col-form-label">Descuento:</label>
-                <input type="text" name="descuento" class="form-control" value="<?php echo $row['Descuento']; ?>" required="true">
+                <input id="descuento" type="text" name="descuento" class="form-control" value="<?php echo $row['Descuento']; ?>" required="true">
             </div>
         </div>
 
         <div class="col-md-4">
             <div class="form-group">
                 <label for="recipient-name" class="col-form-label">Stock:</label>
-                <input type="text" name="stock" class="form-control" value="<?php echo $row['Stock']; ?>" required="true">
+                <input id="stock" type="text" name="stock" class="form-control" value="<?php echo $row['Stock']; ?>" required="true">
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-md-4">
             <div class="form-group">
-                <label for="recipient-name" class="col-form-label">stockMinimo:</label>
-                <input type="text" name="stockMinimo" class="form-control" value="<?php echo $row['StockMinimo']; ?>" required="true">
+                <label for="recipient-name" class="col-form-label">stockMin:</label>
+                <input id="stockmin" type="text" name="stockMinimo" class="form-control" value="<?php echo $row['StockMinimo']; ?>" required="true">
             </div>
         </div>
 
         <div class="col-md-4">
             <div class="form-group">
-                <label for="recipient-name" class="col-form-label">stockMaximo:</label>
-                <input type="text" name="stockMaximo" class="form-control" value="<?php echo $row['StockMaximo']; ?>" required="true">
+                <label for="recipient-name" class="col-form-label">stockMax:</label>
+                <input id="stockmax" type="text" name="stockMaximo" class="form-control" value="<?php echo $row['StockMaximo']; ?>" required="true">
             </div>
         </div>
 
         <div class="col-md-4">
             <div class="form-group">
-                <label for="recipient-name" class="col-form-label">Descripcion:</label>
-                <input type="text" name="descripcion" class="form-control" value="<?php echo $row['Descripcion']; ?>" required="true">
+                <label for="recipient-name" class="col-form-label">Descripcion</label>
+                <input id="descripcion" type="text" name="descripcion" class="form-control" value="<?php echo $row['Descripcion']; ?>" required="true">
             </div>
         </div>
     </div>
@@ -109,4 +109,5 @@
     </div>
   </div>
 </div>
+
 <!---fin ventana Update --->
