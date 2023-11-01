@@ -10,8 +10,8 @@ var errorRepeticion = document.getElementById("errorRepeticion");
 
 const expresionesRegulares = {
   email : /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
-  nombre : /^[a-zA-Z]{2,15}$/, // Letras y espacios con acentos.
-  apellido : /^[a-zA-Z]{2,15}$/, //letras y espacion con acentos
+  nombre :/^[a-zA-ZáéíóúüÁÉÍÓÚÜ]{2,20}$/, // Letras y espacios con acentos.
+  apellido :/^[a-zA-ZáéíóúüÁÉÍÓÚÜ]{2,20}$/, //letras y espacion con acentos
   ci : /^\d{8}(\.\d+)?$/, // 8 digitos
   password : /^.{6,17}$/, // 6 a 17 digitos.
   telefono : /^09\d{7}$/, // 9 numeros.
@@ -288,8 +288,8 @@ function web_empresa() {
         
   const expresionesRegulares = {
     email : /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
-    nombre : /^[a-zA-ZÀ-ÿ\s]{2,40}$/, // Letras y espacios con acentos.
-    apellido : /^[a-zA-ZÀ-ÿ\s]{2,40}$/, //letras y espacion con acentos
+    nombre : /^[a-zA-ZáéíóúüÁÉÍÓÚÜ]{2,20}$/, // Letras y espacios con acentos.
+    apellido : /^[a-zA-ZáéíóúüÁÉÍÓÚÜ]{2,20}$/, //letras y espacion con acentos
     ci : /^\d{8}(\.\d+)?$/, // 8 digitos
     password : /^.{6,17}$/, // 6 a 17 digitos.
     telefono : /^09\d{7}$/, // 9 numeros.
@@ -548,8 +548,8 @@ var errorRepeticion = document.getElementById("errorRepeticion");
 
 const expresionesRegulares = {
   email : /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
-  empresa : /^[a-zA-ZÀ-ÿ\s]{2,40}$/, // Letras y espacios con acentos.
-  rut : /^.{12}$/, 
+  empresa : /^[a-zA-ZáéíóúüÁÉÍÓÚÜ\s]{2,30}$/, // Letras y espacios con acentos.
+  rut : /^\d{12}(\.\d+)?$/,
   password : /^.{6,17}$/, // 6 a 17 digitos.
   emai : /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/, //valida email
   telefono : /^2\d{7}$/, // 9 numeros.

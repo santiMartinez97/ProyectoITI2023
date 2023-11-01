@@ -75,7 +75,7 @@ $resultado = $dieta->fetchAll(PDO::FETCH_ASSOC);
                 </div>
 
 
-                <form method="POST" action="../BACKPHP/ActualizarCliente.php">
+                <form method="POST" action="../BACKPHP/ActualizarCliente.php" onsubmit="return validarFormulario();">
                     <input type="hidden" name="id" value="">
                     <div class="modal-body" id="cont_modal">
 
@@ -177,7 +177,7 @@ $resultado = $dieta->fetchAll(PDO::FETCH_ASSOC);
                 </div>
 
 
-                <form method="POST" action="../BACKPHP/ActualizarClienteEmpresa.php">
+                <form method="POST" action="../BACKPHP/ActualizarClienteEmpresa.php" onsubmit="return validarFormularioEmpresa();">
                     <input type="hidden" name="id" value="">
                     <div class="modal-body" id="cont_modal">
 
@@ -274,5 +274,7 @@ $resultado = $dieta->fetchAll(PDO::FETCH_ASSOC);
     <script src="../JS/adminClientes.js"></script>
     <script src="../JS/popper.min.js"></script>
     <script src="../JS/bootstrap.min.js"></script>   
+    <script src="../JS/modal.js"></script>   
+
 </body>
 </html>

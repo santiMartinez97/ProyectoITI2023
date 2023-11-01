@@ -56,7 +56,7 @@ class Pedido_Encarga_Menu {
     }
 
     public function controlPedidos($estadoSeleccionado = 'todos'){
-        $control = $this->con->prepare("SELECT t1.ID, t1.Fecha, t1.IDCliente, ep.Estado FROM pedido AS t1 INNER JOIN estado_pedido AS ep ON t1.ID = ep.ID");
+        $control = $this->con->prepare("SELECT t1.ID, ep.Fecha AS FechaEstado, t1.IDCliente, ep.Estado FROM pedido AS t1 INNER JOIN estado_pedido AS ep ON t1.ID = ep.ID");
         $control->execute();
         $resultado = $control->fetchAll(PDO::FETCH_ASSOC);
         
@@ -81,7 +81,7 @@ class Pedido_Encarga_Menu {
         foreach ($resultado as $row) {
             $IDCliente = $row['IDCliente'];
             $IDPedido = $row['ID'];
-            $fecha = $row['Fecha'];
+            $fecha = $row['FechaEstado'];
             $estado = strtolower($row['Estado']);   
     
             if ($estadoSeleccionado == 'todos' || $estado == $estadoSeleccionado) {
@@ -95,14 +95,17 @@ class Pedido_Encarga_Menu {
         }
     }
     
-    public function cambiarEstado($IDPedido, $nuevoEstado) {    
-        $sql = "UPDATE estado_pedido SET Estado = :nuevoEstado WHERE ID = :IDPedido";
+    public function cambiarEstado($IDPedido, $nuevoEstado) {
+        date_default_timezone_set('America/Montevideo');
+        $fecha = date("Y-m-d H:i:s");
+    
+        $sql = "UPDATE estado_pedido SET Estado = :nuevoEstado, Fecha = :fechaCambio WHERE ID = :IDPedido";
         $stmt = $this->con->prepare($sql);
         $stmt->bindParam(':nuevoEstado', $nuevoEstado, PDO::PARAM_STR);
+        $stmt->bindParam(':fechaCambio', $fecha, PDO::PARAM_STR);
         $stmt->bindParam(':IDPedido', $IDPedido, PDO::PARAM_INT);
         $stmt->execute();
     }
     
-
 
 }

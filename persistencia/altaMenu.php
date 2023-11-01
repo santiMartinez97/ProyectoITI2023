@@ -15,8 +15,9 @@ $con = $db->conectar();
     $stockMaximo= $_POST["stockMaximo"];
     $descripcion= $_POST["descripcion"];
     $dieta= $_POST["dieta"];
+    $viandasSeleccionadas = $_POST["viandas"];
     
-    // Verifica si se ha enviado un archivo y si no hay errores
+    $viandasConcatenadas = implode("  ", $viandasSeleccionadas);
     if (isset($_FILES["imagen"]) && $_FILES["imagen"]["error"] == 0) {
         $nombre_original = $_FILES["imagen"]["name"];
         $nombre_temporal = $_FILES["imagen"]["tmp_name"];
@@ -43,7 +44,8 @@ $con = $db->conectar();
        $con->beginTransaction();
 
        $sql1 = "INSERT INTO `menu` (`ID`, `Periodicidad`, `Nombre`, `Habilitacion`, `Precio`, `Descuento`, `Stock`, `StockMinimo`, `StockMaximo`, `Descripcion`, `Imagen`) 
-       VALUES (NULL, '$periodicidadSeleccionada', '$nombreMenu', '$habilitacionSeleccionada', '$precio', '$descuento', '$stock', '$stockMinimo', '$stockMaximo', '$descripcion', '$imagen')";
+VALUES (NULL, '$periodicidadSeleccionada', '$nombreMenu', '$habilitacionSeleccionada', '$precio', '$descuento', '$stock', '$stockMinimo', '$stockMaximo', '$viandasConcatenadas', '$imagen')";
+
        
        $result1 = $con->prepare($sql1);
        

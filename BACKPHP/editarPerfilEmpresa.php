@@ -81,7 +81,7 @@ $idCliente = $_SESSION['id'];
 
     <nav class="navbar navbar-expand-lg navbar-dark" style="background: rgb(240, 240, 240, 0.9); padding: 0px">
       <nav class="container justify-content-end">
-        <a class="navbar-brand" href="#" style="color: black">
+        <a class="navbar-brand" href="../index.php" style="color: black">
           <img src="../img/icono.png" class="icono1" alt="" /></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
           aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -107,8 +107,8 @@ if(!isset($_SESSION['cliente'])){
     echo   '<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">';        
         echo  ' <i class="fa-solid fa-user"></i> Iniciar Sesion </a>';
       echo '<ul class="dropdown-menu">';
-        echo   '<li><a class="dropdown-item" href="registro.php">Registrarse</a></li>';
-       echo   '<li><a class="dropdown-item" href="login.php">Iniciar Sesion</a></li>';
+        echo   '<li><a class="dropdown-item" href="../registro.php">Registrarse</a></li>';
+       echo   '<li><a class="dropdown-item" href="../login.php">Iniciar Sesion</a></li>';
        echo  '<li><hr class="dropdown-divider"></li>';
           echo  '</ul>';
           echo  '</li>';
