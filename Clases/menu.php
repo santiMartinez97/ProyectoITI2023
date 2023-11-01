@@ -31,11 +31,6 @@ class Menu {
         $this->imagen = $imagen;
     }
 
-    // public function __construct() {
-    //     $db = new DataBase();
-    //     $this->con = $db->conectar();
-    // }
-
     public function getID() {
         return $this->ID;
     }

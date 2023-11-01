@@ -12,7 +12,7 @@ if(!isset($_SESSION['gerente'])){
     session_destroy();
     die();
 }
-require '../config/conexion.php';
+require_once '../Clases/vianda.php';
 ?>
 
 <!DOCTYPE html>
@@ -122,6 +122,27 @@ require '../config/conexion.php';
     <p class="grupo_input-error">Ingrese una descripción válida. </p>
   </article>
 
+  <article class="col-6 grupo" id="grupo__viandas">
+  <article class="grupo__input">
+    <select id="viandas" name="viandas" class="formulario__input form-select gray-text" aria-label="Agregar viandas a menu" multiple>
+      <option value="">Selecciona un nombre</option>
+      <?php
+      $viandasListado = new Vianda($con);
+      $viandasListado->listadoDistintivo($con);
+      ?>
+    </select>
+  </article>
+  <button class="botonAceptar" id="agregarVianda" type="button">Agregar Vianda</button>
+  <button class="botonDesechar" id="quitarVianda" type="button">Quitar Vianda</button>
+  <p class="grupo_input-error">Ingrese viandas válidas. </p>
+</article>
+
+<article class="col-6 grupo" id="grupo__viandasSeleccionadas">
+  <article class="grupo__input">
+    <p>Viandas seleccionadas: <span id="viandasSeleccionadas"></span></p>
+  </article>
+</article>
+
   <article class="col-12 grupo" id="grupo__imagen">
     <label>Subir imagen: <input type="file" name="imagen" id="imagen"></label>
     <p class="grupo_input-error">Solamente se aceptan formatos .jpg, .jpeg, .gif y .png. La imagen no debe superar 1 MB. </p>
@@ -145,6 +166,7 @@ require '../config/conexion.php';
 <script src="../JS/jquery-3.6.4.min.js"></script>
 <script src="../JS/mostrarDietasGerente.js"></script>
 <script src="../JS/validacionMenu.js"></script>
+<script src="../JS/verViandas.js"></script>
 
 
 </html>
