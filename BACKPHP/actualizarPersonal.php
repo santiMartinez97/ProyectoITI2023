@@ -5,10 +5,8 @@ $email = $_POST["email"];
 $puesto = $_POST["puesto"];
 
 
-// Incluir el archivo de configuración de la conexión
 require '../config/conexion.php';
 
-// Incluir clase
 require '../Clases/usuario.php';
 require '../Clases/informatico.php';
 require '../Clases/Administracion.php';
@@ -17,20 +15,17 @@ require '../Clases/Gerente.php';
 require '../Clases/atencionPublico.php';
 
 
-// Crear una instancia de Database y obtener la conexión
 $db = new DataBase();
 $con = $db->conectar();
 
-// Consultas para verificar que el email recibido no esté en uso por otro usuario 
 $resultadoEmail = Usuario::findBy($con,'Email',$email);
 
 if($resultadoEmail && $resultadoEmail->getID() != $id){
     echo "Error, email en uso.";
     echo '<br>';
     echo '<a href="../navegabilidad/informaticoBajaM.php">Volver</a>';
-
-
 }
+
 try {
     $personal = new Personal($con, null, null);
 

@@ -31,7 +31,7 @@ require '../config/conexion.php';
     <!-- Header -->
     <header>
         <h1>Bienvenido Administrador</h1>
-        <a class="cerrarSesion" href="cerrar_session.php">Cerrar sesión</a>
+        <a class="nav" href="cerrar_session.php">Cerrar sesión</a>
     </header>
     
     <br>

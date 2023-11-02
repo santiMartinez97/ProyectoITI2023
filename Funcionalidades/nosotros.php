@@ -30,7 +30,7 @@ require '../config/config.php';
       style="background: rgb(240, 240, 240, 0.9); padding: 0px"
     >
       <nav class="container justify-content-end">
-        <a class="navbar-brand" href="#" style="color: black">
+        <a class="navbar-brand" href="../index.php" style="color: black">
           <img src="../img/icono.png" class="icono1" alt=""
         /></a>
         <button
@@ -64,8 +64,8 @@ if(!isset($_SESSION['cliente'])){
     echo   '<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">';        
         echo  ' <i class="fa-solid fa-user"></i> Iniciar Sesion </a>';
       echo '<ul class="dropdown-menu">';
-        echo   '<li><a class="dropdown-item" href="registro.php">Registrarse</a></li>';
-       echo   '<li><a class="dropdown-item" href="login.php">Iniciar Sesion</a></li>';
+        echo   '<li><a class="dropdown-item" href="../registro.php">Registrarse</a></li>';
+       echo   '<li><a class="dropdown-item" href="../login.php">Iniciar Sesion</a></li>';
        echo  '<li><hr class="dropdown-divider"></li>';
           echo  '</ul>';
           echo  '</li>';
@@ -83,7 +83,7 @@ echo  '<li class="nav-item dropdown">';
         echo   '<li><a class="dropdown-item" href="#">Ver Perfil</a></li>';
        echo   '<li><a class="dropdown-item" href="../BACKPHP/editarPerfilEmpresa.php">Editar perfil</a></li>';
        echo  '<li><hr class="dropdown-divider"></li>';
-          echo '<li><a class="dropdown-item" href="navegabilidad/cerrar_session.php">Cerrar Sesion</a></li>';
+          echo '<li><a class="dropdown-item" href="../navegabilidad/cerrar_session.php">Cerrar Sesion</a></li>';
           echo  '</ul>';
           echo  '</li>';
 
@@ -101,7 +101,7 @@ echo  '<li class="nav-item dropdown">';
             echo   '<li><a class="dropdown-item" href="#">Ver Perfil</a></li>';
           echo   '<li><a class="dropdown-item" href="../BACKPHP/editarPerfil.php">Editar perfil</a></li>';
           echo  '<li><hr class="dropdown-divider"></li>';
-              echo '<li><a class="dropdown-item" href="navegabilidad/cerrar_session.php">Cerrar Sesion</a></li>';
+              echo '<li><a class="dropdown-item" href="../navegabilidad/cerrar_session.php">Cerrar Sesion</a></li>';
               echo  '</ul>';
               echo  '</li>';
 

@@ -1,6 +1,8 @@
 <?php
 require_once('estadovianda.php');
-
+require '../config/conexion.php';
+$db = new DataBase();
+$con = $db->conectar();
 class Vianda {
     private $pdo;
     private $ID;
@@ -90,23 +92,88 @@ class Vianda {
     }
 
     // Método para listar todas las viandas disponibles en la base de datos
-    public static function listarViandas($pdo) {
-        $viandas = array();
-
-        $sql = "SELECT * FROM Vianda";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute();
-
-        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            $vianda = new Vianda($pdo);
-            $vianda->ID = $row['ID'];
-            $vianda->IDComida = $row['IDComida'];
-            $viandas[] = $vianda;
+    public function listarViandas($pdo) {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (isset($_POST['botonDesechar'])) {
+                $viandaId = $_POST['botonDesechar'];
+                
+                // Agrega la lógica para cambiar el estado de la vianda a "Desechado" en la base de datos
+                $sql = "UPDATE estado_vianda SET Estado = 'Desechado' WHERE IDVianda = :viandaId";
+                
+                $statement = $pdo->prepare($sql);
+                $statement->bindParam(':viandaId', $viandaId, PDO::PARAM_INT);
+                
+                if ($statement->execute()) {
+                    // Actualización exitosa, puedes realizar alguna acción adicional si es necesario
+                    // Por ejemplo, redireccionar a la página de listado de viandas
+                    // header('Location: lista_viandas.php');
+                } else {
+                    // Manejar el error, si ocurre uno
+                    echo "Error al desear la vianda.";
+                }
+            }
         }
-
-        return $viandas;
+    
+        $viandas = $pdo->prepare("SELECT via.ID, via.Nombre, via.VidaUtil, est.Estado, est.Fecha FROM vianda AS via INNER JOIN estado_vianda AS est ON via.ID = est.IDVianda WHERE est.Estado != 'Desechado'");
+        $viandas->execute();
+        $resultado = $viandas->fetchAll(PDO::FETCH_ASSOC);
+    
+        $viandas_array = [];
+    
+        echo '<div class="tabla-container">';
+        echo '<article class="pedidos">';
+        echo '<form method="POST">';
+        echo '<table>';
+        echo '<thead>';
+        echo '<tr>';
+        echo '<th class="tablaArriba">ID</th>';
+        echo '<th class="tablaArriba">Nombre</th>';
+        echo '<th class="tablaArriba">Vida util</th>';
+        echo '<th class="tablaArriba">Estado</th>';
+        echo '<th class="tablaArriba">Fecha</th>';
+        echo '<th class="tablaArriba"></th>';
+        echo '</tr>';
+        echo '</thead>';
+        echo '<tbody>';
+    
+        foreach ($resultado as $row) {
+            $ID = $row['ID'];
+            $nombre = $row['Nombre'];
+            $vidautil = $row['VidaUtil'];
+            $estado = $row['Estado'];
+            $fecha = $row['Fecha'];
+            if (!in_array($row, $viandas_array)) {
+                echo '<tr>';
+                echo '<th >' . $ID . '</th>';
+                echo '<th >' . $nombre . '</th>';
+                echo '<th >' . $vidautil . '</th>';
+                echo '<th >' . $estado . '</th>';
+                echo '<th >' . $fecha . '</th>';
+                echo '<th>';
+                echo '<td><button type="button" class="btn btn-primary botonModificar" data-toggle="modal" data-target="#editChildresn' . $ID. '">Agregar</button></td>';
+                echo '<th><button class="botonDesechar" name="botonDesechar" value="' . $ID . '">Desechar</button></th>';
+                echo '</th>';
+                echo '</tr>';
+            }
+            include('ModalAgregarComida.php'); 
+        }
+        echo '</tbody>';
+        echo '</table>';
+        echo '</form>';
+        echo '</article>';
+        echo '</div>';
     }
 
+    public function listadoDistintivo($pdo){
+        $viandas = $pdo->prepare("SELECT DISTINCT Nombre FROM vianda");
+        $viandas->execute();
+        $resultado = $viandas->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($resultado as $row) {
+            $nombreVianda = $row['Nombre'];
+            echo '<option value="'.$nombreVianda.'">' . $nombreVianda . '</option>';
+          }
+    }
     // Función para cambiar el estado de la Vianda
     public function cambiarEstado($nuevoEstado) {
         // Obtener la fecha actual

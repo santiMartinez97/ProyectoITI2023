@@ -15,8 +15,6 @@ if(!isset($_SESSION['informatico'])){
 
 require '../config/conexion.php';
 
-
-
 ?>
 
 <!DOCTYPE html>
@@ -36,7 +34,7 @@ require '../config/conexion.php';
             <h1>Informatico</h1>
         </div>
         <div class="baja-section">
-        <a class="enlace" href="informaticoBajaM.php">Baja</a>   
+        <a class="enlace" href="informaticoBajaM.php">Baja y modificacion</a>   
         <a class ="enlace" href="cerrar_session.php">Cerrar Session</a>
         </div>
     </header>
@@ -53,51 +51,43 @@ require '../config/conexion.php';
 
             <article id="campos">          
 
-            <form action="regInformatico.php" class="row no-gutters" method="post">
-    
-    <article class="col-6 grupo" id="grupo__email">              
-                  <article class="grupo__input">
-                  <input type="email" name="email" id="email" class="formulario__input form-control" placeholder="Email">
-                  </article> 
-                    <p class="grupo_input-error">Ingrese un email valido</p>
-              </article>
-<br>
+            <form id="formulario" action="regInformatico.php" class="row no-gutters" method="post" onsubmit="return validarInformatico();">
+        <article class="col-6 grupo" id="grupo__email">
+            <article class="grupo__input">
+                <input type="email" name="email" id="email" class="formulario__input form-control" placeholder="Email">
+            </article>
+            <p class="grupo_input-error">Ingrese un email válido</p>
+        </article>
 
-    <article class="col-6 grupo" id="grupo__password">     
-                  <article class="grupo__input">
-                  <input type="password" name="password" id="password"  class="formulario__input form-control" placeholder="Contraseña"> 
-                </article>
-                    <p class="grupo_input-error">Contraseña de 6-17 digitos</p> 
-              </article>
-              
-<br>
-    <article class="col-6 grupo">
-    <select id="rol" name="rol"  class="formulario__input form-select gray-text" aria-label="Preferencia de Dieta">
-        <option value="" disabled selected>Rol</option>
-        <option value="JefeCocina">Jefe de Cocina</option>
-        <option value="Informatico">Informático</option>
-        <option value="Gerente">Gerente</option>
-        <option value="AtencionPublico">Atención al Público</option>
-        <option value="Administracion">Administración</option>
-    </select>
-    </article>
-    <br>
-    
-    <article class="col-12 text-center" >
-        <button class="btn btn-primary " id="enviar"  type="submit" >Enviar</button>        
+        <article class="col-6 grupo" id="grupo__password">
+            <article class="grupo__input">
+                <input type="password" name="password" id="password" class="formulario__input form-control" placeholder="Contraseña">
+            </article>
+            <p class="grupo_input-error">Contraseña de 6-17 dígitos</p>
+        </article>
+
+        <article class="col-6 grupo">
+            <select id="rol" name="rol" class="formulario__input form-select gray-text" aria-label="Rol">
+                <option value="" disabled selected>Rol</option>
+                <option value="JefeCocina">Jefe de Cocina</option>
+                <option value="Informatico">Informático</option>
+                <option value="Gerente">Gerente</option>
+                <option value="AtencionPublico">Atención al Público</option>
+                <option value="Administracion">Administración</option>
+            </select>
+        </article>
+
+        <article class="col-12 text-center">
+            <button class="btn btn-primary" id="enviar" type="submit">Enviar</button>
             <p id="botonAlerta" class="grupo_input-error col-11 text-center">Complete correctamente los campos por favor</p>
             <p id="errorRepeticion" class="grupo_input-error col-11 text-center"></p>
-    </article>       
-    </article>
-
-</form>
+        </article>
+    </form>
 </article>
 </article>
 </article>
 </section>
-
-<script src="JS/registro.js"></script>
-
+<script src="../JS/validacionRegistroInf.js"></script> 
 
 </body>
 </html>

@@ -49,7 +49,7 @@ $resultado2 = $dieta->ObtenerDieta();
       style="background: rgb(240, 240, 240, 0.9); padding: 0px"
     >
       <nav class="container justify-content-end">
-        <a class="navbar-brand" href="#" style="color: black">
+        <a class="navbar-brand" href="../index.php" style="color: black">
           <img src="../img/icono.png" class="icono1" alt=""
         /></a>
         <button

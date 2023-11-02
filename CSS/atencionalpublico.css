@@ -1,0 +1,202 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: rgb(253, 222, 196);
+    margin: 0;
+    padding: 0;
+  }
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(45deg, #b95a07, #FF6347);
+    color: #fff;
+    padding: 10px 20px;
+}
+
+
+.enlace{
+    color: #fff;
+    text-decoration: none;
+    border: 1px solid #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+.titulo{
+    color: orange;
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+h2 {
+    justify-content: left;
+    color: orange;
+    text-align: left;
+    font-size: 20px;
+}
+
+.pedidos {
+    max-width: 95%; 
+    margin: 0 auto; 
+    padding: 80px;
+    border: 3px solid orange; 
+    background-color: rgb(255, 232, 187); 
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20PX; 
+}
+
+table th,table td {
+    padding: 5px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.tablaArriba{
+    color: orange;
+}
+.alerta {
+    background-color: #ff0000; 
+    color: #ffffff; 
+    padding: 10px; 
+    border: 1px solid #ff0000; 
+    margin: 10px 0; 
+    max-width: 440;
+}
+.alert {
+    background-color: #ff7700; 
+    color: #ffffff; 
+    padding: 10px; 
+    border: 1px solid #ff7700;
+    margin: 10px 0; 
+    max-width: 440px;
+}
+.alert2 {
+    background-color: #2ed14e;
+    color: #ffffff; 
+    padding: 10px; 
+    border: 1px solid  #2ed14e; 
+    margin: 10px 0; 
+    max-width: 440px;
+}
+
+.alert-confirmacion {
+    background-color: #3498DB;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    max-width: 440px;
+}
+
+button {
+    width: 120px;
+    height: 40px;
+  }
+
+.botonAceptar {
+    background-color: #2ed14e;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.botonAceptar:hover {
+    background-color: orange; 
+}
+
+.botonAceptar:active {
+    background-color: #ff8e04; 
+}
+
+.botonRechazar {
+    background-color: #777777;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.botonRechazar:hover {
+    background-color: orange; 
+}
+
+.botonRechazar:active {
+    background-color: #ff8e04; 
+}
+
+.botonDesechar {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.botonDesechar:hover {
+    background-color: orange; 
+}
+
+.botonDesechar:active {
+    background-color: #ff8e04; 
+}
+
+a {
+    color: orange;
+    text-decoration: none;
+    border: 1px solid orange;
+    padding: 5px 10px;
+    border-radius: 5px;
+}    
+
+.nav {
+    color: white;
+    text-decoration: none;
+    border: 1px solid white;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+a:hover {
+    color: #ffc59e;
+    text-decoration: underline; 
+}
+
+.cerrarSesion{
+    color: white;
+}
+
+.cajaSeleccion {
+    background-color: rgb(253, 222, 196);
+    padding: 10px;
+    margin: 10px;
+    display: inline-block;
+}
+
+.cajaSeleccion input[type="text"],
+.cajaSeleccion input[type="number"] {
+    padding: 5px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.CAMBIACOLOR{
+    background-color: rgb(253, 222, 196);
+}
+
