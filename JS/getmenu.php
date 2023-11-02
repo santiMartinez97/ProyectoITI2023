@@ -13,14 +13,14 @@ $db = new DataBase();
 $con = $db->conectar();
 
 // CREAR UNA CONSULTA PREPARADA
-$sql = $con->prepare("SELECT id, Nombre, Precio
+$sql = $con->prepare("SELECT id, Nombre, Precio, Imagen
                       FROM menu
                       JOIN menu_sigue_dieta ON menu.ID = menu_sigue_dieta.IDMenu
                       WHERE menu_sigue_dieta.IDDieta = '$q' AND menu.Habilitacion = 'Habilitado'");
 $sql-> execute();
 $result = $sql->fetchAll(PDO::FETCH_ASSOC);
 foreach($result as $row) {
-    $imagen = "../imgCatalogo/". $row['id'] . "/img.jpg";
+    $imagen = "../imgCatalogo/". $row['Imagen'];
     if(!file_exists($imagen)){
         $imagen = "../imgCatalogo/noimg.jpg";
     }

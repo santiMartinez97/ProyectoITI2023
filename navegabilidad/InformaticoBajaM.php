@@ -38,7 +38,7 @@ $resultado = $dieta->fetchAll(PDO::FETCH_ASSOC);
     <header>
         <h1>Informatico</h1>
         <a class="cerrarSesion" href="cerrar_session.php">Cerrar sesión</a>
-        <a href="informatico.php">alta</a>
+        <a href="informatico.php">Alta</a>
     </header>
     
   

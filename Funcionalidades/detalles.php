@@ -106,10 +106,10 @@ if($id == '' || $token == ''){
    
             echo  '<li class="nav-item dropdown">';
               echo   '<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">';        
-                  echo  ' <i class="fa-solid fa-user"></i> Iniciar Sesion </a>';
+                  echo  ' <i class="fa-solid fa-user"></i> Iniciar Sesión </a>';
                 echo '<ul class="dropdown-menu">';
                   echo   '<li><a class="dropdown-item" href="../registro.php">Registrarse</a></li>';
-                 echo   '<li><a class="dropdown-item" href="../login.php">Iniciar Sesion</a></li>';
+                 echo   '<li><a class="dropdown-item" href="../login.php">Iniciar Sesión</a></li>';
                  echo  '<li><hr class="dropdown-divider"></li>';
                     echo  '</ul>';
                     echo  '</li>';
@@ -125,9 +125,9 @@ if($id == '' || $token == ''){
                   echo  ' <i class="fa-solid fa-user"></i> '.$_SESSION['nombre'].'</a>';
                 echo '<ul class="dropdown-menu">';
                   echo   '<li><a class="dropdown-item" href="#">Ver Perfil</a></li>';
-                 echo   '<li><a class="dropdown-item" href="../BACKPHP/editarPerfilEmpresa.php">Editar perfil</a></li>';
+                 echo   '<li><a class="dropdown-item" href="../BACKPHP/editarPerfilEmpresa.php">Editar Perfil</a></li>';
                  echo  '<li><hr class="dropdown-divider"></li>';
-                    echo '<li><a class="dropdown-item" href="../navegabilidad/cerrar_session.php">Cerrar Sesion</a></li>';
+                    echo '<li><a class="dropdown-item" href="../navegabilidad/cerrar_session.php">Cerrar Sesión</a></li>';
                     echo  '</ul>';
                     echo  '</li>';
           
@@ -143,9 +143,9 @@ if($id == '' || $token == ''){
                       echo  ' <i class="fa-solid fa-user"></i> '.$_SESSION['nombre'].'</a>';
                     echo '<ul class="dropdown-menu">';
                       echo   '<li><a class="dropdown-item" href="#">Ver Perfil</a></li>';
-                    echo   '<li><a class="dropdown-item" href="../BACKPHP/editarPerfil.php">Editar perfil</a></li>';
+                    echo   '<li><a class="dropdown-item" href="../BACKPHP/editarPerfil.php">Editar Perfil</a></li>';
                     echo  '<li><hr class="dropdown-divider"></li>';
-                        echo '<li><a class="dropdown-item" href="../navegabilidad/cerrar_session.php">Cerrar Sesion</a></li>';
+                        echo '<li><a class="dropdown-item" href="../navegabilidad/cerrar_session.php">Cerrar Sesión</a></li>';
                         echo  '</ul>';
                         echo  '</li>';
           
@@ -178,7 +178,7 @@ if($id == '' || $token == ''){
        <h1 class="titulo">CATÁLOGO</h1>
        <article class="camino">
         <a class="index" href="../index.php">Inicio /</a>
-        <a class="nosotros" href="../Funcionalidades/catalogo.php">Catalogo</a>
+        <a class="nosotros" href="../Funcionalidades/catalogo.php">Catálogo</a>
         </article>
       </article>
     </section>

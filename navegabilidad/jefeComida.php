@@ -21,10 +21,10 @@ include_once('../Clases/vianda.php');
     <header>
         <h1>Jefe de cocina</h1>
         <h2 >
-            <a class= "nav" href="jefeMain.php">Menu principal</a>
+            <a class= "nav" href="jefeMain.php">Menú principal</a>
             <a class= "nav" href="jefeCocina.php">Ver pedidos </a>
-            <a class= "nav" href="jefeCocinaStock.php">Gestion stock</a>
-            <a class= "nav" href="cerrar_session.php">Cerrar sesion</a>
+            <a class= "nav" href="jefeCocinaStock.php">Gestión stock</a>
+            <a class= "nav" href="cerrar_session.php">Cerrar Sesión</a>
         </h2>
     
     </header>
@@ -42,7 +42,7 @@ include_once('../Clases/vianda.php');
     <article class="grupo__input">  
       <input type="text" name="nombre" id="nombre" class="formulario__input form-control" placeholder="Nombre">
     </article>       
-    <p class="grupo_input-error">Ingrese un nombre valido</p>
+    <p class="grupo_input-error">Ingrese un nombre válido</p>
   </article>
 
 
@@ -58,7 +58,7 @@ include_once('../Clases/vianda.php');
     <article class="grupo__input">  
       <input type="number" name="cantidad" id="cantidad" class="formulario__input form-control" placeholder="Cantidad">
     </article>       
-    <p class="grupo_input-error">Ingrese cantidad valida</p>
+    <p class="grupo_input-error">Ingrese cantidad válida</p>
   </article>
 
   <br>
@@ -66,15 +66,15 @@ include_once('../Clases/vianda.php');
   <br>
   <article class="col-6 grupo" id="grupo__descripcion">
     <article class="grupo__input">  
-      <input type="text" name="descripcion" id="descripcion" class="formulario__input form-control" placeholder="Descripcion">
+      <input type="text" name="descripcion" id="descripcion" class="formulario__input form-control" placeholder="Descripción">
     </article>       
-    <p class="grupo_input-error">Ingrese una descpricion valida</p>
+    <p class="grupo_input-error">Ingrese una descprición válida</p>
   </article>
   <br>  <br>
   
   <article  class="col-12 text-center">
     <button id="enviar"class="btn btn-primary" type="submit" >Subir viandas</button> 
-    <p id="botonAlerta" class="grupo_input-error col-6 text-center">Complete correctamente los campos por favor</p>
+    <p id="botonAlerta" class="grupo_input-error col-6 text-center">Complete correctamente los campos por favor.</p>
     <p id="errorRepeticion" class="grupo_input-error col-6 text-center"></p>
     </article>
   </form>

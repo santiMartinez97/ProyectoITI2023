@@ -19,9 +19,9 @@ $control = new Pedido_Encarga_Menu();
     <header>
         <h1>Administrador</h1>
         <h2>
-        <a class ="nav"href="admin.php">Menu principal</a>
+        <a class ="nav"href="admin.php">Menú principal</a>
         <a class ="nav"href="adminClientes.php">Gestion clientes</a>
-        <a class="nav" href="cerrar_session.php">Cerrar sesion</a>
+        <a class="nav" href="cerrar_session.php">Cerrar Sesión</a>
         </h2>
     </header>
     

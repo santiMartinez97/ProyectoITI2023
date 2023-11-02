@@ -114,7 +114,7 @@ if (isset($_SESSION['nombre'])) {
                 <article class="grupo__input">  
                  <input type="text" name="nombre" id="nombre" class="formulario__input form-control" placeholder="Nombre">
                 </article>       
-                 <p class="grupo_input-error">Ingrese un nombre valido </p>
+                 <p class="grupo_input-error">Ingrese un nombre válido </p>
               </article>
                 
                  <!-- Grupo apellido -->
@@ -123,7 +123,7 @@ if (isset($_SESSION['nombre'])) {
                  <article class="grupo__input">
                   <input type="text" name="apellido" id="apellido" class="formulario__input form-control" placeholder="Apellido">
                  </article>   
-                 <p class="grupo_input-error">Ingrese un apellido valido</p>
+                 <p class="grupo_input-error">Ingrese un apellido válido</p>
                 </article> 
                 
             
@@ -133,7 +133,7 @@ if (isset($_SESSION['nombre'])) {
                     <article class="grupo__input">
                     <input type="number" name="ci" id="ci" class="formulario__input form-control" placeholder="Documento">
                     </article>  
-                    <p class="grupo_input-error">Ingrese su cedula sin puntos ni guiones</p>
+                    <p class="grupo_input-error">Ingrese su cédula sin puntos ni guiones</p>
                 </article >
                 
                  <!-- Grupo email -->
@@ -142,7 +142,7 @@ if (isset($_SESSION['nombre'])) {
                     <article class="grupo__input">
                     <input type="email" name="email" id="email" class="formulario__input form-control" placeholder="Email">
                     </article> 
-                      <p class="grupo_input-error">Ingrese un email valido</p>
+                      <p class="grupo_input-error">Ingrese un email válido</p>
                 </article>
                 
                  <!-- Grupo password -->
@@ -151,7 +151,7 @@ if (isset($_SESSION['nombre'])) {
                     <article class="grupo__input">
                     <input type="password" name="password" id="password"  class="formulario__input form-control" placeholder="Contraseña"> 
                   </article>
-                      <p class="grupo_input-error">Contraseña de 6-17 digitos</p> 
+                      <p class="grupo_input-error">Contraseña de 6-17 dígitos</p> 
                 </article>
                 
                  <!-- Grupo telefono -->
@@ -176,7 +176,7 @@ if (isset($_SESSION['nombre'])) {
                     <article class="grupo__input">
                     <input type="text" name="calle" id="calle" class="formulario__input form-control" placeholder="Calle">
                     </article>
-                      <p class="grupo_input-error">Ingrese una calle valida</p>
+                      <p class="grupo_input-error">Ingrese una calle válida</p>
                 </article>
                 
                  <!-- Grupo numero -->
@@ -194,7 +194,7 @@ if (isset($_SESSION['nombre'])) {
                     <article id="grupo__input">
                     <input type="text" name="esquina" id="esquina" class="formulario__input form-control" placeholder="Esquina">
                     </article>
-                      <p class="grupo_input-error">Ingrese una esquina valida</p>        
+                      <p class="grupo_input-error">Ingrese una esquina válida</p>        
                 </article>
                 
                  <!-- Grupo barrio -->
@@ -203,13 +203,13 @@ if (isset($_SESSION['nombre'])) {
                     <article  class="grupo__input">
                       <input type="text" name="barrio" id="barrio" class="formulario__input form-control" placeholder="Barrio"> 
                     </article> 
-                      <p class="grupo_input-error">Ingrese un barrio valido</p>
+                      <p class="grupo_input-error">Ingrese un barrio válido</p>
                 </article>
 
                 <article class="col-12 text-center" >
                   <button class="btn btn-primary " id="enviar"  type="submit" >Enviar</button> 
                   
-                  <p id="botonAlerta" class="grupo_input-error col-11 text-center">Complete correctamente los campos por favor</p>
+                  <p id="botonAlerta" class="grupo_input-error col-11 text-center">Complete correctamente los campos por favor.</p>
                   <p id="errorRepeticion" class="grupo_input-error col-11 text-center"></p>
                 </article>       
         </article>
@@ -237,9 +237,9 @@ if (isset($_SESSION['nombre'])) {
       </article>
 
       <article class="col-md-5 col-12 text-center" style="margin-top: 26px;">
-        <p><i class="fas fa-envelope"></i> EmpresaNutribento@gmail.com</p>
-        <p><i class="fab fa-facebook-square" style="color: #1877f2;"></i> Nutribento</p>
-        <p><i class="fab fa-instagram" style="color: #e4405f;"></i> Nutribento</p>
+        <p><i class="fas fa-envelope"></i> EmpresaNutriBento@gmail.com</p>
+        <p><i class="fab fa-facebook-square" style="color: #1877f2;"></i> NutriBento</p>
+        <p><i class="fab fa-instagram" style="color: #e4405f;"></i> NutriBento</p>
       </article>
     </article>
   </article>

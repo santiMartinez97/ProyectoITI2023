@@ -26,7 +26,7 @@ if($usuario){
 
         $mail->Subject = 'Resetear contraseña - NutriBento';
         $mail->Body = '<p>Se ha solicitado resetear la contraseña de su usuario en NutriBento.</p>
-        <p>Si usted no ha solicitado resetear la contraseña, ignore este correo.</p>
+        <p>Si usted no ha solicitado esto, ignore este correo.</p>
         <p>Ingrese al siguiente enlace para poder ingresar una nueva contraseña: <a href="localhost/ProyectoITI2023/resetearPassword.php?token='.$token.'">Click aquí</a></p>'; // Definimos el cuerpo del correo
         
         // RECORDAR MODIFICAR EL ENLACE

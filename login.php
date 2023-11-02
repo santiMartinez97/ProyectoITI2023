@@ -89,7 +89,7 @@ if (isset($_SESSION['nombre'])) {
         <article class="container my-1">
           <h1 class="titulo text-center"  id="IniciarS" >Iniciar Sesión</h1>
           <p class="subtitulo">
-            ¿Es tu primera vez? <a href="registro.php" class="enlace">registrate</a>
+            ¿Es tu primera vez? <a href="registro.php" class="enlace">regístrate</a>
           </p>
           <article id="campos">
             <form id="loginForm" class="row no-gutters">
@@ -144,9 +144,9 @@ if (isset($_SESSION['nombre'])) {
       </article>
 
       <article class="col-md-5 col-12 text-center" style="margin-top: 26px;">
-        <p><i class="fas fa-envelope"></i> EmpresaNutribento@gmail.com</p>
-        <p><i class="fab fa-facebook-square" style="color: #1877f2;"></i> Nutribento</p>
-        <p><i class="fab fa-instagram" style="color: #e4405f;"></i> Nutribento</p>
+        <p><i class="fas fa-envelope"></i> EmpresaNutriBento@gmail.com</p>
+        <p><i class="fab fa-facebook-square" style="color: #1877f2;"></i> NutriBento</p>
+        <p><i class="fab fa-instagram" style="color: #e4405f;"></i> NutriBento</p>
       </article>
     </article>
   </article>

@@ -20,10 +20,10 @@ $pedidos = new Pedido_Encarga_Menu();
     <header>
         <h1>Jefe de cocina</h1>
         <h2 class="h2tit">
-        <a class ="nav" href="jefeMain.php">Menu principal</a>
+        <a class ="nav" href="jefeMain.php">Menú principal</a>
         <a class="nav" href="jefeCocinaStock.php">Control de stock</a>
-        <a class="nav" href="jefeComida.php">Preparacion comidas</a>
-        <a class="nav" href="cerrar_session.php">Cerrar sesion</a>
+        <a class="nav" href="jefeComida.php">Preparación de comidas</a>
+        <a class="nav" href="cerrar_session.php">Cerrar Sesión</a>
     </h2>
     </header>    
     
@@ -37,7 +37,7 @@ $pedidos = new Pedido_Encarga_Menu();
     <table>
             <thead>
                 <tr>
-                    <th class="tablaArriba">Nombre Menu</th>
+                    <th class="tablaArriba">Nombre Menú</th>
                     <th class="tablaArriba">ID Menu</th>
                     <th class="tablaArriba">N° Pedido</th>
                     <th class="tablaArriba">Descripción</th>
