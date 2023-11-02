@@ -8,37 +8,71 @@ document.getElementById('formulario').addEventListener('submit', function (event
     const passwordRegex = /^.{6,17}$/;
 
     if (!emailRegex.test(email)) {
-        document.getElementById(`grupo__email`).classList.remove("grupo__correcto");
-        document.getElementById(`grupo__email`).classList.add("grupo__error");
-        document.querySelector(`#grupo__email .grupo_input-error`).classList.add('grupo_input-error-activo');
+        // ... código de manejo de error para el campo de email ...
         valido = false;
     } else {
-        document.getElementById(`grupo__email`).classList.remove("grupo__error");
-        document.getElementById(`grupo__email`).classList.add("grupo__correcto");
-        document.querySelector(`#grupo__email .grupo_input-error`).classList.remove('grupo_input-error-activo');
+        // ... código de manejo de éxito para el campo de email ...
     }
 
     if (!passwordRegex.test(password)) {
-        document.getElementById(`grupo__password`).classList.remove("grupo__correcto");
-        document.getElementById(`grupo__password`).classList.add("grupo__error");
-        document.querySelector(`#grupo__password .grupo_input-error`).classList.add('grupo_input-error-activo');
+        // ... código de manejo de error para el campo de password ...
         valido = false;
     } else {
-        document.getElementById(`grupo__password`).classList.remove("grupo__error");
-        document.getElementById(`grupo__password`).classList.add("grupo__correcto");
-        document.querySelector(`#grupo__password .grupo_input-error`).classList.remove('grupo_input-error-activo');
+        // ... código de manejo de éxito para el campo de password ...
     }
 
     // Validación del campo de Rol
     if (rol === "") {
-        alert("Porfavor ingrese un rol");
+        alert("Por favor ingrese un rol");
         valido = false;
     } 
 
-    if (!valido) {
+    if (valido) {
+        // Si todos los campos son válidos, enviar el formulario
+        event.preventDefault();
+        
+
+        document.getElementById('email').value = '';
+        document.getElementById('password').value = '';
+        document.getElementById('rol').value = '';
+
+        // Crear un objeto FormData para enviar los datos
+        const formData = new FormData();
+        formData.append('email', email);
+        formData.append('password', password);
+        formData.append('rol', rol);
+
+        // Enviar la solicitud POST
+        fetch('../navegabilidad/regInformatico.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => {
+            console.log(response);  // Ver la respuesta del servidor
+            return response.text();  // Intentar obtener el texto de la respuesta
+        })
+        .then(data => {
+            console.log(data);  // Ver el texto de la respuesta
+            try {
+                const jsonData = JSON.parse(data);
+                if (jsonData.error) {
+                    alerta('¡Email repetido!');
+                } else {
+                    alerta('¡Perfil registrado correctamente!');
+                } 
+            } catch (error) {
+                console.error('Error al parsear JSON:', error);
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    } else {
         event.preventDefault();
         document.getElementById('botonAlerta').style.display = 'block';
-    } else {
-        document.getElementById('botonAlerta').style.display = 'none';
     }
 });
+
+function alerta(mesaje){
+
+    swal(mesaje);
+    
+    }

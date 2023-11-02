@@ -26,6 +26,7 @@ require '../config/conexion.php';
     <link rel="stylesheet" href="../CSS/informatico.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="icon" href="../img/icono.png" />
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> 
 </head>
 <body>
     
@@ -51,7 +52,7 @@ require '../config/conexion.php';
 
             <article id="campos">          
 
-            <form id="formulario" action="regInformatico.php" class="row no-gutters" method="post" onsubmit="return validarInformatico();">
+            <form id="formulario" class="row no-gutters" >
         <article class="col-6 grupo" id="grupo__email">
             <article class="grupo__input">
                 <input type="email" name="email" id="email" class="formulario__input form-control" placeholder="Email">
@@ -87,6 +88,7 @@ require '../config/conexion.php';
 </article>
 </article>
 </section>
+
 <script src="../JS/validacionRegistroInf.js"></script> 
 
 </body>
