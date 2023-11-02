@@ -41,6 +41,7 @@ $(document).ready(function() {
     ///////////////////////////////////////////////////////////////////////////////////////////////////////
         
     document.addEventListener("click", function (e) {
+        $("#loader-div").show(); // Mostrar carga
         if (e.target && e.target.classList.contains("habilitar-btn")) {
             var clientId = e.target.getAttribute("data-client-id");
             $.ajax({
@@ -48,9 +49,11 @@ $(document).ready(function() {
                     type: 'POST',
                     data: { clientId: clientId },
                     success: function (response) {
+                        $("#loader-div").hide(); // Oculta carga
                         alert("Solicitud enviada al administrador para habilitar al cliente con ID: " + clientId);
                     },
                     error: function (xhr, status, error) {
+                        $("#loader-div").hide(); // Oculta carga
                         alert("Hubo un error al enviar la solicitud al administrador: " + error);
                     }
                 });

@@ -59,7 +59,7 @@
             <div class="form-group">
                 <label for="recipient-name" class="col-form-label">Precio:</label>
                 <input type="text" name="precio" class="form-control formulario__input" value="<?php echo $row['Precio']; ?>" required="true">
-                <p class="grupo_input-error">Ingrese precio válido. </p>
+                <p class="grupo_input-error">Ingrese un precio válido. </p>
             </div>
         </div>
 

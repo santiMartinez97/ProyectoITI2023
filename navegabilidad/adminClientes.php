@@ -39,7 +39,7 @@ $resultado = $dieta->fetchAll(PDO::FETCH_ASSOC);
     <header>
         <h1>Administrador</h1>
         <h2 class="h2tit">
-            <a class = "nav" href="admin.php">Menu principal</a>
+            <a class = "nav" href="admin.php">Menú principal</a>
         <a class = "nav" href="adminPedidos.php">Gestión de pedidos</a>
             <a class="nav" href="cerrar_session.php">Cerrar sesión</a>
         </h2>

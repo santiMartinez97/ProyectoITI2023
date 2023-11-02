@@ -31,6 +31,7 @@ if(loginBloqueado($con)){
                     echo json_encode('cliente');
                     $_SESSION['cliente'] = 'cliente';
                     $_SESSION['id'] = $cliente->getID();
+                    $_SESSION['email'] = $cliente->getEmail();
 
                     $cliComun = ClienteComun::findByID($con, $cliente->getID());
 

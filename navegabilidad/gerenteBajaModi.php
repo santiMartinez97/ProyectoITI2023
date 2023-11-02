@@ -31,21 +31,21 @@ $menu_array=[];
             <a class="enlace" href="gerente.php">Alta de menú</a>
         </div>
         <div class="baja-section">
-          <a class ="enlace" href="cerrar_session.php">Cerrar Session</a>
+          <a class ="enlace" href="cerrar_session.php">Cerrar Sesión</a>
         </div>
     </header>
 
         <table>
             <thead>
                 <tr>
-                    <th class="tablaArriba">Periocidad</th>
-                    <th class="tablaArriba">Menu</th>
+                    <th class="tablaArriba">Periodicidad</th>
+                    <th class="tablaArriba">Menú</th>
                     <th class="tablaArriba">Precio</th>
                     <th class="tablaArriba">Descuento</th>
                     <th class="tablaArriba">Stock</th>
-                    <th class="tablaArriba">Stock minimo</th>
-                    <th class="tablaArriba">Stock maximo</th>
-                    <th class="tablaArriba">Habilitacion</th>
+                    <th class="tablaArriba">Stock mínimo</th>
+                    <th class="tablaArriba">Stock máximo</th>
+                    <th class="tablaArriba">Habilitación</th>
 
                 </tr>
             </thead>

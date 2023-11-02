@@ -15,6 +15,7 @@ $con = $db->conectar();
     <title>Atención al Público | NutriBento</title>
     <link rel="icon" href="../img/icono.png" />
     <link rel="stylesheet" href="../CSS/admin.css" />
+    <link rel="stylesheet" href="../CSS/loading.css" />
 </head>
 <body>
 
@@ -51,6 +52,10 @@ $con = $db->conectar();
     </section>
     </footer>
     
+    <div id="loader-div">
+        <img class="loader-img" src="../img/loader.gif" style="height: 120px;width: auto;" />
+    </div> 
+
     <script src="../JS/jquery-3.6.4.min.js"></script>
     <script src="../JS/solicitarClientes.js"></script>
 

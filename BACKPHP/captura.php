@@ -3,6 +3,25 @@
 require '../config/config.php';
 require '../config/conexion.php';
 require '../vendor/autoload.php';
+require '../config/mail.php';
+
+//Datos de correo //
+if(isset($_SESSION['email'])){
+  $configMail = new Mail();
+  $mail = $configMail->configurar();
+  $mail->Subject = 'Confirmación de compra - NutriBento';
+  $clientEmail = $_SESSION['email'];
+  $mail->addAddress($clientEmail); //Definimos el destinatario del correo
+  $mensaje = "Su compra ha sido realizada con éxito. ¡Buen provecho!";
+  $mail->Body = $mensaje; // Definimos que el cuerpo del correo será el mensaje previamente definido.
+  try{
+    $mail->send(); // Enviamos el correo.
+  }catch(Error $e){
+    //El correo no pudo ser enviado.
+  }
+  
+}
+
 //Datos de compra-MercadoPago //
 // $payment = $_GET['payment_id'];
 // $status = $_GET['status'];

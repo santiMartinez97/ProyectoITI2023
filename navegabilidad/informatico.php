@@ -32,11 +32,11 @@ require '../config/conexion.php';
     
     <header>
         <div class="gerente-section">
-            <h1>Informatico</h1>
+            <h1>Informático</h1>
         </div>
         <div class="baja-section">
-        <a class="enlace" href="informaticoBajaM.php">Baja y modificacion</a>   
-        <a class ="enlace" href="cerrar_session.php">Cerrar Session</a>
+        <a class="enlace" href="informaticoBajaM.php">Baja y modificación</a>   
+        <a class ="enlace" href="cerrar_session.php">Cerrar Sesión</a>
         </div>
     </header>
     <section>
@@ -80,7 +80,7 @@ require '../config/conexion.php';
 
         <article class="col-12 text-center">
             <button class="btn btn-primary" id="enviar" type="submit">Enviar</button>
-            <p id="botonAlerta" class="grupo_input-error col-11 text-center">Complete correctamente los campos por favor</p>
+            <p id="botonAlerta" class="grupo_input-error col-11 text-center">Complete correctamente los campos por favor.</p>
             <p id="errorRepeticion" class="grupo_input-error col-11 text-center"></p>
         </article>
     </form>

@@ -19,17 +19,17 @@ $stock = new Stock();
     <header>
         <h1>Jefe de cocina</h1>
         <h2 >
-        <a class= "nav" href="jefeMain.php">Menu principal</a>
+        <a class= "nav" href="jefeMain.php">Menú principal</a>
         <a class= "nav" href="jefeCocina.php">Ver pedidos </a>
-        <a class= "nav" href="jefeComida.php">Preparacion comidas</a>
-        <a class= "nav" href="cerrar_session.php">Cerrar sesion</a>
+        <a class= "nav" href="jefeComida.php">Preparación de comidas</a>
+        <a class= "nav" href="cerrar_session.php">Cerrar Sesión</a>
     </h2>
     
     </header>
     
     <br>
 
-    <h2 class="titulo">Gestion de stocks</h2>
+    <h2 class="titulo">Gestión de stocks</h2>
 
     <!-- Lista de stcok -->
         <section class="cajaSeleccion">
@@ -51,7 +51,7 @@ $stock = new Stock();
             if ($stock->agregarStock($menu, $cantidad)) {
                 echo '<p class="alert2">Se ha agregado correctamente el stock de: ' . $menu . '</p>' ;
             } else {
-                echo '<p class="alert-confirmacion">¡Alerta! No puedes agregar mas stock de ' . $menu . ' por que excede el stock maximo.</p>';
+                echo '<p class="alert-confirmacion">¡Alerta! No puedes agregar más stock de ' . $menu . ' porque excede el stock máximo.</p>';
             }
         }
         
