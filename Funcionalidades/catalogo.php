@@ -121,7 +121,7 @@ $resultado2 = $dieta->ObtenerDieta();
                       echo   '<li><a class="dropdown-item" href="#">Ver Perfil</a></li>';
                     echo   '<li><a class="dropdown-item" href="../BACKPHP/editarPerfil.php">Editar perfil</a></li>';
                     echo  '<li><hr class="dropdown-divider"></li>';
-                        echo '<li><a class="dropdown-item" href="navegabilidad/cerrar_session.php">Cerrar Sesion</a></li>';
+                        echo '<li><a class="dropdown-item" href="../navegabilidad/cerrar_session.php">Cerrar Sesion</a></li>';
                         echo  '</ul>';
                         echo  '</li>';
           
@@ -208,6 +208,8 @@ $resultado2 = $dieta->ObtenerDieta();
                 if(!file_exists($imagen)){
                     $imagen = "../imgCatalogo/noimg.jpg";
                 }
+                
+
             ?>
                 <div class="col">
                     <div class="card shadow-sm">
@@ -219,11 +221,11 @@ $resultado2 = $dieta->ObtenerDieta();
                             <p class="card-text ">$<?php echo number_format($menu->getPrecio(), 0, '.', '.'); ?></p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
-                                    <!-- URL CON DISTINTO TOKEN -->
+                                   
                                 </div>
                                 <?php
                                     if(!isset($_SESSION['cliente'])){
-                                        echo '<a href="#" class="btn btn-success d-flex justify-content-center align-items-center" onclick="agregarProducto('.$menu->getID().',\''.hash_hmac('sha1', $menu->getID(), KEY_TOKEN).'\')">Agregar al Carrito</a>';
+                                        echo '<a href="#" class="btn btn-success id="carritoBtn" d-flex justify-content-center align-items-center" onclick="agregarProducto('.$menu->getID().',\''.hash_hmac('sha1', $menu->getID(), KEY_TOKEN).'\')">Agregar al Carrito</a>';
                                     } else {
                                         echo '<button class="btn btn-outline-success" type="button" onclick="agregarProducto(' . $menu->getID() . ', \'' . hash_hmac('sha1', $menu->getID(), KEY_TOKEN) . '\')">Agregar al carrito</button>';
                                     }

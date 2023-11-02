@@ -27,3 +27,14 @@ document.addEventListener("DOMContentLoaded", function() {
       alerta();
     });
   });
+
+  document.addEventListener("DOMContentLoaded", function() {
+    // Obtener el botón por su ID
+    var carritoBtn = document.getElementById("carritoBtn2");
+  
+    // Agregar el evento de clic al botón
+    carritoBtn.addEventListener("click", function() {
+      // Mostrar una alerta cuando se hace clic en el botón
+      alerta();
+    });
+  });

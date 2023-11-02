@@ -48,6 +48,7 @@ if ($productos != null) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
       integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
     <script src="https://kit.fontawesome.com/e934b5c028.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> 
   </head>
 
   <body>
@@ -81,8 +82,8 @@ if(!isset($_SESSION['cliente'])){
     echo   '<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">';        
         echo  ' <i class="fa-solid fa-user"></i> Iniciar Sesion </a>';
       echo '<ul class="dropdown-menu">';
-        echo   '<li><a class="dropdown-item" href="registro.php">Registrarse</a></li>';
-       echo   '<li><a class="dropdown-item" href="login.php">Iniciar Sesion</a></li>';
+        echo   '<li><a class="dropdown-item" href="../registro.php">Registrarse</a></li>';
+       echo   '<li><a class="dropdown-item" href="../login.php">Iniciar Sesion</a></li>';
        echo  '<li><hr class="dropdown-divider"></li>';
           echo  '</ul>';
           echo  '</li>';
@@ -227,14 +228,25 @@ echo  '<li class="nav-item dropdown">';
             <?php } ?>
           </table>
         </article>
-          
-        <?php if ($lista_carrito != null) { ?>
+        <?php 
+if ($lista_carrito != null) {
+    if(!isset($_SESSION['cliente'])) {
+?>
         <article class="row">
-          <article class="col-md-5 offset-md-7 d-grid gap-2">
-            <a href="pago.php" class="btn btn-primary btn">Realizar pago</a>
-          </article>
+            <article class="col-md-5 offset-md-7 d-grid gap-2">
+                <a id="carritoBtn2" class="btn btn-primary btn">Realizar Pago</a>
+            </article>
         </article>
-        <?php } ?>
+<?php 
+    } else {
+        echo '<article class="row">
+            <article class="col-md-5 offset-md-7 d-grid gap-2">
+                <a href="pago.php" class="btn btn-primary btn">Realizar Pago</a>
+            </article>
+        </article>';
+    }
+}
+?>
         <!-- Button trigger modal -->
 
 
@@ -368,7 +380,8 @@ echo  '<li class="nav-item dropdown">';
 
 
 
-
+<script src="../JS/alertaRegistro.js" ></script>
+    
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
