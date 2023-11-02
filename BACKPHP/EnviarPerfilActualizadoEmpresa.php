@@ -1,7 +1,6 @@
 <?php
 
 $email = $_POST["email"];
-$rut = $_POST["rut"];
 $nombre = $_POST["empresa"];
 $telefono = $_POST["telefono"];
 $dieta = $_POST["dieta"];
@@ -31,7 +30,6 @@ $id = $_SESSION['id'];
             $clientee->setTelefono($telefono); 
             $cliente = ClienteEmpresa::findByID($con,$id);
             $cliente->setEmail($email);
-            $cliente->setRUT($rut);
             $cliente->setNombreEmpresa($nombre);
             $cliente->setDireccionCompleta($direccion);
             $cliente->update();

@@ -195,13 +195,7 @@ echo  '<li class="nav-item dropdown">';
 <article id="campos">
 
 <form id="formularioEmpresa" class="row no-gutters ">
-  <!-- Grupo RUT -->
-  <article class="col-7 grupo" id="grupo__rut">
-    <article class="grupo__input">  
-      <input type="text" name="rut" id="rut" class="formulario__input form-control" placeholder="RUT" value="<?php echo $usuario->getRUT(); ?>"> 
-    </article>       
-    <p class="grupo_input-error">Ingrese un RUT válido</p>
-  </article>
+  
 
   <!-- Grupo Nombre empresa-->
   <article class="col-7 grupo" id="grupo__empresa">
