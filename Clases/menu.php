@@ -197,8 +197,8 @@ public function InfoMenu(){
     
 }
 
-public function eliminarMenu($menuID) {
-    $menu = $this->con->prepare("DELETE FROM menu WHERE ID = ?");
+public static function eliminarMenu($con, $menuID) {
+    $menu = $con->prepare("DELETE FROM menu WHERE ID = ?");
     $menu->execute([$menuID]);
     
     return $menu->rowCount() > 0; // Verifica si se eliminó algún registro

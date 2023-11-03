@@ -158,7 +158,7 @@ else {
 
 function alerta(){
 
-swal('¡Formulario enviado exitosamente!', 'Se le notificará por correo electrónico si cumple los requisitos para poder registrarse. Muchas gracias por querer ser parte de SISVIANSA ', 'success');
+swal('¡Formulario enviado exitosamente!', 'Se le notificará por correo electrónico si cumple los requisitos para poder registrarse. Muchas gracias por querer ser parte de NutriBento. ', 'success');
 
 }
 
@@ -178,7 +178,7 @@ function web_empresa() {
                 <article class="grupo__input">  
                  <input type="text" name="nombre" id="nombre" class="formulario__input form-control" placeholder="Nombre">
                 </article>       
-                 <p class="grupo_input-error">Ingrese un nombre valido </p>
+                 <p class="grupo_input-error">Ingrese un nombre válido </p>
               </article>
                 
                  <!-- Grupo apellido -->
@@ -187,7 +187,7 @@ function web_empresa() {
                  <article class="grupo__input">
                   <input type="text" name="apellido" id="apellido" class="formulario__input form-control" placeholder="Apellido">
                  </article>   
-                 <p class="grupo_input-error">Ingrese un apellido valido</p>
+                 <p class="grupo_input-error">Ingrese un apellido válido</p>
                 </article> 
                 
             
@@ -197,7 +197,7 @@ function web_empresa() {
                     <article class="grupo__input">
                     <input type="number" name="ci" id="ci" class="formulario__input form-control" placeholder="Documento">
                     </article>  
-                    <p class="grupo_input-error">Ingrese su cedula sin puntos ni guiones</p>
+                    <p class="grupo_input-error">Ingrese su cédula sin puntos ni guiones</p>
                 </article >
                 
                  <!-- Grupo email -->
@@ -206,7 +206,7 @@ function web_empresa() {
                     <article class="grupo__input">
                     <input type="email" name="email" id="email" class="formulario__input form-control" placeholder="Email">
                     </article> 
-                      <p class="grupo_input-error">Ingrese un email valido</p>
+                      <p class="grupo_input-error">Ingrese un email válido</p>
                 </article>
                 
                  <!-- Grupo password -->
@@ -215,7 +215,7 @@ function web_empresa() {
                     <article class="grupo__input">
                     <input type="password" name="password" id="password"  class="formulario__input form-control" placeholder="Contraseña"> 
                   </article>
-                      <p class="grupo_input-error">Contraseña de 6-17 digitos</p> 
+                      <p class="grupo_input-error">Contraseña de 6-17 dígitos</p> 
                 </article>
                 
                  <!-- Grupo telefono -->
@@ -240,7 +240,7 @@ function web_empresa() {
                     <article class="grupo__input">
                     <input type="text" name="calle" id="calle" class="formulario__input form-control" placeholder="Calle">
                     </article>
-                      <p class="grupo_input-error">Ingrese una calle valida</p>
+                      <p class="grupo_input-error">Ingrese una calle válida</p>
                 </article>
                 
                  <!-- Grupo numero -->
@@ -446,7 +446,7 @@ function web_empresa() {
     <article class="grupo__input">  
      <input type="text" name="rut" id="rut" class="formulario__input form-control" placeholder="RUT">
     </article>       
-     <p class="grupo_input-error">Ingrese un rut valido</p>
+     <p class="grupo_input-error">Ingrese un rut válido</p>
   </article>
     
      <!-- Grupo Nombre empresa-->
@@ -455,7 +455,7 @@ function web_empresa() {
      <article class="grupo__input">
       <input type="text" name="empresa" id="empresa" class="formulario__input form-control" placeholder="Nombre Empresa">
      </article>   
-     <p class="grupo_input-error">Ingrese un nombre valido</p>
+     <p class="grupo_input-error">Ingrese un nombre válido</p>
     </article> 
     
      <!-- Grupo email -->
@@ -464,7 +464,7 @@ function web_empresa() {
         <article class="grupo__input">
         <input type="email" name="email" id="email" class="formulario__input form-control" placeholder="Email">
         </article> 
-          <p class="grupo_input-error">Ingrese un email valido</p>
+          <p class="grupo_input-error">Ingrese un email válido</p>
     </article>
     
      <!-- Grupo password -->
@@ -473,7 +473,7 @@ function web_empresa() {
         <article class="grupo__input">
         <input type="password" name="password" id="password"  class="formulario__input form-control" placeholder="Contraseña"> 
       </article>
-          <p class="grupo_input-error">Contraseña de 6-17 digitos</p> 
+          <p class="grupo_input-error">Contraseña de 6-17 dígitos</p> 
     </article>
     
      <!-- Grupo telefono -->
@@ -498,7 +498,7 @@ function web_empresa() {
         <article class="grupo__input">
         <input type="text" name="calle" id="calle" class="formulario__input form-control" placeholder="Calle">
         </article>
-          <p class="grupo_input-error">Ingrese una calle valida</p>
+          <p class="grupo_input-error">Ingrese una calle válida</p>
     </article>
     
      <!-- Grupo numero -->

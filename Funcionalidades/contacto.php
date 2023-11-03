@@ -63,10 +63,10 @@ if(!isset($_SESSION['cliente'])){
    
   echo  '<li class="nav-item dropdown">';
     echo   '<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">';        
-        echo  ' <i class="fa-solid fa-user"></i> Iniciar Sesion </a>';
+        echo  ' <i class="fa-solid fa-user"></i> Iniciar Sesión </a>';
       echo '<ul class="dropdown-menu">';
         echo   '<li><a class="dropdown-item" href="../registro.php">Registrarse</a></li>';
-       echo   '<li><a class="dropdown-item" href="../login.php">Iniciar Sesion</a></li>';
+       echo   '<li><a class="dropdown-item" href="../login.php">Iniciar Sesión</a></li>';
        echo  '<li><hr class="dropdown-divider"></li>';
           echo  '</ul>';
           echo  '</li>';
@@ -82,9 +82,9 @@ echo  '<li class="nav-item dropdown">';
         echo  ' <i class="fa-solid fa-user"></i> '.$_SESSION['nombre'].'</a>';
       echo '<ul class="dropdown-menu">';
         echo   '<li><a class="dropdown-item" href="#">Ver Perfil</a></li>';
-       echo   '<li><a class="dropdown-item" href="../BACKPHP/editarPerfilEmpresa.php">Editar perfil</a></li>';
+       echo   '<li><a class="dropdown-item" href="../BACKPHP/editarPerfilEmpresa.php">Editar Perfil</a></li>';
        echo  '<li><hr class="dropdown-divider"></li>';
-          echo '<li><a class="dropdown-item" href="../navegabilidad/cerrar_session.php">Cerrar Sesion</a></li>';
+          echo '<li><a class="dropdown-item" href="../navegabilidad/cerrar_session.php">Cerrar Sesión</a></li>';
           echo  '</ul>';
           echo  '</li>';
 
@@ -100,9 +100,9 @@ echo  '<li class="nav-item dropdown">';
             echo  ' <i class="fa-solid fa-user"></i> '.$_SESSION['nombre'].'</a>';
           echo '<ul class="dropdown-menu">';
             echo   '<li><a class="dropdown-item" href="#">Ver Perfil</a></li>';
-          echo   '<li><a class="dropdown-item" href="../BACKPHP/editarPerfil.php">Editar perfil</a></li>';
+          echo   '<li><a class="dropdown-item" href="../BACKPHP/editarPerfil.php">Editar Perfil</a></li>';
           echo  '<li><hr class="dropdown-divider"></li>';
-              echo '<li><a class="dropdown-item" href="../navegabilidad/cerrar_session.php">Cerrar Sesion</a></li>';
+              echo '<li><a class="dropdown-item" href="../navegabilidad/cerrar_session.php">Cerrar Sesión</a></li>';
               echo  '</ul>';
               echo  '</li>';
 
@@ -158,16 +158,15 @@ echo  '<li class="nav-item dropdown">';
          <br><br>
         <article class="parrafo1  text-center" >
           <p>Horario de atención: Lunes a Jueves de 9 a 17 horas. Viernes de 9 a 16 horas.
-            Los envíos son SIN CARGO <br> dentro de algunas zonas de Montevideo, ver listado aquí . Consultar por fechas de entrega en Punta del Este y La Tahona</p>
+            Los envíos son SIN CARGO <br> dentro de algunas zonas de Montevideo, ver listado aquí. Consultar por fechas de entrega en Punta del Este y La Tahona.</p>
         </article>
 
         <article class="parrafo2">
            <p class="infoC"> Información de Contacto:</p>
            <ul class="lista">
-            <li>correo@gmail.com</li>
-            <li>prueba@gmail.com</li>
-            <li>Delivery: 321321321</li>
-            <li>Whatsapp: 098 321321321</li>
+            <li>EmpresaNutriBento@gmail.com</li>
+            <li>Delivery: 2204 5199</li>
+            <li>Whatsapp: 098 321321</li>
             <li>Pickup: Montevideo, 23213,3 32111300</li>
            </ul>
         </article>
@@ -188,9 +187,9 @@ echo  '<li class="nav-item dropdown">';
       </article>
 
       <article class="col-md-5 col-12 text-center" style="margin-top: 26px;">
-        <p><i class="fas fa-envelope"></i> EmpresaNutribento@gmail.com</p>
-        <p><i class="fab fa-facebook-square" style="color: #1877f2;"></i> Nutribento</p>
-        <p><i class="fab fa-instagram" style="color: #e4405f;"></i> Nutribento</p>
+        <p><i class="fas fa-envelope"></i> EmpresaNutriBento@gmail.com</p>
+        <p><i class="fab fa-facebook-square" style="color: #1877f2;"></i> NutriBento</p>
+        <p><i class="fab fa-instagram" style="color: #e4405f;"></i> NutriBento</p>
       </article>
     </article>
   </article>

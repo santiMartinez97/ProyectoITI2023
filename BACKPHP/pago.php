@@ -55,8 +55,8 @@ if ($productos != null) {
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SISVIANSA</title>
-    <link rel="icon" href="img/icono.png" />
+    <title>Pago | NutriBento</title>
+    <link rel="icon" href="../img/icono.png" />
     <link rel="stylesheet" href="../CSS/carrito.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
       integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
@@ -71,7 +71,7 @@ if ($productos != null) {
 
     <nav class="navbar navbar-expand-lg navbar-dark" style="background: rgb(240, 240, 240, 0.9); padding: 0px">
       <nav class="container justify-content-end">
-        <a class="navbar-brand" href="#" style="color: black">
+        <a class="navbar-brand" href="../index.php" style="color: black">
           <img src="../img/icono.png" class="icono1" alt="" /></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
           aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -95,10 +95,10 @@ if(!isset($_SESSION['cliente'])){
    
   echo  '<li class="nav-item dropdown">';
     echo   '<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">';        
-        echo  ' <i class="fa-solid fa-user"></i> Iniciar Sesion </a>';
+        echo  ' <i class="fa-solid fa-user"></i> Iniciar Sesión </a>';
       echo '<ul class="dropdown-menu">';
-        echo   '<li><a class="dropdown-item" href="registro.php">Registrarse</a></li>';
-       echo   '<li><a class="dropdown-item" href="login.php">Iniciar Sesion</a></li>';
+        echo   '<li><a class="dropdown-item" href="../registro.php">Registrarse</a></li>';
+       echo   '<li><a class="dropdown-item" href="../login.php">Iniciar Sesión</a></li>';
        echo  '<li><hr class="dropdown-divider"></li>';
           echo  '</ul>';
           echo  '</li>';
@@ -114,9 +114,9 @@ echo  '<li class="nav-item dropdown">';
         echo  ' <i class="fa-solid fa-user"></i> '.$_SESSION['nombre'].'</a>';
       echo '<ul class="dropdown-menu">';
         echo   '<li><a class="dropdown-item" href="#">Ver Perfil</a></li>';
-       echo   '<li><a class="dropdown-item" href="../BACKPHP/editarPerfilEmpresa.php">Editar perfil</a></li>';
+       echo   '<li><a class="dropdown-item" href="../BACKPHP/editarPerfilEmpresa.php">Editar Perfil</a></li>';
        echo  '<li><hr class="dropdown-divider"></li>';
-          echo '<li><a class="dropdown-item" href="navegabilidad/cerrar_session.php">Cerrar Sesion</a></li>';
+          echo '<li><a class="dropdown-item" href="../navegabilidad/cerrar_session.php">Cerrar Sesión</a></li>';
           echo  '</ul>';
           echo  '</li>';
 
@@ -132,9 +132,9 @@ echo  '<li class="nav-item dropdown">';
             echo  ' <i class="fa-solid fa-user"></i> '.$_SESSION['nombre'].'</a>';
           echo '<ul class="dropdown-menu">';
             echo   '<li><a class="dropdown-item" href="#">Ver Perfil</a></li>';
-          echo   '<li><a class="dropdown-item" href="../BACKPHP/editarPerfil.php">Editar perfil</a></li>';
+          echo   '<li><a class="dropdown-item" href="../BACKPHP/editarPerfil.php">Editar Perfil</a></li>';
           echo  '<li><hr class="dropdown-divider"></li>';
-              echo '<li><a class="dropdown-item" href="navegabilidad/cerrar_session.php">Cerrar Sesion</a></li>';
+              echo '<li><a class="dropdown-item" href="../navegabilidad/cerrar_session.php">Cerrar Sesión</a></li>';
               echo  '</ul>';
               echo  '</li>';
 
@@ -168,7 +168,7 @@ echo  '<li class="nav-item dropdown">';
         <h1 class="titulo">CARRITO</h1>
         <article class="camino">
           <!-- <a class="index" href="../index.php">Inicio /</a>
-        <a class="nosotros" href="../Funcionalidades/catalogo.php">Catalogo</a> -->
+        <a class="nosotros" href="../Funcionalidades/catalogo.php">Catálogo</a> -->
         </article>
       </article>
     </section>
@@ -334,9 +334,9 @@ mp.bricks().create("wallet", "wallet_container", {
       </article>
 
       <article class="col-md-5 col-12 text-center" style="margin-top: 26px;">
-        <p><i class="fas fa-envelope"></i> EmpresaNutribento@gmail.com</p>
-        <p><i class="fab fa-facebook-square" style="color: #1877f2;"></i> Nutribento</p>
-        <p><i class="fab fa-instagram" style="color: #e4405f;"></i> Nutribento</p>
+        <p><i class="fas fa-envelope"></i> EmpresaNutriBento@gmail.com</p>
+        <p><i class="fab fa-facebook-square" style="color: #1877f2;"></i> NutriBento</p>
+        <p><i class="fab fa-instagram" style="color: #e4405f;"></i> NutriBento</p>
       </article>
     </article>
   </article>

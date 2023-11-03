@@ -5,7 +5,7 @@ require '../config/conexion.php';
 if(!isset($_SESSION['informatico'])){
     echo '
     <script>
-       alert("Por favor, debes iniciar sesión");
+       alert("Por favor, debes iniciar sesión.");
        window.location = "../index.php";
     </script>
 
@@ -38,7 +38,7 @@ $resultado = $dieta->fetchAll(PDO::FETCH_ASSOC);
     <header>
         <h1>Informatico</h1>
         <a class="cerrarSesion" href="cerrar_session.php">Cerrar sesión</a>
-        <a href="informatico.php">alta</a>
+        <a href="informatico.php">Alta</a>
     </header>
     
   

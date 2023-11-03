@@ -4,7 +4,7 @@ session_start();
 if(!isset($_SESSION['atencionPublico'])){
     echo '
     <script>
-       alert("Por favor debes iniciar session");
+       alert("Por favor, debes iniciar sesión.");
        window.location = "../index.php";
     </script>
 

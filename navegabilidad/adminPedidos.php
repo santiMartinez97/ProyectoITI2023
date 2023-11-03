@@ -1,4 +1,16 @@
 <?php
+session_start();
+if(!isset($_SESSION['admin'])){
+    echo '
+    <script>
+       alert("Por favor, debes iniciar sesión.");
+       window.location = "../index.php";
+    </script>
+
+    ';
+    session_destroy();
+    die();
+}
 
 require '../Clases/pedido_encarga_menu.php';
 $control = new Pedido_Encarga_Menu();
@@ -19,9 +31,9 @@ $control = new Pedido_Encarga_Menu();
     <header>
         <h1>Administrador</h1>
         <h2>
-        <a class ="nav"href="admin.php">Menu principal</a>
+        <a class ="nav"href="admin.php">Menú principal</a>
         <a class ="nav"href="adminClientes.php">Gestion clientes</a>
-        <a class="nav" href="cerrar_session.php">Cerrar sesion</a>
+        <a class="nav" href="cerrar_session.php">Cerrar Sesión</a>
         </h2>
     </header>
     

@@ -113,7 +113,7 @@ if (isset($_SESSION['nombre'])) {
               </article>
               <article class="col-12 text-center">
                 <button type="submit" class="btn btn-primary" id="enviar">
-                  Resetear contraseña
+                  Enviar
                 </button>
               </article>
             </form>
@@ -139,9 +139,9 @@ if (isset($_SESSION['nombre'])) {
       </article>
 
       <article class="col-md-5 col-12 text-center" style="margin-top: 26px;">
-        <p><i class="fas fa-envelope"></i> EmpresaNutribento@gmail.com</p>
-        <p><i class="fab fa-facebook-square" style="color: #1877f2;"></i> Nutribento</p>
-        <p><i class="fab fa-instagram" style="color: #e4405f;"></i> Nutribento</p>
+        <p><i class="fas fa-envelope"></i> EmpresaNutriBento@gmail.com</p>
+        <p><i class="fab fa-facebook-square" style="color: #1877f2;"></i> NutriBento</p>
+        <p><i class="fab fa-instagram" style="color: #e4405f;"></i> NutriBento</p>
       </article>
     </article>
   </article>

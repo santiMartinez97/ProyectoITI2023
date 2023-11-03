@@ -1,4 +1,17 @@
 <?php
+session_start();
+if(!isset($_SESSION['jefeCocina'])){
+    echo '
+    <script>
+       alert("Por favor, debes iniciar sesión.");
+       window.location = "../index.php";
+    </script>
+
+    ';
+    session_destroy();
+    die();
+}
+
 include_once('../Clases/vianda.php');
 
 ?>
@@ -16,24 +29,25 @@ include_once('../Clases/vianda.php');
     <link rel="stylesheet" type="text/css" href="../CSS/boostrap.css">
 
 </head>
-<body class="fondo">
+<body>
   
     <header>
-        <div class="jefe-section">
-            <h1>Jefe cocina</h1>
-            <a class= "enlace" href="jefeMain.php">Menu principal</a>
-            <a class= "enlace" href="jefeCocina.php">Ver pedidos </a>
-            <a class= "enlace" href="jefeCocinaStock.php">Gestion stock</a>
-            <a class ="enlace" href="cerrar_session.php">Cerrar Sesión</a>
-        </div>
+        <h1>Jefe de cocina</h1>
+        <h2 >
+            <a class= "nav" href="jefeMain.php">Menú principal</a>
+            <a class= "nav" href="jefeCocina.php">Ver pedidos </a>
+            <a class= "nav" href="jefeCocinaStock.php">Gestión stock</a>
+            <a class= "nav" href="cerrar_session.php">Cerrar Sesión</a>
+        </h2>
+    
     </header>
+    <article class="padre">
 
-
-    <div class="container my-3">
-        <div class="row">
-            <div class="col-md-4">
+    <article class="hijo">
+      <article class="container my-3">
   
-  <form class="row g-2" id="FrnINS" enctype="multipart/form-data"  action="../persistencia/altaViandas.php" method="post">
+      <article id="campos"> 
+  <form  class="row no-gutters" id="FrnINS"  action="../persistencia/altaViandas.php" method="post">
 
     <H2 class="titulo">Formulario de comidas</H2>
 
@@ -41,7 +55,7 @@ include_once('../Clases/vianda.php');
     <article class="grupo__input">  
       <input type="text" name="nombre" id="nombre" class="formulario__input form-control" placeholder="Nombre">
     </article>       
-    <p class="grupo_input-error">Ingrese un nombre valido</p>
+    <p class="grupo_input-error">Ingrese un nombre válido</p>
   </article>
 
 
@@ -57,7 +71,7 @@ include_once('../Clases/vianda.php');
     <article class="grupo__input">  
       <input type="number" name="cantidad" id="cantidad" class="formulario__input form-control" placeholder="Cantidad">
     </article>       
-    <p class="grupo_input-error">Ingrese cantidad valida</p>
+    <p class="grupo_input-error">Ingrese cantidad válida</p>
   </article>
 
   <br>
@@ -65,29 +79,30 @@ include_once('../Clases/vianda.php');
   <br>
   <article class="col-6 grupo" id="grupo__descripcion">
     <article class="grupo__input">  
-      <input type="text" name="descripcion" id="descripcion" class="formulario__input form-control" placeholder="Descripcion">
+      <input type="text" name="descripcion" id="descripcion" class="formulario__input form-control" placeholder="Descripción">
     </article>       
-    <p class="grupo_input-error">Ingrese una descpricion valida</p>
+    <p class="grupo_input-error">Ingrese una descprición válida</p>
   </article>
   <br>  <br>
   
   <article  class="col-12 text-center">
     <button id="enviar"class="btn btn-primary" type="submit" >Subir viandas</button> 
-    <p id="botonAlerta" class="grupo_input-error col-6 text-center">Complete correctamente los campos por favor</p>
+    <p id="botonAlerta" class="grupo_input-error col-6 text-center">Complete correctamente los campos por favor.</p>
     <p id="errorRepeticion" class="grupo_input-error col-6 text-center"></p>
     </article>
   </form>
-  </div>
-  
-  <div class="col-md-8">
-    <h2 class="titulo">Lista de Viandas</h2>
-    <?php
-    $vianda = new Vianda($con);
-    $listaVianda = $vianda->listarViandas($con);
-    ?>
-  </div>
-</div>
-</div>
+  </article>
+
+  </article>
+  </article>
+  </article>
+  </article>
+
+        <?php
+          $vianda = new Vianda($con);
+          $listaVianda = $vianda->listarViandas($con);
+         ?>
+
 
 </body>
 <script src="../JS/jquery-3.6.4.min.js"></script>
@@ -95,4 +110,3 @@ include_once('../Clases/vianda.php');
 <script src="../JS/bootstrap.min.js"></script>        
 
 </html>
-

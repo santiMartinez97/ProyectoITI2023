@@ -4,7 +4,7 @@ session_start();
 if(!isset($_SESSION['informatico'])){
     echo '
     <script>
-       alert("Por favor debes iniciar session");
+       alert("Por favor, debes iniciar sesión.");
        window.location = "../index.php";
     </script>
 
@@ -26,16 +26,17 @@ require '../config/conexion.php';
     <link rel="stylesheet" href="../CSS/informatico.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="icon" href="../img/icono.png" />
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> 
 </head>
 <body>
     
     <header>
         <div class="gerente-section">
-            <h1>Informatico</h1>
+            <h1>Informático</h1>
         </div>
         <div class="baja-section">
-        <a class="enlace" href="informaticoBajaM.php">Baja y modificacion</a>   
-        <a class ="enlace" href="cerrar_session.php">Cerrar Session</a>
+        <a class="enlace" href="informaticoBajaM.php">Baja y modificación</a>   
+        <a class ="enlace" href="cerrar_session.php">Cerrar Sesión</a>
         </div>
     </header>
     <section>
@@ -51,7 +52,7 @@ require '../config/conexion.php';
 
             <article id="campos">          
 
-            <form id="formulario" action="regInformatico.php" class="row no-gutters" method="post" onsubmit="return validarInformatico();">
+            <form id="formulario" class="row no-gutters" >
         <article class="col-6 grupo" id="grupo__email">
             <article class="grupo__input">
                 <input type="email" name="email" id="email" class="formulario__input form-control" placeholder="Email">
@@ -79,7 +80,7 @@ require '../config/conexion.php';
 
         <article class="col-12 text-center">
             <button class="btn btn-primary" id="enviar" type="submit">Enviar</button>
-            <p id="botonAlerta" class="grupo_input-error col-11 text-center">Complete correctamente los campos por favor</p>
+            <p id="botonAlerta" class="grupo_input-error col-11 text-center">Complete correctamente los campos por favor.</p>
             <p id="errorRepeticion" class="grupo_input-error col-11 text-center"></p>
         </article>
     </form>
@@ -87,6 +88,7 @@ require '../config/conexion.php';
 </article>
 </article>
 </section>
+
 <script src="../JS/validacionRegistroInf.js"></script> 
 
 </body>

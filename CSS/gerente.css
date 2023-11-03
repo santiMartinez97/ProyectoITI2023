@@ -1,16 +1,24 @@
-body {
-  background-color: rgb(253, 222, 196);
+  .titulo {
+    color: rgb(254, 80, 0);
+    text-align: center;
+    font-size: 37px;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    letter-spacing: -1px;
+    text-overflow: ellipsis;
+    font-family: 'Times New Roman', Times, serif;
+  }
+    
+  .enlace {
+    color: #fff;
+    text-decoration: none;
+    border: 1px solid #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin: 0px 2px;
 }
-  
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: linear-gradient(45deg, #b95a07, #FF6347);
-  color: #fff;
-  padding: 10px 20px;
-}
-
+ 
 table {
   width: 100%;
   border-collapse: collapse;
@@ -22,49 +30,6 @@ table th,table td {
   text-align: left;
   border-bottom: 1px solid #ddd;
 }
-
-.fondo{
-  background-color: rgb(253, 222, 196);
-}
-.gerente-section {
-  display: flex;
-  align-items: center;
-}
-
-.gerente-section h1 {
-  margin-right: 10px;
-}
-
-.gerente-section a.enlace {
-  color: #fff;
-  text-decoration: none;
-  border: 1px solid #fff;
-  padding: 5px 10px;
-  border-radius: 5px;
-}
-
-.baja-section h1 {
-  margin-left: 10px;
-}
-.baja-section a.enlace {
-  color: #fff;
-  text-decoration: none;
-  border: 1px solid #fff;
-  padding: 5px 10px;
-  border-radius: 5px;
-} 
-
-.titulo {
-    color: rgb(254, 80, 0);
-    text-align: center;
-    font-size: 37px;
-    display: inline-block;
-    white-space: nowrap;
-    overflow: hidden;
-    letter-spacing: -1px;
-    text-overflow: ellipsis;
-    font-family: 'Times New Roman', Times, serif;
-  }
 
 .tablaArriba{
   color: orange;
@@ -136,7 +101,46 @@ table th,table td {
     border: 3px solid rgb(254, 80, 0);
     box-shadow: 5px 0px 35px rgb(202, 78, 0);
   }
+  
+  .hijo {
+    max-width: 40em;
+    display: flex;
+    justify-self: left;
+    position: absolute;
+    top: 21rem;
+    transform: translate(0, -50%);
+  }
 
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(45deg, #b95a07, #FF6347);
+    color: #fff;
+    padding: 10px 20px;
+}
+
+.gerente-section {
+    display: flex;
+    align-items: center;
+}
+
+.gerente-section h1 {
+    margin-right: 10px;
+}
+
+.gerente-section a.enlace {
+    color: #fff;
+    text-decoration: none;
+    border: 1px solid #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.baja-section h1 {
+    margin-left: 10px;
+}
+  
   #enviar {
     background-color: rgb(196, 99, 39);
     width: 160px;
@@ -154,6 +158,12 @@ table th,table td {
     width: 180px;
     background-color: rgb(254, 80, 0);
     box-shadow: 1px 1px 9px rgb(0, 0, 0);
+  }
+  
+  .padre {
+    background-color: rgb(253, 222, 196);
+    position: left;
+    height: 100vh;
   }
 
   .mainBaja{
@@ -299,3 +309,97 @@ table th,table td {
   .ver-imagen:hover + .imagen-preview {
     display: block;
   }
+
+  /* PAGINA DE ESTADISTICAS */
+
+  .mainEstadisticas {
+    font-family: Arial, sans-serif;
+    background-color: rgb(253, 222, 196);
+    margin: 0;
+    padding: 0;
+  }
+
+  .estadisticas {
+    display: flex;
+    justify-content: space-around;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 20px;
+}
+
+.estadistica {
+    text-align: center;
+}
+
+.estadistica h2 {
+    font-size: 1.5rem;
+}
+
+.estadistica p {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ff8e04;
+}
+
+.porcentaje {
+  font-size: 1.2rem !important;
+  color: #4caf50 !important;
+}
+
+.estadisticas-tabla {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  margin: 20px;
+}
+
+.estado {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #f2f2f2;
+}
+
+.estado h3 {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.estado p {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #ff8e04;
+  margin: 0; 
+}
+
+.tabla-estadisticas {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tabla-estadisticas, .tabla-estadisticas th, .tabla-estadisticas td {
+  border: 1px solid #ccc;
+}
+
+.tabla-estadisticas th, .tabla-estadisticas td {
+  padding: 10px;
+  text-align: center;
+  width: 50%;
+}
+
+.tabla-estadisticas th {
+  background-color: #f2f2f2;
+}
+
+.tabla-menu th, .tabla-menu td {
+  width: 33.3%;
+}
+
+.tabla-menu-fecha th, .tabla-menu-fecha td {
+  width: 25%;
+}

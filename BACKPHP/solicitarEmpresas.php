@@ -39,7 +39,7 @@ foreach($listaClientes as $cliente){
         <td>'.$dieta.'</td>';
         if($cliente->getHabilitacion() === "No habilitado"){
             $codigoCliente .= '<td>'.$cliente->getHabilitacion().'</td>
-            <td><button class="botonAceptar habilitar-btn" data-client-id="'.$cliente->getID().'">Solicitar habilitacion</button></td>';
+            <td><button class="botonAceptar habilitar-btn" data-client-id="'.$cliente->getID().'">Solicitar habilitación</button></td>';
             
         }
     $codigoHtml[] = $codigoCliente;

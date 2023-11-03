@@ -4,7 +4,7 @@ session_start();
 if(!isset($_SESSION['gerente'])){
     echo '
     <script>
-       alert("Por favor debes iniciar session");
+       alert("Por favor, debes iniciar sesión.");
        window.location = "../index.php";
     </script>
 
@@ -32,22 +32,24 @@ require_once '../Clases/vianda.php';
         <div class="gerente-section">
             <h1>Gerente</h1>
             <a class="enlace" href="gerenteBajaModi.php">Baja y modificación de menú</a>
-            <a class="enlace" href="gerenteViandas.php">Armar menus</a>
+            <a class="enlace" href="gerenteEstadisticas.php">Estadísticas</a>
         </div>
         <div class="baja-section">
           <a class ="enlace" href="cerrar_session.php">Cerrar Sesión</a>
         </div>
     </header>
   
-  <div class="container my-3 fondo">
-    <div class="row">
-      <div class="col-md-6">
-  <form  class="row no-gutters" id="FrnINS"  enctype="multipart/form-data" action="../persistencia/altaMenu.php" method="post">
+  <article class="padre">
+    <article class="hijo">
+      <article class="container my-3">
+  
+      <article id="campos">
+        <form  class="row no-gutters" id="FrnINS"  enctype="multipart/form-data" action="../persistencia/altaMenu.php" method="post">
 
   <H2 class="titulo">Formulario de menú</H2>
   
   <article class="col-6 grupo">
-  <select id="periodicidad" class="formulario__input form-select gray-text" name="periodicidad" required>
+  <select id="periodicidad" class="formulario__input form-select gray-text" name="periodicidad">
     <option value="0" disabled selected>Ingrese periodicidad</option>
     <option value="semanal">Semanal</option>
     <option value="quincenal">Quincenal</option>
@@ -70,7 +72,7 @@ require_once '../Clases/vianda.php';
   </article>
  
   <article class="col-6 grupo">
-  <select id="habilitacion" class="formulario__input form-select gray-text" name="habilitacion" required>
+  <select id="habilitacion" class="formulario__input form-select gray-text" name="habilitacion">
     <option value="0" disabled selected>Habilite o deshabilite</option>
     <option value="Habilitado">Habilitado</option>
     <option value="No habilitado">No habilitado</option>
@@ -123,8 +125,8 @@ require_once '../Clases/vianda.php';
 
   <article class="col-6 grupo" id="grupo__viandas">
   <article class="grupo__input">
-    <select id="viandas" name="viandas" class="formulario__input form-select gray-text" aria-label="Agregar viandas a menu" multiple required>
-      <option value="">Seleccione viandas</option>
+    <select id="viandas" name="viandas" class="formulario__input form-select gray-text" aria-label="Agregar viandas a menu" multiple>
+      <option value="">Selecciona un nombre</option>
       <?php
       $viandasListado = new Vianda($con);
       $viandasListado->listadoDistintivo($con);
@@ -155,9 +157,9 @@ require_once '../Clases/vianda.php';
     </article>
   </form>
 
-</div>
-</div>
-</div>
+</article>
+</article>
+</article>
 
 
 </body>
@@ -165,6 +167,7 @@ require_once '../Clases/vianda.php';
 <script src="../JS/jquery-3.6.4.min.js"></script>
 <script src="../JS/mostrarDietasGerente.js"></script>
 <script src="../JS/validacionMenu.js"></script>
+<script src="../JS/verViandas.js"></script>
 
 
 </html>

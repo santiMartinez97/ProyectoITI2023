@@ -6,7 +6,6 @@ var errorRepeticion = document.getElementById("errorRepeticion");
 const expresionesRegulares = {
   email : /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
   empresa : /^[a-zA-ZÀ-ÿ\s]{2,40}$/, // Letras y espacios con acentos.
-  rut : /^.{12}$/, 
   emai : /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/, //valida email
   telefono : /^2\d{7}$/, // 9 numeros.
   calle : /^[a-zA-ZÀ-ÿ\s]{2,30}$/, //\d{2}
@@ -18,7 +17,6 @@ const expresionesRegulares = {
 const validacionCampos = {
   email : false,
   empresa : false,
-  rut : false,
   telefono : false, 
   calle : false,
   numero : false,
@@ -28,9 +26,6 @@ const validacionCampos = {
 
 const validarFormulario = (e) => {
   switch (e.target.name) {
-    case "rut":
-      validarCampos(expresionesRegulares.rut, e.target, 'rut');
-    break;
     case "empresa":
       validarCampos(expresionesRegulares.empresa, e.target, 'empresa');
     break;
@@ -90,7 +85,7 @@ function validarCamposIniciales() {
 formulario.addEventListener('submit', (e) => {
   e.preventDefault(); 
 
-  if (validacionCampos.rut && validacionCampos.empresa && validacionCampos.email && validacionCampos.telefono &&  
+  if (validacionCampos.empresa && validacionCampos.email && validacionCampos.telefono &&  
       validacionCampos.calle && validacionCampos.numero && validacionCampos.esquina && validacionCampos.barrio) {
 
     var datos = new FormData(formulario); 

@@ -10,8 +10,7 @@ $con = $db->conectar();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $menuID = $_POST['menuID'];
 
-    $menuManager = new Menu($con);
-    $exito = $menuManager->eliminarMenu($menuID);
+    $exito = Menu::eliminarMenu($con, $menuID);
 
     if ($exito) {
         echo 'success';

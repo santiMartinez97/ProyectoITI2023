@@ -61,7 +61,7 @@ $idCliente = $_SESSION['id'];
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 
     <link rel="stylesheet" href="../CSS/design2.css">
-    <title>Registro | NutriBento</title>
+    <title>Editar Perfil | NutriBento</title>
     <link rel="icon" href="img/icono.png" />
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> 
     <link
@@ -106,10 +106,10 @@ if(!isset($_SESSION['cliente'])){
    
   echo  '<li class="nav-item dropdown">';
     echo   '<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">';        
-        echo  ' <i class="fa-solid fa-user"></i> Iniciar Sesion </a>';
+        echo  ' <i class="fa-solid fa-user"></i> Iniciar Sesión </a>';
       echo '<ul class="dropdown-menu">';
         echo   '<li><a class="dropdown-item" href="../registro.php">Registrarse</a></li>';
-       echo   '<li><a class="dropdown-item" href="../login.php">Iniciar Sesion</a></li>';
+       echo   '<li><a class="dropdown-item" href="../login.php">Iniciar Sesión</a></li>';
        echo  '<li><hr class="dropdown-divider"></li>';
           echo  '</ul>';
           echo  '</li>';
@@ -125,9 +125,9 @@ echo  '<li class="nav-item dropdown">';
         echo  ' <i class="fa-solid fa-user"></i> '.$_SESSION['nombre'].'</a>';
       echo '<ul class="dropdown-menu">';
         echo   '<li><a class="dropdown-item" href="#">Ver Perfil</a></li>';
-       echo   '<li><a class="dropdown-item" href="../BACKPHP/editarPerfilEmpresa.php">Editar perfil</a></li>';
+       echo   '<li><a class="dropdown-item" href="../BACKPHP/editarPerfilEmpresa.php">Editar Perfil</a></li>';
        echo  '<li><hr class="dropdown-divider"></li>';
-          echo '<li><a class="dropdown-item" href="../navegabilidad/cerrar_session.php">Cerrar Sesion</a></li>';
+          echo '<li><a class="dropdown-item" href="../navegabilidad/cerrar_session.php">Cerrar Sesión</a></li>';
           echo  '</ul>';
           echo  '</li>';
 
@@ -143,9 +143,9 @@ echo  '<li class="nav-item dropdown">';
             echo  ' <i class="fa-solid fa-user"></i> '.$_SESSION['nombre'].'</a>';
           echo '<ul class="dropdown-menu">';
             echo   '<li><a class="dropdown-item" href="#">Ver Perfil</a></li>';
-          echo   '<li><a class="dropdown-item" href="../BACKPHP/editarPerfil.php">Editar perfil</a></li>';
+          echo   '<li><a class="dropdown-item" href="../BACKPHP/editarPerfil.php">Editar Perfil</a></li>';
           echo  '<li><hr class="dropdown-divider"></li>';
-              echo '<li><a class="dropdown-item" href="../navegabilidad/cerrar_session.php">Cerrar Sesion</a></li>';
+              echo '<li><a class="dropdown-item" href="../navegabilidad/cerrar_session.php">Cerrar Sesión</a></li>';
               echo  '</ul>';
               echo  '</li>';
 
@@ -186,7 +186,7 @@ echo  '<li class="nav-item dropdown">';
     <article class="inicio text-center">
   <h3 class="d-flex align-items-center  custom-font">&nbsp;
     <!-- SI HAY TIEMPO SE PUEDE PONER UNA FOTO QUE EL USUARIO QUIERA -->
-    <i class="fa-solid fa-user mr-2"></i>&nbsp;&nbsp;Editar perfil 
+    <i class="fa-solid fa-user mr-2"></i>&nbsp;&nbsp;Editar Perfil 
   </h3>
   <article class="col-12 text-center">
     <!-- Contenido adicional aquí -->
@@ -206,7 +206,7 @@ echo  '<li class="nav-item dropdown">';
                 <article class="grupo__input">  
                  <input type="text" name="nombre" id="nombre" class="formulario__input form-control"  value="<?php echo $usuario->getNombre(); ?>"  placeholder="Nombre">
                 </article>       
-                 <p class="grupo_input-error">Ingrese un nombre valido </p>
+                 <p class="grupo_input-error">Ingrese un nombre válido </p>
               </article>
                 
                  <!-- Grupo apellido -->
@@ -215,7 +215,7 @@ echo  '<li class="nav-item dropdown">';
                  <article class="grupo__input">
                   <input type="text" name="apellido" id="apellido" class="formulario__input form-control"  value="<?php echo  $usuario->getApellido(); ?>" placeholder="Apellido">
                  </article>   
-                 <p class="grupo_input-error">Ingrese un apellido valido</p>
+                 <p class="grupo_input-error">Ingrese un apellido válido</p>
                 </article> 
                 
             
@@ -227,7 +227,7 @@ echo  '<li class="nav-item dropdown">';
                     <article class="grupo__input">
                     <input type="email" name="email" id="email" class="formulario__input form-control"  value="<?php echo $usuario->getEmail(); ?>" placeholder="Email">
                     </article> 
-                      <p class="grupo_input-error">Ingrese un email valido</p>
+                      <p class="grupo_input-error">Ingrese un email válido</p>
                 </article>
                 
                  <!-- Grupo telefono -->
@@ -251,7 +251,7 @@ echo  '<li class="nav-item dropdown">';
                     <article class="grupo__input">
                     <input type="text" name="calle" id="calle" class="formulario__input form-control" placeholder="Calle"  value="<?php echo $calle; ?>">
                     </article>
-                      <p class="grupo_input-error">Ingrese una calle valida</p>
+                      <p class="grupo_input-error">Ingrese una calle válida</p>
                 </article>
                 
                  <!-- Grupo numero -->
@@ -269,7 +269,7 @@ echo  '<li class="nav-item dropdown">';
                     <article id="grupo__input">
                     <input type="text" name="esquina" id="esquina" class="formulario__input form-control" placeholder="Esquina" value="<?php echo $esquina; ?>">
                     </article>
-                      <p class="grupo_input-error">Ingrese una esquina valida</p>        
+                      <p class="grupo_input-error">Ingrese una esquina válida</p>        
                 </article>
                 
                  <!-- Grupo barrio -->
@@ -278,14 +278,14 @@ echo  '<li class="nav-item dropdown">';
                     <article  class="grupo__input">
                       <input type="text" name="barrio" id="barrio" class="formulario__input form-control" placeholder="Barrio" value="<?php echo $barrio; ?>"> 
                     </article> 
-                      <p class="grupo_input-error">Ingrese un barrio valido</p>
+                      <p class="grupo_input-error">Ingrese un barrio válido</p>
                 </article>
          
                 <article class="col-12 text-center" >
                   
                   <button class="btn btn-primary "  id="enviar"  type="submit" >Actualizar</button> 
                 
-                  <p id="botonAlerta" class="grupo_input-error col-11 text-center">Complete correctamente los campos por favor</p>
+                  <p id="botonAlerta" class="grupo_input-error col-11 text-center">Complete correctamente los campos por favor.</p>
                   <p id="errorRepeticion" class="grupo_input-error col-11 text-center"></p>
                   <br><br>
                 </article>       
