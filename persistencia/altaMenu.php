@@ -15,9 +15,10 @@ $con = $db->conectar();
     $stockMaximo= $_POST["stockMaximo"];
     $descripcion= $_POST["descripcion"];
     $dieta= $_POST["dieta"];
-    $viandasSeleccionadas = $_POST["viandas"];
-    
-    $viandasConcatenadas = implode("  ", $viandasSeleccionadas);
+    $viandas=$_POST["viandas"];
+
+    $descripcion .= " . $viandas . ";
+    // Verifica si se ha enviado un archivo y si no hay errores
     if (isset($_FILES["imagen"]) && $_FILES["imagen"]["error"] == 0) {
         $nombre_original = $_FILES["imagen"]["name"];
         $nombre_temporal = $_FILES["imagen"]["tmp_name"];
@@ -41,26 +42,34 @@ $con = $db->conectar();
     }else{
         $imagen = 'noimg.jpg';
     }
-       $con->beginTransaction();
+    $con->beginTransaction();
 
-       $sql1 = "INSERT INTO `menu` (`ID`, `Periodicidad`, `Nombre`, `Habilitacion`, `Precio`, `Descuento`, `Stock`, `StockMinimo`, `StockMaximo`, `Descripcion`, `Imagen`) 
-VALUES (NULL, '$periodicidadSeleccionada', '$nombreMenu', '$habilitacionSeleccionada', '$precio', '$descuento', '$stock', '$stockMinimo', '$stockMaximo', '$viandasConcatenadas', '$imagen')";
-
-       
-       $result1 = $con->prepare($sql1);
-       
-       if ($result1->execute()) {
-
-           $idMenuGenerado = $con->lastInsertId();
-           $sql2 = "INSERT INTO `menu_sigue_dieta` (`IDDieta`, `IDMenu`) VALUES ('$dieta', '$idMenuGenerado')";
-           $result2 = $con->prepare($sql2);
+    $sql1 = "INSERT INTO `menu` (`ID`, `Periodicidad`, `Nombre`, `Habilitacion`, `Precio`, `Descuento`, `Stock`, `StockMinimo`, `StockMaximo`, `Descripcion`, `Imagen`) 
+    VALUES (NULL, :periodicidad, :nombreMenu, :habilitacion, :precio, :descuento, :stock, :stockMinimo, :stockMaximo, :descripcion, :imagen)";
     
-           if ($result2->execute()) {
-               
-               $con->commit();
-               echo "Se ejecutaron correctamente.";
-           } 
+    $result1 = $con->prepare($sql1);
+    $result1->bindParam(':periodicidad', $periodicidadSeleccionada);
+    $result1->bindParam(':nombreMenu', $nombreMenu);
+    $result1->bindParam(':habilitacion', $habilitacionSeleccionada);
+    $result1->bindParam(':precio', $precio);
+    $result1->bindParam(':descuento', $descuento);
+    $result1->bindParam(':stock', $stock);
+    $result1->bindParam(':stockMinimo', $stockMinimo);
+    $result1->bindParam(':stockMaximo', $stockMaximo);
+    $result1->bindParam(':descripcion', $descripcion);
+    $result1->bindParam(':imagen', $imagen);
+    
+    if ($result1->execute()) {
+        $idMenuGenerado = $con->lastInsertId();
+    
+        $sql2 = "INSERT INTO `menu_sigue_dieta` (`IDDieta`, `IDMenu`) VALUES (:dieta, :idMenuGenerado)";
+        $result2 = $con->prepare($sql2);
+        $result2->bindParam(':dieta', $dieta);
+        $result2->bindParam(':idMenuGenerado', $idMenuGenerado);
+    
+        if ($result2->execute()) {
+            $con->commit();
         }
-
+    }
     
 ?>

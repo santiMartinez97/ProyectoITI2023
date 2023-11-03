@@ -1,5 +1,8 @@
 <?php
-class Menu {
+require '../config/conexion.php';
+$db = new DataBase();
+$con = $db->conectar();
+class Menu_contiene_vianda {
     private $con;
     protected $IDMenu;
     private $IDVianda;
@@ -25,5 +28,6 @@ class Menu {
     public function setIDVianda($IDVianda) {
         $this->IDVianda = $IDVianda;
     }
+
 }
 ?>

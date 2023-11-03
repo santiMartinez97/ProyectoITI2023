@@ -5,6 +5,54 @@ const inputs = document.querySelectorAll('#FrnINS input');
 var botonId = document.getElementById("botonAlerta");
 var errorRepeticion = document.getElementById("errorRepeticion");
 
+document.addEventListener('DOMContentLoaded', function () {
+  const selectViandas = document.getElementById('viandas');
+  const agregarViandaButton = document.getElementById('agregarVianda');
+  const quitarViandaButton = document.getElementById('quitarVianda');
+  const viandasSeleccionadas = document.getElementById('viandasSeleccionadas');
+  const enviarViandasButton = document.getElementById('enviar');
+
+  let viandas = ''; // Inicialmente, la cadena está vacía
+
+  agregarViandaButton.addEventListener('click', function () {
+      const selectedOption = selectViandas.options[selectViandas.selectedIndex];
+      if (selectedOption && selectedOption.value !== '') {
+          if (viandas.length > 0) {
+              viandas += ', '; // Agregar una coma si ya hay viandas
+          }
+          viandas += selectedOption.value;
+          updateViandasSeleccionadas();
+      }
+  });
+
+  quitarViandaButton.addEventListener('click', function () {
+      if (viandas.length > 0) {
+          // Separa la última vianda si hay más de una
+          const viandasArray = viandas.split(', ');
+          if (viandasArray.length > 1) {
+              viandasArray.pop();
+              viandas = viandasArray.join(', ');
+          } else {
+              viandas = ''; // Si solo hay una vianda, borrarla
+          }
+          updateViandasSeleccionadas();
+      }
+  });
+
+  enviarViandasButton.addEventListener('click', function () {
+      const viandasInput = document.createElement('input');
+      viandasInput.type = 'hidden';
+      viandasInput.name = 'viandas';
+      viandasInput.value = viandas;
+      const form = document.getElementById('FrnINS');
+      form.appendChild(viandasInput);
+  });
+
+  function updateViandasSeleccionadas() {
+      viandasSeleccionadas.textContent = viandas;
+  }
+});
+
 const expresionesRegulares = {
   menu : /^[a-zA-Z0-9áéíóúÁÉÍÓÚüÜ\s,.\s]{2,30}$/, // Letras y espacios con acentos.
   precio : /^\d{2,6}$/, // digitos
@@ -12,7 +60,7 @@ const expresionesRegulares = {
   stock : /^\d{1,4}$/, // digitos
   stockMinimo : /^\d{1,4}$/, // digitos.
   stockMaximo : /^\d{1,4}$/, // digitos.
-  descripcion : /^[a-zA-Z0-9áéíóúÁÉÍÓÚüÜ\s,.\s]{2,500}$/, //\d{2}
+  descripcion : /^[a-zA-Z0-9áéíóúÁÉÍÓÚüÜ\s,:.\s]{2,500}$/, //\d{2}
 }
 
 const validacionCampos = {

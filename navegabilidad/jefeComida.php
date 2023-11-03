@@ -16,25 +16,24 @@ include_once('../Clases/vianda.php');
     <link rel="stylesheet" type="text/css" href="../CSS/boostrap.css">
 
 </head>
-<body>
+<body class="fondo">
   
     <header>
-        <h1>Jefe de cocina</h1>
-        <h2 >
-            <a class= "nav" href="jefeMain.php">Menu principal</a>
-            <a class= "nav" href="jefeCocina.php">Ver pedidos </a>
-            <a class= "nav" href="jefeCocinaStock.php">Gestion stock</a>
-            <a class= "nav" href="cerrar_session.php">Cerrar sesion</a>
-        </h2>
-    
+        <div class="jefe-section">
+            <h1>Jefe cocina</h1>
+            <a class= "enlace" href="jefeMain.php">Menu principal</a>
+            <a class= "enlace" href="jefeCocina.php">Ver pedidos </a>
+            <a class= "enlace" href="jefeCocinaStock.php">Gestion stock</a>
+            <a class ="enlace" href="cerrar_session.php">Cerrar Sesión</a>
+        </div>
     </header>
-    <article class="padre">
 
-    <article class="hijo">
-      <article class="container my-3">
+
+    <div class="container my-3">
+        <div class="row">
+            <div class="col-md-4">
   
-      <article id="campos"> 
-  <form  class="row no-gutters" id="FrnINS"  action="../persistencia/altaViandas.php" method="post">
+  <form class="row g-2" id="FrnINS" enctype="multipart/form-data"  action="../persistencia/altaViandas.php" method="post">
 
     <H2 class="titulo">Formulario de comidas</H2>
 
@@ -78,18 +77,17 @@ include_once('../Clases/vianda.php');
     <p id="errorRepeticion" class="grupo_input-error col-6 text-center"></p>
     </article>
   </form>
-  </article>
-
-  </article>
-  </article>
-  </article>
-  </article>
-
-        <?php
-          $vianda = new Vianda($con);
-          $listaVianda = $vianda->listarViandas($con);
-         ?>
-
+  </div>
+  
+  <div class="col-md-8">
+    <h2 class="titulo">Lista de Viandas</h2>
+    <?php
+    $vianda = new Vianda($con);
+    $listaVianda = $vianda->listarViandas($con);
+    ?>
+  </div>
+</div>
+</div>
 
 </body>
 <script src="../JS/jquery-3.6.4.min.js"></script>
@@ -97,3 +95,4 @@ include_once('../Clases/vianda.php');
 <script src="../JS/bootstrap.min.js"></script>        
 
 </html>
+

@@ -114,7 +114,7 @@ class Vianda {
             }
         }
     
-        $viandas = $pdo->prepare("SELECT via.ID, via.Nombre, via.VidaUtil, est.Estado, est.Fecha FROM vianda AS via INNER JOIN estado_vianda AS est ON via.ID = est.IDVianda WHERE est.Estado != 'Desechado'");
+        $viandas = $pdo->prepare("SELECT via.ID, via.Nombre, via.VidaUtil, est.Estado, est.Fecha FROM vianda AS via INNER JOIN estado_vianda AS est ON via.ID = est.IDVianda WHERE est.Estado = 'Envasado'");
         $viandas->execute();
         $resultado = $viandas->fetchAll(PDO::FETCH_ASSOC);
     
@@ -164,6 +164,20 @@ class Vianda {
         echo '</div>';
     }
 
+    // Función para cambiar el estado de la Vianda
+    public function cambiarEstado($pdo) {
+        listarViandas();
+        date_default_timezone_set('America/Montevideo');
+        $fecha = date("Y-m-d H:i:s");
+
+        $sql = "UPDATE estado_vianda SET Estado = :nuevoEstado, Fecha = :fechaCambio WHERE ID = :IDVianda";
+        $stmt = $this->con->prepare($sql);
+        $stmt->bindParam(':nuevoEstado', $nuevoEstado, PDO::PARAM_STR);
+        $stmt->bindParam(':fechaCambio', $fecha, PDO::PARAM_STR);
+        $stmt->bindParam(':IDPedido', $IDPedido, PDO::PARAM_INT);
+        $stmt->execute();
+    }
+
     public function listadoDistintivo($pdo){
         $viandas = $pdo->prepare("SELECT DISTINCT Nombre FROM vianda");
         $viandas->execute();
@@ -174,16 +188,6 @@ class Vianda {
             echo '<option value="'.$nombreVianda.'">' . $nombreVianda . '</option>';
           }
     }
-    // Función para cambiar el estado de la Vianda
-    public function cambiarEstado($nuevoEstado) {
-        // Obtener la fecha actual
-        $fechaActual = date('Y-m-d H:i:s');
-
-        // Crear un nuevo registro de EstadoVianda
-        $estadoVianda = new EstadoVianda($this->pdo, $this->getID(), $nuevoEstado, $fechaActual);
-        $estadoVianda->guardar();
-    }
-
     // Función para obtener el estado actual de la Vianda
     public function obtenerEstadoActual() {
         $estadoVianda = EstadoVianda::buscarEstadoActual($this->pdo, $this->getID());

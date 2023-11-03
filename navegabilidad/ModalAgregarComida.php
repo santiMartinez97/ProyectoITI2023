@@ -17,7 +17,7 @@ $resultado2 = $menu->fetchAll(PDO::FETCH_ASSOC);
         </button>
       </div>
 
-      <form enctype="multipart/form-data" method="POST" action="../Clases/menu_contiene_vianda.php">
+      <form enctype="multipart/form-data" method="POST">
         <input type="hidden" name="id" value="<?php echo $row['ID']; ?>">
         <div class="modal-body" id="cont_modal">
           <div class="row">
@@ -39,7 +39,7 @@ $resultado2 = $menu->fetchAll(PDO::FETCH_ASSOC);
                   foreach ($resultado2 as $menu) {
                     $nombreMenu = $menu['Nombre'];
                     $idMenu = $menu['ID'];
-                    echo '<option value="' . $idMenu . '">' . $nombreMenu . '</option>';
+                    echo '<option value="' . $idMenu . '">' . $idMenu. '-' .$nombreMenu . '</option>';
                   }
                   ?>
                 </select>
@@ -49,9 +49,25 @@ $resultado2 = $menu->fetchAll(PDO::FETCH_ASSOC);
 
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-            <button type="submit" class="btn btn-primary submit-button">Agregar menu</button>
+            <button type="submit" name="agregarVianda" class="btn btn-primary submit-button">Agregar menu</button>
             <p class="botonAlerta grupo_input-error col-6 text-center">Complete correctamente los campos por favor.</p>
           </div>
+          <?php
+            if (isset($_POST['agregarVianda'])) {
+              $IDVianda = $_POST['id']; 
+              $IDMenu = $_POST['menu_id']; 
+              if (!empty($IDVianda) && !empty($IDMenu)) {
+                  $insert_query = $pdo->prepare("INSERT INTO menu_contiene_vianda (IDVianda, IDMenu) VALUES (?, ?)");
+                  $insert_query->execute([$IDVianda, $IDMenu]);
+                  
+                  date_default_timezone_set('America/Montevideo');
+                  $fecha = date("Y-m-d H:i:s");
+                  
+                  $update_query = $pdo->prepare("UPDATE estado_vianda SET Estado = 'En stock', Fecha = ? WHERE IDVianda = ?");
+                  $update_query->execute([$fecha, $IDVianda]);
+              }
+          }
+          ?>
         </div>
       </form>
     </div>

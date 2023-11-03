@@ -1,23 +1,16 @@
-  .titulo {
-    color: rgb(254, 80, 0);
-    text-align: center;
-    font-size: 37px;
-    display: inline-block;
-    white-space: nowrap;
-    overflow: hidden;
-    letter-spacing: -1px;
-    text-overflow: ellipsis;
-    font-family: 'Times New Roman', Times, serif;
-  }
-    
-  .enlace {
-    color: #fff;
-    text-decoration: none;
-    border: 1px solid #fff;
-    padding: 5px 10px;
-    border-radius: 5px;
+body {
+  background-color: rgb(253, 222, 196);
 }
- 
+  
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(45deg, #b95a07, #FF6347);
+  color: #fff;
+  padding: 10px 20px;
+}
+
 table {
   width: 100%;
   border-collapse: collapse;
@@ -29,6 +22,49 @@ table th,table td {
   text-align: left;
   border-bottom: 1px solid #ddd;
 }
+
+.fondo{
+  background-color: rgb(253, 222, 196);
+}
+.gerente-section {
+  display: flex;
+  align-items: center;
+}
+
+.gerente-section h1 {
+  margin-right: 10px;
+}
+
+.gerente-section a.enlace {
+  color: #fff;
+  text-decoration: none;
+  border: 1px solid #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.baja-section h1 {
+  margin-left: 10px;
+}
+.baja-section a.enlace {
+  color: #fff;
+  text-decoration: none;
+  border: 1px solid #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+} 
+
+.titulo {
+    color: rgb(254, 80, 0);
+    text-align: center;
+    font-size: 37px;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    letter-spacing: -1px;
+    text-overflow: ellipsis;
+    font-family: 'Times New Roman', Times, serif;
+  }
 
 .tablaArriba{
   color: orange;
@@ -100,46 +136,7 @@ table th,table td {
     border: 3px solid rgb(254, 80, 0);
     box-shadow: 5px 0px 35px rgb(202, 78, 0);
   }
-  
-  .hijo {
-    max-width: 40em;
-    display: flex;
-    justify-self: left;
-    position: absolute;
-    top: 21rem;
-    transform: translate(0, -50%);
-  }
 
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: linear-gradient(45deg, #b95a07, #FF6347);
-    color: #fff;
-    padding: 10px 20px;
-}
-
-.gerente-section {
-    display: flex;
-    align-items: center;
-}
-
-.gerente-section h1 {
-    margin-right: 10px;
-}
-
-.gerente-section a.enlace {
-    color: #fff;
-    text-decoration: none;
-    border: 1px solid #fff;
-    padding: 5px 10px;
-    border-radius: 5px;
-}
-
-.baja-section h1 {
-    margin-left: 10px;
-}
-  
   #enviar {
     background-color: rgb(196, 99, 39);
     width: 160px;
@@ -157,12 +154,6 @@ header {
     width: 180px;
     background-color: rgb(254, 80, 0);
     box-shadow: 1px 1px 9px rgb(0, 0, 0);
-  }
-  
-  .padre {
-    background-color: rgb(253, 222, 196);
-    position: left;
-    height: 100vh;
   }
 
   .mainBaja{
