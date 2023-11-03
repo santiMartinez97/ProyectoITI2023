@@ -16,6 +16,7 @@
     border: 1px solid #fff;
     padding: 5px 10px;
     border-radius: 5px;
+    margin: 0px 2px;
 }
  
 table {
@@ -308,3 +309,97 @@ header {
   .ver-imagen:hover + .imagen-preview {
     display: block;
   }
+
+  /* PAGINA DE ESTADISTICAS */
+
+  .mainEstadisticas {
+    font-family: Arial, sans-serif;
+    background-color: rgb(253, 222, 196);
+    margin: 0;
+    padding: 0;
+  }
+
+  .estadisticas {
+    display: flex;
+    justify-content: space-around;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 20px;
+}
+
+.estadistica {
+    text-align: center;
+}
+
+.estadistica h2 {
+    font-size: 1.5rem;
+}
+
+.estadistica p {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ff8e04;
+}
+
+.porcentaje {
+  font-size: 1.2rem !important;
+  color: #4caf50 !important;
+}
+
+.estadisticas-tabla {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  margin: 20px;
+}
+
+.estado {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #f2f2f2;
+}
+
+.estado h3 {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.estado p {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #ff8e04;
+  margin: 0; 
+}
+
+.tabla-estadisticas {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tabla-estadisticas, .tabla-estadisticas th, .tabla-estadisticas td {
+  border: 1px solid #ccc;
+}
+
+.tabla-estadisticas th, .tabla-estadisticas td {
+  padding: 10px;
+  text-align: center;
+  width: 50%;
+}
+
+.tabla-estadisticas th {
+  background-color: #f2f2f2;
+}
+
+.tabla-menu th, .tabla-menu td {
+  width: 33.3%;
+}
+
+.tabla-menu-fecha th, .tabla-menu-fecha td {
+  width: 25%;
+}

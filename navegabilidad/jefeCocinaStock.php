@@ -1,5 +1,16 @@
 <?php
+session_start();
+if(!isset($_SESSION['jefeCocina'])){
+    echo '
+    <script>
+       alert("Por favor, debes iniciar sesión.");
+       window.location = "../index.php";
+    </script>
 
+    ';
+    session_destroy();
+    die();
+}
 include_once '../Clases/listadostock.php';
 $stock = new Stock();
 ?>

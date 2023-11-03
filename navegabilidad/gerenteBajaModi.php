@@ -1,5 +1,17 @@
 <?php
+// PROTEGER LA PAGINA SIN ANTES INICIAR SESSION//
+session_start();
+if(!isset($_SESSION['gerente'])){
+    echo '
+    <script>
+       alert("Por favor, debes iniciar sesión.");
+       window.location = "../index.php";
+    </script>
 
+    ';
+    session_destroy();
+    die();
+}
 require '../config/conexion.php';
 
 $db = new DataBase();
@@ -27,8 +39,9 @@ $menu_array=[];
 
     <header>
         <div class="gerente-section">
-            <h1>Control de Menu</h1>
+            <h1>Control de Menú</h1>
             <a class="enlace" href="gerente.php">Alta de menú</a>
+            <a class="enlace" href="gerenteEstadisticas.php">Estadísticas</a>
         </div>
         <div class="baja-section">
           <a class ="enlace" href="cerrar_session.php">Cerrar Sesión</a>

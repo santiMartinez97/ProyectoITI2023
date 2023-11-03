@@ -1,5 +1,17 @@
 <?php
+// PROTEGER LA PAGINA SIN ANTES INICIAR SESSION//
+session_start();
+if(!isset($_SESSION['atencionPublico'])){
+    echo '
+    <script>
+       alert("Por favor, debes iniciar sesión.");
+       window.location = "../index.php";
+    </script>
 
+    ';
+    session_destroy();
+    die();
+}
 include_once '../clases/pedido_encarga_menu.php';
 $menus = new Pedido_Encarga_Menu();
 ?>

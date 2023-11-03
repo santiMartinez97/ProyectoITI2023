@@ -4,7 +4,7 @@ session_start();
 if(!isset($_SESSION['gerente'])){
     echo '
     <script>
-       alert("Por favor debes iniciar session");
+       alert("Por favor, debes iniciar sesión.");
        window.location = "../index.php";
     </script>
 
@@ -32,6 +32,7 @@ require_once '../Clases/vianda.php';
         <div class="gerente-section">
             <h1>Gerente</h1>
             <a class="enlace" href="gerenteBajaModi.php">Baja y modificación de menú</a>
+            <a class="enlace" href="gerenteEstadisticas.php">Estadísticas</a>
         </div>
         <div class="baja-section">
           <a class ="enlace" href="cerrar_session.php">Cerrar Sesión</a>

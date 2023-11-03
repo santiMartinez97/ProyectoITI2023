@@ -17,7 +17,7 @@ $(document).on('click', '.botonDesechar', function() {
                     // Elimina la fila correspondiente de la tabla
                     button.closest('tr').remove();
                 } else {
-                    alert('Error al eliminar el cliente.');
+                    alert('Error al eliminar el menú.');
                 }
             },error: function(e){
                 console.log(e);

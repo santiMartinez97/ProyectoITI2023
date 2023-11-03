@@ -1,8 +1,20 @@
 <?php
-// PROTEGER LA PAGINA SIN ANTES INICIAR SESSION//
 require '../config/config.php';
 require '../config/conexion.php';
 include_once '../Clases/clientecomun.php';
+
+// PROTEGER LA PAGINA SIN ANTES INICIAR SESSION//
+if(!isset($_SESSION['atencionPublico'])){
+    echo '
+    <script>
+       alert("Por favor, debes iniciar sesión.");
+       window.location = "../index.php";
+    </script>
+
+    ';
+    session_destroy();
+    die();
+}
 
 $db = new DataBase();
 $con = $db->conectar();

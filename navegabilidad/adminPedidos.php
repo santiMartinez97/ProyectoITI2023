@@ -1,4 +1,16 @@
 <?php
+session_start();
+if(!isset($_SESSION['admin'])){
+    echo '
+    <script>
+       alert("Por favor, debes iniciar sesión.");
+       window.location = "../index.php";
+    </script>
+
+    ';
+    session_destroy();
+    die();
+}
 
 require '../Clases/pedido_encarga_menu.php';
 $control = new Pedido_Encarga_Menu();
