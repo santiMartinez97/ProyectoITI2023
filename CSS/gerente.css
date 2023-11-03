@@ -312,9 +312,12 @@ header {
 
   /* PAGINA DE ESTADISTICAS */
 
+  .bodyGerente {
+    background-color: rgb(253, 222, 196);
+  }
+
   .mainEstadisticas {
     font-family: Arial, sans-serif;
-    background-color: rgb(253, 222, 196);
     margin: 0;
     padding: 0;
   }
@@ -402,4 +405,113 @@ header {
 
 .tabla-menu-fecha th, .tabla-menu-fecha td {
   width: 25%;
+}
+
+/* PAGINA DE DIETAS */
+
+.mainDietas {
+  font-family: Arial, sans-serif;
+}
+
+#dieta-form {
+  max-width: 400px;
+  margin: 0 auto;
+  background-color: #fff; /* Fondo blanco */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Sombra suave */
+}
+
+#dieta-form>label {
+  display: block;
+  margin-top: 10px;
+  color: #F5A623; /* Texto en color naranja */
+}
+
+#dieta-form>input[type="text"],
+#dieta-form>textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  border: 2px solid #F5A623; /* Borde en color naranja */
+  border-radius: 5px;
+}
+
+#dieta-form>button {
+  background-color: #F5A623; /* Botón en color naranja */
+  color: #fff; /* Texto en blanco */
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#dieta-form>button:hover {
+  background-color: #FFD34E; /* Cambio de color al pasar el mouse */
+}
+
+#id-dieta{
+  display: none;
+}
+
+#dietas-list {
+  max-width: 80%;
+  margin: 20px auto;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+}
+
+#dietas-list table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#dietas-list table, #dietas-list th, #dietas-list td {
+  border: 1px solid #ddd;
+}
+
+#dietas-list th, #dietas-list td {
+  padding: 10px;
+  text-align: left;
+}
+
+#dietas-list th {
+  background-color: #F5A623;
+  color: #fff;
+}
+
+#dietas-list tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.actions {
+  padding: 10px;
+  white-space: nowrap;
+}
+
+.actions button {
+  background-color: #F5A623;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 0px 2px;
+}
+
+.actions button.edit {
+  background-color: #00C853;
+}
+
+.actions button.delete {
+  background-color: #FF5252;
+}
+
+.error-message {
+  visibility: hidden;
+  color: #FF5252;
+  margin-top: 5px;
+  font-size: 1rem;
 }

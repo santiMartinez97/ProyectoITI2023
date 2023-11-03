@@ -41,6 +41,7 @@ $menu_array=[];
         <div class="gerente-section">
             <h1>Control de Menú</h1>
             <a class="enlace" href="gerente.php">Alta de menú</a>
+            <a class="enlace" href="gerenteDieta.php">Gestión dietas</a>
             <a class="enlace" href="gerenteEstadisticas.php">Estadísticas</a>
         </div>
         <div class="baja-section">

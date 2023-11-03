@@ -32,6 +32,7 @@ require_once '../Clases/vianda.php';
         <div class="gerente-section">
             <h1>Gerente</h1>
             <a class="enlace" href="gerenteBajaModi.php">Baja y modificación de menú</a>
+            <a class="enlace" href="gerenteDieta.php">Gestión dietas</a>
             <a class="enlace" href="gerenteEstadisticas.php">Estadísticas</a>
         </div>
         <div class="baja-section">
