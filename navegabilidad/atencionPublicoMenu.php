@@ -13,7 +13,11 @@ if(!isset($_SESSION['atencionPublico'])){
 }
 
 include_once '../clases/menu.php';
-$menus = new Menu();
+include_once '../config/conexion.php';
+
+$db = new DataBase();
+$con = $db->conectar();
+
 ?>
 
 <!DOCTYPE html>
@@ -33,6 +37,7 @@ $menus = new Menu();
         <a class="nav" href="atencionPublico.php">Menú principal</a>
         <a class="nav" href="atencionPublicoClientes.php">Visualizar clientes</a>
         <a class="nav" href="atencionPublicoEstado.php">Visualizar estados</a> 
+        <a class="nav" href="atencionPublicoClientePresencial.php">Alta cliente presencial</a>
         <a class="nav" href="cerrar_session.php">Cerrar sesión</a>
 
         </h2>
@@ -40,12 +45,12 @@ $menus = new Menu();
     <br>
 
     <?php
-    $menus->listadoMenuSinBoton();
+    Menu::listadoMenuSinBoton($con);
 
     ?>
     <footer>
     <section>
-      <h3>Administrador</h3>
+      <h3>Atención al Público</h3>
     </section>
     </footer>
 </body>

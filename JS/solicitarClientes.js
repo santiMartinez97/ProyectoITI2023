@@ -41,8 +41,8 @@ $(document).ready(function() {
     ///////////////////////////////////////////////////////////////////////////////////////////////////////
         
     document.addEventListener("click", function (e) {
-        $("#loader-div").show(); // Mostrar carga
         if (e.target && e.target.classList.contains("habilitar-btn")) {
+            $("#loader-div").show(); // Mostrar carga
             var clientId = e.target.getAttribute("data-client-id");
             $.ajax({
                     url: '../BACKPHP/solicitaConfirma.php', // Debes asegurarte de que esta URL sea correcta

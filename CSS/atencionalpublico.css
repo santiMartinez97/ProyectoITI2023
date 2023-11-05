@@ -200,3 +200,184 @@ a:hover {
     background-color: rgb(253, 222, 196);
 }
 
+/* ESTILOS SECCION ALTA PRESENCIAL */
+
+.headerPresencial {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(45deg, #b95a07, #FF6347);
+    color: #fff;
+    padding: 10px 20px;
+}
+
+.h1tit {
+    margin-top: auto;
+    font-weight: bold;
+    line-height: normal;
+}
+
+.h2tit {
+    justify-content: left;
+    color: orange;
+    text-align: left;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: normal;
+}
+
+.enlaceTitulo {
+    color: white;
+    text-decoration: none;
+    border: 1px solid white;
+    padding: 5px 10px;
+    border-radius: 5px;
+
+}
+
+.tituloPresencial {
+    color: rgb(254, 80, 0);
+  text-align: center;
+  font-size: 37px;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  letter-spacing: -1px;
+  text-overflow: ellipsis;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.formulario__input {
+    border: 3px solid transparent;
+    border-radius: 7px;
+    transition: .3s ease all;
+  }
+  
+.formulario__input:focus{
+   border: 3px solid rgb(254, 80, 0);
+   box-shadow: 5px 0px 35px rgb(202, 78, 0);
+}
+
+.hijo {
+
+   max-width: 22em;
+   display: flex;
+   justify-self: center;
+   position: absolute;
+   top: 17.5rem;
+   right: 14%;
+   /* */
+   transform: translate(0, -50%);  
+}
+
+#enviar {
+    background-color: rgb(196, 99, 39);
+    width: 160px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    letter-spacing: 2px;
+    box-shadow: 1px 1px 2px rgb(0, 0, 0);
+    /* Transition solucionado usando un width, Nacho después fijate que tiempo te gusta más. */
+    transition: background-color 0.3s ease, width 0.3s;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  
+}
+
+#enviar:hover {
+    width: 180px;
+    background-color: rgb(254, 80, 0);
+    box-shadow: 1px 1px 9px rgb(0, 0, 0);
+}
+
+.padre {
+    position: relative;
+    height: 100vh;
+}
+
+@font-face {
+    font-family: 'Italica';
+    src: url('../Tipografias/Italiana-Regular.ttf') format('truetype');
+    font-style: normal;
+    font-weight: bold;
+}
+
+.grupo__correcto .formulario__input{
+    border: solid 3px green;
+    color: darkgreen;
+  }
+  
+  .grupo__error .formulario__input{
+    border: solid 3px crimson;
+    color: rgb(255, 98, 0);
+  }
+  
+  .grupo_input-error{
+    font-size: 10px;
+      margin-bottom: 0;
+      display: none;
+    color: crimson;
+    padding-top: -222px; /* Ajusta el padding superior según tus preferencias */
+    padding-bottom: -1222px;
+    margin-top: 2px;
+  }
+  
+  .grupo_input-error-activo{
+    display: block;
+}
+
+#botonAlerta{
+    padding-top:6px;
+}
+  
+@media screen and (min-width: 1500px) {
+ 
+    .hijo {
+  
+      max-width: 27em;
+      display: flex;
+      justify-self: center;
+      position: absolute;
+      top: 25.5rem;
+      right: 18%;
+      /* */
+      transform: translate(0, -50%);
+  
+    }
+  
+    .form-control{
+      font-size: 1.2rem;
+    }
+  
+    #enviar {
+     width: 180px;
+     height: 40px;
+    }
+  
+    #enviar:hover {
+      width: 200px;
+    }
+
+   
+}
+
+#campos {
+   position: relative¿;
+   min-height: 50px; /* Ajusta este valor según tus necesidades */
+}
+  
+.grupo{
+   padding: 13px;
+}
+  
+.grupo_input-error {
+   position: absolute;
+   color: red;
+   font-size: 12px;
+   margin-top: -2px;
+   /* Otros estilos de tu elección */
+}
+  
+#errorRepeticion {
+   padding-top: 20px;
+}

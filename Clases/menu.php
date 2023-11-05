@@ -337,8 +337,8 @@ public function listadoMenus() {
         echo '</article>';
     }
 
-    public function listadoMenuSinBoton() {
-        $menu = $this->con->prepare("SELECT * FROM menu");
+    public static function listadoMenuSinBoton($con) {
+        $menu = $con->prepare("SELECT * FROM menu");
         $menu->execute();
         $resultado = $menu->fetchAll(PDO::FETCH_ASSOC);
 
