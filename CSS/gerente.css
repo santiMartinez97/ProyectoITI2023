@@ -416,16 +416,16 @@ header {
 #dieta-form {
   max-width: 400px;
   margin: 0 auto;
-  background-color: #fff; /* Fondo blanco */
+  background-color: #fff; 
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Sombra suave */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
 }
 
 #dieta-form>label {
   display: block;
   margin-top: 10px;
-  color: #F5A623; /* Texto en color naranja */
+  color: #F5A623;
 }
 
 #dieta-form>input[type="text"],
@@ -433,13 +433,13 @@ header {
   width: 100%;
   padding: 10px;
   margin: 5px 0;
-  border: 2px solid #F5A623; /* Borde en color naranja */
+  border: 2px solid #F5A623;
   border-radius: 5px;
 }
 
 #dieta-form>button {
-  background-color: #F5A623; /* Botón en color naranja */
-  color: #fff; /* Texto en blanco */
+  background-color: #F5A623;
+  color: #fff;
   border: none;
   padding: 10px 20px;
   border-radius: 5px;
@@ -447,7 +447,7 @@ header {
 }
 
 #dieta-form>button:hover {
-  background-color: #FFD34E; /* Cambio de color al pasar el mouse */
+  background-color: #FFD34E;
 }
 
 #id-dieta{
@@ -514,4 +514,98 @@ header {
   color: #FF5252;
   margin-top: 5px;
   font-size: 1rem;
+}
+
+/* PÁGINA DE METAS */
+
+.mainMetas {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  font-family: Arial, sans-serif;
+  margin: 5% 20%;
+}
+
+.mainMetas label {
+  display: block;
+  margin-top: 10px;
+}
+
+.mainMetas select, .mainMetas input, .mainMetas button {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.mainMetas button {
+  background-color: #F5A623;
+  color: white;
+  cursor: pointer;
+}
+
+.mainMetas button:hover{
+  background-color: #FFD34E;
+}
+
+.hiddenMetas {
+  display: none;
+}
+
+.data-container {
+  margin-top: 20px;
+  background-color: rgb(228, 225, 225);
+  padding: 20px;
+  border-radius: 10px;
+  margin: 2% 10%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.bar-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.bar {
+  width: 0;
+  max-width: 100%;
+  height: 20px;
+  background-color: orange;
+  border-radius: 5px;
+  color: white;
+  text-align: center;
+}
+
+.borde-barra {
+  width: 100%;
+  border: solid #000 1px;
+  border-radius: 5px;
+}
+
+.progress-label {
+  margin-top: 5px;
+}
+
+.meta-value {
+  font-weight: bold;
+}
+
+/* Estilo específico para cada barra de progreso */
+#recaudacion-hoy-bar, #recaudacion-semana-bar, #recaudacion-mes-bar,
+#recaudacion-trimestre-bar, #recaudacion-semestre-bar, #recaudacion-anual-bar,
+#viandas-hoy-bar, #viandas-semana-bar, #viandas-mes-bar,
+#viandas-trimestre-bar, #viandas-semestre-bar, #viandas-anual-bar {
+    width: 0;
+}
+
+#recaudacion-hoy-bar, #recaudacion-semana-bar, #recaudacion-mes-bar,
+#recaudacion-trimestre-bar, #recaudacion-semestre-bar, #recaudacion-anual-bar {
+    background-color: #FFA500;
+}
+
+#viandas-hoy-bar, #viandas-semana-bar, #viandas-mes-bar,
+#viandas-trimestre-bar, #viandas-semestre-bar, #viandas-anual-bar {
+    background-color: #FF6347;
 }

@@ -36,6 +36,7 @@ include '../BACKPHP/consultas.php';
             <a class="enlace" href="gerente.php">Alta de menú</a>
             <a class="enlace" href="gerenteBajaModi.php">Baja y modificación de menú</a>
             <a class="enlace" href="gerenteDieta.php">Gestión dietas</a>
+            <a class="enlace" href="gerenteMetas.php">Metas de la empresa</a>
         </div>
         <div class="baja-section">
             <a class ="enlace" href="cerrar_session.php">Cerrar Sesión</a>
