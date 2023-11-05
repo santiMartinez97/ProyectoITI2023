@@ -34,6 +34,7 @@ $menus = new Pedido_Encarga_Menu();
         <a class="nav" href="atencionPublicoClientes.php">Visualizar clientes</a> 
         <a class="nav" href="atencionPublicoMenu.php">Ver menús</a> 
         <a class="nav" href="atencionPublicoClientePresencial.php">Alta cliente presencial</a>
+        <a class="nav" href="atencionPublicoPedidos.php">Pedidos</a>
         <a class="nav" href="cerrar_session.php">Cerrar sesión</a>
     </h2>
     </header>

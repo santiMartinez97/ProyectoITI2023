@@ -31,7 +31,8 @@ if(!isset($_SESSION['atencionPublico'])){
         <a class="enlaceTitulo" href="atencionPublico.php">Menú principal</a>
         <a class="enlaceTitulo" href="atencionPublicoClientes.php">Visualizar clientes</a>
         <a class="enlaceTitulo" href="atencionPublicoMenu.php">Consultar menús</a>
-        <a class="enlaceTitulo" href="atencionPublicoEstado.php">Visualizar estados</a> 
+        <a class="enlaceTitulo" href="atencionPublicoEstado.php">Visualizar estados</a>
+        <a class="enlaceTitulo" href="atencionPublicoPedidos.php">Pedidos</a> 
         <a class="enlaceTitulo" href="cerrar_session.php">Cerrar sesión</a>
 
         </h2>

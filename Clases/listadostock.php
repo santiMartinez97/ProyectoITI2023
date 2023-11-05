@@ -1,6 +1,6 @@
 <?php
 
-require '../config/conexion.php';
+require_once '../config/conexion.php';
 
 class Stock {
     private $con;
@@ -110,6 +110,30 @@ class Stock {
             $sql = "UPDATE menu SET Stock = Stock - :cantidad WHERE Nombre = :menu";
             $stmt = $this->con->prepare($sql);
             $stmt->bindParam(':menu', $menu, PDO::PARAM_STR);
+            $stmt->bindParam(':cantidad', $cantidad, PDO::PARAM_INT);
+        
+            if ($stmt->execute()) {
+                return true;
+            } else {
+                return false; 
+            }
+        } else {
+            return false; 
+        }
+    }
+
+    public function quitarStockPorId($idMenu, $cantidad) {
+        $query = $this->con->prepare("SELECT Stock FROM menu WHERE ID = :id");
+        $query->bindParam(':id', $idMenu, PDO::PARAM_STR);
+        $query->execute();
+        $resultado = $query->fetch(PDO::FETCH_ASSOC);
+        
+        $stockActual = $resultado['Stock'];
+        
+        if ($cantidad <= $stockActual) {
+            $sql = "UPDATE menu SET Stock = Stock - :cantidad WHERE ID = :id";
+            $stmt = $this->con->prepare($sql);
+            $stmt->bindParam(':id', $idMenu, PDO::PARAM_STR);
             $stmt->bindParam(':cantidad', $cantidad, PDO::PARAM_INT);
         
             if ($stmt->execute()) {

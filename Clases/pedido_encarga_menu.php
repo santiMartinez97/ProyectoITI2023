@@ -1,6 +1,6 @@
 <?php
 
-require '../config/conexion.php';
+require_once '../config/conexion.php';
 
 class Pedido_Encarga_Menu {
     private $con;
@@ -8,6 +8,27 @@ class Pedido_Encarga_Menu {
     public function __construct() {
         $db = new DataBase();
         $this->con = $db->conectar();
+    }
+
+    // Método para insertar un nuevo registro en la tabla Pedido_Encarga_Menu
+    public function insertarPedidoMenu($idMenu, $idPedido, $cantidad, $descripcion) {
+        $query = "INSERT INTO Pedido_Encarga_Menu (IDMenu, IDPedido, Cantidad, Descripcion) VALUES (:IDMenu, :IDPedido, :Cantidad, :Descripcion)";
+
+        // Preparar la consulta
+        $stmt = $this->con->prepare($query);
+
+        // Bind de los parámetros
+        $stmt->bindParam(":IDMenu", $idMenu);
+        $stmt->bindParam(":IDPedido", $idPedido);
+        $stmt->bindParam(":Cantidad", $cantidad);
+        $stmt->bindParam(":Descripcion", $descripcion);
+
+        // Ejecutar la consulta
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public function listadoPedidos() {

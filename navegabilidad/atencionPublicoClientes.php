@@ -39,6 +39,7 @@ $con = $db->conectar();
         <a class="nav" href="atencionPublicoMenu.php">Consultar menús</a>
         <a class="nav" href="atencionPublicoEstado.php">Estado pedidos</a>
         <a class="nav" href="atencionPublicoClientePresencial.php">Alta cliente presencial</a>
+        <a class="nav" href="atencionPublicoPedidos.php">Pedidos</a>
         <a class="nav" href="cerrar_session.php">Cerrar sesión</a>
         </h2>
     </header>
