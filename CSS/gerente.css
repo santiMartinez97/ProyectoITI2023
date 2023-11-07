@@ -1,4 +1,7 @@
-  .titulo {
+ body {
+  background-color: rgb(253, 222, 196);
+ }
+ .titulo {
     color: rgb(254, 80, 0);
     text-align: center;
     font-size: 37px;
@@ -18,7 +21,9 @@
     border-radius: 5px;
     margin: 0px 2px;
 }
- 
+ .texto{
+  font-size: 23px;
+ }
 table {
   width: 100%;
   border-collapse: collapse;

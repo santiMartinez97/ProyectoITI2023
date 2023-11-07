@@ -1,14 +1,12 @@
 <?php
-require '../config/conexion.php';
-$db = new DataBase();
-$con = $db->conectar();
+
 class Menu_contiene_vianda {
-    private $con;
+    protected $pdo;
     protected $IDMenu;
     private $IDVianda;
 
     public function __construct($pdo,$IDMenu ,$IDVianda) {
-        $this->con = $pdo;
+        $this->pdo = $pdo;
         $this->IDMenu = $IDMenu;
         $this->IDVianda = $IDVianda;
     }
@@ -28,6 +26,7 @@ class Menu_contiene_vianda {
     public function setIDVianda($IDVianda) {
         $this->IDVianda = $IDVianda;
     }
+
 
 }
 ?>
