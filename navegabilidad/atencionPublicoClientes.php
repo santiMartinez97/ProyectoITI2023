@@ -35,9 +35,11 @@ $con = $db->conectar();
     <header>
         <h1>Atención al público</h1>
         <h2>
-        <a class ="nav"href="atencionPublico.php">Menú principal</a>
-        <a class ="nav"href="atencionPublicoMenu.php">Consultar menús</a>
-        <a class ="nav"href="atencionPublicoEstado.php">Estado pedidos</a>
+        <a class="nav" href="atencionPublico.php">Menú principal</a>
+        <a class="nav" href="atencionPublicoMenu.php">Consultar menús</a>
+        <a class="nav" href="atencionPublicoEstado.php">Estado pedidos</a>
+        <a class="nav" href="atencionPublicoClientePresencial.php">Alta cliente presencial</a>
+        <a class="nav" href="atencionPublicoPedidos.php">Pedidos</a>
         <a class="nav" href="cerrar_session.php">Cerrar sesión</a>
         </h2>
     </header>
@@ -60,7 +62,7 @@ $con = $db->conectar();
 
     <footer>
     <section>
-      <h3>Administrador</h3>
+      <h3>Atención al Público</h3>
     </section>
     </footer>
     

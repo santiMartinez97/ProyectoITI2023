@@ -32,13 +32,15 @@ if(!isset($_SESSION['atencionPublico'])){
     <br>
     <!-- Opciones -->
     <h2>¿Qué funcionalidad va a utilizar?</h2>
-    <h2><a href="atencionPublicoMenu.php">Consultar menus</a></h2>
+    <h2><a href="atencionPublicoMenu.php">Consultar menús</a></h2>
     <h2> <a href="atencionPublicoEstado.php">Estado pedidos</a></h2>
     <h2><a href="atencionPublicoClientes.php">Solicitar alta cliente</a></h2>
+    <h2><a href="atencionPublicoClientePresencial.php">Alta cliente presencial</a></h2>
+    <h2><a href="atencionPublicoPedidos.php">Alta pedidos</a></h2>
 
     <footer>
     <section>
-      <h3>Administrador</h3>
+      <h3>Atención al Público</h3>
     </section>
     </footer>
 </body>

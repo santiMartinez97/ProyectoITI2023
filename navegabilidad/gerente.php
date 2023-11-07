@@ -32,19 +32,18 @@ require_once '../Clases/vianda.php';
         <div class="gerente-section">
             <h1>Gerente</h1>
             <a class="enlace" href="gerenteBajaModi.php">Baja y modificación de menú</a>
+            <a class="enlace" href="gerenteDieta.php">Gestión dietas</a>
             <a class="enlace" href="gerenteEstadisticas.php">Estadísticas</a>
-            <a class="enlace" href="gerenteViandas.php">Armar menus</a>
-            <a class="enlace" href="gerenteStock.php">Ver disponibilidad de stock</a>
-
+            <a class="enlace" href="gerenteMetas.php">Metas de la empresa</a>
         </div>
         <div class="baja-section">
           <a class ="enlace" href="cerrar_session.php">Cerrar Sesión</a>
         </div>
     </header>
   
-    <div class="container my-3">
-        <div class="row">
-            <div class="col-md-6">
+  <article class="padre">
+    <article class="hijo">
+      <article class="container my-3">
   
       <article id="campos">
         <form  class="row no-gutters" id="FrnINS"  enctype="multipart/form-data" action="../persistencia/altaMenu.php" method="post">
@@ -129,7 +128,7 @@ require_once '../Clases/vianda.php';
   <article class="col-6 grupo" id="grupo__viandas">
   <article class="grupo__input">
     <select id="viandas" name="viandas" class="formulario__input form-select gray-text" aria-label="Agregar viandas a menu" multiple>
-      <option value="">Selecciona viandas</option>
+      <option value="">Selecciona un nombre</option>
       <?php
       $viandasListado = new Vianda($con);
       $viandasListado->listadoDistintivo($con);
@@ -143,12 +142,12 @@ require_once '../Clases/vianda.php';
 
 <article class="col-6 grupo" id="grupo__viandasSeleccionadas">
   <article class="grupo__input">
-    <p class = "texto">Viandas seleccionadas: <span id="viandasSeleccionadas"></span></p>
+    <p>Viandas seleccionadas: <span id="viandasSeleccionadas"></span></p>
   </article>
 </article>
 
   <article class="col-12 grupo" id="grupo__imagen">
-    <p class = "texto">Subir imagen: <input class="formulario__input form-control"type="file" name="imagen" id="imagen"></p>
+    <label>Subir imagen: <input type="file" name="imagen" id="imagen"></label>
     <p class="grupo_input-error">Solamente se aceptan formatos .jpg, .jpeg, .gif y .png. La imagen no debe superar 1 MB. </p>
   </article><br>
 <br>
@@ -160,9 +159,9 @@ require_once '../Clases/vianda.php';
     </article>
   </form>
 
-</div>
-</div>
-</div>
+</article>
+</article>
+</article>
 
 
 </body>
