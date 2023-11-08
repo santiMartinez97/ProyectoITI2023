@@ -41,10 +41,9 @@ require_once '../Clases/vianda.php';
         </div>
     </header>
   
-  <article class="padre">
-    <article class="hijo">
-      <article class="container my-3">
-  
+    <div class="container my-3">
+        <div class="row">
+            <div class="col-md-6">
       <article id="campos">
         <form  class="row no-gutters" id="FrnINS"  enctype="multipart/form-data" action="../persistencia/altaMenu.php" method="post">
 
@@ -142,12 +141,12 @@ require_once '../Clases/vianda.php';
 
 <article class="col-6 grupo" id="grupo__viandasSeleccionadas">
   <article class="grupo__input">
-    <p>Viandas seleccionadas: <span id="viandasSeleccionadas"></span></p>
+  <p class = "texto">Viandas seleccionadas: <span id="viandasSeleccionadas"></span></p>
   </article>
 </article>
 
   <article class="col-12 grupo" id="grupo__imagen">
-    <label>Subir imagen: <input type="file" name="imagen" id="imagen"></label>
+  <p class = "texto">Subir imagen: <input class="formulario__input form-control"type="file" name="imagen" id="imagen"></p>
     <p class="grupo_input-error">Solamente se aceptan formatos .jpg, .jpeg, .gif y .png. La imagen no debe superar 1 MB. </p>
   </article><br>
 <br>
@@ -158,12 +157,11 @@ require_once '../Clases/vianda.php';
     <p id="errorRepeticion" class="grupo_input-error col-6 text-center"></p>
     </article>
   </form>
+  </article>
 
-</article>
-</article>
-</article>
-
-
+</div>
+</div>
+</div>
 </body>
 
 <script src="../JS/jquery-3.6.4.min.js"></script>
