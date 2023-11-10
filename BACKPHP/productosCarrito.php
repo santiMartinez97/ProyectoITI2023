@@ -228,20 +228,26 @@ echo  '<li class="nav-item dropdown">';
             <?php } ?>
           </table>
         </article>
+        <article class="row">
+          <article class="col-md-12">
+            <label for="detallesPedido" class="form-label">Detalles adicionales del pedido:</label>
+            <textarea class="form-control" id="detallesPedido" rows="3" placeholder="Escribe aquí detalles adicionales..."></textarea>
+          </article>
+        </article><br>
         <?php 
 if ($lista_carrito != null) {
     if(!isset($_SESSION['cliente'])) {
 ?>
-        <article class="row">
-            <article class="col-md-5 offset-md-7 d-grid gap-2">
+        <article class="row justify-content-md-center">
+            <article class="col-md-5 d-grid gap-2">
                 <a id="carritoBtn2" class="btn btn-primary btn">Realizar Pago</a>
             </article>
         </article>
 <?php 
     } else {
-        echo '<article class="row">
-            <article class="col-md-5 offset-md-7 d-grid gap-2">
-                <a href="pago.php" class="btn btn-primary btn">Realizar Pago</a>
+        echo '<article class="row justify-content-md-center">
+            <article class="col-md-5 d-grid gap-2">
+                <a href="pago.php?detallesPedido=" class="btn btn-primary btn" onclick="capturarDetallesPedido()">Realizar Pago</a>
             </article>
         </article>';
     }
@@ -249,7 +255,7 @@ if ($lista_carrito != null) {
 ?>
         <!-- Button trigger modal -->
 
-
+<br>
 <!-- Modal -->
 <div class="modal fade" id="eliminaModal" tabindex="-1" aria-labelledby="eliminaModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-sm">
@@ -353,6 +359,15 @@ if ($lista_carrito != null) {
           }     
 
       })
+    }
+
+    function capturarDetallesPedido() {
+      // Obtén el contenido del textarea
+      var detallesPedido = document.getElementById('detallesPedido').value;
+
+      // Agrega los detalles del pedido al enlace
+      var enlacePago = document.querySelector('.btn-primary');
+      enlacePago.href = 'pago.php?detallesPedido=' + encodeURIComponent(detallesPedido);
     }
     </script>
 <footer class="site-footer bg-dark text-white py-0">

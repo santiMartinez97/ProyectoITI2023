@@ -44,8 +44,8 @@ $listaMenus = Menu::listarMenusHabilitados($con);
         <a class="nav" href="atencionPublico.php">Menú principal</a>
         <a class="nav" href="atencionPublicoClientes.php">Visualizar clientes</a> 
         <a class="nav" href="atencionPublicoMenu.php">Ver menús</a> 
-        <a class="nav" href="atencionPublicoClientePresencial.php">Alta cliente presencial</a>
-        <a class="nav" href="atencionPublicoPedidos.php">Pedidos</a>
+        <a class="nav" href="atencionPublicoEstado.php">Visualizar estados</a> 
+        <a class="nav" href="atencionPublicoClientePresencial.php">Alta cliente</a>
         <a class="nav" href="cerrar_session.php">Cerrar sesión</a>
     </h2>
     </header>
