@@ -165,16 +165,55 @@ class Vianda {
     }
 
     // Función para cambiar el estado de la Vianda
-    public function cambiarEstado($pdo) {
-        listarViandas();
+    public function controlViandas($estadoSeleccionado = 'todos'){
+        $control = $this->con->prepare("SELECT t1.ID, t2.Fecha AS FechaEstado, t1.ID, t2.Estado FROM vianda AS t1 INNER JOIN estado_vianda AS t2 ON t1.ID = t2.IDVianda");
+        $control->execute();
+        $resultado = $control->fetchAll(PDO::FETCH_ASSOC);
+        
+        $control_array=[];
+    
+        echo '<form method="POST">';
+        echo '<select class="tablaArriba" name="estado" id="estado">';
+        echo '<option value="todos">Todos los pedidos</option>';
+        echo '<option value="solicitado">Solicitado</option>';
+        echo '<option value="confirmado">Confirmado</option>';
+        echo '<option value="enviado">Enviado</option>';
+        echo '<option value="entregado">Entregado</option>';
+        echo '<option value="rechazado">Rechazado</option>';
+        echo '</select>';
+        echo '<input type="submit" value="Filtrar">';
+        echo '</form';
+        
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $estadoSeleccionado = isset($_POST['estado']) ? $_POST['estado'] : ""; 
+        }
+    
+        foreach ($resultado as $row) {
+            $IDCliente = $row['IDCliente'];
+            $IDPedido = $row['ID'];
+            $fecha = $row['FechaEstado'];
+            $estado = strtolower($row['Estado']);   
+    
+            if ($estadoSeleccionado == 'todos' || $estado == $estadoSeleccionado) {
+                echo '<tr>';
+                echo '<th>'.$IDCliente.'</th>';
+                echo '<th>'.$IDPedido.'</th>';
+                echo '<th>'.$fecha.'</th>';
+                echo '<th>'.$estado.'</th>';
+                echo '</tr>';
+            }
+        }
+    }
+    
+    public function cambiarEstado($IDVianda, $nuevoEstado) {
         date_default_timezone_set('America/Montevideo');
         $fecha = date("Y-m-d H:i:s");
-
-        $sql = "UPDATE estado_vianda SET Estado = :nuevoEstado, Fecha = :fechaCambio WHERE ID = :IDVianda";
+    
+        $sql = "UPDATE estado_vianda SET Estado = :nuevoEstado, Fecha = :fechaCambio WHERE IDVianda = :IDVianda";
         $stmt = $this->con->prepare($sql);
         $stmt->bindParam(':nuevoEstado', $nuevoEstado, PDO::PARAM_STR);
         $stmt->bindParam(':fechaCambio', $fecha, PDO::PARAM_STR);
-        $stmt->bindParam(':IDPedido', $IDPedido, PDO::PARAM_INT);
+        $stmt->bindParam(':IDVianda', $IDVianda, PDO::PARAM_INT);
         $stmt->execute();
     }
 
