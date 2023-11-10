@@ -33,14 +33,14 @@ $resultado = $dieta->fetchAll(PDO::FETCH_ASSOC);
     <link rel="stylesheet" href="../CSS/loading.css"/>
     <link rel="stylesheet" type="text/css" href="../CSS/boostrap.css">
 </head>
-<body>
+<body class="fondo">
 
     <!-- Header -->
     <header class="headerAdmin">
         <h1 class="h1tit">Administrador</h1>
         <h2 class="h2tit">
             <a class="enlaceTitulo" href="admin.php">Menú principal</a>
-        <a class="enlaceTitulo" href="adminPedidos.php">Gestión de pedidos</a>
+            <a class="enlaceTitulo" href="adminPedidos.php">Gestión de pedidos</a>
             <a class="enlaceTitulo" href="cerrar_session.php">Cerrar sesión</a>
         </h2>
     </header>
@@ -260,11 +260,6 @@ $resultado = $dieta->fetchAll(PDO::FETCH_ASSOC);
 
     <!--Fin de los modal-->
 
-    <footer>
-    <section>
-      <h3>Administrador</h3>
-    </section>
-    </footer>
 
     <div id="loader-div">
         <img class="loader-img" src="../img/loader.gif" style="height: 120px;width: auto;" />

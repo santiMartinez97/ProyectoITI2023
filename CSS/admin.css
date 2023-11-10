@@ -5,6 +5,10 @@ body {
     padding: 0;
   }
 
+  .fondo{
+    background-color: rgb(253, 222, 196);
+}
+
 header {
     display: flex;
     justify-content: space-between;
@@ -221,4 +225,10 @@ a:hover {
     padding: 5px 10px;
     border-radius: 5px;
 
+}
+.enlaceTitulo:hover{
+    color: #fff;
+    border: 1px solid #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
 }
