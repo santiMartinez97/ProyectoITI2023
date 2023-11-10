@@ -142,6 +142,14 @@ header {
     border-radius: 5px;
 }
 
+.baja-section a.enlace {
+  color: #fff;
+  text-decoration: none;
+  border: 1px solid #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
 .baja-section h1 {
     margin-left: 10px;
 }

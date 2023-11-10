@@ -86,6 +86,13 @@ if ($productos != null) {
       $query2->bindParam(':descripcion', $detallesPedido, PDO::PARAM_INT);
       $query2->execute();
 
+      $default = 'Solicitado';
+      $query3 = $con->prepare("INSERT INTO estado_pedido (ID, Estado, Fecha) VALUES (:id, :Estado,:Fecha)");
+      $query3->bindParam(':id', $idPedido, PDO::PARAM_INT);
+      $query3->bindParam(':Estado', $default, PDO::PARAM_INT);
+      $query3->bindParam(':Fecha', $fecha_hoy, PDO::PARAM_INT);
+      $query3->execute();
+
       $restarCantidad = $con->prepare("UPDATE menu SET Stock = Stock - :cantidad WHERE ID = :id");
       $restarCantidad->bindParam(':cantidad', $cantidad, PDO::PARAM_INT);
       $restarCantidad->bindParam(':id', $_id, PDO::PARAM_INT);

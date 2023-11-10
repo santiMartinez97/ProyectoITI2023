@@ -17,20 +17,25 @@ $viandasListado = new Vianda($con);
 
 </head>
 <body>
+    
     <header>
         <div class="gerente-section">
             <h1>Gerente</h1>
+            <a class="enlace" href="gerente.php">Alta de menú</a>
             <a class="enlace" href="gerenteBajaModi.php">Baja y modificación de menú</a>
-            <a class="enlace" href="gerenteViandas.php">Armar menus</a>
-        </div>
+            <a class="enlace" href="gerenteDieta.php">Gestión dietas</a>
+            <a class="enlace" href="gerenteEstadisticas.php">Estadísticas</a>
+            <a class="enlace" href="gerenteStock.php">Stock</a>
+            <a class="enlace" href="gerenteMetas.php">Metas de la empresa</a>            
+          </div>
         <div class="baja-section">
           <a class ="enlace" href="cerrar_session.php">Cerrar Sesión</a>
         </div>
     </header>
-
     <?php
     $viandasListado->listarViandas($con);
     ?>
+
 
 </body>
 <script src="../JS/jquery-3.6.4.min.js"></script>

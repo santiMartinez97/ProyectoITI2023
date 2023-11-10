@@ -29,19 +29,22 @@ include '../BACKPHP/consultas.php';
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> 
 </head>
 <body class="bodyGerente">
-  
+
     <header>
         <div class="gerente-section">
-            <h1>Metas de la empresa</h1>
+            <h1>Gerente</h1>
             <a class="enlace" href="gerente.php">Alta de menú</a>
             <a class="enlace" href="gerenteBajaModi.php">Baja y modificación de menú</a>
             <a class="enlace" href="gerenteDieta.php">Gestión dietas</a>
             <a class="enlace" href="gerenteEstadisticas.php">Estadísticas</a>
-        </div>
+            <a class="enlace" href="gerenteStock.php">Stock</a>
+            <a class="enlace" href="gerenteViandas.php">Ver viandas</a>
+          </div>
         <div class="baja-section">
-            <a class ="enlace" href="cerrar_session.php">Cerrar Sesión</a>
+          <a class ="enlace" href="cerrar_session.php">Cerrar Sesión</a>
         </div>
     </header>
+
     <main class="mainMetas">
         <form id="seguimiento-form">
             <label for="tipo-dato">Tipo de Dato:</label>

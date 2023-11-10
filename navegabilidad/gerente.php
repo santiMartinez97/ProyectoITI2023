@@ -35,8 +35,9 @@ require_once '../Clases/vianda.php';
             <a class="enlace" href="gerenteDieta.php">Gestión dietas</a>
             <a class="enlace" href="gerenteEstadisticas.php">Estadísticas</a>
             <a class="enlace" href="gerenteStock.php">Stock</a>
-            <a class="enlace" href="gerenteMetas.php">Metas de la empresa</a>
-        </div>
+            <a class="enlace" href="gerenteViandas.php">Ver viandas</a>
+            <a class="enlace" href="gerenteMetas.php">Metas de la empresa</a>            
+          </div>
         <div class="baja-section">
           <a class ="enlace" href="cerrar_session.php">Cerrar Sesión</a>
         </div>

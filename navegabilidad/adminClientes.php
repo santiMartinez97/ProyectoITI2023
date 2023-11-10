@@ -259,8 +259,7 @@ $resultado = $dieta->fetchAll(PDO::FETCH_ASSOC);
     </div>
 
     <!--Fin de los modal-->
-
-
+                                            
     <div id="loader-div">
         <img class="loader-img" src="../img/loader.gif" style="height: 120px;width: auto;" />
     </div> 

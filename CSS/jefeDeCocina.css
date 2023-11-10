@@ -4,7 +4,9 @@ body {
     margin: 0;
     padding: 0;
   }
-
+.fondo{
+  background-color:  rgb(253, 222, 196);
+}
   header {
     display: flex;
     justify-content: space-between;
@@ -34,6 +36,29 @@ body {
   }
   
 
+  .headerJefe {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(45deg, #b95a07, #FF6347);
+    color: #fff;
+    padding: 10px 20px;
+}
+
+  .enlaceTitulo {
+    color: white;
+    text-decoration: none;
+    border: 1px solid white;
+    padding: 5px 10px;
+    border-radius: 5px;
+
+}
+.enlaceTitulo:hover{
+    color: #fff;
+    border: 1px solid #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
 
 
 /*FORMULARIO PARA COMIDAS*/

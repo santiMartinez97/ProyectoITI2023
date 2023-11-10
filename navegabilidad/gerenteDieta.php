@@ -37,18 +37,22 @@ $listaDietas = $objDieta->ObtenerDieta();
 </head>
 <body class="bodyGerente">
   
+
     <header>
         <div class="gerente-section">
-            <h1>Gestión de dietas</h1>
-            <a class="enlace" href="gerente.php">Alta de menú</a>
+            <h1>Gerente</h1>
+            <a class="enlace" href="gerente.php">Alta menu</a>
             <a class="enlace" href="gerenteBajaModi.php">Baja y modificación de menú</a>
             <a class="enlace" href="gerenteEstadisticas.php">Estadísticas</a>
-            <a class="enlace" href="gerenteMetas.php">Metas de la empresa</a>
-        </div>
+            <a class="enlace" href="gerenteStock.php">Stock</a>
+            <a class="enlace" href="gerenteViandas.php">Ver viandas</a>
+            <a class="enlace" href="gerenteMetas.php">Metas de la empresa</a>            
+          </div>
         <div class="baja-section">
-            <a class ="enlace" href="cerrar_session.php">Cerrar Sesión</a>
+          <a class ="enlace" href="cerrar_session.php">Cerrar Sesión</a>
         </div>
     </header>
+    
     <main class="mainDietas">
         <br>
         <form id="dieta-form">

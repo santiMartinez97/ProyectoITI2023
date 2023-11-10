@@ -9,26 +9,26 @@ $stock = new Stock();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jefe de cocina | NutriBento</title>
+    <title>Gerente | NutriBento</title>
     <link rel="icon" href="../img/icono.png" />
-    <link rel="stylesheet" href="../CSS/gerente.css" />
+    <link rel="stylesheet" href="../CSS/jefeDeCocina.css" />
 </head>
 <body>
-
-<header>
+    
+    <header>
         <div class="gerente-section">
             <h1>Gerente</h1>
             <a class="enlace" href="gerente.php">Alta menus</a>
             <a class="enlace" href="gerenteBajaModi.php">Baja y modificación de menú</a>
+            <a class="enlace" href="gerenteDieta.php">Gestión dietas</a>
             <a class="enlace" href="gerenteEstadisticas.php">Estadísticas</a>
-            <a class="enlace" href="gerenteViandas.php">Armar menus</a>
-
-        </div>
+            <a class="enlace" href="gerenteViandas.php">Ver viandas</a>
+            <a class="enlace" href="gerenteMetas.php">Metas de la empresa</a>            
+          </div>
         <div class="baja-section">
           <a class ="enlace" href="cerrar_session.php">Cerrar Sesión</a>
         </div>
     </header>
-    
     <br>
 
     <h2 class="titulo">Gestión de stocks</h2>
@@ -47,7 +47,7 @@ $stock = new Stock();
         <?php        
 
           if (isset($_POST['agregarStock'])) {
-            $menu = $_POST['menu'];
+            $menu = $_POST['menu']; 
             $cantidad = (int)$_POST['cantidad'];
         
             if ($stock->agregarStock($menu, $cantidad)) {
@@ -73,10 +73,6 @@ $stock = new Stock();
         
         ?>
 
-    <footer>
-    <section>
-      <h3>Jefe de cocina</h3>
-    </section>
     </footer>
     <script src="JS/jquery-3.6.4.min.js"></script>
 </body>

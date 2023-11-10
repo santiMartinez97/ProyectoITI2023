@@ -29,22 +29,22 @@ include_once('../Clases/vianda.php');
     <link rel="stylesheet" type="text/css" href="../CSS/boostrap.css">
 
 </head>
-<body>
+<body class='fondo'> 
   
-    <header>
+    <header class='headerJefe'>
         <h1>Jefe de cocina</h1>
         <h2 >
-            <a class= "nav" href="jefeMain.php">Menú principal</a>
-            <a class= "nav" href="jefeCocina.php">Ver pedidos </a>
-            <a class= "nav" href="jefeCocinaStock.php">Gestión stock</a>
-            <a class= "nav" href="cerrar_session.php">Cerrar Sesión</a>
+            <a class= "enlaceTitulo" href="jefeMain.php">Menú principal</a>
+            <a class= "enlaceTitulo" href="jefeCocina.php">Ver pedidos </a>
+            <a class= "enlaceTitulo" href="jefeCocinaStock.php">Gestión stock</a>
+            <a class= "enlaceTitulo" href="cerrar_session.php">Cerrar Sesión</a>
         </h2>
     
     </header>
     <article class="padre">
 
     <article class="hijo">
-      <article class="container my-3">
+      <article class="container my-1">
   
       <article id="campos"> 
   <form  class="row no-gutters" id="FrnINS"  action="../persistencia/altaViandas.php" method="post">
