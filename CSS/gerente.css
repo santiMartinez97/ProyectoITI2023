@@ -218,6 +218,22 @@ header {
     padding-top:6px;
   }
   
+.cajaSeleccion {
+  background-color: rgb(253, 222, 196);
+  padding: 10px;
+  margin: 10px;
+  display: inline-block;
+}
+
+.cajaSeleccion input[type="text"],
+.cajaSeleccion input[type="number"] {
+  padding: 5px;
+  margin: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+  
   @media screen and (min-width: 1500px) {
    
     .hijo {
