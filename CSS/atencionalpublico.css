@@ -434,5 +434,34 @@ a:hover {
 }
 
 #formularioPedidos button:hover {
-    background-color: #ff9900; /* Color naranja más claro al pasar el cursor */
+    background-color: #ff9900;
+}
+
+.radio-group div {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+#formularioPedidos input[type="radio"] {
+    display: none;
+}
+
+#formularioPedidos  input[type="radio"] + label {
+   display: inline-block;
+   background-color: #ddd;
+   padding: 10px;
+   border-radius: 4px;
+   cursor: pointer;
+}
+
+#formularioPedidos input[type="radio"]:checked + label {
+   background-color: #ff6600;
+   color: #fff;
+}
+
+.separacion{
+    border: 0;
+    height: 1px;
+    background: #ccc;
+    margin: 20px 0;
 }

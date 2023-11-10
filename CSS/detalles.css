@@ -175,5 +175,7 @@ select.form-select {
     transform:  translateY(-3%);
 }
 
-
+footer img{
+  height: auto;
+}
 

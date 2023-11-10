@@ -78,12 +78,12 @@ GROUP BY DATE(Fecha);");
 // Cuántas viandas se producen por día y total
 $producidasPorDia = consultaAll($con, "SELECT DATE(Fecha) AS Fecha, COUNT(*) AS CantidadViandasProducidas
 FROM Estado_Vianda
-WHERE Estado = 'En producción'
+WHERE Estado = 'Envasado'
 GROUP BY DATE(Fecha);");
 
 $producidasTotal = consultaColumn($con,"SELECT COUNT(*) AS TotalViandasEnProduccion
 FROM Estado_Vianda
-WHERE Estado = 'En producción';");
+WHERE Estado = 'Envasado';");
 
 // ¿Cuáles son los diferentes tipos de menús estándar y como están conformados?
 
@@ -93,13 +93,13 @@ WHERE Estado = 'En producción';");
 // ¿Cuál es la producción de la cocina por semana y por mes?
 $producidasPorSemana = consultaAll($con, "SELECT DATE_FORMAT(Fecha, '%Y-%u') AS Semana, COUNT(*) AS CantidadViandasEnProduccion
 FROM Estado_Vianda
-WHERE Estado = 'En producción'
+WHERE Estado = 'Envasado'
 GROUP BY Semana;
 ");
 
 $producidasPorMes = consultaAll($con,"SELECT DATE_FORMAT(Fecha, '%Y-%m') AS Mes, COUNT(*) AS CantidadViandasEnProduccion
 FROM Estado_Vianda
-WHERE Estado = 'En producción'
+WHERE Estado = 'Envasado'
 GROUP BY Mes;");
 
 // Cuantos menús tiene cada dieta
@@ -114,8 +114,8 @@ $recaudadoPorDia = consultaAll($con, "SELECT DATE(EP.Fecha) AS Fecha, SUM(M.Prec
 FROM Estado_Pedido EP
 INNER JOIN Pedido_Encarga_Menu PEM ON EP.ID = PEM.IDPedido
 INNER JOIN Menu M ON PEM.IDMenu = M.ID
-WHERE EP.Estado = 'Entregado'
-GROUP BY Fecha;
+WHERE EP.Estado = 'Confirmado'
+GROUP BY DATE(EP.Fecha);
 ");
 
 // Recaudado por semana
@@ -123,7 +123,7 @@ $recaudadoPorSemana = consultaAll($con, "SELECT DATE_FORMAT(EP.Fecha, '%Y-%u') A
 FROM Estado_Pedido EP
 INNER JOIN Pedido_Encarga_Menu PEM ON EP.ID = PEM.IDPedido
 INNER JOIN Menu M ON PEM.IDMenu = M.ID
-WHERE EP.Estado = 'Entregado'
+WHERE EP.Estado = 'Confirmado'
 GROUP BY Semana;
 ");
 
@@ -132,7 +132,7 @@ $recaudadoPorMes = consultaAll($con, "SELECT DATE_FORMAT(EP.Fecha, '%Y-%m') AS M
 FROM Estado_Pedido EP
 INNER JOIN Pedido_Encarga_Menu PEM ON EP.ID = PEM.IDPedido
 INNER JOIN Menu M ON PEM.IDMenu = M.ID
-WHERE EP.Estado = 'Entregado'
+WHERE EP.Estado = 'Confirmado'
 GROUP BY Mes;
 ");
 
@@ -157,7 +157,7 @@ $pedidosPorMes = consultaAll($con, "SELECT DATE_FORMAT(Fecha, '%Y-%m') AS Mes, C
 $ventasPorMenu = consultaAll($con, "SELECT M.ID AS IDMenu, M.Nombre AS NombreMenu, SUM(PEM.Cantidad) AS TotalStockVendido
 FROM Pedido_Encarga_Menu PEM
 INNER JOIN Menu M ON PEM.IDMenu = M.ID
-WHERE PEM.IDPedido IN (SELECT ID FROM Estado_Pedido WHERE Estado = 'Entregado')
+WHERE PEM.IDPedido IN (SELECT ID FROM Estado_Pedido WHERE Estado = 'Confirmado')
 GROUP BY M.ID, M.Nombre
 ORDER BY TotalStockVendido DESC;
 ");
@@ -167,8 +167,8 @@ $ventasMenuPorFecha = consultaAll($con, "SELECT DATE(EP.Fecha) AS Fecha, M.ID AS
 FROM Pedido_Encarga_Menu PEM
 INNER JOIN Menu M ON PEM.IDMenu = M.ID
 INNER JOIN Estado_Pedido EP ON PEM.IDPedido = EP.ID
-WHERE EP.Estado = 'Entregado'
-GROUP BY Fecha, M.ID, M.Nombre
+WHERE EP.Estado = 'Confirmado'
+GROUP BY DATE(EP.Fecha), M.ID, M.Nombre
 ORDER BY Fecha, TotalStockVendido DESC;
 ");
 
@@ -177,7 +177,7 @@ $ventasMenuPorSemana = consultaAll($con, "SELECT DATE_FORMAT(EP.Fecha, '%Y-%u') 
 FROM Pedido_Encarga_Menu PEM
 INNER JOIN Menu M ON PEM.IDMenu = M.ID
 INNER JOIN Estado_Pedido EP ON PEM.IDPedido = EP.ID
-WHERE EP.Estado = 'Entregado'
+WHERE EP.Estado = 'Confirmado'
 GROUP BY Semana, M.ID, M.Nombre
 ORDER BY Semana, TotalStockVendido DESC;");
 
@@ -186,7 +186,7 @@ $ventasMenuPorMes = consultaAll($con, "SELECT DATE_FORMAT(EP.Fecha, '%Y-%m') AS 
 FROM Pedido_Encarga_Menu PEM
 INNER JOIN Menu M ON PEM.IDMenu = M.ID
 INNER JOIN Estado_Pedido EP ON PEM.IDPedido = EP.ID
-WHERE EP.Estado = 'Entregado'
+WHERE EP.Estado = 'Confirmado'
 GROUP BY Mes, M.ID, M.Nombre
 ORDER BY Mes, TotalStockVendido DESC;");
 
@@ -197,7 +197,7 @@ $recaudacionHoy = consultaColumn($con, "SELECT SUM(M.Precio * (1 - (M.Descuento 
 FROM Estado_Pedido EP
 INNER JOIN Pedido_Encarga_Menu PEM ON EP.ID = PEM.IDPedido
 INNER JOIN Menu M ON PEM.IDMenu = M.ID
-WHERE EP.Estado = 'Entregado' AND DATE(EP.Fecha) = CURDATE();
+WHERE EP.Estado = 'Confirmado' AND DATE(EP.Fecha) = CURDATE();
 ");
 $recaudacionHoy = $recaudacionHoy ? round($recaudacionHoy) : 0;
 
@@ -206,7 +206,7 @@ $recaudacionSemana = consultaColumn($con, "SELECT SUM(M.Precio * (1 - (M.Descuen
 FROM Estado_Pedido EP
 INNER JOIN Pedido_Encarga_Menu PEM ON EP.ID = PEM.IDPedido
 INNER JOIN Menu M ON PEM.IDMenu = M.ID
-WHERE EP.Estado = 'Entregado' AND YEARWEEK(EP.Fecha, 1) = YEARWEEK(CURDATE(), 1);
+WHERE EP.Estado = 'Confirmado' AND YEARWEEK(EP.Fecha, 1) = YEARWEEK(CURDATE(), 1);
 ");
 $recaudacionSemana = $recaudacionSemana ? round($recaudacionSemana) : 0;
 
@@ -215,7 +215,7 @@ $recaudacionMes = consultaColumn($con, "SELECT SUM(M.Precio * (1 - (M.Descuento 
 FROM Estado_Pedido EP
 INNER JOIN Pedido_Encarga_Menu PEM ON EP.ID = PEM.IDPedido
 INNER JOIN Menu M ON PEM.IDMenu = M.ID
-WHERE EP.Estado = 'Entregado' AND YEAR(EP.Fecha) = YEAR(CURDATE()) AND MONTH(EP.Fecha) = MONTH(CURDATE());
+WHERE EP.Estado = 'Confirmado' AND YEAR(EP.Fecha) = YEAR(CURDATE()) AND MONTH(EP.Fecha) = MONTH(CURDATE());
 ");
 $recaudacionMes = $recaudacionMes ? round($recaudacionMes) : 0;
 
@@ -224,7 +224,7 @@ $recaudacionTrimestre = consultaColumn($con, "SELECT SUM(M.Precio * (1 - (M.Desc
 FROM Estado_Pedido EP
 INNER JOIN Pedido_Encarga_Menu PEM ON EP.ID = PEM.IDPedido
 INNER JOIN Menu M ON PEM.IDMenu = M.ID
-WHERE EP.Estado = 'Entregado' AND YEAR(EP.Fecha) = YEAR(CURDATE()) AND QUARTER(EP.Fecha) = QUARTER(CURDATE());
+WHERE EP.Estado = 'Confirmado' AND YEAR(EP.Fecha) = YEAR(CURDATE()) AND QUARTER(EP.Fecha) = QUARTER(CURDATE());
 ");
 $recaudacionTrimestre = $recaudacionTrimestre ? round($recaudacionTrimestre) : 0;
 
@@ -233,7 +233,7 @@ $recaudacionSemeste = consultaColumn($con, "SELECT SUM(M.Precio * (1 - (M.Descue
 FROM Estado_Pedido EP
 INNER JOIN Pedido_Encarga_Menu PEM ON EP.ID = PEM.IDPedido
 INNER JOIN Menu M ON PEM.IDMenu = M.ID
-WHERE EP.Estado = 'Entregado' AND YEAR(EP.Fecha) = YEAR(CURDATE()) AND QUARTER(EP.Fecha) <= IF(MONTH(CURDATE()) <= 6, 2, 4);");
+WHERE EP.Estado = 'Confirmado' AND YEAR(EP.Fecha) = YEAR(CURDATE()) AND QUARTER(EP.Fecha) <= IF(MONTH(CURDATE()) <= 6, 2, 4);");
 $recaudacionSemeste = $recaudacionSemeste ? round($recaudacionSemeste) : 0;
 
 // Recaudación del año
@@ -241,49 +241,49 @@ $recaudacionAnio = consultaColumn($con, "SELECT SUM(M.Precio * (1 - (M.Descuento
 FROM Estado_Pedido EP
 INNER JOIN Pedido_Encarga_Menu PEM ON EP.ID = PEM.IDPedido
 INNER JOIN Menu M ON PEM.IDMenu = M.ID
-WHERE EP.Estado = 'Entregado' AND YEAR(EP.Fecha) = YEAR(CURDATE());
+WHERE EP.Estado = 'Confirmado' AND YEAR(EP.Fecha) = YEAR(CURDATE());
 ");
 $recaudacionAnio = $recaudacionAnio ? round($recaudacionAnio) : 0;
 
 // Producción de viandas del día
 $produccionHoy = consultaColumn($con, "SELECT COUNT(*) AS ProduccionHoy
 FROM Estado_Vianda EV
-WHERE EV.Estado = 'En producción' AND DATE(EV.Fecha) = CURDATE();
+WHERE EV.Estado = 'Envasado' AND DATE(EV.Fecha) = CURDATE();
 ");
 $produccionHoy = $produccionHoy ? round($produccionHoy) : 0;
 
 // Producción de viandas de la semana
 $produccionSemana = consultaColumn($con, "SELECT COUNT(*) AS ProduccionSemana
 FROM Estado_Vianda EV
-WHERE EV.Estado = 'En producción' AND YEARWEEK(EV.Fecha, 1) = YEARWEEK(CURDATE(), 1);
+WHERE EV.Estado = 'Envasado' AND YEARWEEK(EV.Fecha, 1) = YEARWEEK(CURDATE(), 1);
 ");
 $produccionSemana = $produccionSemana ? round($produccionSemana) : 0;
 
 // Producción de viandas del mes
 $produccionMes = consultaColumn($con, "SELECT COUNT(*) AS ProduccionMes
 FROM Estado_Vianda EV
-WHERE EV.Estado = 'En producción' AND YEAR(EV.Fecha) = YEAR(CURDATE()) AND MONTH(EV.Fecha) = MONTH(CURDATE());
+WHERE EV.Estado = 'Envasado' AND YEAR(EV.Fecha) = YEAR(CURDATE()) AND MONTH(EV.Fecha) = MONTH(CURDATE());
 ");
 $produccionMes = $produccionMes ? round($produccionMes) : 0;
 
 // Producción de viandas del trimestre
 $produccionTrimestre = consultaColumn($con, "SELECT COUNT(*) AS ProduccionTrimestre
 FROM Estado_Vianda EV
-WHERE EV.Estado = 'En producción' AND YEAR(EV.Fecha) = YEAR(CURDATE()) AND QUARTER(EV.Fecha) = QUARTER(CURDATE());
+WHERE EV.Estado = 'Envasado' AND YEAR(EV.Fecha) = YEAR(CURDATE()) AND QUARTER(EV.Fecha) = QUARTER(CURDATE());
 ");
 $produccionTrimestre = $produccionTrimestre ? round($produccionTrimestre) : 0;
 
 // Producción de viandas del semestre
 $produccionSemestre = consultaColumn($con, "SELECT COUNT(*) AS ProduccionSemestre
 FROM Estado_Vianda EV
-WHERE EV.Estado = 'En producción' AND YEAR(EV.Fecha) = YEAR(CURDATE()) AND QUARTER(EV.Fecha) <= IF(MONTH(CURDATE()) <= 6, 2, 4);
+WHERE EV.Estado = 'Envasado' AND YEAR(EV.Fecha) = YEAR(CURDATE()) AND QUARTER(EV.Fecha) <= IF(MONTH(CURDATE()) <= 6, 2, 4);
 ");
 $produccionSemestre = $produccionSemestre ? round($produccionSemestre) : 0;
 
 // Producción de viandas del año
 $produccionAnio = consultaColumn($con, "SELECT COUNT(*) AS ProduccionAnio
 FROM Estado_Vianda EV
-WHERE EV.Estado = 'En producción' AND YEAR(EV.Fecha) = YEAR(CURDATE());
+WHERE EV.Estado = 'Envasado' AND YEAR(EV.Fecha) = YEAR(CURDATE());
 ");
 $produccionAnio = $produccionAnio ? round($produccionAnio) : 0;
 

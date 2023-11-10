@@ -6,7 +6,6 @@ body {
   background-image: url(../img/flat-lay-fusilli-broccoli-carrots-bowl-with-copy-space.jpg);
   background-repeat: no-repeat;
   background-size: cover;
-
 } 
 .icono1 {
   width: 40px;
@@ -195,3 +194,6 @@ select.form-select {
     transform:  translateY(-3%);
 }
 
+#campos{
+  min-height: 50%;
+}

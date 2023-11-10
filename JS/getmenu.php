@@ -19,6 +19,9 @@ $sql = $con->prepare("SELECT id, Nombre, Precio, Imagen
                       WHERE menu_sigue_dieta.IDDieta = '$q' AND menu.Habilitacion = 'Habilitado'");
 $sql-> execute();
 $result = $sql->fetchAll(PDO::FETCH_ASSOC);
+if(!$result){
+    echo '<p class="lead">No hay menús disponibles en este momento.</p>';
+}
 foreach($result as $row) {
     $imagen = "../imgCatalogo/". $row['Imagen'];
     if(!file_exists($imagen)){
