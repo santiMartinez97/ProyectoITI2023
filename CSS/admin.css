@@ -57,6 +57,7 @@ h2 {
     display: flex;
     justify-content: center;
     align-items: flex-start;
+    overflow-x: auto;
 }
 
 table {
@@ -183,4 +184,41 @@ a:hover {
 
 .CAMBIACOLOR{
     background-color: rgb(253, 222, 196);
+}
+
+#tablaClientes{
+    margin-left: 80px;
+}
+
+.headerAdmin {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(45deg, #b95a07, #FF6347);
+    color: #fff;
+    padding: 10px 20px;
+}
+
+.h1tit {
+    margin-top: auto;
+    font-weight: bold;
+    line-height: normal;
+}
+
+.h2tit {
+    justify-content: left;
+    color: orange;
+    text-align: left;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: normal;
+}
+
+.enlaceTitulo {
+    color: white;
+    text-decoration: none;
+    border: 1px solid white;
+    padding: 5px 10px;
+    border-radius: 5px;
+
 }

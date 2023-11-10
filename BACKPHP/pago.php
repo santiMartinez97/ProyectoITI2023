@@ -13,6 +13,11 @@ $productos_mp = array();
 $db = new DataBase();
 $con = $db->conectar();
 
+// Recupera los detalles del pedido de la URL
+$detallesPedido = isset($_GET['detallesPedido']) ? $_GET['detallesPedido'] : '';
+
+// Guarda los detalles del pedido en la sesión
+$_SESSION['detallesPedido'] = $detallesPedido;
 
 
 $cliente1 = $_SESSION['id'];

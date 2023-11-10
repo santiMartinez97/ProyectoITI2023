@@ -22,6 +22,9 @@ if(isset($_SESSION['email'])){
   
 }
 
+// Recibimos la personalización del pedido
+$detallesPedido = isset($_SESSION['detallesPedido']) ? $_SESSION['detallesPedido'] : null;
+
 //Datos de compra-MercadoPago //
 // $payment = $_GET['payment_id'];
 // $status = $_GET['status'];
@@ -76,10 +79,11 @@ if ($productos != null) {
 
      $idPedido = $con->lastInsertId();
 
-      $query2 = $con->prepare("INSERT INTO pedido_encarga_menu (IDMenu, IDPedido,Cantidad) VALUES (:idmenu, :idpedido,:cantidad)");
+      $query2 = $con->prepare("INSERT INTO pedido_encarga_menu (IDMenu, IDPedido,Cantidad,Descripcion) VALUES (:idmenu, :idpedido,:cantidad,:descripcion)");
       $query2->bindParam(':idmenu', $_id, PDO::PARAM_STR);   
       $query2->bindParam(':idpedido', $idPedido, PDO::PARAM_INT);
       $query2->bindParam(':cantidad', $cantidad, PDO::PARAM_INT);
+      $query2->bindParam(':descripcion', $detallesPedido, PDO::PARAM_INT);
       $query2->execute();
 
       $restarCantidad = $con->prepare("UPDATE menu SET Stock = Stock - :cantidad WHERE ID = :id");
