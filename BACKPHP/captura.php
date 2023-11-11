@@ -62,63 +62,55 @@ if ($productos != null) {
   $fecha_hoy = date("Y-m-d H:i:s");
 
   if($idCliente){
-    $query = $con->prepare("INSERT INTO pedido (Fecha, IDCliente) VALUES (:fecha, :id_cliente)");
-    $query->bindParam(':fecha', $fecha_hoy, PDO::PARAM_STR);
-    $query->bindParam(':id_cliente', $idCliente, PDO::PARAM_INT);
-    $query->execute();
+    $con->beginTransaction();
 
-    $idPedido = $con->lastInsertId();
+    try{
+      $query = $con->prepare("INSERT INTO pedido (Fecha, IDCliente) VALUES (:fecha, :id_cliente)");
+      $query->bindParam(':fecha', $fecha_hoy, PDO::PARAM_STR);
+      $query->bindParam(':id_cliente', $idCliente, PDO::PARAM_INT);
+      $query->execute();
 
-    $query3 = $con->prepare("INSERT INTO estado_pedido (ID, Estado, Fecha) VALUES (:id, :Estado,:Fecha)");
-    $query3->bindParam(':id', $idPedido, PDO::PARAM_INT);
-    $query3->bindParam(':Estado', $estado, PDO::PARAM_INT);
-    $query3->bindParam(':Fecha', $fecha_hoy, PDO::PARAM_INT);
-    $query3->execute();
+      $idPedido = $con->lastInsertId();
 
-    foreach ($productos as $clave => $cantidad) {
+      $query3 = $con->prepare("INSERT INTO estado_pedido (ID, Estado, Fecha) VALUES (:id, :Estado,:Fecha)");
+      $query3->bindParam(':id', $idPedido, PDO::PARAM_INT);
+      $query3->bindParam(':Estado', $estado, PDO::PARAM_INT);
+      $query3->bindParam(':Fecha', $fecha_hoy, PDO::PARAM_INT);
+      $query3->execute();
 
-      $sql = $con->prepare("SELECT  id,Nombre,Precio,descuento, $cantidad AS cantidad FROM menu WHERE id=? AND Habilitacion='Habilitado'");
-      $sql->execute([$clave]);
-      $lista_carrito[] = $sql->fetch(PDO::FETCH_ASSOC);
-    }
+      foreach ($productos as $clave => $cantidad) {
+
+        $sql = $con->prepare("SELECT  id,Nombre,Precio,descuento, $cantidad AS cantidad FROM menu WHERE id=? AND Habilitacion='Habilitado'");
+        $sql->execute([$clave]);
+        $lista_carrito[] = $sql->fetch(PDO::FETCH_ASSOC);
+      }
      
+      foreach ($lista_carrito as $producto) {
+        $_id = $producto['id'];
+        $nombre = $producto['Nombre'];
+        $precio = $producto['Precio'];
+        $descuento = $producto['descuento'];
+        $cantidad = $producto['cantidad'];
   
-    foreach ($lista_carrito as $producto) {
-      $_id = $producto['id'];
-      $nombre = $producto['Nombre'];
-      $precio = $producto['Precio'];
-      $descuento = $producto['descuento'];
-      $cantidad = $producto['cantidad'];
+        $query2 = $con->prepare("INSERT INTO pedido_encarga_menu (IDMenu, IDPedido,Cantidad,Descripcion) VALUES (:idmenu, :idpedido,:cantidad,:descripcion)");
+        $query2->bindParam(':idmenu', $_id, PDO::PARAM_STR);   
+        $query2->bindParam(':idpedido', $idPedido, PDO::PARAM_INT);
+        $query2->bindParam(':cantidad', $cantidad, PDO::PARAM_INT);
+        $query2->bindParam(':descripcion', $detallesPedido, PDO::PARAM_INT);
+        $query2->execute();
   
-        //POR SI HACEMOS LOS DATOS ESTADISTICOS////
-          // $precio_desc = $precio - (($precio * $descuento) / 100);
-          // $subtotal = $cantidad * $precio_desc;
-          // // $total += $subtotal;
+        $restarCantidad = $con->prepare("UPDATE menu SET Stock = Stock - :cantidad WHERE ID = :id");
+        $restarCantidad->bindParam(':cantidad', $cantidad, PDO::PARAM_INT);
+        $restarCantidad->bindParam(':id', $_id, PDO::PARAM_INT);
+        $restarCantidad->execute();
   
-        // $cliente = $con->prepare("SELECT * FROM cliente ");
-        // $cliente-> execute();
-        // $cliente1 = $cliente->fetch(PDO::FETCH_ASSOC);
-  
-        
-  
-
        
-    
-       
-  
-      $query2 = $con->prepare("INSERT INTO pedido_encarga_menu (IDMenu, IDPedido,Cantidad,Descripcion) VALUES (:idmenu, :idpedido,:cantidad,:descripcion)");
-      $query2->bindParam(':idmenu', $_id, PDO::PARAM_STR);   
-      $query2->bindParam(':idpedido', $idPedido, PDO::PARAM_INT);
-      $query2->bindParam(':cantidad', $cantidad, PDO::PARAM_INT);
-      $query2->bindParam(':descripcion', $detallesPedido, PDO::PARAM_INT);
-      $query2->execute();
-  
-      $restarCantidad = $con->prepare("UPDATE menu SET Stock = Stock - :cantidad WHERE ID = :id");
-      $restarCantidad->bindParam(':cantidad', $cantidad, PDO::PARAM_INT);
-      $restarCantidad->bindParam(':id', $_id, PDO::PARAM_INT);
-      $restarCantidad->execute();
-  
     }
+    $con->commit();
+  }catch(Error $e){
+    echo "Error al insertar.";
+    $con->rollBack();
+  }
   }
 }
 
