@@ -128,8 +128,8 @@ require_once '../Clases/vianda.php';
 
   <article class="col-6 grupo" id="grupo__viandas">
   <article class="grupo__input">
-    <select id="viandas" name="viandas" class="formulario__input form-select gray-text" aria-label="Agregar viandas a menu" multiple>
-      <option value="">Selecciona un nombre</option>
+    <select id="viandas" name="viandas" class="formulario__input form-select gray-text" aria-label="Agregar viandas a menu" multiple required>
+      <option value="">Seleccione viandas</option>
       <?php
       $viandasListado = new Vianda($con);
       $viandasListado->listadoDistintivo($con);
