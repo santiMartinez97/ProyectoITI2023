@@ -110,30 +110,15 @@ LEFT JOIN Menu M ON MSD.IDMenu = M.ID
 GROUP BY D.Tipo;");
 
 // Recaudado por día
-$recaudadoPorDia = consultaAll($con, "SELECT DATE(EP.Fecha) AS Fecha, SUM(M.Precio * (1 - (M.Descuento / 100)) * PEM.Cantidad) AS Recaudado
-FROM Estado_Pedido EP
-INNER JOIN Pedido_Encarga_Menu PEM ON EP.ID = PEM.IDPedido
-INNER JOIN Menu M ON PEM.IDMenu = M.ID
-WHERE EP.Estado = 'Confirmado'
-GROUP BY DATE(EP.Fecha);
+$recaudadoPorDia = consultaAll($con, "SELECT DATE(EP.Fecha) AS Fecha, SUM(M.Precio * (1 - COALESCE(M.Descuento / 100, 0)) * PEM.Cantidad) AS Recaudado FROM Estado_Pedido EP INNER JOIN Pedido_Encarga_Menu PEM ON EP.ID = PEM.IDPedido INNER JOIN Menu M ON PEM.IDMenu = M.ID WHERE EP.Estado = 'Confirmado' GROUP BY DATE(EP.Fecha);
 ");
 
 // Recaudado por semana
-$recaudadoPorSemana = consultaAll($con, "SELECT DATE_FORMAT(EP.Fecha, '%Y-%u') AS Semana, SUM(M.Precio * (1 - (M.Descuento / 100)) * PEM.Cantidad) AS Recaudado
-FROM Estado_Pedido EP
-INNER JOIN Pedido_Encarga_Menu PEM ON EP.ID = PEM.IDPedido
-INNER JOIN Menu M ON PEM.IDMenu = M.ID
-WHERE EP.Estado = 'Confirmado'
-GROUP BY Semana;
+$recaudadoPorSemana = consultaAll($con, "SELECT DATE_FORMAT(EP.Fecha, '%Y-%u') AS Semana, SUM(M.Precio * (1 - COALESCE(M.Descuento / 100, 0)) * PEM.Cantidad) AS Recaudado FROM Estado_Pedido EP INNER JOIN Pedido_Encarga_Menu PEM ON EP.ID = PEM.IDPedido INNER JOIN Menu M ON PEM.IDMenu = M.ID WHERE EP.Estado = 'Confirmado' GROUP BY Semana;
 ");
 
 // Recaudado por mes
-$recaudadoPorMes = consultaAll($con, "SELECT DATE_FORMAT(EP.Fecha, '%Y-%m') AS Mes, SUM(M.Precio * (1 - (M.Descuento / 100)) * PEM.Cantidad) AS Recaudado
-FROM Estado_Pedido EP
-INNER JOIN Pedido_Encarga_Menu PEM ON EP.ID = PEM.IDPedido
-INNER JOIN Menu M ON PEM.IDMenu = M.ID
-WHERE EP.Estado = 'Confirmado'
-GROUP BY Mes;
+$recaudadoPorMes = consultaAll($con, "SELECT DATE_FORMAT(EP.Fecha, '%Y-%m') AS Mes, SUM(M.Precio * (1 - COALESCE(M.Descuento / 100, 0)) * PEM.Cantidad) AS Recaudado FROM Estado_Pedido EP INNER JOIN Pedido_Encarga_Menu PEM ON EP.ID = PEM.IDPedido INNER JOIN Menu M ON PEM.IDMenu = M.ID WHERE EP.Estado = 'Confirmado' GROUP BY Mes;
 ");
 
 // Total de pedidos
@@ -193,7 +178,7 @@ ORDER BY Mes, TotalStockVendido DESC;");
 // --------------------CONSULTAS PARA METAS-----------------------
 
 // Recaudación del día
-$recaudacionHoy = consultaColumn($con, "SELECT SUM(M.Precio * (1 - (M.Descuento / 100)) * PEM.Cantidad) AS RecaudacionHoy
+$recaudacionHoy = consultaColumn($con, "SELECT SUM(M.Precio * (1 - COALESCE(M.Descuento / 100, 0)) * PEM.Cantidad) AS RecaudacionHoy
 FROM Estado_Pedido EP
 INNER JOIN Pedido_Encarga_Menu PEM ON EP.ID = PEM.IDPedido
 INNER JOIN Menu M ON PEM.IDMenu = M.ID
@@ -202,7 +187,7 @@ WHERE EP.Estado = 'Confirmado' AND DATE(EP.Fecha) = CURDATE();
 $recaudacionHoy = $recaudacionHoy ? round($recaudacionHoy) : 0;
 
 // Recaudación de la semana
-$recaudacionSemana = consultaColumn($con, "SELECT SUM(M.Precio * (1 - (M.Descuento / 100)) * PEM.Cantidad) AS RecaudacionSemana
+$recaudacionSemana = consultaColumn($con, "SELECT SUM(M.Precio * (1 - COALESCE(M.Descuento / 100, 0)) * PEM.Cantidad) AS RecaudacionSemana
 FROM Estado_Pedido EP
 INNER JOIN Pedido_Encarga_Menu PEM ON EP.ID = PEM.IDPedido
 INNER JOIN Menu M ON PEM.IDMenu = M.ID
@@ -211,7 +196,7 @@ WHERE EP.Estado = 'Confirmado' AND YEARWEEK(EP.Fecha, 1) = YEARWEEK(CURDATE(), 1
 $recaudacionSemana = $recaudacionSemana ? round($recaudacionSemana) : 0;
 
 // Recaudación del mes
-$recaudacionMes = consultaColumn($con, "SELECT SUM(M.Precio * (1 - (M.Descuento / 100)) * PEM.Cantidad) AS RecaudacionMes
+$recaudacionMes = consultaColumn($con, "SELECT SUM(M.Precio * (1 - COALESCE(M.Descuento / 100, 0)) * PEM.Cantidad) AS RecaudacionMes
 FROM Estado_Pedido EP
 INNER JOIN Pedido_Encarga_Menu PEM ON EP.ID = PEM.IDPedido
 INNER JOIN Menu M ON PEM.IDMenu = M.ID
@@ -220,7 +205,7 @@ WHERE EP.Estado = 'Confirmado' AND YEAR(EP.Fecha) = YEAR(CURDATE()) AND MONTH(EP
 $recaudacionMes = $recaudacionMes ? round($recaudacionMes) : 0;
 
 // Recaudación del trimestre
-$recaudacionTrimestre = consultaColumn($con, "SELECT SUM(M.Precio * (1 - (M.Descuento / 100)) * PEM.Cantidad) AS RecaudacionTrimestre
+$recaudacionTrimestre = consultaColumn($con, "SELECT SUM(M.Precio * (1 - COALESCE(M.Descuento / 100, 0)) * PEM.Cantidad) AS RecaudacionTrimestre
 FROM Estado_Pedido EP
 INNER JOIN Pedido_Encarga_Menu PEM ON EP.ID = PEM.IDPedido
 INNER JOIN Menu M ON PEM.IDMenu = M.ID
@@ -229,7 +214,7 @@ WHERE EP.Estado = 'Confirmado' AND YEAR(EP.Fecha) = YEAR(CURDATE()) AND QUARTER(
 $recaudacionTrimestre = $recaudacionTrimestre ? round($recaudacionTrimestre) : 0;
 
 // Recaudación del semestre
-$recaudacionSemeste = consultaColumn($con, "SELECT SUM(M.Precio * (1 - (M.Descuento / 100)) * PEM.Cantidad) AS RecaudacionSemestre
+$recaudacionSemeste = consultaColumn($con, "SELECT SUM(M.Precio * (1 - COALESCE(M.Descuento / 100, 0)) * PEM.Cantidad) AS RecaudacionSemestre
 FROM Estado_Pedido EP
 INNER JOIN Pedido_Encarga_Menu PEM ON EP.ID = PEM.IDPedido
 INNER JOIN Menu M ON PEM.IDMenu = M.ID
@@ -237,7 +222,7 @@ WHERE EP.Estado = 'Confirmado' AND YEAR(EP.Fecha) = YEAR(CURDATE()) AND QUARTER(
 $recaudacionSemeste = $recaudacionSemeste ? round($recaudacionSemeste) : 0;
 
 // Recaudación del año
-$recaudacionAnio = consultaColumn($con, "SELECT SUM(M.Precio * (1 - (M.Descuento / 100)) * PEM.Cantidad) AS RecaudacionAnio
+$recaudacionAnio = consultaColumn($con, "SELECT SUM(M.Precio * (1 - COALESCE(M.Descuento / 100, 0)) * PEM.Cantidad) AS RecaudacionAnio
 FROM Estado_Pedido EP
 INNER JOIN Pedido_Encarga_Menu PEM ON EP.ID = PEM.IDPedido
 INNER JOIN Menu M ON PEM.IDMenu = M.ID
