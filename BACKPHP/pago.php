@@ -275,6 +275,8 @@ echo  '<li class="nav-item dropdown">';
 $preference->back_urls = array(
   "success" => "http://localhost/proyectoITI2023/BACKPHP/captura.php"  
   ,
+  "pending" => "http://localhost/proyectoITI2023/BACKPHP/captura.php"
+  ,  
   "failure" => "http://localhost/proyectoITI2023/fallo.php"
 );
 

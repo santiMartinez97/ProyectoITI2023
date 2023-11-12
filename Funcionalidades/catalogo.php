@@ -192,7 +192,11 @@ $resultado2 = $dieta->ObtenerDieta();
  <section>
     <div class="container">
         <div id="listaMenus" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-            <?php foreach($resultado as $row){ 
+            <?php 
+            if(!$resultado){
+              echo '<p class="lead">No hay menús disponibles en este momento.</p>';
+            }
+            foreach($resultado as $row){ 
                 $menu = new Menu(
                   $con,
                   $row['ID'], 
@@ -238,7 +242,7 @@ $resultado2 = $dieta->ObtenerDieta();
         </div>
     </div>
 </section>
-
+</article>
   
  <script src="../JS/tipoDieta.js"></script>
  <script>
@@ -294,5 +298,5 @@ $resultado2 = $dieta->ObtenerDieta();
       integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
       crossorigin="anonymous"
     ></script>
-      
+</body>  
 </php>

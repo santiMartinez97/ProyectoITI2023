@@ -78,14 +78,27 @@ $listaMenus = Menu::listarMenusHabilitados($con);
             <div id="cantidad-menu">
                 <!-- Aquí se agregarán los campos de cantidad dinámicamente -->
             </div>
-
+            <button type="button" id="agregar-menu">Agregar Menú</button>
             <label for="descripcion">Descripción:</label>
             <textarea id="descripcion" name="descripcion"></textarea><br>
 
-            <button type="button" id="agregar-menu">Agregar Menú</button>
-            <br>
+            <label>Estado del Pedido:</label>
+            <div class="radio-group">
+                <div>
+                    <input type="radio" id="estado-solicitado" name="estado" value="Solicitado" checked>
+                    <label for="estado-solicitado">Solicitado</label>
+                </div>
+                <div>
+                    <input type="radio" id="estado-confirmado" name="estado" value="Confirmado">
+                    <label for="estado-confirmado">Confirmado</label>
+                </div>
+            </div>
 
-            <button type="submit">Enviar Pedido</button>
+
+            <br>
+            <hr class="separacion">
+
+            <button type="submit" style="width:100%">Enviar Pedido</button>
         </form>
     </main>
 

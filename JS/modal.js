@@ -51,7 +51,7 @@ function validarFormularioEmpresa() {
     var empresaRegex = /^[a-zA-ZÀ-ÿ\s]{2,40}$/;
     var rutRegex = /^.{12}$/;
     var telefonoRegex = /^2\d{7}$/;
-    var direccionRegex = /^[a-zA-Z0-9\s-]{2,30}$/; 
+    var direccionRegex = /^[a-zA-Z0-9\s-]{2,80}$/; 
 
     var email = document.getElementById("modEmailE").value;
     var rut = document.getElementById("modRutE").value;

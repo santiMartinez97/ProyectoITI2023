@@ -46,7 +46,7 @@ if($resultadoEmail && $resultadoEmail->getID() != $id){
             $cliente->update();
 
             // Modificamos relaciones del cliente
-            $cliente->modificarTelefono($telefono);
+            $cliente->obtenerTelefonos() ? $cliente->modificarTelefono($telefono) : $cliente->agregarTelefono($telefono);
             $cliente->quitarDieta();
             $cliente->asociarDieta($dieta);
 

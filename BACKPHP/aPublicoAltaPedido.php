@@ -26,6 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   // Recibir los datos del formulario
   $cliente = $_POST["cliente"];
   $descripcion = $_POST["descripcion"];
+  $estado = isset($_POST["estado"]) ? $_POST["estado"] : "Solicitado";
   
   // Inicializar un array para almacenar los menús y sus cantidades
   $menus_y_cantidades = array();
@@ -54,6 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $stock = new Stock();
 
   foreach($menus_y_cantidades as $idMenu => $cantidad){
+    $cantidad = $cantidad < 0 ? 1 : $cantidad;
     $quitarStock = $stock->quitarStockPorId($idMenu, $cantidad);
     if(!$quitarStock && count($menus_y_cantidades) === 1){
         $pedido->borrarPedido($idPedido);
@@ -64,7 +66,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   // Insertamos en estadoPedido
   $estadoPedido = new EstadoPedido($con);
-  $estadoPedido->agregarEstado($idPedido, $fecha, 'Solicitado');
+  $estadoPedido->agregarEstado($idPedido, $fecha, $estado);
 
   // Aquí, solo mostramos una salida de ejemplo
   echo "Cliente: " . $cliente . "<br>";
