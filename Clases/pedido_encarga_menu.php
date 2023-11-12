@@ -77,7 +77,7 @@ class Pedido_Encarga_Menu {
     }
 
     public function controlPedidos($estadoSeleccionado = 'todos'){
-        $control = $this->con->prepare("SELECT t1.ID, ep.Fecha AS FechaEstado, t1.IDCliente, ep.Estado FROM pedido AS t1 INNER JOIN estado_pedido AS ep ON t1.ID = ep.ID");
+        $control = $this->con->prepare("SELECT t1.ID, ep.Fecha AS FechaEstado, t1.IDCliente, ep.Estado FROM pedido AS t1 INNER JOIN estado_pedido AS ep ON t1.ID = ep.ID WHERE ep.Estado != 'Entregado' AND ep.Estado != 'Rechazado';");
         $control->execute();
         $resultado = $control->fetchAll(PDO::FETCH_ASSOC);
         
